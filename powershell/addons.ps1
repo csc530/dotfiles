@@ -28,21 +28,11 @@ glow completion powershell | Out-String | Invoke-Expression
 # terminal prompt themeP
 oh-my-posh.exe completion powershell | Out-String | Invoke-Expression
 
-function setup-carapace-bin {
-
-	function remove-extension {
-		param (
-			[Parameter(Mandatory = $true, Position = 0)]
-			[string] $file
-		)
-		$terminator = $file.LastIndexOf('.')
-
-		return $file.Substring(0, $terminator -gt 0 ? $terminator : $file.Length)
-	}
-
+function Mount-carapace-Completers {
 	Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
 	Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 	$apps = @()
+	."$PSScriptRoot\functions.ps1"
 	Get-Command -CommandType Application, Script, ExternalScript | ForEach-Object {
 		$apps += remove-extension $_.Name
 	}
@@ -77,3 +67,5 @@ function setup-carapace-bin {
 #>
 # scoop search - faster than default speedup
 Invoke-Expression (&scoop-search --hook)
+
+zoxide init powershell | out-string | invoke-expression

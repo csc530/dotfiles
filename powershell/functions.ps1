@@ -87,3 +87,27 @@ function screenprint {
     Write-Debug -Message "Ascii: $ascii"
     Write-Debug -Message "Blink: $blink"
 }
+
+<#
+.SYNOPSIS
+    Remove extension from file name
+.DESCRIPTION
+    Remove extension from file name
+.EXAMPLE
+    remove-extension -file 'test.ps1'
+.NOTES
+    Author: Christofer Cousins
+.LINK
+    https://github.com/csc530/.files
+#>
+function Remove-Extension {
+    [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'low', PositionalBinding = $true)]
+    param (
+        [Parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true)]
+        [string] $fileName
+    )
+    $terminator = $file.LastIndexOf('.')
+    if ($PSCmdlet.ShouldProcess("$file")) {
+        return $file.Substring(0, $terminator -gt 0 ? $terminator : $file.Length)
+    }
+}
