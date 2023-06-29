@@ -10,5 +10,6 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\negligible.omp.json" | Invo
 ."$PSScriptRoot\addons.ps1" -JobName "addons"
 ."$PSScriptRoot\functions.ps1" -JobName "functions"
 
-Invoke-Expression -Command screenfetch
 Invoke-Expression -Command Mount-carapace-Completers
+#carapace _carapace | Out-String | Invoke-Expression
+Invoke-Expression -Command screenfetch

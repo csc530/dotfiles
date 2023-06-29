@@ -27,6 +27,8 @@ Import-Module D:\Appdata\Scoop\apps\gsudo\2.0.10\gsudoModule.psd1
 glow completion powershell | Out-String | Invoke-Expression
 # terminal prompt themeP
 oh-my-posh.exe completion powershell | Out-String | Invoke-Expression
+# 1password
+op completion powershell | out-string | Invoke-Expression
 
 function Mount-carapace-Completers {
 	Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }

@@ -106,8 +106,8 @@ function Remove-Extension {
         [Parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true)]
         [string] $fileName
     )
-    $terminator = $file.LastIndexOf('.')
-    if ($PSCmdlet.ShouldProcess("$file")) {
-        return $file.Substring(0, $terminator -gt 0 ? $terminator : $file.Length)
+    if ($PSCmdlet.ShouldProcess("$fileName")) {
+        $terminator = $fileName.LastIndexOf('.')
+        return $fileName.Substring(0, $terminator -gt 0 ? $terminator : $fileName.Length)
     }
 }
