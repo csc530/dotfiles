@@ -41,7 +41,7 @@ function screenfetch {
 
     #print git repo screenfetch
     #look for .git directory in path and parents
-    $loc = Get-Item .\
+    $loc = Get-Item . -Force
     while ($loc.Parent) {
         if (Get-ChildItem -Filter .git -Force -Directory) {
             onefetch.exe
