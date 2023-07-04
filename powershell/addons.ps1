@@ -10,7 +10,7 @@
 Import-Module scoop-completion
 Import-Module Terminal-Icons
 # adds gsudo !! to elevate last command
-Import-Module D:\Appdata\Scoop\apps\gsudo\2.0.10\gsudoModule.psd1
+Import-Module  "$(scoop config root_path)\apps\gsudo\current\gsudoModule.psd1"
 
 <#
 ..######...#######..##.....##.########..##.......########.########.########.########...######.
@@ -43,19 +43,18 @@ function Mount-carapace-Completers {
 
 
 	[System.Collections.Generic.List[string]]$carapace = carapace.exe --list | Get-Random -Shuffle
-	
 	for ($i = 0; $i -lt $carapace.Count; $i++) {
 		$cmd = $carapace[$i].Split()[0]
 		if ($apps -notcontains $cmd) {
+			$skipped++
 			continue
 		}
 		lazycomplete $cmd "carapace $cmd" | Out-String | Invoke-Expression
-		
 		$percentComplete = ($i / ($carapace.Count)) * 100
 		Write-Progress -Activity "Setting up $cmd completer" -Status "$percentComplete% complete:" -PercentComplete $percentComplete
 	}
 	Write-Progress -Activity "Setting up $cmd completer" -Status "$percentComplete% complete:" -PercentComplete $percentComplete -Completed
-	Write-Host "$loaded Carapace completions loaded" -ForegroundColor Green
+	Write-Host "$($carapace.Count - $skipped) Carapace completions loaded" -ForegroundColor Green
 }
 
 
