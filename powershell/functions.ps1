@@ -42,15 +42,20 @@ function screenfetch {
     #print git repo screenfetch
     #look for .git directory in path and parents
     $loc = Get-Item . -Force
+    $orgLoc = Get-Location -Verbose
     while ($loc.Parent) {
+        # save current directory to stack
+        Push-Location -Path $loc -StackName onefetch
+        # look for .git directory
         if (Get-ChildItem -Filter .git -Force -Directory) {
             onefetch.exe
             break
         }
-		
+        # move up one level
         $loc = Get-Item $loc.Parent -ErrorAction Break
-        Set-Location $loc
     }
+    #restore current directory to host process
+    Set-Location -Path $orgLoc
 }
 
 function screenprint {
