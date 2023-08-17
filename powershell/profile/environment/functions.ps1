@@ -1,3 +1,5 @@
+Write-Information "`rSetting up functions..."
+
 function clear-line {
     param (
         [Parameter(Mandatory = $false, Position = 0)][string]$txt,
@@ -30,7 +32,7 @@ function clear-line {
 function screenfetch {	
     & cpufetch.exe
 	
-    $fetches = @(Get-Command -Name *neofetch*) + @(Get-Command *wfetch*) + @(Get-Command *winfetch* -All) + @(Get-Command flashfetch)
+    $fetches = @(Get-Command -Name *neofetch*) + @(Get-Command *wfetch*) + @(Get-Command *winfetch* -All) + @(Get-Command flashfetch) + @(Get-Command macchina.exe)
     $screenfetch = $fetches[(Get-Random -Minimum 0 -Maximum $fetches.Length)]
     if ($screenfetch.Name -eq 'winfetch.ps1') {
         screenprint	
@@ -116,3 +118,5 @@ function Remove-Extension {
         return $fileName.Substring(0, $terminator -gt 0 ? $terminator : $fileName.Length)
     }
 }
+
+Write-information " finished setting up functions"
