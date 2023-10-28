@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -12,7 +12,7 @@
             "keys": "ctrl+c"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "right"
@@ -28,7 +28,7 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "up"
@@ -36,7 +36,7 @@
             "keys": "ctrl+alt+up"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -45,7 +45,7 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "down"
@@ -53,7 +53,7 @@
             "keys": "ctrl+alt+down"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "left"
@@ -67,27 +67,27 @@
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "launchMode": "focus",
     "minimizeToNotificationArea": true,
-    "newTabMenu": 
+    "newTabMenu":
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "adjustIndistinguishableColors": "always",
             "backgroundImageOpacity": 0.61,
             "backgroundImageStretchMode": "uniformToFill",
             "experimental.retroTerminalEffect": true,
-            "font": 
+            "font":
             {
                 "face": "Delugia Mono"
             },
             "intenseTextStyle": "bright",
             "opacity": 30,
-            "unfocusedAppearance": 
+            "unfocusedAppearance":
             {
                 "adjustIndistinguishableColors": "always",
                 "backgroundImage": "D:\\Pictures\\B&Puppycat\\wp4909821-bee-and-puppycat-desktop-wallpapers.jpg",
@@ -97,7 +97,7 @@
                 "intenseTextStyle": "all"
             }
         },
-        "list": 
+        "list":
         [
             {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
@@ -124,7 +124,7 @@
                 "colorScheme": "Campbell",
                 "commandline": "D:\\Programs\\Powershell\\7\\pwsh.exe",
                 "cursorShape": "bar",
-                "font": 
+                "font":
                 {
                     "size": 12.0
                 },
@@ -145,7 +145,7 @@
                 "colorScheme": "Campbell",
                 "commandline": "D:\\Appdata\\Scoop\\shims\\nu.exe",
                 "cursorShape": "bar",
-                "font": 
+                "font":
                 {
                     "size": 12.0
                 },
@@ -185,7 +185,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
@@ -232,6 +232,98 @@
             "selectionBackground": "#FFFFFF",
             "white": "#CCCCCC",
             "yellow": "#C19C00"
+        },
+        {
+            "background": "#303446",
+            "black": "#51576D",
+            "blue": "#8CAAEE",
+            "brightBlack": "#626880",
+            "brightBlue": "#8CAAEE",
+            "brightCyan": "#81C8BE",
+            "brightGreen": "#A6D189",
+            "brightPurple": "#F4B8E4",
+            "brightRed": "#E78284",
+            "brightWhite": "#A5ADCE",
+            "brightYellow": "#E5C890",
+            "cursorColor": "#F2D5CF",
+            "cyan": "#81C8BE",
+            "foreground": "#C6D0F5",
+            "green": "#A6D189",
+            "name": "Catppuccin Frapp\u00e9",
+            "purple": "#F4B8E4",
+            "red": "#E78284",
+            "selectionBackground": "#626880",
+            "white": "#B5BFE2",
+            "yellow": "#E5C890"
+        },
+        {
+            "background": "#EFF1F5",
+            "black": "#5C5F77",
+            "blue": "#1E66F5",
+            "brightBlack": "#ACB0BE",
+            "brightBlue": "#1E66F5",
+            "brightCyan": "#179299",
+            "brightGreen": "#40A02B",
+            "brightPurple": "#EA76CB",
+            "brightRed": "#D20F39",
+            "brightWhite": "#BCC0CC",
+            "brightYellow": "#DF8E1D",
+            "cursorColor": "#DC8A78",
+            "cyan": "#179299",
+            "foreground": "#4C4F69",
+            "green": "#40A02B",
+            "name": "Catppuccin Latte",
+            "purple": "#EA76CB",
+            "red": "#D20F39",
+            "selectionBackground": "#ACB0BE",
+            "white": "#ACB0BE",
+            "yellow": "#DF8E1D"
+        },
+        {
+            "background": "#24273A",
+            "black": "#494D64",
+            "blue": "#8AADF4",
+            "brightBlack": "#5B6078",
+            "brightBlue": "#8AADF4",
+            "brightCyan": "#8BD5CA",
+            "brightGreen": "#A6DA95",
+            "brightPurple": "#F5BDE6",
+            "brightRed": "#ED8796",
+            "brightWhite": "#A5ADCB",
+            "brightYellow": "#EED49F",
+            "cursorColor": "#F4DBD6",
+            "cyan": "#8BD5CA",
+            "foreground": "#CAD3F5",
+            "green": "#A6DA95",
+            "name": "Catppuccin Macchiato",
+            "purple": "#F5BDE6",
+            "red": "#ED8796",
+            "selectionBackground": "#5B6078",
+            "white": "#B8C0E0",
+            "yellow": "#EED49F"
+        },
+        {
+            "background": "#1E1E2E",
+            "black": "#45475A",
+            "blue": "#89B4FA",
+            "brightBlack": "#585B70",
+            "brightBlue": "#89B4FA",
+            "brightCyan": "#94E2D5",
+            "brightGreen": "#A6E3A1",
+            "brightPurple": "#F5C2E7",
+            "brightRed": "#F38BA8",
+            "brightWhite": "#A6ADC8",
+            "brightYellow": "#F9E2AF",
+            "cursorColor": "#F5E0DC",
+            "cyan": "#94E2D5",
+            "foreground": "#CDD6F4",
+            "green": "#A6E3A1",
+            "name": "Catppuccin Mocha",
+            "purple": "#F5C2E7",
+            "red": "#F38BA8",
+            "selectionBackground": "#585B70",
+            "white": "#BAC2DE",
+            "yellow": "#F9E2AF"
         },
         {
             "background": "#282C34",
@@ -397,47 +489,97 @@
     ],
     "showTabsInTitlebar": true,
     "theme": "system",
-    "themes": 
+    "themes":
     [
         {
-            "name": "legacyDark",
-            "tab": 
+            "name": "Catppuccin Frappe",
+            "tab":
             {
-                "background": null,
+                "background": "#414559FF",
+                "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "window": 
+            "tabRow":
+            {
+                "background": "#303446FF",
+                "unfocusedBackground": "#292C3CFF"
+            },
+            "window":
             {
                 "applicationTheme": "dark",
+                "experimental.rainbowFrame": false,
+                "frame": null,
+                "unfocusedFrame": null,
                 "useMica": false
             }
         },
         {
-            "name": "legacyLight",
-            "tab": 
+            "name": "Catppuccin Latte",
+            "tab":
             {
-                "background": null,
+                "background": "#CCD0DAFF",
+                "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "window": 
+            "tabRow":
+            {
+                "background": "#EFF1F5FF",
+                "unfocusedBackground": "#E6E9EFFF"
+            },
+            "window":
             {
                 "applicationTheme": "light",
+                "experimental.rainbowFrame": false,
+                "frame": null,
+                "unfocusedFrame": null,
                 "useMica": false
             }
         },
         {
-            "name": "legacySystem",
-            "tab": 
+            "name": "Catppuccin Macchiato",
+            "tab":
             {
-                "background": null,
+                "background": "#363A4FFF",
+                "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "window": 
+            "tabRow":
             {
-                "applicationTheme": "system",
+                "background": "#24273AFF",
+                "unfocusedBackground": "#181926FF"
+            },
+            "window":
+            {
+                "applicationTheme": "dark",
+                "experimental.rainbowFrame": false,
+                "frame": null,
+                "unfocusedFrame": null,
+                "useMica": false
+            }
+        },
+        {
+            "name": "Catppuccin Mocha",
+            "tab":
+            {
+                "background": "#313244FF",
+                "iconStyle": "default",
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "tabRow":
+            {
+                "background": "#1E1E2EFF",
+                "unfocusedBackground": "#181825FF"
+            },
+            "window":
+            {
+                "applicationTheme": "dark",
+                "experimental.rainbowFrame": false,
+                "frame": null,
+                "unfocusedFrame": null,
                 "useMica": false
             }
         }
