@@ -37,7 +37,8 @@ function Mount-carapace-Completers {
             $skipped++
             continue
         }
-        $fullcomplete = lazycomplete $cmd "carapace $cmd" | Out-String
+        # https://github.com/rsteube/lazycomplete ~ for lazycomplete
+        $fullcomplete = "carapace $cmd" | Out-String
         # $percentComplete = ($i / ($carapace.Count)) * 100
         # Write-Progress -Activity "Setting up $cmd completer" -Status "$percentComplete% complete:" -PercentComplete $percentComplete
     }
