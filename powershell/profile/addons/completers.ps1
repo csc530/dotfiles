@@ -15,7 +15,7 @@ Write-Information "`rSetting up completers..."
 # my beatful markdown viewer
 glow completion powershell | Out-String | Invoke-Expression
 pop completion powershell | Out-String | Invoke-Expression
-gum completion powershell | Out-String | Invoke-Expression
+# gum completion powershell | Out-String | Invoke-Expression ## no powershell option yet
 vhs completion powershell | Out-String | Invoke-Expression
 # terminal prompt themeP
 oh-my-posh completion powershell | Out-String | Invoke-Expression
@@ -43,8 +43,8 @@ function Mount-carapace-Completers {
             continue
         }
         # https://github.com/rsteube/lazycomplete ~ for lazycomplete
-        # $fullcomplete = lazycomplete $cmd "carapace $cmd" | Out-String
-        "carapace $cmd powershell;" | Out-String | Invoke-Expression | Out-Null
+        lazycomplete $cmd "carapace $cmd" | Out-String | Invoke-Expression
+        # "carapace $cmd powershell;" | Out-String | Invoke-Expression | Out-Null
         $percentComplete = ($i / ($carapace.Count)) * 100
         Write-Progress -Activity "Setting up $cmd completer" -Status "$percentComplete% complete:" -PercentComplete $percentComplete
     }
