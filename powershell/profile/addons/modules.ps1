@@ -11,6 +11,6 @@ Write-Information "setting up modules..."
 
 Import-Module Terminal-Icons
 # adds gsudo !! to elevate last command
-Import-Module  "$(scoop config root_path)\apps\gsudo\current\gsudoModule.psd1"
+Import-Module  "gsudoModule"
 
 Write-Information "finished setting up modules"
