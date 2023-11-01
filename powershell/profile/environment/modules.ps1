@@ -7,10 +7,11 @@
 .##.....##.##.....##.##.....##.##.....##.##.......##.......##....##
 .##.....##..#######..########...#######..########.########..######.
 #>
-Write-Information "setting up modules..."
+Write-Host "setting up modules..."
 
 Import-Module Terminal-Icons
+Import-Module scoop-completion
 # adds gsudo !! to elevate last command
-Import-Module  "gsudoModule"
+Import-Module gsudoModule
 
-Write-Information "finished setting up modules"
+Write-Host "finished setting up modules✅"

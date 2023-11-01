@@ -1,4 +1,4 @@
-Write-Information "`rSetting up functions..."
+Write-Host "`rSetting up functions..."
 
 function clear-line {
     param (
@@ -10,11 +10,11 @@ function clear-line {
     }
     else {
         for ($i = 0; $i -lt $Host.UI.RawUI.CursorPosition.X; $i++) {
-            Write-Host "`b" -NoNewline 
+            Write-Host "`b" -NoNewline
         }
-        
+
         for ($i = 0; $i -lt $Host.UI.RawUI.CursorPosition.X; $i++) {
-            Write-Host "`r " -NoNewline 
+            Write-Host "`r " -NoNewline
         }
     }
     $length ??= $Host.UI.RawUI.WindowSize.Width
@@ -29,13 +29,13 @@ function clear-line {
 
 
 # Print out a nice screenfetch
-function screenfetch {	
+function screenfetch {
     & cpufetch.exe
-	
+
     $fetches = @(Get-Command -Name *neofetch*) + @(Get-Command *wfetch*) + @(Get-Command *winfetch* -All) + @(Get-Command flashfetch) + @(Get-Command macchina.exe)
     $screenfetch = $fetches[(Get-Random -Minimum 0 -Maximum $fetches.Length)]
     if ($screenfetch.Name -eq 'winfetch.ps1') {
-        screenprint	
+        screenprint
     }
     else {
         $screenfetch.Path | Out-String | Invoke-Expression
@@ -69,7 +69,7 @@ function screenprint {
     }
     if ($Host.UI.RawUI.WindowSize.Width -gt 50) {
         $imgPath = Get-ChildItem -Recurse -Include *.jpg, *.png, *.jpeg, -Path D:\Pictures\ -Exclude D:\Pictures\Screenshots | Get-Random
-		
+
         if ($Host.UI.RawUI.WindowSize.Width -gt 75) {
             $width = Get-Random -Minimum 20 -Maximum ($Host.UI.RawUI.WindowSize.Width - 29)
         }
@@ -81,14 +81,14 @@ function screenprint {
             $strip = '-stripansi'
             $ascii = '-ascii'
         }
-		
+
         $img = "-image '$($imgPath.FullName)' -imgwidth $width $strip"
     }
     else {
         $img = '-noimage'
         $ascii = $null
     }
-    
+
     "winfetch.ps1 $ascii $img $blink" | Out-String | Invoke-Expression
     Write-Host -Message "Image: $($imgPath.FullName)"
     Write-Debug -Message "Ascii: $ascii"
@@ -119,4 +119,4 @@ function Remove-Extension {
     }
 }
 
-Write-information " finished setting up functions"
+Write-Host "finished setting up functions✅"

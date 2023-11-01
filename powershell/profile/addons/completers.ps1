@@ -8,7 +8,7 @@
 ..######...#######..##.....##.##........########.########....##....########.##.....##..######.
 #>
 
-Write-Information "`rSetting up completers..."
+Write-Host "`rSetting up completers..."
 
 # volta completions: javascript tool manager
 # (& volta completions powershell) | Out-String | Invoke-Expression
@@ -52,4 +52,4 @@ function Mount-carapace-Completers {
     Write-Host "$($carapace.Count - $skipped) Carapace completions loaded" -ForegroundColor Green
 }
 
-Write-Information "`finished setting up completers"
+Write-Host "`rfinished setting up completers✅"
