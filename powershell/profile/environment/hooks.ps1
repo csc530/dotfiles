@@ -7,9 +7,9 @@
 .##.....##.##.....##.##.....##.##...##..##....##
 .##.....##..#######...#######..##....##..######.
 #>
-Write-Host "`rSetting up hooks..."
+Write-Host "`rSetting up hooks..." -NoNewline
 
 # scoop search - faster than default speedup
 # Invoke-Expression (&scoop-search --hook)
 
-Write-Host "`rfinished setting up hooks ✅"
+Write-Host "hooks ✅"
