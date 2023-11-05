@@ -1,5 +1,7 @@
 Write-Host "`rSetting up functions..."
 
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
 function clear-line {
     param (
         [Parameter(Mandatory = $false, Position = 0)][string]$txt,
@@ -68,7 +70,8 @@ function screenprint {
         $blink = '-blink'
     }
     if ($Host.UI.RawUI.WindowSize.Width -gt 50) {
-        $imgPath = Get-ChildItem -Recurse -Include *.jpg, *.png, *.jpeg, -Path D:\Pictures\ -Exclude D:\Pictures\Screenshots | Get-Random
+        $imgDir = "${env:USERPROFILE}\Pictures\", "${env:USERPROFILE}\.config\assets\"
+        $imgPath = Get-ChildItem -Recurse -Include *.jpg, *.png, *.jpeg, -Path $imgDir -Exclude "$imgDir\Screenshots" | Get-Random
 
         if ($Host.UI.RawUI.WindowSize.Width -gt 75) {
             $width = Get-Random -Minimum 20 -Maximum ($Host.UI.RawUI.WindowSize.Width - 29)
@@ -119,4 +122,4 @@ function Remove-Extension {
     }
 }
 
-Write-Host "finished setting up functions✅"
+Write-Host "finished setting up functions ✅"

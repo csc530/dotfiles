@@ -1,0 +1,2 @@
+# if HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize SystemUseLightTheme  == 0 then windows is using dark theme
+# HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0 -Type DWord | Out-Null

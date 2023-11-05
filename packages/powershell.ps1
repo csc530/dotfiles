@@ -1,0 +1,1 @@
+# Install-Module -Name Set-PsEnv -Repository PSGallery -Force

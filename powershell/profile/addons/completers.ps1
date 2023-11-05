@@ -52,4 +52,4 @@ function Mount-carapace-Completers {
     Write-Host "$($carapace.Count - $skipped) Carapace completions loaded" -ForegroundColor Green
 }
 
-Write-Host "`rfinished setting up completers✅"
+Write-Host "`rfinished setting up completers ✅"
