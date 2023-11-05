@@ -27,9 +27,9 @@
             "command": 
             {
                 "action": "splitPane",
-                "split": "up"
+                "split": "down"
             },
-            "keys": "ctrl+alt+up"
+            "keys": "ctrl+alt+down"
         },
         {
             "command": "unbound",
@@ -39,9 +39,13 @@
             "command": 
             {
                 "action": "splitPane",
-                "split": "down"
+                "split": "up"
             },
-            "keys": "ctrl+alt+down"
+            "keys": "ctrl+alt+up"
+        },
+        {
+            "command": "paste",
+            "keys": "ctrl+v"
         },
         {
             "command": 
@@ -62,8 +66,8 @@
             "keys": "ctrl+shift+plus"
         },
         {
-            "command": "paste",
-            "keys": "ctrl+v"
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -73,18 +77,6 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "left"
-            },
-            "keys": "ctrl+alt+left"
         },
         {
             "command": 
@@ -105,15 +97,23 @@
             "keys": "ctrl+shift+numpad_minus"
         },
         {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "left"
+            },
+            "keys": "ctrl+alt+left"
+        },
+        {
             "command": "toggleFocusMode",
             "keys": "alt+f"
         }
     ],
     "autoHideWindow": false,
-    "centerOnLaunch": false,
+    "centerOnLaunch": true,
     "copyFormatting": "none",
     "copyOnSelect": true,
-    "defaultProfile": "{c1de9149-71f1-4975-88af-46c618ec1f7e}",
+    "defaultProfile": "{4ff53aae-eeca-464b-a78f-4e8e2e83a592}",
     "launchMode": "focus",
     "minimizeToNotificationArea": true,
     "newTabMenu": 
@@ -141,22 +141,25 @@
             "experimental.retroTerminalEffect": true,
             "font": 
             {
-                "face": "Delugia Mono"
+                "face": "Delugia Mono",
+                "size": 13.0
             },
             "intenseTextStyle": "all",
-            "opacity": 73,
-            "startingDirectory": null,
+            "opacity": 69,
+            "padding": "6",
+            "startingDirectory": "%USERPROFILE%",
             "unfocusedAppearance": 
             {
                 "adjustIndistinguishableColors": "always",
-                "backgroundImage": "D:\\Pictures\\B&Puppycat\\wp4909821-bee-and-puppycat-desktop-wallpapers.jpg",
-                "backgroundImageOpacity": 0.31,
-                "colorScheme": "Catppuccin Latte",
+                "backgroundImage": "C:\\Users\\legor\\.config\\assets\\cgnhgd1ds2551.jpg",
+                "backgroundImageOpacity": 0.35,
+                "colorScheme": "Catppuccin Frapp\u00e9",
                 "cursorShape": "emptyBox",
                 "experimental.retroTerminalEffect": false,
                 "intenseTextStyle": "all"
             },
-            "useAcrylic": true
+            "useAcrylic": true,
+            "useAtlasEngine": true
         },
         "list": 
         [
@@ -179,78 +182,23 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "altGrAliasing": true,
-                "antialiasingMode": "grayscale",
-                "closeOnExit": "automatic",
-                "colorScheme": "Campbell",
-                "commandline": "D:\\programs\\Scoop\\shims\\pwsh.exe",
-                "cursorShape": "bar",
-                "font": 
-                {
-                    "size": 12.0
-                },
-                "guid": "{c1de9149-71f1-4975-88af-46c618ec1f7e}",
+                "commandline": "\"C:\\Users\\legor\\scoop\\shims\\pwsh.exe\"",
+                "guid": "{4ff53aae-eeca-464b-a78f-4e8e2e83a592}",
                 "hidden": false,
-                "historySize": 9001,
-                "icon": "D:\\Pictures\\Icons\\Powershell_av_colors.ico",
-                "name": "Windows PowerShell core",
-                "padding": "8, 8, 8, 8",
-                "snapOnInput": true,
-                "startingDirectory": "%USERPROFILE%"
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "PowerShell core"
             },
             {
-                "altGrAliasing": true,
-                "antialiasingMode": "grayscale",
-                "closeOnExit": "automatic",
-                "colorScheme": "Campbell",
-                "commandline": "D:\\programs\\Scoop\\shims\\nu.exe",
-                "cursorShape": "bar",
-                "font": 
-                {
-                    "size": 12.0
-                },
-                "guid": "{77837b8e-0f38-484f-bc5c-5bdafdcdb945}",
+                "guid": "{c267fcf7-bd15-5323-b0a1-443b43df8fa1}",
                 "hidden": false,
-                "historySize": 9001,
-                "icon": "D:\\Pictures\\Icons\\pngOriginals\\nu5.png",
-                "name": "Nushell",
-                "padding": "8, 8, 8, 8",
-                "snapOnInput": true,
-                "startingDirectory": "%USERPROFILE%",
-                "useAcrylic": false
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "altGrAliasing": true,
-                "antialiasingMode": "grayscale",
-                "closeOnExit": "automatic",
-                "colorScheme": "Campbell",
-                "commandline": "D:\\programs\\Scoop\\shims\\nyagos.exe",
-                "cursorShape": "bar",
-                "font": 
-                {
-                    "size": 12.0
-                },
-                "guid": "{6d23e1d4-e885-4a5d-b50a-efb49035aac9}",
+                "guid": "{06c9cdee-e922-5703-8486-38144ead1123}",
                 "hidden": false,
-                "historySize": 9001,
-                "icon": "D:\\Pictures\\Icons\\pngOriginals\\nu5.png",
-                "name": "Nyagos",
-                "padding": "8, 8, 8, 8",
-                "snapOnInput": true,
-                "startingDirectory": "%USERPROFILE%",
-                "useAcrylic": false
-            },
-            {
-                "guid": "{bca8e596-e7e9-591d-a845-194064478442}",
-                "hidden": false,
-                "name": "kali",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
-                "hidden": true,
-                "name": "Visual Studio Debug Console",
-                "source": "VSDebugConsole"
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
@@ -559,7 +507,7 @@
     "showTabsInTitlebar": true,
     "startOnUserLogin": true,
     "tabSwitcherMode": "mru",
-    "theme": "Catppuccin Macchiato",
+    "theme": "Catppuccin Mocha",
     "themes": 
     [
         {

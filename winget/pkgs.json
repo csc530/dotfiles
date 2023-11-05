@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-10-31T22:32:48.724-00:00",
+	"CreationDate" : "2023-11-05T18:17:17.229-00:00",
 	"Sources" : 
 	[
 		{
@@ -53,6 +53,12 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
+					"PackageIdentifier" : "ajeetdsouza.zoxide"
+				},
+				{
+					"PackageIdentifier" : "nepnep.neofetch-win"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2013.x64"

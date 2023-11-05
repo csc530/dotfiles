@@ -1,0 +1,621 @@
+{
+    "buckets": [
+        {
+            "Name": "charmbracelet",
+            "Source": "https://github.com/charmbracelet/scoop-bucket",
+            "Updated": "2023-11-01T12:26:22-04:00",
+            "Manifests": 0
+        },
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2023-11-05T15:24:12-05:00",
+            "Manifests": 1888
+        },
+        {
+            "Name": "main",
+            "Source": "~\\scoop\\buckets\\main",
+            "Updated": "2023-11-05T17:35:28.9045109-05:00",
+            "Manifests": 1262
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2023-11-04T11:16:49-04:00",
+            "Manifests": 296
+        },
+        {
+            "Name": "rsteube",
+            "Source": "https://github.com/rsteube/scoop-bucket.git",
+            "Updated": "2023-11-03T12:28:10-04:00",
+            "Manifests": 0
+        }
+    ],
+    "apps": [
+        {
+            "Version": "2.22.0",
+            "Name": "1password-cli",
+            "Info": "",
+            "Updated": "2023-11-05T17:35:45.4218607-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "23.01",
+            "Name": "7zip",
+            "Info": "",
+            "Updated": "2023-11-05T17:35:57.3754553-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.2.5",
+            "Name": "ag",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:25.8395975-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.24.0",
+            "Name": "bat",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:26.4644943-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2023-08-22",
+            "Name": "cacert",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:26.8394711-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.28.3",
+            "Name": "carapace-bin",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:27.6207197-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "1.12.5",
+            "Name": "chafa",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:28.2459144-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.2021.05.09",
+            "Name": "concfg",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:29.5903227-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "1.04",
+            "Name": "cpufetch",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:29.9184507-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "1.2.2",
+            "Name": "csview",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:30.465316-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2111.01.2",
+            "Name": "Delugia-Mono-Nerd-Font-Complete",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:31.2157679-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "2.32.3",
+            "Name": "direnv",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:31.6689242-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.8.1",
+            "Name": "duf",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:32.1071055-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.8.6",
+            "Name": "dust",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:32.826329-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.2.1",
+            "Name": "fastfetch",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:33.4356797-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "4.3.0",
+            "Name": "feem",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:40.7327181-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "5.45",
+            "Name": "file",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:41.1701978-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "12.8.0",
+            "Name": "firebase",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:45.0150472-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "1.16.2",
+            "Name": "flow-launcher",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:52.7524692-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "0.43.0",
+            "Name": "fzf",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:53.1918883-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "5.25.0",
+            "Name": "gdu",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:53.7073945-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.38.0",
+            "Name": "gh",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:54.3793378-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.42.0.2",
+            "Name": "git",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:04.8633409-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.3.2",
+            "Name": "git-credential-manager",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:55.3643223-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "1.5.1",
+            "Name": "glow",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:55.9580156-05:00",
+            "Source": "charmbracelet"
+        },
+        {
+            "Version": "2.4.3",
+            "Name": "gpg",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:58.4435783-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.4.0",
+            "Name": "gsudo",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:00.4668573-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.11.0",
+            "Name": "gum",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:01.1203152-05:00",
+            "Source": "charmbracelet"
+        },
+        {
+            "Version": "0.3.0",
+            "Name": "gut",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:01.7609493-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.50",
+            "Name": "innounp",
+            "Info": "",
+            "Updated": "2023-11-05T17:36:34.49817-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.0.5.17700",
+            "Name": "jetbrains-toolbox",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:05.5740248-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "0.0.19",
+            "Name": "lazycomplete",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:06.2469955-05:00",
+            "Source": "rsteube"
+        },
+        {
+            "Version": "643",
+            "Name": "less",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:06.6848796-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.29",
+            "Name": "links",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:17.9058091-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "6.1.8",
+            "Name": "macchina",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:18.5151861-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "6.4",
+            "Name": "Maple-Mono-NF",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:19.1714371-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "2.0.13",
+            "Name": "micro",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:19.6870708-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "nightly-20231105",
+            "Name": "Mitr",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:20.4066153-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "2023-10-26",
+            "Name": "msys2",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:51.664522-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "7.2-22.1",
+            "Name": "nano",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:52.1339432-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.0.4",
+            "Name": "neo-cowsay",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:52.5422422-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "7.1.0",
+            "Name": "neofetch",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:52.8246092-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.9.4",
+            "Name": "neovim",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:58.4449961-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "1.9",
+            "Name": "nilesoft-shell",
+            "Info": "",
+            "Updated": "2023-11-05T17:37:59.4632134-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "21.1.0",
+            "Name": "nodejs",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:07.3621601-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.86.0",
+            "Name": "nu",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:08.5233352-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "18.23.2",
+            "Name": "oh-my-posh",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:09.6204267-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.18.1",
+            "Name": "onefetch",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:10.2486794-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "3.0.2",
+            "Name": "Overpass-NF",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:13.4935953-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "1.6.2",
+            "Name": "pipes-rs",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:13.8691276-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "0.2.0",
+            "Name": "pop",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:14.4356311-05:00",
+            "Source": "charmbracelet"
+        },
+        {
+            "Version": "3.0.2",
+            "Name": "ProFont-NF",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:14.9397101-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "3.0.2",
+            "Name": "ProFont-NF-mono",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:15.4259465-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "7.3.9",
+            "Name": "pwsh",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:19.5806578-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "3.7.3",
+            "Name": "quicklook",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:21.8243879-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "05nov23",
+            "Name": "red",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:23.9711417-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "05nov23",
+            "Name": "red-toolchain",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:26.7781262-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "3.1",
+            "Name": "roundedtb",
+            "Info": "",
+            "Updated": "2023-11-05T17:38:27.3957424-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "3.2.2-1",
+            "Name": "ruby",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:20.483915-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.0",
+            "Name": "runcat",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:20.925721-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "1.26.0",
+            "Name": "rustup",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:49.6809991-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.2.4",
+            "Name": "scoop-completion",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:50.7279326-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "3.0.2",
+            "Name": "SpaceMono-NF",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:51.5247486-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "3.0.2",
+            "Name": "SpaceMono-NF-mono",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:52.3060627-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "3.0.2",
+            "Name": "SpaceMono-NF-Propo",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:53.0560485-05:00",
+            "Source": "nerd-fonts"
+        },
+        {
+            "Version": "3.43.2",
+            "Name": "sqlite",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:53.8535211-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "4.11.3",
+            "Name": "telegram",
+            "Info": "",
+            "Updated": "2023-11-05T17:39:56.2610993-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "14.36.32532.0",
+            "Name": "vcredist",
+            "Info": "",
+            "Updated": "2023-11-05T17:40:53.5062191-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "8.0.50727.6195",
+            "Name": "vcredist2005",
+            "Info": "",
+            "Updated": "2023-11-05T17:40:04.5489759-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "9.0.30729.5677",
+            "Name": "vcredist2008",
+            "Info": "",
+            "Updated": "2023-11-05T17:40:13.9574769-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "10.0.40219.325",
+            "Name": "vcredist2010",
+            "Info": "",
+            "Updated": "2023-11-05T17:40:31.8061955-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "11.0.61030.0",
+            "Name": "vcredist2012",
+            "Info": "",
+            "Updated": "2023-11-05T17:40:38.2093939-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "12.0.40664.0",
+            "Name": "vcredist2013",
+            "Info": "",
+            "Updated": "2023-11-05T17:40:45.8698663-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "0.6.0",
+            "Name": "vhs",
+            "Info": "",
+            "Updated": "2023-11-05T17:40:54.3781144-05:00",
+            "Source": "charmbracelet"
+        },
+        {
+            "Version": "0.1.4",
+            "Name": "vincent",
+            "Info": "",
+            "Updated": "2023-11-05T17:40:54.9583879-05:00",
+            "Source": "rsteube"
+        },
+        {
+            "Version": "6.4.3160.41",
+            "Name": "vivaldi",
+            "Info": "",
+            "Updated": "2023-11-05T17:41:04.6439273-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "1.83.1",
+            "Name": "vscode",
+            "Info": "",
+            "Updated": "2023-11-05T17:42:12.645531-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "2.5.1",
+            "Name": "winfetch",
+            "Info": "",
+            "Updated": "2023-11-05T17:42:13.1311349-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "2.1.1",
+            "Name": "wingetui",
+            "Info": "",
+            "Updated": "2023-11-05T17:42:18.0665806-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "4.15",
+            "Name": "wiztree",
+            "Info": "",
+            "Updated": "2023-11-05T17:42:19.1728046-05:00",
+            "Source": "extras"
+        },
+        {
+            "Version": "1.1",
+            "Name": "wttop",
+            "Info": "",
+            "Updated": "2023-11-05T17:42:20.7842839-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "0.1.4",
+            "Name": "yazi",
+            "Info": "",
+            "Updated": "2023-11-05T17:42:21.2870984-05:00",
+            "Source": "main"
+        },
+        {
+            "Version": "5.16.6.24712",
+            "Name": "zoom",
+            "Info": "",
+            "Updated": "2023-11-05T17:42:27.3315681-05:00",
+            "Source": "extras"
+        }
+    ],
+    "config": {
+        "scoop_branch": "master",
+        "scoop_repo": "https://github.com/ScoopInstaller/Scoop"
+    }
+}
