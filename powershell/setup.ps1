@@ -13,3 +13,5 @@ gh repo clone https://github.com/ravensorb/Set-PsEnv
 
 Set-Location "$env:userprofile/scoop/modules"
 mv Set-PsEnv ./Set-PsEnv
+
+# symlink nvim path to .config
