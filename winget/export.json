@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-11-05T18:17:17.229-00:00",
+	"CreationDate" : "2023-11-09T21:01:42.821-00:00",
 	"Sources" : 
 	[
 		{
@@ -28,9 +28,6 @@
 			"Packages" : 
 			[
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Enterprise"
-				},
-				{
 					"PackageIdentifier" : "Discord.Discord"
 				},
 				{
@@ -43,19 +40,19 @@
 					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.DevHome"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal.Preview"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Office"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
-					"PackageIdentifier" : "ajeetdsouza.zoxide"
+					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Enterprise"
 				},
 				{
 					"PackageIdentifier" : "nepnep.neofetch-win"
@@ -70,6 +67,9 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
 					"PackageIdentifier" : "Armin2208.WindowsAutoNightMode"
 				},
 				{
@@ -82,13 +82,13 @@
 					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.7"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
 					"PackageIdentifier" : "Google.GoogleDrive"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2005.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2008.x86"
@@ -97,10 +97,10 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2013.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "Hexandcube.DesktopIconToggle"
 				},
 				{
-					"PackageIdentifier" : "Hexandcube.DesktopIconToggle"
+					"PackageIdentifier" : "Microsoft.WebDeploy"
 				},
 				{
 					"PackageIdentifier" : "AgileBits.1Password"
@@ -110,9 +110,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2010.x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.7"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
