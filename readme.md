@@ -1,7 +1,7 @@
-# my super amazing windows�� (blegh ik) dot files :)
+# 🪟.📂
 
-## yea that's it
+yea that's it
 
-copy if you want or sum idk.
-Get inspired?
-:laptop:
+not much rn but :)
+
+maybe one day it can be a rice or sumn, even though it's the wrong ingredient :'(
