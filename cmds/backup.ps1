@@ -1,5 +1,4 @@
-& "$PSScriptRoot/addons/functions.ps1"
-
+& "$env:CONFIG_HOME\powershell\addons\functions.ps1"
 <#
 ..######..##....##..######..########.########.##.....##....########.....###.....######..##....##.##.....##.########.
 .##....##..##..##..##....##....##....##.......###...###....##.....##...##.##...##....##.##...##..##.....##.##.....##
@@ -30,6 +29,7 @@ d8888b.  .d8b.   .o88b. db   dD  .d8b.   d888b  d88888b .d8888.
                    |___/
 #>
 Write-Colour 'exporting winget packages...' -Color Yellow
+mkdir $env:CONFIG_HOME\packages\winget -Force | Out-Null
 winget export -o $env:CONFIG_HOME\packages\winget\packages.json
 Write-Colour 'export complete' -Color Green
 
@@ -41,6 +41,7 @@ Write-Colour 'export complete' -Color Green
                      |_|
 #>
 Write-Colour 'exporting scoop packages...' -Color Yellow
+mkdir $env:CONFIG_HOME\packages\scoop -Force | Out-Null
 scoop export -c > $env:CONFIG_HOME\packages\scoop\packages.json
 Write-Colour 'export complete' -Color Green
 
@@ -52,11 +53,12 @@ Write-Colour 'export complete' -Color Green
        |_|
 #>
 Write-Colour 'exporting npm packages...' -Color Yellow
-Export-Npm | Out-File -FilePath $env:CONFIG_HOME\packages\npm\packages.txt -InputObject $pckgList -Encoding utf8 -Force
+mkdir $env:CONFIG_HOME\packages\npm -ErrorAction SilentlyContinue | Out-Null
+Export-Npm | Out-String | Out-File -FilePath $env:CONFIG_HOME\packages\npm\packages.txt -InputObject $pckgList -Encoding utf8 -Force
 Write-Colour 'export complete' -Color Green
 
 Write-Colour 'backing up .npmrc...' -Color Yellow
-Copy-Item $env:HOME\.npmrc $env:CONFIG_HOME\npm\.npmrc
+Copy-Item $env:HOME\.npmrc $env:CONFIG_HOME\npm\.npmrc | Out-Null
 Write-Colour 'backup complete' -Color Green
 
 <#
@@ -68,6 +70,7 @@ Write-Colour 'backup complete' -Color Green
   |___/
 #>
 Write-Colour 'backing up .gitconfig...' -Color Yellow
+mkdir $env:CONFIG_HOME\git -ErrorAction SilentlyContinue | Out-Null
 Copy-Item $env:HOME\.gitconfig $env:CONFIG_HOME\git\.gitconfig
 Write-Colour 'backup complete' -Color Green
 
@@ -82,5 +85,7 @@ Write-Colour 'backup complete' -Color Green
 Write-Colour 'backing up windows terminal settings...' -Color Yellow
 
 Write-Colour 'saving preview settings...'
+
+rstrui.exe # system restore point tool gui only so yeah the last one
 
 Write-Colour 'system backup complete' -Color DarkCyan

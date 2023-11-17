@@ -145,4 +145,24 @@ function Export-Npm([switch]$local, [switch]$IncludeVersion) {
     }
 }
 
+function Update-Packages {
+    [CmdletBinding()]
+    param (
+
+    )
+
+    begin {
+
+    }
+
+    process {
+        scoop update '*'
+        gsudo winget update --all --accept-source-agreements --accept-source-agreements
+    }
+
+    end {
+
+    }
+}
+
 Write-Host 'finished setting up functions ✅'
