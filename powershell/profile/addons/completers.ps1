@@ -23,6 +23,10 @@ oh-my-posh completion powershell | Out-String | Invoke-Expression
 op completion powershell | Out-String | Invoke-Expression
 
 function Mount-carapace-Completers {
+    # custom completers
+    # ! carapace doesn't have an oh-my-posh completer
+    # lazycomplete.exe omp "carapace oh-my-posh powershell" | Out-String | Invoke-Expression
+
     # https://rsteube.github.io/carapace-bin/setup.html#powershell
     Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
     Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete

@@ -1,6 +1,17 @@
 .env
+.envrc
+
 micro/buffers/
 micro/backups/
+
+# 1password
 op/
+# ihn~~f~~i
 jgit/
+
+# too specific state config persitences
 lazygit/state.yml
+configstore/
+
+# nodemon
+simple-update-notifier/

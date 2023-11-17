@@ -121,5 +121,28 @@ function Remove-Extension {
         return $fileName.Substring(0, $terminator -gt 0 ? $terminator : $fileName.Length)
     }
 }
+<#
+.SYNOPSIS
+    list globally installed npm packages
+.DESCRIPTION
+    lists globally installed npm packages on a newline
+.NOTES
+    Information or caveats about the function e.g. 'This function is not supported in Linux'
+.LINK
+    https://github.com/csc530/.files
+.EXAMPLE
+    Export-Npm
+#>
+function Export-Npm([switch]$local, [switch]$IncludeVersion) {
+    $npm = Get-Command npm
+    if ($npm) {
+        $dirSeparator = [IO.Path]::DirectorySeparatorChar
+        $regex = "(?<=node_modules$([regex]::Escape($dirSeparator))).*"
+        return & $npm list -gp --depth=0 | Select-String $regex | Select-Object -ExpandProperty Matches | Select-Object -ExpandProperty Value
+    }
+    else {
+        Write-Host 'npm not found' -ForegroundColor Red
+    }
+}
 
-Write-Host "finished setting up functions ✅"
+Write-Host 'finished setting up functions ✅'
