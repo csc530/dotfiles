@@ -3,3 +3,4 @@ micro/buffers/
 micro/backups/
 op/
 jgit/
+lazygit/state.yml
