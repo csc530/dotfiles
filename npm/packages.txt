@@ -1,0 +1,8 @@
+@catppuccin\inkcat
+gitmoji-cli
+jsdoc
+neovim
+nodemon
+npm
+trash-cli
+
