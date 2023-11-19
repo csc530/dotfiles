@@ -1,7 +1,3 @@
-Write-Host "`rSetting up functions..."
-
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
-
 function clear-line {
     param (
         [Parameter(Mandatory = $false, Position = 0)][string]$txt,
@@ -28,7 +24,6 @@ function clear-line {
     }
     Write-Host "`r$spaces" -NoNewline
 }
-
 
 # Print out a nice screenfetch
 function screenfetch {
@@ -121,6 +116,7 @@ function Remove-Extension {
         return $fileName.Substring(0, $terminator -gt 0 ? $terminator : $fileName.Length)
     }
 }
+
 <#
 .SYNOPSIS
     list globally installed npm packages
@@ -131,9 +127,9 @@ function Remove-Extension {
 .LINK
     https://github.com/csc530/.files
 .EXAMPLE
-    Export-Npm
+    Export-NpmPackages
 #>
-function Export-Npm([switch]$local, [switch]$IncludeVersion) {
+function Export-NpmPackages([switch]$local, [switch]$IncludeVersion) {
     $npm = Get-Command npm
     if ($npm) {
         $dirSeparator = [IO.Path]::DirectorySeparatorChar
@@ -147,22 +143,15 @@ function Export-Npm([switch]$local, [switch]$IncludeVersion) {
 
 function Update-Packages {
     [CmdletBinding()]
-    param (
+    param ()
 
-    )
-
-    begin {
-
-    }
-
+    begin {}
     process {
         scoop update '*'
         gsudo winget update --all --accept-source-agreements --accept-source-agreements
     }
-
-    end {
-
-    }
+    end {}
 }
 
-Write-Host 'finished setting up functions ✅'
+
+Export-ModuleMember -Function @('Update-Packages', 'Export-NpmPackages', 'Remove-Extension', 'Screenprint', 'screenfetch')

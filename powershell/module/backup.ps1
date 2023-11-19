@@ -30,7 +30,7 @@ d8888b.  .d8b.   .o88b. db   dD  .d8b.   d888b  d88888b .d8888.
 #>
 Write-Colour 'exporting winget packages...' -Color Yellow
 mkdir $env:CONFIG_HOME\packages\winget -Force | Out-Null
-winget export -o $env:CONFIG_HOME\packages\winget\packages.json
+winget export -o $env:CONFIG_HOME\packages\winget\packages.json > $null
 Write-Colour 'export complete' -Color Green
 
 <#
@@ -53,8 +53,9 @@ Write-Colour 'export complete' -Color Green
        |_|
 #>
 Write-Colour 'exporting npm packages...' -Color Yellow
-mkdir $env:CONFIG_HOME\packages\npm -ErrorAction SilentlyContinue | Out-Null
-Export-Npm | Out-String | Out-File -FilePath $env:CONFIG_HOME\packages\npm\packages.txt -InputObject $pckgList -Encoding utf8 -Force
+mkdir $env:CONFIG_HOME\npm -ErrorAction SilentlyContinue | Out-Null
+Export-Npm | Out-String | Out-File -FilePath $env:CONFIG_HOME\npm\packages.txt -Encoding utf8 -Force
+[void](sudo New-Item -ItemType SymbolicLink -Path $env:CONFIG_HOME\packages\npm\packages.txt -Target $env:CONFIG_HOME\npm\packages.txt -Force)
 Write-Colour 'export complete' -Color Green
 
 Write-Colour 'backing up .npmrc...' -Color Yellow
