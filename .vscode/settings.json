@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "powershell",
-        "git"
+        "git",
+        "packages"
     ]
 }

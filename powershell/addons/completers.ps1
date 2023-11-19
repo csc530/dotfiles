@@ -10,8 +10,11 @@
 
 Write-Host "`rSetting up completers..."
 
-# volta completions: javascript tool manager
-# (& volta completions powershell) | Out-String | Invoke-Expression
+# scoop completer
+# Import-Module "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
+Import-Module scoop-completion
+# vincent - terminal colour scheme viewer/generator
+vincent _carapace powershell | Out-String | Invoke-Expression
 # my beatful markdown viewer
 glow completion powershell | Out-String | Invoke-Expression
 pop completion powershell | Out-String | Invoke-Expression
