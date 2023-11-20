@@ -493,28 +493,6 @@
 			"selectionBackground": "#FFFFFF",
 			"white": "#C0C0C0",
 			"yellow": "#808000"
-		},
-		{
-			"background": "#1F1305",
-			"black": "#3F3F3F",
-			"blue": "#0883FF",
-			"brightBlack": "#474747",
-			"brightBlue": "#1E8EFF",
-			"brightCyan": "#1EFF8E",
-			"brightGreen": "#8EFF1E",
-			"brightPurple": "#8E1EFF",
-			"brightRed": "#FF1E8E",
-			"brightWhite": "#C4C4C4",
-			"brightYellow": "#FF8E1E",
-			"cursorColor": "#B4E1FD",
-			"cyan": "#08FF83",
-			"foreground": "#B4E1FD",
-			"green": "#83FF08",
-			"name": "Aco",
-			"purple": "#8308FF",
-			"red": "#FF0883",
-			"white": "#BEBEBE",
-			"yellow": "#FF8308"
 		}
 	],
 	"showTabsInTitlebar": true,
