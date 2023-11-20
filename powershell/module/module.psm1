@@ -168,5 +168,6 @@ Export-ModuleMember -Function @('compile',
     'Get-WindowsTerminalSettingsPath',
     'Get-WindowsTerminalSettings',
     'Get-VincentTheme',
-    'Add-VincentTheme'
+    'Add-VincentTheme',
+    'RandomizeTerminalScheme'
 )
