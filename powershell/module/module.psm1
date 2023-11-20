@@ -159,4 +159,14 @@ foreach ($function in $functions) {
 }
 
 
-Export-ModuleMember -Function @('Update-Packages', 'Export-NpmPackages', 'Remove-Extension', 'Screenprint', 'screenfetch', 'Get-WindowsTerminalSettingsPath', 'Get-WindowsTerminalSettings')
+Export-ModuleMember -Function @('compile',
+    'Update-Packages',
+    'Export-NpmPackages',
+    'Remove-Extension',
+    'Screenprint',
+    'screenfetch',
+    'Get-WindowsTerminalSettingsPath',
+    'Get-WindowsTerminalSettings',
+    'Get-VincentTheme',
+    'Add-VincentTheme'
+)

@@ -1,4 +1,4 @@
-function Compile-Profile () {
+function compile() {
     # backup profile
     Copy-Item -Force $PROFILE "$($PROFILE)_$(Get-Date -Format 'yy-MM-dd-HH-mm-ss').backup"
     #remove previous profile
@@ -11,6 +11,4 @@ function Compile-Profile () {
     #carapace _carapace | Out-String | Invoke-Expression
     Invoke-Expression -Command screenfetch' | Out-String | Out-File -Append -Encoding utf8 -FilePath $PROFILE
 
-    Import-Module "${env:CONFIG_HOME}/powershell/module/module.psd1"
-    # $env:PSModulePath += ";${env:config_home}/powershell"
 }

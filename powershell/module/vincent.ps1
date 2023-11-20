@@ -11,7 +11,7 @@ function Add-VincentTheme {
         $preview
     )
     $terminalSettings = Get-WindowsTerminalSettings -preview:$preview
-    $schemes = (Get-WindowsTerminalSettings -asJson | Out-String | jq '.schemes[].name' -r) -replace '├®', 'é'
+    $schemes = ($terminalSettings | ConvertTo-Json -Depth 100 | Out-String | jq '.schemes[].name' -r) -replace '├®', 'é'
     $terminalThemeNames = $schemes.Split([Environment]::NewLine, [StringSplitOptions]::TrimEntries)
 
     $outThemes = [System.Collections.ArrayList]::new()
@@ -75,7 +75,7 @@ function Add-VincentTheme {
         # $terminalSettings | jq ".schemes += $outJsonThemes" | Out-File -FilePath (Get-WindowsTerminalSettingsPath)
         # ($terminalSettings | convertfrom-Json) += $outThemes
         $terminalSettings.schemes += $outThemes
-        ($terminalSettings | ConvertTo-Json -Depth 100 | jq -SM --tab) -replace '├®', 'é' | Out-File -FilePath (Get-WindowsTerminalSettingsPath)
+        ($terminalSettings | ConvertTo-Json -Depth 100 | jq -SM --tab) -replace '├®', 'é' | Out-File -FilePath (Get-WindowsTerminalSettingsPath -preview:$preview)
         Write-Host "added $($outThemes.Count) new themes"
     }
 }
@@ -111,13 +111,10 @@ function Get-VincentTheme {
         ($using:counter).i++
         }
         Write-Progress -Activity 'Loading Vincent themes' -Completed
-        if ($asJson) {
-            return $themes | ConvertTo-Json -Depth 100
-        }
-        return $themes
+        return $asJson ? ($themes | ConvertTo-Json -Depth 100) : $themes # | Format-Table -AutoSize -ShowError -DisplayError
     }
     else {
-        $json = (vincent $theme $Terminal | Out-String) -replace '├®', 'é' | ConvertFrom-Json
-        return $asJson ? ($json | ConvertTo-Json -Depth 100) : $json
+        $value = (vincent $theme $Terminal | Out-String) -replace '├®', 'é' | ConvertFrom-Json
+        return $asJson ? ($value | ConvertTo-Json -Depth 100) : $value #| Format-Table
     }
 }

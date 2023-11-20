@@ -1,7 +1,8 @@
 function Get-WindowsTerminalSettingsPath {
     param (
         [Parameter(Mandatory = $false, ParameterSetName = 'Preview')]
-        [switch]$preview
+        [switch]
+        $preview
     )
     $isPreview = $preview ? 'Preview' : ''
 
