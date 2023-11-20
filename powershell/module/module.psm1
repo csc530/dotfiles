@@ -153,5 +153,10 @@ function Update-Packages {
     end {}
 }
 
+$functions = Get-Item $PSScriptRoot\*.ps1
+foreach ($function in $functions) {
+    . $function
+}
 
-Export-ModuleMember -Function @('Update-Packages', 'Export-NpmPackages', 'Remove-Extension', 'Screenprint', 'screenfetch')
+
+Export-ModuleMember -Function @('Update-Packages', 'Export-NpmPackages', 'Remove-Extension', 'Screenprint', 'screenfetch', 'Get-WindowsTerminalSettingsPath', 'Get-WindowsTerminalSettings')

@@ -1,3 +1,4 @@
+function restore () {
 write-output well hello there handsome; all ready to start over again are we?
 write-output well first things first let's make things a little sexier'
 if(gcm gum){}
@@ -27,3 +28,4 @@ mv Set-PsEnv ./Set-PsEnv
 
 #sym links bat config dir with castpuccin themes
 # https://github.com/sharkdp/bat#adding-new-themes
+}
