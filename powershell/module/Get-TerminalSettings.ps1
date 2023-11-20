@@ -29,13 +29,12 @@ function Get-WindowsTerminalSettings {
         [switch]$preview,
         [switch]$asJson
     )
-    $isPreview = $preview ? 'Preview' : ''
 
     $content = Get-Content (Get-WindowsTerminalSettingsPath -preview:$preview) | ConvertFrom-Json
     # $json = Get-Content "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal${isPreview}_*\LocalState\settings.json"
     if ($content) {
         $output = $content
-        return $asJson ? $($output | ConvertTo-Json -Depth 100 | bat --paging=never --language=json) : $($output)
+        return $asJson ? $($output | ConvertTo-Json -Depth 100) : $($output)
     }
     return $json
 }
