@@ -86,6 +86,7 @@ function RandomizeTerminalScheme(
     $settings = Get-WindowsTerminalSettings
     $schemes = $settings.schemes | Select-Object -ExpandProperty name
     $scheme = $schemes | Get-Random
+    $scheme -replace '├®', 'é' > $null
     Write-Host "colour scheme set to `"$scheme`""
     Set-WindowsTerminalScheme -name $scheme -preview:$preview
 }

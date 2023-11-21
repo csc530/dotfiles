@@ -8,7 +8,7 @@
 ..######...#######..##.....##.##........########.########....##....########.##.....##..######.
 #>
 
-Write-Host "`rSetting up completers..."
+Write-Host "`rSetting up completers..." -NoNewline
 
 # scoop completer
 # Import-Module "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
@@ -52,11 +52,11 @@ function Mount-carapace-Completers {
         # https://github.com/rsteube/lazycomplete ~ for lazycomplete
         lazycomplete $cmd "carapace $cmd" | Out-String | Invoke-Expression
         # "carapace $cmd powershell;" | Out-String | Invoke-Expression | Out-Null
-        $percentComplete = ($i / ($carapace.Count)) * 100
-        Write-Progress -Activity "Setting up $cmd completer" -Status "$percentComplete% complete:" -PercentComplete $percentComplete
+        $percentComplete = ($i / $carapace.Count) * 100
+        Write-Progress -Activity "Setting up $cmd completer" -Status "$($percentComplete.ToString('0.00'))% complete" -PercentComplete $percentComplete
     }
     Write-Progress -Activity "Setting up $cmd completer" -Status "$percentComplete% complete:" -PercentComplete $percentComplete -Completed
     Write-Host "$($carapace.Count - $skipped) Carapace completions loaded" -ForegroundColor Green
 }
 
-Write-Host "`rfinished setting up completers ✅"
+Write-Host "✅"
