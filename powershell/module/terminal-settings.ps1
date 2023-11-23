@@ -75,7 +75,7 @@ function Set-WindowsTerminalScheme(
 
     $settings.profiles.$profileName.colorScheme = $name
     $path = Get-WindowsTerminalSettingsPath -preview:$preview
-    Set-Content -Path $path -Value ($settings | ConvertTo-Json -Depth 100 | Out-String | jq -SM --tab)
+    ($settings | ConvertTo-Json -Depth 100 | Out-String | jq -SM --tab) -replace '├®', 'é' | Out-File -FilePath $path -Encoding utf8
 }
 
 function RandomizeTerminalScheme(

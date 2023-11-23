@@ -169,5 +169,8 @@ Export-ModuleMember -Function @('compile',
     'Get-WindowsTerminalSettings',
     'Get-VincentTheme',
     'Add-VincentTheme',
-    'RandomizeTerminalScheme'
+    'RandomizeTerminalScheme',
+    'Backup-System',
+    'Restore-System',
+    'restore'
 )

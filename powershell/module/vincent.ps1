@@ -11,8 +11,12 @@ function Add-VincentTheme {
         $preview
     )
     $terminalSettings = Get-WindowsTerminalSettings -preview:$preview
-    $schemes = ($terminalSettings | ConvertTo-Json -Depth 100 | Out-String | jq '.schemes[].name' -r) -replace '├®', 'é'
+    if(!$terminalSettings.schemes){
+        Add-Member -InputObject $terminalSettings -MemberType NoteProperty -Name 'schemes' -Value @()
+    }
+    $schemes = (($terminalSettings | ConvertTo-Json -Depth 100 | Out-String | jq '.schemes[].name' -r) -replace '├®', 'é') | Out-String
     $terminalThemeNames = $schemes.Split([Environment]::NewLine, [StringSplitOptions]::TrimEntries)
+
 
     $outThemes = [System.Collections.ArrayList]::new()
     $existingThemes = [System.Collections.ArrayList]::new()
@@ -75,7 +79,7 @@ function Add-VincentTheme {
         # $terminalSettings | jq ".schemes += $outJsonThemes" | Out-File -FilePath (Get-WindowsTerminalSettingsPath)
         # ($terminalSettings | convertfrom-Json) += $outThemes
         $terminalSettings.schemes += $outThemes
-        ($terminalSettings | ConvertTo-Json -Depth 100 | jq -SM --tab) -replace '├®', 'é' | Out-File -FilePath (Get-WindowsTerminalSettingsPath -preview:$preview)
+        ($terminalSettings | ConvertTo-Json -Depth 100 | jq -SM --tab) -replace '├®', 'é' | Out-File -Encoding utf8 -FilePath (Get-WindowsTerminalSettingsPath -preview:$preview)
         Write-Host "added $($outThemes.Count) new themes"
     }
 }

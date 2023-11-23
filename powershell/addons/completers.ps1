@@ -31,8 +31,8 @@ function Mount-carapace-Completers {
     # lazycomplete.exe omp "carapace oh-my-posh powershell" | Out-String | Invoke-Expression
 
     # https://rsteube.github.io/carapace-bin/setup.html#powershell
-    Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
-    Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+    Set-PSReadLineOption -Colors @{ 'Selection' = "`e[7m" }
+    Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
     $apps = @()
     Get-Command -CommandType Application, Script, ExternalScript, Alias | ForEach-Object {
@@ -57,6 +57,19 @@ function Mount-carapace-Completers {
     }
     Write-Progress -Activity "Setting up $cmd completer" -Status "$percentComplete% complete:" -PercentComplete $percentComplete -Completed
     Write-Host "$($carapace.Count - $skipped) Carapace completions loaded" -ForegroundColor Green
+
+    # winget completer
+    # https://learn.microsoft.com/en-us/windows/package-manager/winget/tab-completion
+    Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+        param($wordToComplete, $commandAst, $cursorPosition)
+        [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+        $Local:word = $wordToComplete.Replace('"', '""')
+        $Local:ast = $commandAst.ToString().Replace('"', '""')
+        winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+        }
+    }
+
 }
 
-Write-Host "✅"
+Write-Host '✅'
