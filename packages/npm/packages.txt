@@ -1,1 +1,1 @@
-/Users/legor/.config/npm/packages.txt
+C:/Users/legor/.config/npm/packages.txt

@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "powershell",
         "git",
-        "packages"
+        "packages",
+        "quicksave"
     ]
 }
