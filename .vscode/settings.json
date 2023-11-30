@@ -4,6 +4,7 @@
         "git",
         "packages",
         "quicksave",
-        "customize"
+        "customize",
+        "komorebi"
     ]
 }
