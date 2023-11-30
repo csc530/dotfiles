@@ -148,6 +148,7 @@ function Update-Packages {
     begin {}
     process {
         scoop update '*'
+        npm update --global --force
         gsudo winget update --all --accept-source-agreements --accept-source-agreements
     }
     end {}
@@ -172,5 +173,7 @@ Export-ModuleMember -Function @('compile',
     'RandomizeTerminalScheme',
     'Backup-System',
     'Restore-System',
-    'restore'
+    'restore',
+    'Set-WindowsTerminalScheme',
+    'Get-WindowsTerminalScheme'
 )

@@ -3,6 +3,7 @@
         "powershell",
         "git",
         "packages",
-        "quicksave"
+        "quicksave",
+        "customize"
     ]
 }

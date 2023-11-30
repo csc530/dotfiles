@@ -56,7 +56,7 @@ function Backup-System () {
   #>
   Write-Colour 'exporting npm packages...' -Color Yellow
   mkdir $env:CONFIG_HOME\npm -ErrorAction SilentlyContinue | Out-Null
-  Export-Npm | Out-String | Out-File -FilePath $env:CONFIG_HOME\npm\packages.txt -Encoding utf8 -Force
+  Export-NpmPackages | Out-String | Out-File -FilePath $env:CONFIG_HOME\npm\packages.txt -Encoding utf8 -Force
   [void](sudo New-Item -ItemType SymbolicLink -Path $env:CONFIG_HOME\packages\npm\packages.txt -Target $env:CONFIG_HOME\npm\packages.txt -Force)
   Write-Colour 'export complete' -Color Green
 
