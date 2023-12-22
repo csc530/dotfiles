@@ -31,13 +31,10 @@ function Get-WindowsTerminalSettings {
         [switch]$asJson
     )
 
-    $content = Get-Content (Get-WindowsTerminalSettingsPath -preview:$preview) | ConvertFrom-Json
+    $content = Get-Content -Path (get-WindowsTerminalSettingsPath -preview:$preview) | ConvertFrom-Json
     # $json = Get-Content "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal${isPreview}_*\LocalState\settings.json"
-    if ($content) {
-        $output = $content
-        return $asJson ? $($output | ConvertTo-Json -Depth 100) : $($output)
-    }
-    return $json
+    return $asJson ? $($content | ConvertTo-Json -Depth 100) : $content
+
 }
 
 function Get-WindowsTerminalScheme(
@@ -73,20 +70,24 @@ function Set-WindowsTerminalScheme(
         $profileName = 'defaults'
     }
 
-    $settings.profiles.$profileName.colorScheme = $name
+    if (!$settings.profiles.$profileName.colorScheme) {
+        Add-Member -InputObject $settings.profiles.$profileName -MemberType NoteProperty -Name 'colorScheme' -Value $name
+    }
+    else {
+        $settings.profiles.$profileName.colorScheme = $name
+    }
+
     $path = Get-WindowsTerminalSettingsPath -preview:$preview
-    ($settings | ConvertTo-Json -Depth 100 | Out-String | jq -SM --tab) -replace '├®', 'é' | Out-File -FilePath $path -Encoding utf8
+    ($settings | ConvertTo-Json -Depth 100 ) | Out-File -FilePath:$path
 }
 
 function RandomizeTerminalScheme(
     [Parameter(Mandatory = $false)]
     [switch]
-    $preview
+    $preview = $false
 ) {
-    $settings = Get-WindowsTerminalSettings
-    $schemes = $settings.schemes | Select-Object -ExpandProperty name
-    $scheme = $schemes | Get-Random
-    $scheme -replace '├®', 'é' > $null
+    $settings = Get-WindowsTerminalSettings -preview:$preview
+    $scheme = $settings.schemes | Select-Object -ExpandProperty name -Unique | Get-Random
     Write-Host "colour scheme set to `"$scheme`""
     Set-WindowsTerminalScheme -name $scheme -preview:$preview
 }

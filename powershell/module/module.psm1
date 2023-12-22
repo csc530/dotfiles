@@ -150,6 +150,8 @@ function Update-Packages {
         scoop update '*'
         npm update --global --force
         gsudo winget update --all --accept-source-agreements --accept-source-agreements
+        kill discord
+        winget update --id Discord.Discord
     }
     end {}
 }

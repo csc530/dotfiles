@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-11-30T17:53:48.528-00:00",
+	"CreationDate" : "2023-12-22T09:28:58.293-00:00",
 	"Sources" : 
 	[
 		{
@@ -34,16 +34,34 @@
 					"PackageIdentifier" : "Discord.Discord"
 				},
 				{
+					"PackageIdentifier" : "Docker.DockerDesktop"
+				},
+				{
 					"PackageIdentifier" : "Dropbox.Dropbox"
 				},
 				{
 					"PackageIdentifier" : "GitKraken.cli"
 				},
 				{
+					"PackageIdentifier" : "JetBrains.Writerside"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.AppInstaller"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.UI.Xaml.2.7"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.UI.Xaml.2.8"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DevHome"
@@ -64,10 +82,10 @@
 					"PackageIdentifier" : "nepnep.neofetch-win"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2013.x64"
+					"PackageIdentifier" : "AgileBits.1Password"
 				},
 				{
-					"PackageIdentifier" : "AgileBits.1Password"
+					"PackageIdentifier" : "Microsoft.VCRedist.2013.x64"
 				},
 				{
 					"PackageIdentifier" : "spacedrive.Spacedrive"
@@ -128,6 +146,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerToys"
 				}
 			],
 			"SourceDetails" : 
@@ -139,5 +160,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.6.3133"
+	"WinGetVersion" : "1.6.3482"
 }

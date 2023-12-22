@@ -87,12 +87,14 @@ function Backup-System () {
   #>
   Write-Colour 'backing up windows terminal settings...' -Color Yellow
 
-  Get-WindowsTerminalSettings -asJson | jq -SM --tab | Out-File -FilePath $env:CONFIG_HOME\windows\terminal\settings.json -Encoding utf8 -Force
-  Get-WindowsTerminalSettings -asJson -preview | jq -SM --tab | Out-File -FilePath $env:CONFIG_HOME\windows\terminal\settings.preview.json -Encoding utf8 -Force
+  Get-WindowsTerminalSettings -asJson | Out-File -FilePath $env:CONFIG_HOME\windows\terminal\settings.json
+  Get-WindowsTerminalSettings -asJson -preview | Out-File -FilePath $env:CONFIG_HOME\windows\terminal\settings.preview.json
 
   Write-Colour 'saving preview settings...'
 
-  rstrui.exe # system restore point tool gui only so yeah the last one
+  # rstrui.exe # system restore point tool gui only so yeah the last one
+  # create a restore point
+  SystemPropertiesProtection # then click on Create Restore Point
 
   Write-Colour 'system backup complete' -Color DarkCyan
 }
