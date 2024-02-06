@@ -5,8 +5,8 @@ function compile() {
     Remove-Item -Force $PROFILE
 
 
-    Get-Content $env:CONFIG_HOME\powershell\environment\modules.ps1 | Out-File -Encoding utf8 -Append $PROFILE
     Get-Content $env:CONFIG_HOME\powershell\environment\variables.ps1 | Add-Content -Encoding utf8 -Path $PROFILE
+    Get-Content $env:CONFIG_HOME\powershell\environment\modules.ps1 | Out-File -Encoding utf8 -Append $PROFILE
     Get-Content $env:CONFIG_HOME\powershell\environment\hooks.ps1 | Add-Content -Encoding utf8 -Path $PROFILE
     Get-Content $env:CONFIG_HOME\powershell\environment\aliases.ps1 | Add-Content -Encoding utf8 -Path $PROFILE
 
