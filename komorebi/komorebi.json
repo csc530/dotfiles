@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.json",
-  "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+  "app_specific_configuration_path": "$ENV:CONFIG_HOME/komorebi/applications.yaml",
   "window_hiding_behaviour": "Minimize",
   "cross_monitor_move_behaviour": "Insert",
   "alt_focus_hack": false,
@@ -23,5 +23,6 @@
         { "name": "V", "layout": "Rows" }
       ]
     }
-  ]
+  ],
+
 }

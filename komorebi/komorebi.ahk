@@ -2,8 +2,6 @@
 
 ; Load library
 #Include komorebic.lib.ahk
-; Load configuration
-#Include komorebi.generated.ahk
 
 ; Focus windows
 ; !h::Focus("left")
@@ -46,7 +44,7 @@
 #^!down::ResizeAxis("vertical", "decrease")
 
 ; Manipulate windows
-#t::ToggleFloat()
+#+F::ToggleFloat()
 #f::ToggleMonocle()
 
 ; Window manager options
@@ -69,22 +67,6 @@
 
 #m::Minimize()
 #+m::ToggleMaximize()
-
-; https://github.com/LGUG2Z/komorebi/issues/161#issuecomment-1318178455
-; If(not ProcessExist("komorebi.exe"))
-;     RunWait("komorebic.exe start", , "Hide")
-; Loop
-; {
-;     RunWait("komorebic.exe state", , "Hide UseErrorLevel")
-;     If A_LastError = 0
-;     {
-;         Break
-;     }
-;     Else
-;     {
-;         Sleep 1000
-;     }
-; }
 
 ; RControl & RShift::AltTab  ; Hold down right-control then press right-shift repeatedly to move forward.
 ; RControl & Enter::ShiftAltTab  ; Without even having to release right-control, press Enter to reverse direction.

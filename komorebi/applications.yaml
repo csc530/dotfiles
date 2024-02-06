@@ -1,43 +1,70 @@
 - name: 1Password
   identifier:
     kind: Exe
+    id: Guitar Rig 7.exe
+    matching_strategy: Equals
+  float_identifiers:
+  - kind: Exe
+    id: Guitar Rig 7.exe
+    matching_strategy: Equals
+- name: 1Password
+  identifier:
+    kind: Exe
     id: 1Password.exe
     matching_strategy: Equals
   float_identifiers:
   - kind: Exe
     id: 1Password.exe
+    matching_strategy: Equals
 - name: Ableton Live
   identifier:
     kind: Class
     id: Ableton Live Window Class
+    matching_strategy: Legacy
   float_identifiers:
   - kind: Class
     id: AbletonVstPlugClass
     comment: Targets VST2 windows
+    matching_strategy: Legacy
   - kind: Class
     id: Vst3PlugWindow
     comment: Targets VST3 windows
+    matching_strategy: Legacy
 - name: Adobe Creative Cloud
   identifier:
     kind: Class
     id: CreativeCloudDesktopWindowClass
+    matching_strategy: Legacy
   options:
   - tray_and_multi_window
 - name: Adobe Photoshop
   identifier:
     kind: Class
     id: Photoshop
+    matching_strategy: Legacy
   options:
   - border_overflow
+- name: Adobe Premiere Pro
+  identifier:
+    kind: Class
+    id: Premiere Pro
+    matching_strategy: Legacy
+  float_identifiers:
+  - kind: Class
+    id: DroverLord - Window Class
+    comment: Premiere Pro effects popups
+    matching_strategy: Equals
 - name: Affinity Photo 2
   identifier:
     kind: Title
     id: Affinity Photo 2
+    matching_strategy: Legacy
   options:
   - force
   float_identifiers:
   - kind: Exe
     id: Photo.exe
+    matching_strategy: Equals
 - name: Akiflow
   identifier:
     kind: Exe
@@ -77,8 +104,11 @@
   float_identifiers:
   - kind: Title
     id: Window Spy
+    comment: Uses `StartsWith` to also match `* for AHKv2`
+    matching_strategy: StartsWith
   - kind: Exe
     id: AutoHotkeyUX.exe
+    matching_strategy: Equals
 - name: Beeper
   identifier:
     kind: Exe
@@ -110,6 +140,7 @@
   float_identifiers:
   - kind: Exe
     id: Bloxstrap.exe
+    matching_strategy: Equals
 - name: Brave Browser
   identifier:
     kind: Exe
@@ -121,9 +152,11 @@
   identifier:
     kind: Title
     id: Calculator
+    matching_strategy: Equals
   float_identifiers:
   - kind: Title
     id: Calculator
+    matching_strategy: Equals
 - name: Citrix Receiver
   identifier:
     kind: Exe
@@ -134,6 +167,7 @@
   float_identifiers:
   - kind: Exe
     id: SelfService.exe
+    matching_strategy: Equals
 - name: Clash Verge
   identifier:
     kind: Exe
@@ -165,6 +199,7 @@
   - kind: Exe
     id: CredentialUIBroker.exe
     comment: Targets the Windows popup prompting you for a PIN instead of a password on 1Password etc.
+    matching_strategy: Equals
 - name: Cron
   identifier:
     kind: Exe
@@ -184,13 +219,16 @@
   identifier:
     kind: Class
     id: TApplication
+    matching_strategy: Legacy
   float_identifiers:
   - kind: Class
     id: TApplication
     comment: Target hidden window spawned by Delphi applications
+    matching_strategy: Legacy
   - kind: Class
     id: TWizardForm
     comment: Target Inno Setup installers
+    matching_strategy: Legacy
 - name: Discord
   identifier:
     kind: Exe
@@ -199,6 +237,7 @@
   options:
   - border_overflow
   - tray_and_multi_window
+  - force
 - name: DiscordCanary
   identifier:
     kind: Exe
@@ -238,6 +277,7 @@
   float_identifiers:
   - kind: Exe
     id: Dropbox.exe
+    matching_strategy: Equals
 - name: EA Desktop Client
   identifier:
     kind: Exe
@@ -274,6 +314,7 @@
   float_identifiers:
   - kind: Exe
     id: Elephicon.exe
+    matching_strategy: Equals
 - name: ElevenClock
   identifier:
     kind: Exe
@@ -289,6 +330,7 @@
   float_identifiers:
   - kind: Exe
     id: Camera Hub.exe
+    matching_strategy: Equals
 - name: Elgato Control Center
   identifier:
     kind: Exe
@@ -297,6 +339,7 @@
   float_identifiers:
   - kind: Exe
     id: ControlCenter.exe
+    matching_strategy: Equals
 - name: Elgato Wave Link
   identifier:
     kind: Exe
@@ -305,6 +348,7 @@
   float_identifiers:
   - kind: Exe
     id: WaveLink.exe
+    matching_strategy: Equals
 - name: Epic Games Launcher
   identifier:
     kind: Exe
@@ -317,12 +361,14 @@
   identifier:
     kind: Class
     id: EVERYTHING
+    matching_strategy: Legacy
   options:
   - tray_and_multi_window
 - name: Everything1.5a
   identifier:
     kind: Class
     id: EVERYTHING_(1.5a)
+    matching_strategy: Legacy
   options:
   - force
   - tray_and_multi_window
@@ -367,10 +413,28 @@
   - kind: Class
     id: Chrome_RenderWidgetHostHWND
     comment: Targets a hidden window spawned by GOG Galaxy
+    matching_strategy: Legacy
+- name: GitHub Credential Manager
+  identifier:
+    kind: Exe
+    id: git-credential-manager.exe
+    matching_strategy: Equals
+  float_identifiers:
+  - kind: Exe
+    id: git-credential-manager.exe
+    matching_strategy: Equals
+- name: GitHub Desktop
+  identifier:
+    kind: Exe
+    id: GitHubDesktop.exe
+    matching_strategy: Equals
+  options:
+  - border_overflow
 - name: GoPro Webcam
   identifier:
     kind: Class
     id: GoPro Webcam
+    matching_strategy: Legacy
   options:
   - tray_and_multi_window
 - name: Godot Manager
@@ -406,10 +470,12 @@
   float_identifiers:
   - kind: Exe
     id: GoogleDriveFS.exe
+    matching_strategy: Equals
 - name: Honeyview
   identifier:
     kind: Class
     id: HoneyviewClassX
+    matching_strategy: Legacy
   options:
   - border_overflow
 - name: Houdoku
@@ -431,6 +497,7 @@
   - kind: Class
     id: SunAwtDialog
     comment: Targets JetBrains IDE popups and floating windows
+    matching_strategy: Equals
 - name: Itch.io
   identifier:
     kind: Exe
@@ -454,6 +521,7 @@
   float_identifiers:
   - kind: Exe
     id: keyviz.exe
+    matching_strategy: Equals
 - name: Kleopatra
   identifier:
     kind: Exe
@@ -484,6 +552,7 @@
   float_identifiers:
   - kind: Exe
     id: LogiBolt.exe
+    matching_strategy: Equals
 - name: LogiTune
   identifier:
     kind: Exe
@@ -494,6 +563,7 @@
   float_identifiers:
   - kind: Exe
     id: LogiTune.exe
+    matching_strategy: Equals
 - name: Logitech G HUB
   identifier:
     kind: Exe
@@ -510,6 +580,7 @@
   float_identifiers:
   - kind: Exe
     id: LogiOptionsUI.exe
+    matching_strategy: Equals
 - name: Mailspring
   identifier:
     kind: Exe
@@ -548,6 +619,16 @@
     kind: Exe
     id: MicaForEveryone.exe
     matching_strategy: Equals
+- name: Microsoft Active Accessibility
+  identifier:
+    kind: Class
+    id: ''
+    matching_strategy: Legacy
+  float_identifiers:
+  - kind: Class
+    id: '#32770'
+    comment: Dialog Box
+    matching_strategy: Legacy
 - name: Microsoft Excel
   identifier:
     kind: Exe
@@ -560,6 +641,7 @@
   - kind: Class
     id: _WwB
     comment: Targets a hidden window spawned by Microsoft Office applications
+    matching_strategy: Legacy
 - name: Microsoft Outlook
   identifier:
     kind: Exe
@@ -573,6 +655,7 @@
   - kind: Class
     id: _WwB
     comment: Targets a hidden window spawned by Microsoft Office applications
+    matching_strategy: Legacy
 - name: Microsoft PC Manager
   identifier:
     kind: Exe
@@ -581,6 +664,7 @@
   float_identifiers:
   - kind: Exe
     id: MSPCManager.exe
+    matching_strategy: Equals
 - name: Microsoft PowerPoint
   identifier:
     kind: Exe
@@ -593,10 +677,19 @@
   - kind: Class
     id: _WwB
     comment: Targets a hidden window spawned by Microsoft Office applications
+    matching_strategy: Legacy
+- name: Microsoft SQL Server Management Studio
+  identifier:
+    kind: Exe
+    id: Ssms.exe
+    matching_strategy: Equals
+  options:
+  - border_overflow
 - name: Microsoft Teams
   identifier:
     kind: Class
     id: TeamsWebView
+    matching_strategy: Legacy
   options:
   - tray_and_multi_window
 - name: Microsoft Teams classic
@@ -610,9 +703,11 @@
   - kind: Title
     id: Microsoft Teams Notification
     comment: Target Teams pop-up notification windows
+    matching_strategy: Legacy
   - kind: Title
     id: Microsoft Teams Call
     comment: Target Teams call in progress windows
+    matching_strategy: Legacy
 - name: Microsoft Word
   identifier:
     kind: Exe
@@ -625,6 +720,7 @@
   - kind: Class
     id: _WwB
     comment: Targets a hidden window spawned by Microsoft Office applications
+    matching_strategy: Legacy
 - name: Modern Flyouts
   identifier:
     kind: Exe
@@ -632,6 +728,13 @@
     matching_strategy: Equals
   options:
   - tray_and_multi_window
+- name: Morgen
+  identifier:
+    kind: Exe
+    id: Morgen.exe
+    matching_strategy: Equals
+  options:
+  - border_overflow
 - name: Mozilla Firefox
   identifier:
     kind: Exe
@@ -644,6 +747,14 @@
   - kind: Class
     id: MozillaTaskbarPreviewClass
     comment: Targets invisible windows spawned by Firefox to show tab previews in the taskbar
+    matching_strategy: Legacy
+- name: MuseScore
+  identifier:
+    kind: Exe
+    id: MuseScore.exe
+    matching_strategy: Equals
+  options:
+  - border_overflow
 - name: NVIDIA GeForce Experience
   identifier:
     kind: Exe
@@ -681,6 +792,7 @@
   float_identifiers:
   - kind: Exe
     id: NohBoard.exe
+    matching_strategy: Equals
 - name: Notion Enhanced
   identifier:
     kind: Exe
@@ -707,6 +819,7 @@
   identifier:
     kind: Class
     id: DocEditorsWindowClass
+    matching_strategy: Legacy
   options:
   - border_overflow
   - tray_and_multi_window
@@ -726,6 +839,7 @@
   float_identifiers:
   - kind: Class
     id: OneDriveReactNativeWin32WindowClass
+    matching_strategy: Legacy
 - name: OneQuick
   identifier:
     kind: Exe
@@ -748,6 +862,7 @@
   float_identifiers:
   - kind: Exe
     id: Paradox Launcher.exe
+    matching_strategy: Equals
 - name: Passware Kit Forensic
   identifier:
     kind: Exe
@@ -767,6 +882,7 @@
   - kind: Exe
     id: Playnite.FullscreenApp.exe
     comment: Target fullscreen app
+    matching_strategy: Equals
 - name: Plexamp
   identifier:
     kind: Exe
@@ -783,12 +899,27 @@
   - kind: Exe
     id: PowerToys.ColorPickerUI.exe
     comment: Target color picker dialog
+    matching_strategy: Equals
+  - kind: Exe
+    id: PowerToys.CropAndLock.exe
+    comment: Target thumbnail/cropped window
+    matching_strategy: Equals
   - kind: Exe
     id: PowerToys.ImageResizer.exe
     comment: Target image resizer dialog
+    matching_strategy: Equals
   - kind: Exe
     id: PowerToys.Peek.UI.exe
     comment: Target Peek popup
+    matching_strategy: Equals
+  - kind: Exe
+    id: PowerToys.PowerLauncher.exe
+    comment: PpowerLauncher popup
+    matching_strategy: Equals
+  - kind: Exe
+    id: PowerToys.PowerAccent.exe
+    comment: PowerAccent popup
+    matching_strategy: Equals
 - name: Process Hacker
   identifier:
     kind: Exe
@@ -799,6 +930,7 @@
   float_identifiers:
   - kind: Exe
     id: ProcessHacker.exe
+    matching_strategy: Equals
 - name: ProtonDrive
   identifier:
     kind: Exe
@@ -827,6 +959,7 @@
   - kind: Class
     id: SunAwtDialog
     comment: Targets JetBrains IDE popups and detached windows
+    matching_strategy: Equals
 - name: QQ
   identifier:
     kind: Exe
@@ -837,10 +970,13 @@
   float_identifiers:
   - kind: Title
     id: 图片查看器
+    matching_strategy: Legacy
   - kind: Title
     id: 群聊的聊天记录
+    matching_strategy: Legacy
   - kind: Title
     id: 语音通话
+    matching_strategy: Legacy
 - name: QtScrcpy
   identifier:
     kind: Exe
@@ -856,6 +992,7 @@
   float_identifiers:
   - kind: Exe
     id: QuickLook.exe
+    matching_strategy: Equals
 - name: RepoZ
   identifier:
     kind: Exe
@@ -864,6 +1001,7 @@
   float_identifiers:
   - kind: Exe
     id: RepoZ.exe
+    matching_strategy: Equals
 - name: Rider
   identifier:
     kind: Exe
@@ -876,9 +1014,11 @@
   - kind: Class
     id: SunAwtDialog
     comment: Targets JetBrains IDE popups and floating windows
+    matching_strategy: Equals
   - kind: Title
     id: PopupMessageWindow
     comment: Targets JetBrains IDE popups
+    matching_strategy: Legacy
 - name: Roblox FPS Unlocker
   identifier:
     kind: Exe
@@ -894,6 +1034,7 @@
   float_identifiers:
   - kind: Exe
     id: RoundedTB.exe
+    matching_strategy: Equals
 - name: RoundedTB
   identifier:
     kind: Exe
@@ -914,6 +1055,7 @@
   - kind: Class
     id: SunAwtDialog
     comment: Targets JetBrains IDE popups and floating windows
+    matching_strategy: Equals
 - name: Sandboxie Plus
   identifier:
     kind: Exe
@@ -937,6 +1079,7 @@
   float_identifiers:
   - kind: Exe
     id: sideloadly.exe
+    matching_strategy: Equals
 - name: Signal
   identifier:
     kind: Exe
@@ -963,6 +1106,7 @@
   - kind: Class
     id: Chrome_RenderWidgetHostHWND
     comment: Targets a hidden window spawned by Slack
+    matching_strategy: Legacy
 - name: Slack
   identifier:
     kind: Exe
@@ -975,6 +1119,7 @@
   - kind: Class
     id: Chrome_RenderWidgetHostHWND
     comment: Targets a hidden window spawned by Slack
+    matching_strategy: Legacy
 - name: Smart Install Maker
   identifier:
     kind: Exe
@@ -984,9 +1129,11 @@
   - kind: Class
     id: obj_App
     comment: Target hidden window spawned by installer
+    matching_strategy: Legacy
   - kind: Class
     id: obj_Form
     comment: Target installer
+    matching_strategy: Legacy
 - name: SnippingTool
   identifier:
     kind: Exe
@@ -995,6 +1142,7 @@
   float_identifiers:
   - kind: Exe
     id: SnippingTool.exe
+    matching_strategy: Equals
 - name: SoulseekQt
   identifier:
     kind: Exe
@@ -1014,12 +1162,14 @@
   identifier:
     kind: Class
     id: vguiPopupWindow
+    matching_strategy: Legacy
   options:
   - border_overflow
 - name: Steam Beta
   identifier:
     kind: Class
     id: SDL_app
+    matching_strategy: Legacy
   options:
   - border_overflow
   - tray_and_multi_window
@@ -1027,6 +1177,7 @@
   - kind: Title
     id: notificationtoasts_
     comment: Target notification toast popups
+    matching_strategy: Legacy
 - name: Stremio
   identifier:
     kind: Exe
@@ -1044,6 +1195,7 @@
   float_identifiers:
   - kind: Exe
     id: SystemInformer.exe
+    matching_strategy: Equals
 - name: SystemSettings
   identifier:
     kind: Exe
@@ -1052,6 +1204,7 @@
   float_identifiers:
   - kind: Class
     id: Shell_Dialog
+    matching_strategy: Legacy
 - name: Task Manager
   identifier:
     kind: Exe
@@ -1060,6 +1213,7 @@
   float_identifiers:
   - kind: Class
     id: TaskManagerWindow
+    matching_strategy: Legacy
 - name: Telegram
   identifier:
     kind: Exe
@@ -1076,6 +1230,16 @@
   options:
   - border_overflow
   - tray_and_multi_window
+- name: Total Commander
+  identifier:
+    kind: Exe
+    id: TotalCMD64.exe
+    matching_strategy: Equals
+  float_identifiers:
+  - kind: Class
+    id: TDLG2FILEACTIONMIN
+    comment: Target standard copy window
+    matching_strategy: Equals
 - name: TouchCursor
   identifier:
     kind: Exe
@@ -1086,6 +1250,7 @@
   float_identifiers:
   - kind: Exe
     id: tcconfig.exe
+    matching_strategy: Equals
 - name: TranslucentTB
   identifier:
     kind: Exe
@@ -1094,6 +1259,7 @@
   float_identifiers:
   - kind: Exe
     id: TranslucentTB.exe
+    matching_strategy: Equals
 - name: TranslucentTB
   identifier:
     kind: Exe
@@ -1116,6 +1282,13 @@
     matching_strategy: Equals
   options:
   - border_overflow
+  - tray_and_multi_window
+- name: VMware Horizon Client
+  identifier:
+    kind: Exe
+    id: vmware-view.exe
+    matching_strategy: Equals
+  options:
   - tray_and_multi_window
 - name: VRCX
   identifier:
@@ -1168,6 +1341,7 @@
   float_identifiers:
   - kind: Exe
     id: winzip32.exe
+    matching_strategy: Equals
 - name: WinZip (64-bit)
   identifier:
     kind: Exe
@@ -1176,10 +1350,12 @@
   float_identifiers:
   - kind: Exe
     id: winzip64.exe
+    matching_strategy: Equals
 - name: Windows Console (conhost.exe)
   identifier:
     kind: Class
     id: ConsoleWindowClass
+    matching_strategy: Equals
   options:
   - force
 - name: Windows Explorer
@@ -1191,8 +1367,10 @@
   - kind: Class
     id: OperationStatusWindow
     comment: Targets copy/move operation windows
+    matching_strategy: Legacy
   - kind: Title
     id: Control Panel
+    matching_strategy: Legacy
 - name: Windows Installer
   identifier:
     kind: Exe
@@ -1201,6 +1379,7 @@
   float_identifiers:
   - kind: Exe
     id: msiexec.exe
+    matching_strategy: Equals
 - name: Windows Subsystem for Android
   identifier:
     kind: Exe
@@ -1210,6 +1389,7 @@
   - kind: Class
     id: android(splash)
     comment: Targets splash/startup screen
+    matching_strategy: Legacy
 - name: WingetUI
   identifier:
     kind: Exe
@@ -1233,6 +1413,7 @@
   - kind: Title
     id: Hotkey sink
     comment: Targets a hidden window spawned by Wox
+    matching_strategy: Legacy
 - name: XAMPP Control Panel
   identifier:
     kind: Exe
@@ -1248,10 +1429,12 @@
   float_identifiers:
   - kind: Exe
     id: Zoom.exe
+    matching_strategy: Equals
 - name: mpv
   identifier:
     kind: Class
     id: mpv
+    matching_strategy: Legacy
   options:
   - object_name_change
 - name: mpv.net
@@ -1269,6 +1452,7 @@
   float_identifiers:
   - kind: Exe
     id: paintdotnet.exe
+    matching_strategy: Equals
 - name: pinentry
   identifier:
     kind: Exe
@@ -1277,6 +1461,7 @@
   float_identifiers:
   - kind: Exe
     id: pinentry.exe
+    matching_strategy: Equals
 - name: qBittorrent
   identifier:
     kind: Exe
@@ -1284,6 +1469,13 @@
     matching_strategy: Equals
   options:
   - tray_and_multi_window
+- name: todoist
+  identifier:
+    kind: Exe
+    id: Todoist.exe
+    matching_strategy: Equals
+  options:
+  - border_overflow
 - name: ueli
   identifier:
     kind: Exe
@@ -1294,3 +1486,4 @@
   float_identifiers:
   - kind: Exe
     id: ueli.exe
+    matching_strategy: Equals
