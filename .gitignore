@@ -16,4 +16,7 @@ configstore/
 # nodemon
 simple-update-notifier/
 
+# plugins
+micro/plug/
+
 scoop/config.json

@@ -2,6 +2,5 @@
     "colorscheme": "mocha",
     "eofnewline": false,
     "mkparents": true,
-    "softwrap": true,
-    "wordwrap": true
+    "softwrap": true
 }
