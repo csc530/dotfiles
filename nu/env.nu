@@ -111,11 +111,11 @@ $env.Path = (
 )
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-carapace _carapace nushell | save --force ~/.config/nu/.cache/carapace.nu
-
-oh-my-posh init nu --print  --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/1_shell.omp.json | save ~/.config/nu/.cache/omp.nu --force
-
-source ~/.config/nu/terminal.nu
-
 source ~/.config/nu/env_parse.nu
 env source ~/.config/.env
+
+carapace _carapace nushell | save --force ~/.config/nu/.cache/carapace.nu
+
+oh-my-posh init nu --print  --config $"($env.POSH_THEMES_PATH)/negligible.omp.json"  | save ~/.config/nu/.cache/omp.nu --force
+
+source ~/.config/nu/terminal.nu

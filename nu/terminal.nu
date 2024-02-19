@@ -17,5 +17,3 @@ def getTerminal [pid: int=$nu.pid] {
         $ps
     }
 }
-
-random terminal scheme
