@@ -20,3 +20,7 @@ simple-update-notifier/
 micro/plug/
 
 scoop/config.json
+
+nu_scripts/
+.cache/
+nupm/

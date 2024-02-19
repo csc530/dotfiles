@@ -115,3 +115,5 @@ carapace _carapace nushell | save --force ~/.config/nu/.cache/carapace.nu
 
 oh-my-posh init nu --print  --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/1_shell.omp.json | save ~/.config/nu/.cache/omp.nu --force
 
+source ~/.config/nu/env_parse.nu
+env source ~/.config/.env
