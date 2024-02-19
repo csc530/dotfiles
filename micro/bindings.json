@@ -8,5 +8,8 @@
     "CtrlUnderscore": "lua:comment.comment",
 
 
-    "Ctrl-/": "lua:comment.comment"
+    "Ctrl-/": "lua:comment.comment",
+    "Ctrl-Alt-Shift-Down": "SpawnMultiCursorDown",
+    "Ctrl-Alt-Shift-Up": "SpawnMultiCursorUp",
+    "Ctrl-Shift-c": "SpawnMultiCursor"
 }

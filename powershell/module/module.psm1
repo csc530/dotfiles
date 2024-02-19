@@ -44,7 +44,7 @@ function screenfetch {
     $orgLoc = Get-Location -Verbose
     while ($loc.Parent) {
         # save current directory to stack
-        Push-Location -Path $loc -StackName onefetch
+        Push-Location -Path $loc
         # look for .git directory
         if (Get-ChildItem -Filter .git -Force -Directory) {
             onefetch.exe
