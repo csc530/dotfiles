@@ -2,7 +2,7 @@
 def --env "env source" [
     path:path # path to the .env file containing environment variables to load into the current environment/context
     ] {
-        let pairs = open ~/.config/.env | lines | where {|e| not ($e | str starts-with --ignore-case '#')  } | each { |e| $e | split column  '=' } | flatten | rename key value
+        let pairs = open $path | lines | where {|e| not ($e | str starts-with --ignore-case '#')  } | each { |e| $e | split column  '=' } | flatten | rename key value
 
         # substitute the environment variables in the file
         for item in $pairs {

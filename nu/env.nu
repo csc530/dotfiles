@@ -112,7 +112,7 @@ $env.Path = (
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 source ~/.config/nu/env_parse.nu
-env source ~/.config/.env
+env source ~/Documents/.env
 
 carapace _carapace nushell | save --force ~/.config/nu/.cache/carapace.nu
 
