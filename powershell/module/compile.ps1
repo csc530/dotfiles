@@ -16,5 +16,5 @@ function compile() {
     Add-Content -Encoding utf8 -Value 'Mount-carapace-Completers' -Path $PROFILE
     if ($Host.Name -notlike '*Visual Studio Code*') {
         Get-Content $env:CONFIG_HOME\powershell/addons/prettypretty.ps1 | Add-Content -Encoding utf8 -Path $PROFILE
-    }w
+    }
 }
