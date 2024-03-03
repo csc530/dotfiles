@@ -141,7 +141,43 @@ let light_theme = {
 #     carapace $spans.0 nushell ...$spans | from json
 # }
 
+let external_completer = {|spans|
 
+    let carapace_completer = {|spans: list<string>|
+        carapace $spans.0 nushell ...$spans
+        | from json
+        | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+    }
+
+    let zoxide_completer = {|spans|
+        $spans | skip 1 | zoxide query -l $in | lines | where {|x| $x != $env.PWD}
+    }
+
+    # if the current command is an alias, get it's expansion
+    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
+    # remove exe extension if present
+    let bare_cmd = (
+        let index = ($spans.0 | str index-of .exe);
+        if $index == -1 { $spans.0 } else { $spans.0 | str substring 0..$index }
+    )
+    # overwrite
+    let spans = (
+        if $expanded_alias != null  {
+        # put the first word of the expanded alias first in the span
+        $spans | skip 1 | prepend ($expanded_alias | split row " " | take 1)
+        } else if $bare_cmd != $spans.0 {
+            $spans | skip 1 | prepend $bare_cmd
+        } else {
+            $spans
+        }
+    )
+
+    match $spans.0 {
+        vincent => {|spans: list<string>| vincent _carapace nushell ...$spans | from json }
+        __zoxide_z | __zoxide_zi => $zoxide_completer
+        _ => $carapace_completer
+    } | do $in $spans
+}
 
 # let external_completer = {|spans|
 #   {
@@ -220,7 +256,7 @@ $env.config = {
         external: {
             enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up may be very slow
             max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
-            completer: null # check 'carapace_completer' above as an example
+            completer: $external_completer # check 'carapace_completer' above as an example
         }
     }
 
@@ -257,7 +293,7 @@ $env.config = {
             PWD: [{|before, after| null }] # run if the PWD environment is different since the last repl input
         }
         display_output: "if (term size).columns >= 100 { table -e } else { table }" # run to display the output of a pipeline
-        command_not_found: { null } # return an error message when a command is not found
+        command_not_found: (source ~/.config/nu/nu_scripts/nu-hooks/nu-hooks/command_not_found/did_you_mean.nu) # return an error message when a command is not found
     }
 
     menus: [
@@ -849,10 +885,10 @@ $env.config = {
     ]
 }
 
-
 # carpace
 source ~/.config/nu/.cache/carapace.nu
 source  ~/.config/nu/.cache/omp.nu
+source ~/.config/nu/.cache/zoxide.nu
 
 source ~/.config/nu/aliases.nu
 
@@ -860,4 +896,16 @@ source ~/.config/nu/aliases.nu
 
 
 use ~/.config/nu/nu_scripts/themes/nu-themes/catppuccin-mocha.nu
-$env.config = ($env.config | merge {color_config: (catppuccin-mocha)})
+
+$env.config.color_config = (catppuccin-mocha)
+
+use system/
+use nupm/
+use random-list.nu
+
+source ~\.config\nu\nu_scripts\custom-completions\btm\btm-completions.nu
+source ~\.config\nu\nu_scripts\custom-completions\winget\winget-completions.nu
+source ~\.config\nu\nu_scripts\custom-completions\typst\typst-completions.nu
+source ~\.config\nu\nu_scripts\custom-completions\scoop\scoop-completions.nu
+
+source ~\.config\nu\nu_scripts\sourced\fun\spark.nu
