@@ -119,11 +119,7 @@ $env.Path = (
 )
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-use ~/.config/nu/env_parse.nu
+source ~/.config/nu/env_parse.nu
 env source $"($env.OneDrive)/Documents/.env"
 
-
-
-use ~/.config/nu/terminal.nu
-
-# external completers
+source ~/.config/nu/terminal.nu
