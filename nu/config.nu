@@ -150,7 +150,7 @@ let external_completer = {|spans|
     }
 
     let zoxide_completer = {|spans|
-        $spans | skip 1 | zoxide query -l $in | lines | where {|x| $x != $env.PWD}
+        $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD} | append (ls | where type == Directory | get name) | sort | uniq
     }
 
     # if the current command is an alias, get it's expansion

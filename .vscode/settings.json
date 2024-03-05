@@ -5,6 +5,7 @@
         "packages",
         "quicksave",
         "customize",
-        "komorebi"
+        "komorebi",
+        "nushell"
     ]
 }
