@@ -24,3 +24,8 @@ scoop/config.json
 nu_scripts/
 .cache/
 nupm/
+
+jump/
+github-copilot/
+lazysql/
+litecli/

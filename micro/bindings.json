@@ -11,5 +11,9 @@
     "Ctrl-/": "lua:comment.comment",
     "Ctrl-Alt-Shift-Down": "SpawnMultiCursorDown",
     "Ctrl-Alt-Shift-Up": "SpawnMultiCursorUp",
-    "Ctrl-Shift-c": "SpawnMultiCursor"
+    "Ctrl-Shift-c": "SpawnMultiCursor",
+
+    "Alt-u": "command:upper",
+    "Alt-l": "command:lower"
+    // "Alt-r": "manipulator.reverse"
 }

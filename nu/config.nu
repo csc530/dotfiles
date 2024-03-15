@@ -890,8 +890,6 @@ source ~/.config/nu/.cache/carapace.nu
 source  ~/.config/nu/.cache/omp.nu
 source ~/.config/nu/.cache/zoxide.nu
 
-source ~/.config/nu/aliases.nu
-
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
 
 
@@ -902,6 +900,8 @@ $env.config.color_config = (catppuccin-mocha)
 use system/
 use nupm/
 use random-list.nu
+use ~/.config/nu/ledger.nu
+use hledger.nu
 
 source ~\.config\nu\nu_scripts\custom-completions\btm\btm-completions.nu
 source ~\.config\nu\nu_scripts\custom-completions\winget\winget-completions.nu
@@ -909,3 +909,5 @@ source ~\.config\nu\nu_scripts\custom-completions\typst\typst-completions.nu
 source ~\.config\nu\nu_scripts\custom-completions\scoop\scoop-completions.nu
 
 source ~\.config\nu\nu_scripts\sourced\fun\spark.nu
+
+source ~/.config/nu/aliases.nu

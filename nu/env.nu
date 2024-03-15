@@ -103,7 +103,14 @@ $env.NU_LIB_DIRS = ([
         }
         | each {|e| $e.name})
     (ls ~/.config/nu/nu_scripts/custom-completions | where type == "dir" | each {|e| $e.name})
-] | flatten)
+    (ls ~/.config/nu/lib | where type == "dir" | filter {|e|
+        let items = ls $e.name
+        let length = ($items | length)
+        $length != 0 and  'mod.nu' not-in $items.name
+        }
+        | each {|e| $e.name})
+    ('~/.config/nu/lib' | path expand)
+    ] | flatten)
 
 # Directories to search for plugin binaries when calling register
 # The default for this is $nu.default-config-dir/plugins
