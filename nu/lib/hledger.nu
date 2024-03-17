@@ -40,13 +40,13 @@ export extern add [
 
     # --------
 
-    date?: string                           # The date of the transaction; an optional (CODE) may follow transaction dates.
-    description?: string@nu_descriptions       # The description of the transaction; an optional ';' COMMENT may follow descriptions or amounts.
-    account1?: string@nu_accounts              # The account to debit
-    amount1?: string@amount                 # The amount to debit
-    account2?: string@nu_accounts              # The account to credit
-    amount2?: string@amount                 # The amount to credit
-    ...transactions                         # a list of transactions following the form DATE DESCRIPTION ACCOUNT1 AMOUNT1 ACCOUNT2 AMOUNT2 ACCOUNT3 (until balance)
+    date?: string@"nu completion date"                                                          # The date of the transaction; an optional (CODE) may follow transaction dates.
+    description?: string@"nu completion description"                                        # The description of the transaction; an optional ';' COMMENT may follow descriptions or amounts.
+    account1?: string@"nu completion account"                                               # The account to debit
+    amount1?: string@"nu completion amount"                                                     # The amount to debit
+    account2?: string@"nu completion account"                                               # The account to credit
+    amount2?: string@"nu completion amount"                                                     # The amount to credit
+    ...transactions: string@"nu completion transaction"                         # a list of transactions following the form DATE DESCRIPTION ACCOUNT1 AMOUNT1 ACCOUNT2 AMOUNT2 ACCOUNT3 (until balance)
 ]
 
 # Read new transactions added to each FILE provided as arguments since last run, and add them to the journal.
@@ -58,8 +58,8 @@ export extern import [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -67,7 +67,7 @@ export extern import [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -115,8 +115,8 @@ export extern close [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -124,7 +124,7 @@ export extern close [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -176,8 +176,8 @@ export extern rewrite [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -185,7 +185,7 @@ export extern rewrite [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -237,8 +237,8 @@ export extern aregister [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -246,7 +246,7 @@ export extern aregister [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -292,8 +292,8 @@ export extern balancesheet [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -301,7 +301,7 @@ export extern balancesheet [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -358,8 +358,8 @@ export extern balancesheetequity [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -367,7 +367,7 @@ export extern balancesheetequity [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -424,8 +424,8 @@ export extern cashflow [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -433,7 +433,7 @@ export extern cashflow [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -490,8 +490,8 @@ export extern incomestatement [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -499,7 +499,7 @@ export extern incomestatement [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -566,8 +566,8 @@ export extern activity [
         --pivot=TAGNAME                                                     # use some other field/tag for account names
         --ignore-assertions(-I)                                             # ignore any balance assertions
         --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-        --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-        --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+        --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+        --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
         --daily(-D)                                                         # multiperiod/multicolumn report by day
         --weekly(-W)                                                        # multiperiod/multicolumn report by week
         --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -575,7 +575,7 @@ export extern activity [
         --yearly(-Y)                                                        # multiperiod/multicolumn report by year
         --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
         --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-        --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+        --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
         --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
         --pending(-P)                                                       # include only pending postings/txns
         --cleared(-C)                                                       # include only cleared postings/txns
@@ -607,8 +607,8 @@ export extern balance [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -616,7 +616,7 @@ export extern balance [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -677,8 +677,8 @@ export extern print [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -686,7 +686,7 @@ export extern print [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -728,8 +728,8 @@ export extern register [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -737,7 +737,7 @@ export extern register [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -782,8 +782,8 @@ export extern roi [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -791,7 +791,7 @@ export extern roi [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -840,8 +840,8 @@ export extern accounts [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -849,7 +849,7 @@ export extern accounts [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -895,8 +895,8 @@ export extern codes [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -904,7 +904,7 @@ export extern codes [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -936,8 +936,8 @@ export extern commodities [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -945,7 +945,7 @@ export extern commodities [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -977,8 +977,8 @@ export extern descriptions [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -986,7 +986,7 @@ export extern descriptions [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -1007,6 +1007,10 @@ export extern descriptions [
     --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
     --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+
+    # --------
+
+    ...rest: string@nu_descriptions # works with int though🙃
 ]
 
 # show data files in use
@@ -1018,8 +1022,8 @@ export extern files [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -1027,7 +1031,7 @@ export extern files [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -1059,8 +1063,8 @@ export extern notes [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -1068,7 +1072,7 @@ export extern notes [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -1100,8 +1104,8 @@ export extern payees [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -1109,7 +1113,7 @@ export extern payees [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -1146,8 +1150,8 @@ export extern prices [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -1155,7 +1159,7 @@ export extern prices [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -1191,8 +1195,8 @@ export extern stats [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -1200,7 +1204,7 @@ export extern stats [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -1236,8 +1240,8 @@ export extern tags [
     --pivot=TAGNAME                                                     # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@date                                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@date                                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
     --daily(-D)                                                         # multiperiod/multicolumn report by day
     --weekly(-W)                                                        # multiperiod/multicolumn report by week
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
@@ -1245,7 +1249,7 @@ export extern tags [
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
     --period(-p)=PERIODEXP                                              # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@date                                           # override today's date (affects relative smart dates, for tests/examples)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
     --pending(-P)                                                       # include only pending postings/txns
     --cleared(-C)                                                       # include only cleared postings/txns
@@ -1271,6 +1275,8 @@ export extern tags [
 
     --values                                                            # list tag values instead of tag names
     --parsed                                                            # show tags/values in the order they were parsed, including duplicates
+
+    ...query: string@nu_tags
 ]
 
 
@@ -1323,7 +1329,80 @@ export alias is = incomestatement
 export alias bal = balance
 export alias reg = hledger register
 
-# completions
+#  ######   #######  ##     ## ########  ##       ######## ######## ####  #######  ##    ##  ######
+# ##    ## ##     ## ###   ### ##     ## ##       ##          ##     ##  ##     ## ###   ## ##    ##
+# ##       ##     ## #### #### ##     ## ##       ##          ##     ##  ##     ## ####  ## ##
+# ##       ##     ## ## ### ## ########  ##       ######      ##     ##  ##     ## ## ## ##  ######
+# ##       ##     ## ##     ## ##        ##       ##          ##     ##  ##     ## ##  ####       ##
+# ##    ## ##     ## ##     ## ##        ##       ##          ##     ##  ##     ## ##   ### ##    ##
+#  ######   #######  ##     ## ##        ######## ########    ##    ####  #######  ##    ##  ######
+
+def "nu completion date" [ctx:string] {
+    let token = $ctx | split row ' ' | last
+    let char = $ctx | split chars | last
+    let now = date now | date to-record
+    let date = $token | split row '-'
+
+    if ($date | length ) == 1 {
+        seq -100 100  | each {|e| if $e != 0 { $"($now.year - $e)-"} } | prepend $"($now.year)-"
+    } else if ($date | length) == 2 {
+        let year = $date.0 | into int
+        seq 1 12 | each {|e| if $e < 10 { $"($year)-0($e)-"} else { $"($year)-($e)-"} }
+    } else if ($date | length) == 3 {
+        let month = $date.1
+        let year = $date.0
+        match ($month | into int) {
+            1 | 3 | 5 | 7 | 8 | 10 | 12 => (seq 1 31)
+            4 | 6 | 9 | 11  => (seq 1 30)
+            2 => (if ($year | into int) mod 4 == 0 { (seq 1 29) } else { (seq 1 28) })
+        }  | each {|e| if $e < 10 { $"($year)-($month)-0($e) "} else { $"($year)-($month)-($e) "} }
+    }
+}
+
+def "nu completion description" [ctx:string] {
+    let token = $ctx | split words | last
+    nu_descriptions | each {|e| if ($e | str contains ' ') { $'"($e)" '}}
+}
+
+def "nu completion account" [ctx:string] {
+    let token = $ctx | split words | last
+    nu_accounts | each {|e| if ($e | str contains ' ') { $e } else { $e } } #todo: more effort for custom parse handling of colons and spaces tings
+    # if ($token | str contains ':') {
+    #     nu_accounts | where {|e| $e | str starts-with $token} | each {|e| $e | str substring ($token | str length).. | split row ':' | first | prepend $token | str join } | uniq #| each {|e| if ($e | str contains ' ') { $"'($e)'" } else { $e } }
+    # } else {
+    #     nu_accounts | each {|e| ($e | split row ':' | first) + ':'} | uniq
+    # }
+}
+
+def "nu completion amount" [ctx:string] {
+    let token = $ctx | split row ' ' | last
+    let qty = $token | parse --regex '(?<qty>^\d+$)' | get qty
+    if ($qty | is-not-empty) {
+        nu_commodities | each {|e| $"($qty|first)($e)"}
+    } else {
+        nu_commodities
+    }
+}
+
+def "nu completion transaction" [ctx: string] {
+    let ctx = $ctx | trim
+    let token = $ctx | split row ' ' | last
+    let char = $token | split chars | last
+
+    if $char == ':' {
+        nu_accounts | where ($it | str starts-with $token) | each {|e|
+            $e | split row ':' | skip while {|acct| $acct != $token } | skip 1 | first | prepend $token | str join ":"
+        }
+    }
+    else if $char == '@' {
+
+    }
+    else {
+        nu_accounts | where ($it | str starts-with $token) | each {|e|
+            $e | split row ':' | first
+        } | append nu_commodities
+    }
+}
 
 def hl_demo_tutorials [] {
     [
@@ -1426,18 +1505,7 @@ def dedbug_levels [] {
     ]
 }
 
-def amount [qty?:int] {
-    commodities | each {|c|
-        if qty == null {
-            $c
-        } else if ($c | parse -r [A-Z]+) == $c {
-            qty + $c
-        }
-        else {
-            $c + " " + $qty
-        }
-    }
-}
+
 
 # not accurate
 def help_topics [] {
@@ -1449,20 +1517,35 @@ def help_topics [] {
 # hledger functions
 
 def nu_descriptions [] {
-    hledger descriptions | lines
+    ^hledger descriptions | lines
 }
 
 def nu_accounts [] {
-    hledger accounts | lines
+    ^hledger accounts | lines
 }
 
-def nu_commodities [] {
-    hledger commodities | lines
+def nu_commodities []: nothing -> list<string> {
+    ^hledger commodities | lines
+}
+
+def nu_tags []: nothing -> list<string> {
+    ^hledger tags | lines
 }
 
 # helper functions
 
-def "parse context" [ctx?: string] {
+def "parse context" [] {
     # context strings starts at cursor position
     # need to parse but args could be quote enclosed; split words delimtis '.' and ' '
+}
+
+def "remove enclosing quotes" []: string -> string {
+    let $s = $in
+    if ($s | str starts-with '"') or ($s | str starts-with "'") {
+        $s | str substring 1
+    } else if ($s | str ends-with '"') or ($s | str ends-with "'") {
+        $s | str substring 0..-1
+    } else {
+        $s
+    }
 }
