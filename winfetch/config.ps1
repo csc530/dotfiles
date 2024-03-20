@@ -1,7 +1,7 @@
 # ===== WINFETCH CONFIGURATION =====
 
-# $image = "~/winfetch.png"
-# $noimage = $true
+# $image = "D:\\Pictures\\Wallpapers\\Backies\\backiee-43128.jpg"
+# $noimage = $false
 
 # Display image using ASCII characters
 # $ascii = $true
@@ -10,7 +10,7 @@
 # $logo = "Windows 10"
 
 # Specify width for image/logo
-# $imgwidth = 24
+# $imgwidth = 128
 
 # Specify minimum alpha value for image pixels to be visible
 # $alphathreshold = 50
@@ -71,40 +71,49 @@
 # 'bar' is for bar only.
 # 'textbar' is for text + bar.
 # 'bartext' is for bar + text.
-# $cpustyle = 'bar'
+$cpustyle = 'bar'
 # $memorystyle = 'textbar'
-# $diskstyle = 'bartext'
-# $batterystyle = 'bartext'
+$diskstyle = 'bartext'
+$batterystyle = 'bartext'
 
 
 # Remove the '#' from any of the lines in
 # the following to **enable** their output.
 
 @(
-    "title"
-    "dashes"
-    "os"
-    "computer"
-    "kernel"
-    "motherboard"
-    # "custom_time"  # use custom info line
-    "uptime"
-    # "ps_pkgs"  # takes some time
-    "pkgs"
-    "pwsh"
-    "resolution"
-    "terminal"
-    # "theme"
-    "cpu"
-    "gpu"
-    # "cpu_usage"
-    "memory"
-    "disk"
-    # "battery"
-    # "locale"
-    # "weather"
-    # "local_ip"
-    # "public_ip"
-    "blank"
-    "colorbar"
+	"title"
+	"dashes"
+
+	"os"
+	"computer"
+	"kernel"
+	"motherboard"
+	"pwsh"
+	"terminal"
+	"blank"
+
+	# "custom_time"  # use custom info line
+	"uptime"
+	# "ps_pkgs"  # takes some time
+	"pkgs"
+	"resolution"
+	"locale"
+	"theme"
+
+	"blank"
+
+	"battery"
+	"memory"
+	"gpu"
+	"cpu"
+	"cpu_usage"
+	"disk"
+
+	"blank"
+
+	"weather"
+	"local_ip"
+	"public_ip"
+	"blank"
+	"colorbar"
 )

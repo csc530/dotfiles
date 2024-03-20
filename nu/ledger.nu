@@ -1,5 +1,7 @@
 const url = "https://financialmodelingprep.com/api/v3/"
-const apiKey = "3149e8b779d6c09bfcee5ca2a1ca410c"
+def  apiKey  [] {
+    op item get duu6tzwif47tgodkylarheqtpi --vault dev-opps  --fields credential
+}
 
 def getCommodities [ledgerFile?: path] {
     if (which ledger | is-empty) {
