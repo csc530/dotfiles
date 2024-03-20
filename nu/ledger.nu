@@ -96,11 +96,11 @@ export def "fmp quote" [
 ]: nothing -> table {
     let symbol = $ticker | str upcase
     if $real_time {
-        http get --allow-errors ($url + "real-time-price/" + $symbol + "?apikey=" + $apiKey)
+        http get --allow-errors ($url + "real-time-price/" + $symbol + "?apikey=" + apiKey)
     } else if (not $simple) {
-        http get --allow-errors ($url + "quote/" + $symbol + "?apikey=" + $apiKey)
+        http get --allow-errors ($url + "quote/" + $symbol + "?apikey=" + apiKey)
     } else {
-        http get --allow-errors ($url + "quote-short/" + $symbol + "?apikey=" + $apiKey)
+        http get --allow-errors ($url + "quote-short/" + $symbol + "?apikey=" + apiKey)
     }
 }
 
@@ -112,8 +112,8 @@ export def "fmp forex" [
     let from = $from | str upcase
     let to = $to | str upcase
     if (not $simple) {
-        http get --allow-errors ($url + "quote/" + $from + $to + "?apikey=" + $apiKey)
+        http get --allow-errors ($url + "quote/" + $from + $to + "?apikey=" + apiKey)
     } else {
-        http get --allow-errors ($url + "historical-price-full/" + $from + $to + "?apikey=" + $apiKey)
+        http get --allow-errors ($url + "historical-price-full/" + $from + $to + "?apikey=" + apiKey)
     }
 }
