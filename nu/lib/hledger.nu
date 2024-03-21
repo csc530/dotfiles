@@ -1339,10 +1339,11 @@ export alias reg = hledger register
 
 def "nu completion period" [ctx:string] {
     # example: [interval] start [end]
-    let token = $ctx | split words | last | remove enclosing quotes
+    let token = $ctx | split words | last
     let parts = $token | split row ' '
     if $parts.0 == 'every' {
         if ($parts | length) == 1 {
+            let other = MONTHS | append (seq 1 12 | each {|i| $'($i)/'}) | each {|e| $'"($token) ($e)"'}
             seq 1 31 | each {|e|
                 match $e {
                     1 | 21 | 31 => 'st "'
@@ -1350,12 +1351,12 @@ def "nu completion period" [ctx:string] {
                     3 | 23 => 'rd "'
                     _ => 'th "'
                 } | prepend $'"($token) ($e)' | str join #todo: breaks because of the number which is not a word and thus can't keep counting :(
-            }
+            } | prepend $other
         } else if ($parts.1 | parse --regex '(\d+\w*)' | is-not-empty) {
             [day] | appen WEEKDAYS | each {|e| $'"($token) ($e)"'}
         }
     } else {
-        nu_intervals | append '"every "' | each {|e| $'"($e)"'}
+        ['from '] | append (nu_intervals) | append 'every ' | each {|e| $'"($e)"'}
     }
 
 }
@@ -1571,6 +1572,8 @@ def nu_intervals [] nothing -> list<string> {
         'every quarter'
         'every year'
         (WEEKDAYS | each {|e| 'every ' + $e})
+        weekday
+        weekendday
     ] | flatten
 }
 
@@ -1578,11 +1581,17 @@ def WEEKDAYS [] {
     [monday tuesday wednesday thursday friday saturday sunday]
 }
 
+def MONTHS [] {
+    [january february march april may june july august september october november december]
+}
+
 # helper functions
 
-def "parse context" [] {
+def "parse context" [ctx:string] {
     # context strings starts at cursor position
     # need to parse but args could be quote enclosed; split words delimtis '.' and ' '
+    let parts = $ctx | parse --regex "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+)"  | each {|e| $e | upsert content  {|c| if $c.opening_quote == '' {$c.content} else { $c.content | str replace -r --all "\\\\(.)" "$1"} }} #= (?<opening_quote>['"`]?)(?<content>.*?)(?<closing_quote>\k<opening_quote>)(?<separator>\s+)
+    $parts
 }
 
 def "remove enclosing quotes" []: string -> string {
