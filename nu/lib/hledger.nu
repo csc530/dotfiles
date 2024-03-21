@@ -1588,10 +1588,29 @@ def MONTHS [] {
 # helper functions
 
 def "parse context" [ctx:string] {
+    print $ctx
     # context strings starts at cursor position
     # need to parse but args could be quote enclosed; split words delimtis '.' and ' '
-    let parts = $ctx | parse --regex "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+)"  | each {|e| $e | upsert content  {|c| if $c.opening_quote == '' {$c.content} else { $c.content | str replace -r --all "\\\\(.)" "$1"} }} #= (?<opening_quote>['"`]?)(?<content>.*?)(?<closing_quote>\k<opening_quote>)(?<separator>\s+)
-    $parts
+    mut parts = ($ctx | parse --regex "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+?|=(?=['\"`]))"
+    # | each {|e| $e | upsert content  {|c| if $c.opening_quote == '' {$c.content} else { $c.content | str replace -r --all "\\\\(.)" "$1"} }}
+    | get content) #= (?<opening_quote>['"`]?)(?<content>.*?)(?<closing_quote>\k<opening_quote>)(?<separator>\s+)
+    print $parts
+    mut cmd = {cmd: $parts.0}
+    mut args = []
+    while ($parts | length) > 0 {
+        let part = $parts.0
+        let isOption = ($part | str starts-with '-')
+        if $isOption {
+            # no need to check for whitespace (\s) in the regex, because content is non-greedy AKA not parsing of option name from raw command string like above
+            let optName = $part | parse --regex "(?:--?)(?<option_name>[\\w-]+)" | get option_name | first
+            let optValue = $parts | get 1
+            $cmd = ($cmd | upsert $optName $optValue)
+        } else {
+            $args ++= $part
+        }
+        $parts = ($parts | skip (1 + if $isOption {1} else {0}))
+    }
+    $cmd | upsert args $args
 }
 
 def "remove enclosing quotes" []: string -> string {
