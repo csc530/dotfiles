@@ -1362,10 +1362,8 @@ def "nu completion period" [ctx:string] {
 }
 
 def "nu completion date" [ctx:string] {
-    let token = $ctx | split row ' ' | last
-    let char = $ctx | split chars | last
-    let now = date now | date to-record
-    let date = $token | split row '-'
+    let date = $ctx | nu completion parse-context | get args | last | split row -
+    let now = today
 
     if ($date | length ) == 1 {
         seq -100 100  | each {|e| if $e != 0 { $"($now.year - $e)-"} } | prepend $"($now.year)-"
@@ -1380,7 +1378,7 @@ def "nu completion date" [ctx:string] {
             4 | 6 | 9 | 11  => (seq 1 30)
             2 => (if ($year | into int) mod 4 == 0 { (seq 1 29) } else { (seq 1 28) })
         }  | each {|e| if $e < 10 { $"($year)-($month)-0($e) "} else { $"($year)-($month)-($e) "} }
-    }
+    } | nu completion output $ctx
 }
 
 def "nu completion description" [ctx:string] {
@@ -1586,17 +1584,21 @@ def MONTHS [] {
 }
 
 # helper functions
+const parse_args_rg = "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+)"
+const parse_option_name_rg = "(?:--?)(?<option_name>[\\w-]+)"
 
-def "parse context" [ctx:string] {
-    print $ctx
+def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
+    let ctx = $in + ' ' # add space to end to ensure last part is parsed🙄
     # context strings starts at cursor position
     # need to parse but args could be quote enclosed; split words delimtis '.' and ' '
-    mut parts = ($ctx | parse --regex "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+?|=(?=['\"`]))"
+    mut parts = ($ctx | parse --regex $parse_args_rg
     # | each {|e| $e | upsert content  {|c| if $c.opening_quote == '' {$c.content} else { $c.content | str replace -r --all "\\\\(.)" "$1"} }}
     | get content) #= (?<opening_quote>['"`]?)(?<content>.*?)(?<closing_quote>\k<opening_quote>)(?<separator>\s+)
-    print $parts
-    mut cmd = {cmd: $parts.0}
+    # print $parts
+    mut cmd = {cmd: $parts.0, args: []}
     mut args = []
+
+    $parts = ($parts | skip 1)
     while ($parts | length) > 0 {
         let part = $parts.0
         let isOption = ($part | str starts-with '-')
@@ -1613,6 +1615,23 @@ def "parse context" [ctx:string] {
     $cmd | upsert args $args
 }
 
+
+def "nu completion output" [ctx: string] list<string> -> list<string>, string -> list<string> {
+    let output = $in
+    let quote = $ctx + ` `
+    | parse --regex $parse_args_rg
+    | last
+    if $quote.opening_quote != '' {
+        let quote = $quote | get opening_quote
+        $output | each {|e| $"($quote)($e)($quote)"}
+    } else if ($quote.content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
+        let quote = $quote.content | str substring 0..1
+        $output | each {|e| $"($quote)($e)($quote)"}
+    } else {
+        $output
+    }
+}
+
 def "remove enclosing quotes" []: string -> string {
     mut s = $in
     if ($s | str starts-with '"') or ($s | str starts-with "'") {
@@ -1622,4 +1641,8 @@ def "remove enclosing quotes" []: string -> string {
         $s = ($s | str substring 0..-1)
     }
     $s
+}
+
+def today [] {
+    date now | date to-record
 }
