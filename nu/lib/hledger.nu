@@ -1377,8 +1377,8 @@ def "nu completion date" [ctx:string] {
             1 | 3 | 5 | 7 | 8 | 10 | 12 => (seq 1 31)
             4 | 6 | 9 | 11  => (seq 1 30)
             2 => (if ($year | into int) mod 4 == 0 { (seq 1 29) } else { (seq 1 28) })
-        }  | each {|e| if $e < 10 { $"($year)-($month)-0($e) "} else { $"($year)-($month)-($e) "} }
-    } | nu completion output $ctx
+        }  | each {|e| if $e < 10 { $"($year)-($month)-0($e)"} else { $"($year)-($month)-($e)"} }
+    } | nu completion output $ctx --complete=(($date | length) == 3)
 }
 
 def "nu completion description" [ctx:string] {
@@ -1588,47 +1588,64 @@ const parse_args_rg = "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>
 const parse_option_name_rg = "(?:--?)(?<option_name>[\\w-]+)"
 
 def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
-    let ctx = $in + ' ' # add space to end to ensure last part is parsed🙄
     # context strings starts at cursor position
-    # need to parse but args could be quote enclosed; split words delimtis '.' and ' '
-    mut parts = ($ctx | parse --regex $parse_args_rg
+    let ctx = $in + ' ' # add space to end to ensure last part is parsed🙄
+    let parse = $ctx | parse --regex $parse_args_rg
+    # ? below would substitue forward slash quote with just the quote not sure if it's necessary but I'll leave it out
     # | each {|e| $e | upsert content  {|c| if $c.opening_quote == '' {$c.content} else { $c.content | str replace -r --all "\\\\(.)" "$1"} }}
-    | get content) #= (?<opening_quote>['"`]?)(?<content>.*?)(?<closing_quote>\k<opening_quote>)(?<separator>\s+)
-    # print $parts
-    mut cmd = {cmd: $parts.0, args: []}
+    mut content = $parse | get content
+
+    # remove unmatched quotes from beginning of the last arg
+    if ($parse | last | get opening_quote) == '' {
+        let $parts  = ($parse | last | get content | parse --regex "(?<quote>['\"`]?)(?<content>.*)" | first)
+        $content = ($parse | first (($parse | length) - 1) | get content | append $parts.content)
+    }
+
+    mut cmd = {cmd: $content.0, args: []}
     mut args = []
 
-    $parts = ($parts | skip 1)
-    while ($parts | length) > 0 {
-        let part = $parts.0
+    $content = ($content | skip 1)
+
+    # parse options and arguments
+    while ($content | length) > 0 {
+        let part = $content.0
+        # check if part is an option
         let isOption = ($part | str starts-with '-')
+        # if it is an option add the next value as the value of option name's key
         if $isOption {
             # no need to check for whitespace (\s) in the regex, because content is non-greedy AKA not parsing of option name from raw command string like above
             let optName = $part | parse --regex "(?:--?)(?<option_name>[\\w-]+)" | get option_name | first
-            let optValue = $parts | get 1
+            let optValue = $content | get 1
             $cmd = ($cmd | upsert $optName $optValue)
-        } else {
+        } else { # not an option: add it to the args list (...rest)
             $args ++= $part
         }
-        $parts = ($parts | skip (1 + if $isOption {1} else {0}))
+        $content = ($content | skip (1 + if $isOption {1} else {0}))
     }
     $cmd | upsert args $args
 }
 
 
-def "nu completion output" [ctx: string] list<string> -> list<string>, string -> list<string> {
+def "nu completion output" [
+        ctx: string,    # entered command [sub command, args, + options]
+        --complete (-c) # if the copletion should have a closing quote and terminating space
+    ] list<string> -> list<string>, string -> list<string> {
     let output = $in
-    let quote = $ctx + ` `
+    let parse = $ctx + ` `
     | parse --regex $parse_args_rg
     | last
-    if $quote.opening_quote != '' {
-        let quote = $quote | get opening_quote
-        $output | each {|e| $"($quote)($e)($quote)"}
-    } else if ($quote.content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
-        let quote = $quote.content | str substring 0..1
-        $output | each {|e| $"($quote)($e)($quote)"}
+    let opening_quote = $parse | get opening_quote
+    let content = $parse | get content
+
+    # checks within the content (unmatched quote) or if there is a matched quote (unlinkely "some val"-> [why would they tab complete herre?])
+    if $opening_quote != '' {
+        let quote = $opening_quote
+        $output | each {|e| if $complete { $"($quote)($e)($quote) " } else { $"($quote)($e)" } }
+    } else if ($content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
+        let quote = $content | str substring 0..1
+        $output | each {|e| if $complete { $"($quote)($e)($quote) " } else { $"($quote)($e)" }}
     } else {
-        $output
+        $output | each {|e| if $complete { $"($e) " } else { $e }}
     }
 }
 
