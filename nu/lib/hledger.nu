@@ -29,27 +29,27 @@ export extern help [
 # add transactions using terminal prompts
 export extern add [
     # General flags:
-    --file(-f)=FILE                         # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
-    --rules-file=RFILE                      # CSV conversion rules file (default: FILE.rules)
-    --alias=OLD=NEW                         # rename accounts named OLD to NEW
-    --pivot=TAGNAME                         # use some other field/tag for account names
-    --ignore-assertions(-I)                 # ignore any balance assertions
-    --strict(-s)                            # do extra error checking (check that all posted accounts are declared)
-    --man                                   # show user manual with man
-    --info                                  # show info manual with info
-    --debug=[N]: int@dedbug_levels          # show debug output (levels 1-9, default: 1)
-    --version                               # show version information
-    --help(-h)                              # Display the help message for this command
+    --file(-f)=FILE                                                                # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
+    --rules-file=RFILE                                                             # CSV conversion rules file (default: FILE.rules)
+    --alias=OLD=NEW                                                                # rename accounts named OLD to NEW
+    --pivot=TAGNAME                                                                # use some other field/tag for account names
+    --ignore-assertions(-I)                                                        # ignore any balance assertions
+    --strict(-s)                                                                   # do extra error checking (check that all posted accounts are declared)
+    --man                                                                          # show user manual with man
+    --info                                                                         # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                         # show debug output (levels 1-9, default: 1)
+    --version                                                                      # show version information
+    --help(-h)                                                                     # Display the help message for this command
 
     # --------
 
-    date?: string@"nu completion date"                                                          # The date of the transaction; an optional (CODE) may follow transaction dates.
-    description?: string@"nu completion description"                                        # The description of the transaction; an optional ';' COMMENT may follow descriptions or amounts.
-    account1?: string@"nu completion account"                                               # The account to debit
-    amount1?: string@"nu completion amount"                                                     # The amount to debit
-    account2?: string@"nu completion account"                                               # The account to credit
-    amount2?: string@"nu completion amount"                                                     # The amount to credit
-    ...transactions: string@"nu completion transaction"                         # a list of transactions following the form DATE DESCRIPTION ACCOUNT1 AMOUNT1 ACCOUNT2 AMOUNT2 ACCOUNT3 (until balance)
+    date?: string@"nu completion date"                                             # The date of the transaction; an optional (CODE) may follow transaction dates.
+    description?: string@"nu completion description"                               # The description of the transaction; an optional ';' COMMENT may follow descriptions or amounts.
+    account1?: string@"nu completion account"                                      # The account to debit
+    amount1?: string@"nu completion amount"                                        # The amount to debit
+    account2?: string@"nu completion account"                                      # The account to credit
+    amount2?: string@"nu completion amount"                                        # The amount to credit
+    ...transactions: string@"nu completion transaction"                            # a list of transactions following the form DATE DESCRIPTION ACCOUNT1 AMOUNT1 ACCOUNT2 AMOUNT2 ACCOUNT3 (until balance)
 ]
 
 # Read new transactions added to each FILE provided as arguments since last run, and add them to the journal.
@@ -80,7 +80,7 @@ export extern import [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -88,13 +88,13 @@ export extern import [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --colour=WHEN: string@when_colour                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --colour=WHEN: string@"nu completion colour"                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command help)
     --man                                                               # show user manual with man
     --info                                                              # show info manual with info
-    --debug=[N]: int@dedbug_levels                                      # show debug output (levels 1-9, default: 1)
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version                                                           # show version information
 ]
 
@@ -137,7 +137,7 @@ export extern close [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -145,13 +145,13 @@ export extern close [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --colour=WHEN: string@when_colour                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --colour=WHEN: string@"nu completion colour"                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command help)
     --man                                                               # show user manual with man
     --info                                                              # show info manual with info
-    --debug=[N]: int@dedbug_levels                                      # show debug output (levels 1-9, default: 1)
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version                                                           # show version information
 
     # --------
@@ -198,7 +198,7 @@ export extern rewrite [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -206,13 +206,13 @@ export extern rewrite [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --colour=WHEN: string@when_colour                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --colour=WHEN: string@"nu completion colour"                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command help)
     --man                                                               # show user manual with man
     --info                                                              # show info manual with info
-    --debug=[N]: int@dedbug_levels                                      # show debug output (levels 1-9, default: 1)
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version                                                           # show version information
 
     # --------
@@ -259,7 +259,7 @@ export extern aregister [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -267,13 +267,13 @@ export extern aregister [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --colour=WHEN: string@when_colour                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --colour=WHEN: string@"nu completion colour"                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command help)
     --man                                                               # show user manual with man
     --info                                                              # show info manual with info
-    --debug=[N]: int@dedbug_levels                                      # show debug output (levels 1-9, default: 1)
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version                                                           # show version information
 
     # --------
@@ -314,7 +314,7 @@ export extern balancesheet [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -322,9 +322,13 @@ export extern balancesheet [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -380,7 +384,7 @@ export extern balancesheetequity [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -388,9 +392,13 @@ export extern balancesheetequity [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -446,7 +454,7 @@ export extern cashflow [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -454,9 +462,13 @@ export extern cashflow [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -512,7 +524,7 @@ export extern incomestatement [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -520,9 +532,13 @@ export extern incomestatement [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -588,7 +604,7 @@ export extern activity [
         --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
         --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
         --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-        --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+        --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
         --infer-equity                                                      # conversion equity postings from costs
         --infer-costs                                                       # costs from conversion equity postings
         --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -596,9 +612,13 @@ export extern activity [
         --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
         --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
         --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-        --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-        --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+        --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+        --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
         --help(-h)                                                          # show general help (or after CMD, command
+        --man                                                               # show user manual with man
+        --info                                                              # show info manual with info
+        --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+        --version                                                           # show version information
 ]
 
 # show balance changes, end balances, budgets, gains..
@@ -629,7 +649,7 @@ export extern balance [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -637,9 +657,13 @@ export extern balance [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -699,7 +723,7 @@ export extern print [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -707,9 +731,13 @@ export extern print [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -750,7 +778,7 @@ export extern register [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -758,9 +786,13 @@ export extern register [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -804,7 +836,7 @@ export extern roi [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -812,9 +844,13 @@ export extern roi [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -862,7 +898,7 @@ export extern accounts [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -870,9 +906,13 @@ export extern accounts [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -917,7 +957,7 @@ export extern codes [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -925,9 +965,13 @@ export extern codes [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 ]
 
 # show commodity/currency symbols
@@ -958,7 +1002,7 @@ export extern commodities [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -966,9 +1010,13 @@ export extern commodities [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 ]
 
 # show full transaction descriptions (payee and note)
@@ -999,7 +1047,7 @@ export extern descriptions [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -1007,9 +1055,13 @@ export extern descriptions [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -1044,7 +1096,7 @@ export extern files [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -1052,9 +1104,13 @@ export extern files [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 ]
 
 # show note part of transaction descriptions
@@ -1085,7 +1141,7 @@ export extern notes [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -1093,9 +1149,13 @@ export extern notes [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 ]
 
 # show payee names
@@ -1126,7 +1186,7 @@ export extern payees [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -1134,9 +1194,13 @@ export extern payees [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -1172,7 +1236,7 @@ export extern prices [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -1180,9 +1244,13 @@ export extern prices [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -1217,7 +1285,7 @@ export extern stats [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -1225,9 +1293,13 @@ export extern stats [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -1262,7 +1334,7 @@ export extern tags [
     --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
     --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
     --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@value_types                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
     --infer-equity                                                      # conversion equity postings from costs
     --infer-costs                                                       # costs from conversion equity postings
     --infer-market-prices                                               # costs as additional market prices, as if they were P directives
@@ -1270,9 +1342,13 @@ export extern tags [
     --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
     --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
     --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@when_colour                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@yes_no                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
     --help(-h)                                                          # show general help (or after CMD, command
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
 
     # --------
 
@@ -1296,7 +1372,7 @@ export extern demo [
     --help(-h)                                                          # show general help (or after CMD, command help)
     --man                                                               # show user manual with man
     --info                                                              # show info manual with info
-    --debug=[N]: int@dedbug_levels                                      # show debug output (levels 1-9, default: 1)
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version                                                           # show version information
 
     # --------
@@ -1311,7 +1387,7 @@ export extern test [
     --help(-h)                                                          # show general help (or after CMD, command help)
     --man                                                               # show user manual with man
     --info                                                              # show info manual with info
-    --debug=[N]: int@dedbug_levels                                      # show debug output (levels 1-9, default: 1)
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version
 ]
 
@@ -1511,11 +1587,11 @@ def account_query [] {
     "acct:assets"
 }
 
-def yes_no [] {
+def "nu completion yesno" [] {
     [yes,no]
 }
 
-def when_colour [] {
+def "nu completion colour" [] {
     [
         {value: 'auto', description: '(default): whenever stdout seems to be a color-supporting terminal.'}
         {value: 'always', description: 'same as yes'}
@@ -1525,7 +1601,7 @@ def when_colour [] {
     ]
 }
 
-def value_types [ctx?: string] {
+def "nu completion valuation" [ctx?: string] {
     [
         {value: 'then', description: `convert to contemporaneous market value, in default valuation commodity or COMM (print & register commands only)`}
         {value: end, description: 'convert to period-end market value, in default valuation commodity or COMM' }
@@ -1533,7 +1609,7 @@ def value_types [ctx?: string] {
         {value: 'YYYY-MM-DD', description: 'convert to market value on the given date, in default valuation commodity or COMM'}
     ]
 }
-def dedbug_levels [] {
+def "nu completion debug" [] {
     [
         {value: 1, description: 'least output (default)'},
         2 3 4 5 6 7 8
