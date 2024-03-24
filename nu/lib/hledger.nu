@@ -1382,13 +1382,12 @@ def "nu completion date" [ctx:string] {
 }
 
 def "nu completion description" [ctx:string] {
-    let token = $ctx | split words | last
-    nu_descriptions | each {|e| if ($e | str contains ' ') { $'"($e)" '}}
+    nu_descriptions | nu completion output $ctx --complete
 }
 
 def "nu completion account" [ctx:string] {
-    let token = $ctx | split words | last
-    nu_accounts | each {|e| if ($e | str contains ' ') { $e } else { $e } } #todo: more effort for custom parse handling of colons and spaces tings
+    let token = $ctx | nu completion parse-context | get args | last
+    nu_accounts | nu completion output $ctx --complete
     # if ($token | str contains ':') {
     #     nu_accounts | where {|e| $e | str starts-with $token} | each {|e| $e | str substring ($token | str length).. | split row ':' | first | prepend $token | str join } | uniq #| each {|e| if ($e | str contains ' ') { $"'($e)'" } else { $e } }
     # } else {
@@ -1645,19 +1644,20 @@ def "nu completion output" [
         let quote = $content | str substring 0..1
         $output | each {|e| if $complete { $"($quote)($e)($quote) " } else { $"($quote)($e)" }}
     } else {
-        $output | each {|e| if $complete { $"($e) " } else { $e }}
+        let quote = '`'
+        let wrap = $output | any {|e| $e | str contains ' '}
+        $output | each {|e|
+            if $wrap {
+                if $complete {
+                    $"($quote)($e)($quote) "
+                } else {
+                    $"($quote)($e)"
+                }
+            } else {
+                $e
+            }
+        }
     }
-}
-
-def "remove enclosing quotes" []: string -> string {
-    mut s = $in
-    if ($s | str starts-with '"') or ($s | str starts-with "'") {
-        $s = ($s | str substring 1..)
-    }
-    if ($s | str ends-with '"') or ($s | str ends-with "'") {
-        $s = ($s | str substring 0..-1)
-    }
-    $s
 }
 
 def today [] {
