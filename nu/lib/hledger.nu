@@ -1,3 +1,6 @@
+const parse_args_rg = "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+)"
+const parse_option_name_rg = "(?:--?)(?<option_name>[\\w-]+)"
+
 # Fast, friendly, robust plain text accounting software
 export extern main [
     --help(-h) # Display the help message for this command
@@ -1387,12 +1390,24 @@ def "nu completion description" [ctx:string] {
 
 def "nu completion account" [ctx:string] {
     let token = $ctx | nu completion parse-context | get args | last
-    nu_accounts | nu completion output $ctx --complete
-    # if ($token | str contains ':') {
-    #     nu_accounts | where {|e| $e | str starts-with $token} | each {|e| $e | str substring ($token | str length).. | split row ':' | first | prepend $token | str join } | uniq #| each {|e| if ($e | str contains ' ') { $"'($e)'" } else { $e } }
-    # } else {
-    #     nu_accounts | each {|e| ($e | split row ':' | first) + ':'} | uniq
-    # }
+    let isWrapped = nu_accounts | any {|e| $e | str contains ' '}
+    let completions = if not ($token | str contains ':') {
+        nu_accounts | each {|e| $e | split row ':' | first | append : | str join }
+    } else {
+        nu_accounts | where {|e| $e | str starts-with $token} | each {|e|
+            let position = $token | split row : | length
+            $e | each {|acct|
+                let acct = $acct | split row :
+                if ($acct | length) > $position {
+                    $acct | take $position | append '' | str join :
+                } else {
+                    let quote = $ctx + ` ` | parse --regex $parse_args_rg | last | get content | str substring 0..1 #todo: make a helper "close completion"
+                    ($acct | take $position | str join :) + $quote
+                }
+            }
+        }
+    }
+    $completions | uniq | nu completion output $ctx #--complete=(($completions | length) == 1)
 }
 
 def "nu completion amount" [ctx:string] {
@@ -1583,8 +1598,7 @@ def MONTHS [] {
 }
 
 # helper functions
-const parse_args_rg = "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+)"
-const parse_option_name_rg = "(?:--?)(?<option_name>[\\w-]+)"
+
 
 def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
     # context strings starts at cursor position
