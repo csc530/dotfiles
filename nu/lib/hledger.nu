@@ -68,7 +68,7 @@ export extern import [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"               # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"               # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -125,7 +125,7 @@ export extern close [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -186,7 +186,7 @@ export extern rewrite [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -247,7 +247,7 @@ export extern aregister [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -280,7 +280,7 @@ export extern aregister [
 
     --txn-dates                                                         # filter strictly by transaction date, not posting date. Warning: this can show a wrong running balance.
     --no-elide                                                          # don't show only 2 commodities per amount
-    --width(-w)=N: int@width                                            # set output width (default: 80 or $COLUMNS). -wN,M sets description width as well.
+    --width(-w)=N: int@"nu completion width"                                            # set output width (default: 80 or $COLUMNS). -wN,M sets description width as well.
     --align-all                                                         # guarantee alignment across all lines (slower)
     --output-format(-O)=FMT: string@formats                             # select the output format. Supported formats: txt, html, csv, tsv, json.
     --output-file(-o)=FILE: string@output_file                          # write output to FILE. A file extension matching one of the above formats selects that format.
@@ -302,7 +302,7 @@ export extern balancesheet [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -372,7 +372,7 @@ export extern balancesheetequity [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -442,7 +442,7 @@ export extern cashflow [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -512,7 +512,7 @@ export extern incomestatement [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -576,7 +576,7 @@ export extern incomestatement [
 
 # more complex/versatile reporting commands
 
-# show a simple bar chart of posting counts per period
+# show a simple bar chart of posting counts per periodexp
 export extern activity [
         # General flags
         --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
@@ -592,7 +592,7 @@ export extern activity [
         --monthly(-M)                                                       # multiperiod/multicolumn report by month
         --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
         --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-        --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+        --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
         --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
         --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
         --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -637,7 +637,7 @@ export extern balance [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -711,7 +711,7 @@ export extern print [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -766,7 +766,7 @@ export extern register [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -802,7 +802,7 @@ export extern register [
     --match(-m)=DESC: string@nu_descriptions                               # fuzzy search for one recent posting with description closest to DESC
     --related(-r)                                                       # show postings' siblings instead
     --invert                                                            # display all amounts with reversed sign
-    --width(-w)=N: int@width                                            # set output width (default: 80 or $COLUMNS). -wN,M sets description width as well.
+    --width(-w)=N: int@"nu completion width"                                            # set output width (default: 80 or $COLUMNS). -wN,M sets description width as well.
     --align-all                                                         # guarantee alignment across all lines (slower)
     --output-format(-O)=FMT: string@formats                             # select the output format. Supported formats: txt, csv, tsv, json.
     --output-file(-o)=FILE: string                                      # write output to FILE. A file extension matching one of the above formats selects that format.
@@ -824,7 +824,7 @@ export extern roi [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -886,7 +886,7 @@ export extern accounts [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -945,7 +945,7 @@ export extern codes [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -990,7 +990,7 @@ export extern commodities [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -1035,7 +1035,7 @@ export extern descriptions [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -1084,7 +1084,7 @@ export extern files [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -1129,7 +1129,7 @@ export extern notes [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -1174,7 +1174,7 @@ export extern payees [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -1224,7 +1224,7 @@ export extern prices [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -1273,7 +1273,7 @@ export extern stats [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -1322,7 +1322,7 @@ export extern tags [
     --monthly(-M)                                                       # multiperiod/multicolumn report by month
     --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
     --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion period"                # set start date, end date, and/or report interval    all at once
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
     --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
     --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
     --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
@@ -1416,28 +1416,58 @@ export alias reg = hledger register
 # ##    ## ##     ## ##     ## ##        ##       ##          ##     ##  ##     ## ##   ### ##    ##
 #  ######   #######  ##     ## ##        ######## ########    ##    ####  #######  ##    ##  ######
 
-def "nu completion period" [ctx:string] {
+def "nu completion width" [ctx?: string] {
+    # allow comma to set width of description
+    seq 0 (term size | get columns) | reverse
+}
+
+def "nu completion periodexp" [ctx:string] {
     # example: [interval] start [end]
-    let token = $ctx | split words | last
-    let parts = $token | split row ' '
+    let args = $ctx | nu completion parse-context
+    let parts = $args | get ($args | columns | last) | split row ' '
+    let length = ($parts | length)
     if $parts.0 == 'every' {
         if ($parts | length) == 1 {
-            let other = MONTHS | append (seq 1 12 | each {|i| $'($i)/'}) | each {|e| $'"($token) ($e)"'}
+            let other = MONTHS | append (seq 1 12 | each {|i| $'($i)/'}) | each {|e| $'every ($e)'}
             seq 1 31 | each {|e|
                 match $e {
-                    1 | 21 | 31 => 'st "'
-                    2 | 22 => 'nd "'
-                    3 | 23 => 'rd "'
-                    _ => 'th "'
-                } | prepend $'"($token) ($e)' | str join #todo: breaks because of the number which is not a word and thus can't keep counting :(
+                    1 | 21 | 31 => 'st'
+                    2 | 22 => 'nd'
+                    3 | 23 => 'rd'
+                    _ => 'th'
+                } | prepend $'every ($e)' | str join
             } | prepend $other
+        } else if ($parts.1 | str ends-with '/') {
+            let month = $parts.1 | str substring 0..-1 | into int
+            match $month {
+                2 => (seq 1 29)
+                4 | 6 | 9 | 11  => (seq 1 30)
+                _ => (seq 1 31)
+            } | each {|e| $'every ($month)/($e)'}
         } else if ($parts.1 | parse --regex '(\d+\w*)' | is-not-empty) {
-            [day] | appen WEEKDAYS | each {|e| $'"($token) ($e)"'}
+            [day] | appen WEEKDAYS | each {|e| $'every ($e)'}
         }
+    } else if $parts.0 == 'from' {
+        if $length < 2 {
+            nu completion date ''
+        } else {
+            nu completion date $parts.1
+        } | append (MONTHS) | append (smart_dates) | append (if $length < 2 { 'to' } else { $parts.2 })
     } else {
-        ['from '] | append (nu_intervals) | append 'every ' | each {|e| $'"($e)"'}
-    }
+        ['from ' 'to '] | append (report_intervals) | append (nu completion date year) | append (nu completion date quarter)
+    } | prepend $parts | nu completion output $ctx
 
+}
+
+def "nu completion date year" [] {
+    let now = today
+    seq -10 10 | each {|e| $now.year - $e}
+}
+
+def "nu completion date quarter" [] {
+    let quarters = seq 1 4 | each {|e| $"Q($e)"}
+    let now = today
+    seq -10 10 | each {|e| $quarters | each {|q| $"($now.year - $e)($q)" } } | append $quarters | flatten --all
 }
 
 def "nu completion date" [ctx:string] {
@@ -1561,10 +1591,7 @@ def output_file [ctx?: string] {
     }
 }
 
-def width [ctx?: string] {
-    # allow comma to set width of description
-    seq 1 100
-}
+
 
 def posting [] {
 
@@ -1633,7 +1660,7 @@ def nu_tags []: nothing -> list<string> {
     ^hledger tags | lines
 }
 
-def nu_intervals [] nothing -> list<string> {
+def report_intervals [] nothing -> list<string> {
     [
         daily
         weekly
@@ -1643,6 +1670,7 @@ def nu_intervals [] nothing -> list<string> {
         biweekly # every two weeks
         fortnightly
         bimonthly # every two months
+        'every '
         'every day'
         'every week'
         'every month'
@@ -1660,6 +1688,33 @@ def WEEKDAYS [] {
 
 def MONTHS [] {
     [january february march april may june july august september october november december]
+}
+
+def smart_dates [] {
+    [
+        today
+        yesterday
+        tomorrow
+        now
+
+        'last day'
+        'last week'
+        'last month'
+        'last quarter'
+        'last year'
+
+        'this day'
+        'this week'
+        'this month'
+        'this quarter'
+        'this year'
+
+        'next day'
+        'next week'
+        'next month'
+        'next quarter'
+        'next year'
+    ]
 }
 
 # helper functions
