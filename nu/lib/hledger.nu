@@ -1445,7 +1445,7 @@ def "nu completion date" [ctx:string] {
     let now = today
 
     if ($date | length ) == 1 {
-        seq -100 100  | each {|e| if $e != 0 { $"($now.year - $e)-"} } | prepend $"($now.year)-"
+        seq -10 10  | each {|e| if $e != 0 { $"($now.year - $e)-"} } | prepend $"($now.year)-"
     } else if ($date | length) == 2 {
         let year = $date.0 | into int
         seq 1 12 | each {|e| if $e < 10 { $"($year)-0($e)-"} else { $"($year)-($e)-"} }
@@ -1470,8 +1470,8 @@ def "nu completion account" [ctx:string] {
     let completions = if not ($token | str contains ':') {
         nu_accounts | each {|e| $e | split row ':' | first | append : | str join }
     } else {
+        let position = $token | split row : | length
         nu_accounts | where {|e| $e | str starts-with $token} | each {|e|
-            let position = $token | split row : | length
             $e | each {|acct|
                 let acct = $acct | split row :
                 if ($acct | length) > $position {
@@ -1483,37 +1483,22 @@ def "nu completion account" [ctx:string] {
             }
         }
     }
-    $completions | uniq | nu completion output $ctx #--complete=(($completions | length) == 1)
+    $completions | uniq | nu completion output $ctx #--complete=(($completions | length) == 1) todo: quote option quote regardless of context
 }
 
 def "nu completion amount" [ctx:string] {
     let token = $ctx | split row ' ' | last
-    let qty = $token | parse --regex '(?<qty>^\d+$)' | get qty
+    let qty = $token | parse --regex '(?<qty>\d+(?:[.,]?\d*)*)' | get qty
     if ($qty | is-not-empty) {
         nu_commodities | each {|e| $"($qty|first)($e)"}
     } else {
         nu_commodities
-    }
+    } | nu completion output $ctx --complete
 }
 
 def "nu completion transaction" [ctx: string] {
-    let ctx = $ctx | trim
-    let token = $ctx | split row ' ' | last
-    let char = $token | split chars | last
-
-    if $char == ':' {
-        nu_accounts | where ($it | str starts-with $token) | each {|e|
-            $e | split row ':' | skip while {|acct| $acct != $token } | skip 1 | first | prepend $token | str join ":"
-        }
-    }
-    else if $char == '@' {
-
-    }
-    else {
-        nu_accounts | where ($it | str starts-with $token) | each {|e|
-            $e | split row ':' | first
-        } | append nu_commodities
-    }
+    let token =  $ctx |  nu completion parse-context  | get args | last
+    nu completion date $ctx | append (nu completion account $ctx) | append (nu completion amount $ctx) | append (nu completion description $ctx)
 }
 
 def hl_demo_tutorials [] {
@@ -1675,7 +1660,7 @@ def MONTHS [] {
 
 # helper functions
 
-
+# parse command context
 def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
     # context strings starts at cursor position
     let ctx = $in + ' ' # add space to end to ensure last part is parsed🙄
@@ -1744,7 +1729,11 @@ def "nu completion output" [
                     $"($quote)($e)"
                 }
             } else {
-                $e
+                if $complete {
+                    $e + ' '
+                } else {
+                    $e
+                }
             }
         }
     }
