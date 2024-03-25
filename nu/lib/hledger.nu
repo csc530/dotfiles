@@ -32,7 +32,7 @@ export extern add [
     --file(-f)=FILE                                                                # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE                                                             # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                                # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                                # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                                        # ignore any balance assertions
     --strict(-s)                                                                   # do extra error checking (check that all posted accounts are declared)
     --man                                                                          # show user manual with man
@@ -58,7 +58,7 @@ export extern import [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -115,7 +115,7 @@ export extern close [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -176,7 +176,7 @@ export extern rewrite [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -237,7 +237,7 @@ export extern aregister [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -292,7 +292,7 @@ export extern balancesheet [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -362,7 +362,7 @@ export extern balancesheetequity [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -432,7 +432,7 @@ export extern cashflow [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -502,7 +502,7 @@ export extern incomestatement [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -582,7 +582,7 @@ export extern activity [
         --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
         --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
         --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-        --pivot=TAGNAME                                                     # use some other field/tag for account names
+        --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
         --ignore-assertions(-I)                                             # ignore any balance assertions
         --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
         --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -627,7 +627,7 @@ export extern balance [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -701,7 +701,7 @@ export extern print [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -756,7 +756,7 @@ export extern register [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -814,7 +814,7 @@ export extern roi [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -876,7 +876,7 @@ export extern accounts [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -935,7 +935,7 @@ export extern codes [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -980,7 +980,7 @@ export extern commodities [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -1025,7 +1025,7 @@ export extern descriptions [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -1074,7 +1074,7 @@ export extern files [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -1119,7 +1119,7 @@ export extern notes [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -1164,7 +1164,7 @@ export extern payees [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -1214,7 +1214,7 @@ export extern prices [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -1263,7 +1263,7 @@ export extern stats [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -1312,7 +1312,7 @@ export extern tags [
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
-    --pivot=TAGNAME                                                     # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
     --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
     --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
@@ -1499,6 +1499,10 @@ def "nu completion amount" [ctx:string] {
 def "nu completion transaction" [ctx: string] {
     let token =  $ctx |  nu completion parse-context  | get args | last
     nu completion date $ctx | append (nu completion account $ctx) | append (nu completion amount $ctx) | append (nu completion description $ctx)
+}
+
+def "nu completion pivot" [] {
+    nu_tags | append [acct, status, code, desc, payee, note]
 }
 
 def hl_demo_tutorials [] {
