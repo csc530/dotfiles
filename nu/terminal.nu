@@ -1,6 +1,6 @@
 def "random terminal scheme" [] {
     let terminal  = getTerminal
-    let isPreview = which $terminal.command | first | get path | path dirname | str contains -i preview
+    let isPreview = which $terminal.command | get path | path dirname | str contains -i preview
     let path = $'($env.LOCALAPPDATA)\Packages\Microsoft.WindowsTerminal(if $isPreview {'Preview'} else {'_'})*\LocalState\settings.json'
 
     open $path | update profiles.defaults.colorScheme {|json| $json.schemes | shuffle | first | get name} | save (ls $path -f | first | get name) -f

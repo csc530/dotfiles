@@ -1745,19 +1745,23 @@ export def "nu completion parse-context" [] string -> {cmd: string, args: list<s
         if $isOption {
             # no need to check for whitespace (\s) in the regex, because content is non-greedy AKA not parsing of option name from raw command string like above
             let optName = $content | parse --regex "(?:--?)(?<option_name>[\\w-]+)" | get option_name | first
-            # check if it is the last arg with an unclosed quote
-            let nextArg = $parse.1
-            if $nextArg.opening_quote == '' and ($nextArg.content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
-                let optValue = $parse | skip 1 | reduce -f '' {|e,acc| $acc + ' ' + $e.content }
-                $parse = ($parse | last 2)
-                $cmd = ($cmd | upsert $optName $optValue)
+            if ($parse | length) == 1 {
+                $cmd = ($cmd | upsert $optName null)
             } else {
-                let optValue = $parse.content | get 1
-                $cmd = ($cmd | upsert $optName $optValue)
+                # check if it is the last arg with an unclosed quote
+                let nextArg = $parse.1
+                if $nextArg.opening_quote == '' and ($nextArg.content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
+                    let optValue = $parse | skip 2 | reduce -f ($nextArg.content | str substring 1..) {|e,acc| $acc + ' ' + $e.content }
+                    $parse = ($parse | last 2)
+                    $cmd = ($cmd | upsert $optName $optValue)
+                } else {
+                    let optValue = $parse.content | get 1
+                    $cmd = ($cmd | upsert $optName $optValue)
+                }
             }
         } else { # not an option: add it to the args list (...rest)
             if ($content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
-                let $content = $parse | reduce -f '' {|e,acc| $acc + ' ' + $e.content } | str trim #don't know why it needs the trim but it does🤷🏿‍♂️
+                let $content = $parse | skip 1 | reduce -f ($content | str substring 1..) {|e,acc| $acc + ' ' + $e.content } | str trim #don't know why it needs the trim but it does🤷🏿‍♂️
                 $args ++= $content
                 $parse = [[]; []]
             } else {
