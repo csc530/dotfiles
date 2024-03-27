@@ -284,6 +284,8 @@ export extern aregister [
     --align-all                                                         # guarantee alignment across all lines (slower)
     --output-format(-O)=FMT: string@formats                             # select the output format. Supported formats: txt, html, csv, tsv, json.
     --output-file(-o)=FILE: string@output_file                          # write output to FILE. A file extension matching one of the above formats selects that format.
+
+    account_path: string@nu_accounts                                     # the account (path) to report on
 ]
 
 # show assets, liabilities and net worth
@@ -1406,7 +1408,7 @@ export alias bse = balancesheetequity
 export alias cf = cashflow
 export alias is = incomestatement
 export alias bal = balance
-export alias reg = hledger register
+export alias reg = register
 
 #  ######   #######  ##     ## ########  ##       ######## ######## ####  #######  ##    ##  ######
 # ##    ## ##     ## ###   ### ##     ## ##       ##          ##     ##  ##     ## ###   ## ##    ##
@@ -1427,7 +1429,7 @@ def "nu completion periodexp" [ctx:string] {
     let parts = $args | get ($args | columns | last) | split row ' '
     let length = ($parts | length)
     if $parts.0 == 'every' {
-        if ($parts | length) == 1 {
+        if ($parts | length) < 3 {
             let other = MONTHS | append (seq 1 12 | each {|i| $'($i)/'}) | each {|e| $'every ($e)'}
             seq 1 31 | each {|e|
                 match $e {
@@ -1445,7 +1447,7 @@ def "nu completion periodexp" [ctx:string] {
                 _ => (seq 1 31)
             } | each {|e| $'every ($month)/($e)'}
         } else if ($parts.1 | parse --regex '(\d+\w*)' | is-not-empty) {
-            [day] | appen WEEKDAYS | each {|e| $'every ($e)'}
+            [day] | append (WEEKDAYS) | each {|e| $'every ($parts.1) ($e)'}
         }
     } else if $parts.0 == 'from' {
         if $length < 2 {
@@ -1455,7 +1457,7 @@ def "nu completion periodexp" [ctx:string] {
         } | append (MONTHS) | append (smart_dates) | append (if $length < 2 { 'to' } else { $parts.2 })
     } else {
         ['from ' 'to '] | append (report_intervals) | append (nu completion date year) | append (nu completion date quarter)
-    } | prepend $parts | nu completion output $ctx
+    } | prepend ($parts | append $length | str join) | nu completion output $ctx
 
 }
 
@@ -1720,40 +1722,49 @@ def smart_dates [] {
 # helper functions
 
 # parse command context
-def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
+export def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
     # context strings starts at cursor position
     let ctx = $in + ' ' # add space to end to ensure last part is parsed🙄
-    let parse = $ctx | parse --regex $parse_args_rg
+    mut parse = $ctx | parse --regex $parse_args_rg
     # ? below would substitue forward slash quote with just the quote not sure if it's necessary but I'll leave it out
     # | each {|e| $e | upsert content  {|c| if $c.opening_quote == '' {$c.content} else { $c.content | str replace -r --all "\\\\(.)" "$1"} }}
-    mut content = $parse | get content
+    mut content = ''
 
-    # remove unmatched quotes from beginning of the last arg
-    if ($parse | last | get opening_quote) == '' {
-        let $parts  = ($parse | last | get content | parse --regex "(?<quote>['\"`]?)(?<content>.*)" | first)
-        $content = ($parse | first (($parse | length) - 1) | get content | append $parts.content)
-    }
-
-    mut cmd = {cmd: $content.0, args: []}
+    mut cmd = {cmd: $parse.content.0, args: []}
     mut args = []
 
-    $content = ($content | skip 1)
+    $parse = ($parse | skip 1)
 
     # parse options and arguments
-    while ($content | length) > 0 {
-        let part = $content.0
+    while ($parse | length) > 0 {
+        let currentArg = $parse.0
+        let content = $currentArg.content
         # check if part is an option
-        let isOption = ($part | str starts-with '-')
+        let isOption = ($content | str starts-with '-')
         # if it is an option add the next value as the value of option name's key
         if $isOption {
             # no need to check for whitespace (\s) in the regex, because content is non-greedy AKA not parsing of option name from raw command string like above
-            let optName = $part | parse --regex "(?:--?)(?<option_name>[\\w-]+)" | get option_name | first
-            let optValue = $content | get 1
-            $cmd = ($cmd | upsert $optName $optValue)
+            let optName = $content | parse --regex "(?:--?)(?<option_name>[\\w-]+)" | get option_name | first
+            # check if it is the last arg with an unclosed quote
+            let nextArg = $parse.1
+            if $nextArg.opening_quote == '' and ($nextArg.content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
+                let optValue = $parse | skip 1 | reduce -f '' {|e,acc| $acc + ' ' + $e.content }
+                $parse = ($parse | last 2)
+                $cmd = ($cmd | upsert $optName $optValue)
+            } else {
+                let optValue = $parse.content | get 1
+                $cmd = ($cmd | upsert $optName $optValue)
+            }
         } else { # not an option: add it to the args list (...rest)
-            $args ++= $part
+            if ($content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
+                let $content = $parse | reduce -f '' {|e,acc| $acc + ' ' + $e.content } | str trim #don't know why it needs the trim but it does🤷🏿‍♂️
+                $args ++= $content
+                $parse = [[]; []]
+            } else {
+                $args ++= $content
+            }
         }
-        $content = ($content | skip (1 + if $isOption {1} else {0}))
+        $parse = ($parse | skip (1 + if $isOption {1} else {0}))
     }
     $cmd | upsert args $args
 }
