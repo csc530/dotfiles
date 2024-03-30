@@ -897,11 +897,14 @@ use ~/.config/nu/nu_scripts/themes/nu-themes/catppuccin-mocha.nu
 
 $env.config.color_config = (catppuccin-mocha)
 
-use system/
-use nupm/
+use system
+use nupm
 use random-list.nu
 use ~/.config/nu/ledger.nu
+
+# my extern completers
 use hledger.nu
+use op.nu
 
 source ~\.config\nu\nu_scripts\custom-completions\btm\btm-completions.nu
 source ~\.config\nu\nu_scripts\custom-completions\winget\winget-completions.nu
