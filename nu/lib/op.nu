@@ -103,6 +103,8 @@ export extern "account list" [
     --help(-h)                  # help for list
 ]
 
+alias "account ls" = account list
+
 # Remove a 1Password account from this device
 export extern "account forget" [
     # GLOBAL FLAGS
@@ -120,7 +122,7 @@ export extern "account forget" [
     --help(-h)                  # help for forget
     --all                       # Forget all authenticated accounts.
 
-    account: string
+    account?: string: string@"nu completion account"       # The account to forget.
 ]
 
 #                                                         dP
@@ -194,6 +196,7 @@ export extern "connect group grant" [
     --group=group: string@"nu completion group"     # The group to receive access.
     --server=server: string@"nu completion server"   # The server to grant access to.
 ]
+
 # Revoke a group's access to manage Secrets Automation
 export extern "connect group revoke" [
     # GLOBAL FLAGS
@@ -257,7 +260,7 @@ export extern "connect server create" [
 
     --force(-f)                             # Do not prompt for confirmation when overwriting credential files.
     --help(-h)                              # help for create
-    --vaults=strings: string@"nu completion vault"                        # Grant the Connect server access to these vaults.
+    --vaults=strings: string@"nu completion vaults"                        # Grant the Connect server access to these vaults.
 
     name: string
 ]
@@ -387,7 +390,7 @@ export extern "connect token create" [
     --expires-in=duration: string@"nu completion duration"  # Set how long the Connect token is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks.
     --help(-h)                 # help for create
     --server=string: string                                 # Issue a token for this server.
-    --vault=stringArray: string                             # Issue a token on these vaults.
+    --vault=stringArray: string@"nu completion vaults"                                  # Issue a token on these vaults.
 
     tokenName: string
 ]
@@ -1690,7 +1693,7 @@ export extern "vault get" [
 
     --help(-h)   # help for get
 
-    ...vaults # [{ <vaultName> | <vaultID> | - }]
+    ...vaults: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
 ]
 
 # Edit a vault's name, description, icon, or Travel Mode status
@@ -1713,7 +1716,7 @@ export extern "vault edit" [
     --name=name: string                        # Change the vault's name.
     --travel-mode: string@"nu completion onoff"      # Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled are accessible while a user has Travel Mode turned on. (default off)
 
-    ...vaults # [{ <vaultName> | <vaultID> | - }]
+    ...vaults: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
 ]
 
 # Remove a vault
@@ -1732,7 +1735,7 @@ export extern "vault delete" [
 
     --help(-h)   # help for delete
 
-    ...vaults # [{ <vaultName> | <vaultID> | - }]
+    ...vaults: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
 ]
 
 alias "vault rm" = vault delete
@@ -2160,6 +2163,15 @@ def "nu completion vault" [] {
     $vaults
 }
 
+def "nu completion vaults" [ctx: string] {
+    let vaults =  $ctx | nu completion parse-context | get vaults
+    if ($vaults | is-empty) or not ($vaults | str ends-with ,) {
+        nu completion vault
+    } else {
+        nu completion vault | each {|e| $"($vaults.value)($e)" }
+    }
+}
+
 def "nu completion vault_icon" [] {
     [airplane, application, art-supplies, bankers-box, brown-briefcase, brown-gate, buildings, cabin, castle, circle-of-dots, coffee, color-wheel, curtained-window, document, doughnut, fence, galaxy, gears, globe, green-backpack, green-gem, handshake, heart-with-monitor, house, id-card, jet, large-ship, luggage, plant, porthole, puzzle, rainbow, record, round-door, sandals, scales, screwdriver, shop, tall-window, treasure-chest, vault-door, vehicle, wallet, wrench]
 }
@@ -2237,4 +2249,106 @@ def "nu completion bool" [] {
 def "nu completion account" [] {
     let accounts = op account list --format json | from json | select account_uuid email | rename value description
     $accounts
+}
+
+# ##     ## ######## ##       ########  ########   ######
+# ##     ## ##       ##       ##     ## ##     ## ##    ##
+# ##     ## ##       ##       ##     ## ##     ## ##
+# ######### ######   ##       ########  ########   ######
+# ##     ## ##       ##       ##        ##   ##         ##
+# ##     ## ##       ##       ##        ##    ##  ##    ##
+# ##     ## ######## ######## ##        ##     ##  ######
+
+const parse_args_rg = "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+)"
+const parse_option_name_rg = "(?:--?)(?<option_name>[\\w-]+)"
+
+export def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
+    # context strings starts at cursor position
+    let ctx = $in + ' ' # add space to end to ensure last part is parsed🙄
+    mut parse = $ctx | parse --regex $parse_args_rg
+    # ? below would substitue forward slash quote with just the quote not sure if it's necessary but I'll leave it out
+    # | each {|e| $e | upsert content  {|c| if $c.opening_quote == '' {$c.content} else { $c.content | str replace -r --all "\\\\(.)" "$1"} }}
+    mut content = ''
+
+    mut cmd = {cmd: $parse.content.0, args: []}
+    mut args = []
+
+    $parse = ($parse | skip 1)
+
+    # parse options and arguments
+    while ($parse | length) > 0 {
+        let currentArg = $parse.0
+        let content = $currentArg.content
+        # check if part is an option
+        let isOption = ($content | str starts-with '-')
+        # if it is an option add the next value as the value of option name's key
+        if $isOption {
+            # no need to check for whitespace (\s) in the regex, because content is non-greedy AKA not parsing of option name from raw command string like above
+            let optName = $content | parse --regex "(?:--?)(?<option_name>[\\w-]+)" | get option_name | first
+            if ($parse | length) == 1 {
+                $cmd = ($cmd | upsert $optName null)
+            } else {
+                # check if it is the last arg with an unclosed quote
+                let nextArg = $parse.1
+                if $nextArg.opening_quote == '' and ($nextArg.content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
+                    let optValue = $parse | skip 2 | reduce -f ($nextArg.content | str substring 1..) {|e,acc| $acc + ' ' + $e.content }
+                    $parse = ($parse | last 2)
+                    $cmd = ($cmd | upsert $optName $optValue)
+                } else {
+                    let optValue = $parse.content | get 1
+                    $cmd = ($cmd | upsert $optName $optValue)
+                }
+            }
+        } else { # not an option: add it to the args list (...rest)
+            if ($content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
+                let $content = $parse | skip 1 | reduce -f ($content | str substring 1..) {|e,acc| $acc + ' ' + $e.content } | str trim #don't know why it needs the trim but it does🤷🏿‍♂️
+                $args ++= $content
+                $parse = [[]; []]
+            } else {
+                $args ++= $content
+            }
+        }
+        $parse = ($parse | skip (1 + if $isOption {1} else {0}))
+    }
+    $cmd | upsert args $args
+}
+
+
+def "nu completion output" [
+        ctx: string,    # entered command [sub command, args, + options]
+        --complete (-c) # if the copletion should have a closing quote and terminating space
+    ] list<string> -> list<string>, string -> list<string> {
+    let output = $in
+    let parse = $ctx + ` `
+    | parse --regex $parse_args_rg
+    | last
+    let opening_quote = $parse | get opening_quote
+    let content = $parse | get content
+
+    # checks within the content (unmatched quote) or if there is a matched quote (unlinkely "some val"-> [why would they tab complete herre?])
+    if $opening_quote != '' {
+        let quote = $opening_quote
+        $output | each {|e| if $complete { $"($quote)($e)($quote) " } else { $"($quote)($e)" } }
+    } else if ($content | parse --regex "(?<quote>['\"`])(?:.*)" | is-not-empty) {
+        let quote = $content | str substring 0..1
+        $output | each {|e| if $complete { $"($quote)($e)($quote) " } else { $"($quote)($e)" }}
+    } else {
+        let quote = '`'
+        let wrap = $output | any {|e| $e | str contains ' '}
+        $output | each {|e|
+            if $wrap {
+                if $complete {
+                    $"($quote)($e)($quote) "
+                } else {
+                    $"($quote)($e)"
+                }
+            } else {
+                if $complete {
+                    $e + ' '
+                } else {
+                    $e
+                }
+            }
+        }
+    }
 }
