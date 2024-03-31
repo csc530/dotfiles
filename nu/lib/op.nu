@@ -519,7 +519,7 @@ export extern "document create" [
 
     --file-name=name: string   # Set the file's name.
     --help(-h)            # help for create
-    --tags=tags: string@"nu completion tags"       # Set the tags to the specified (comma-separated) values.
+    --tags=tags: string@"nu completion tag"       # Set the tags to the specified (comma-separated) values.
     --title=title:  string      # Set the document item's title.
     --vault=vault: string@"nu completion vault"     # Save the document in this vault. Default: Private.
 
@@ -566,7 +566,7 @@ export extern "document edit" [
 
     --file-name=name: string   # Set the file's name.
     --help(-h)             # help for edit
-    --tags=tags: string@"nu completion tags"        # Set the tags to the specified (comma-separated) values. An empty value removes all tags.
+    --tags=tags: string@"nu completion tag"        # Set the tags to the specified (comma-separated) values. An empty value removes all tags.
     --title=title: string      # Set the document item's title.
     --vault=vault: string@"nu completion vault"      # Look up document in this vault.
 
@@ -647,7 +647,7 @@ export extern "events-api create" [
     --version(-v)                                           # version for op
 
     --expires-in=duration: string@"nu completion duration"  # Set how the long the events-api token is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks.
-    --features=features: string@"nu completion features"    # Set the comma-separated list of features the integration token can be used for. Options: 'signinattempts', 'itemusages', 'auditevents'.
+    --features=features: string@"nu completion feature"    # Set the comma-separated list of features the integration token can be used for. Options: 'signinattempts', 'itemusages', 'auditevents'.
     --help(-h)             # help for create
 
     name: string
@@ -945,7 +945,7 @@ export extern "item edit" [
     --favorite: string@"nu completion favourite"                      # Whether this item is a favorite item. Options: true, false
     --generate-password=recipe: string@"nu completion generate-password"   # Give the item a randomly generated password.
     --help(-h)                         # help for edit
-    --tags=tags: string@"nu completion tags"                    # Set the tags to the specified (comma-separated) values. An empty value will remove all tags.
+    --tags=tags: string@"nu completion tag"                    # Set the tags to the specified (comma-separated) values. An empty value will remove all tags.
     --template string              # Specify the filepath to read an item template from.
     --title=title: string                  # Set the item's title.
     --url=URL: string                      # Set the URL associated with the item
@@ -998,7 +998,7 @@ export extern "item list" [
     --help(-h)                # help for list
     --include-archive         # Include items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
     --long                    # Output a more detailed item list.
-    --tags=tags: string@"nu completion tags"               # Only list items with these tags (comma-separated).
+    --tags=tags: string@"nu completion tag"               # Only list items with these tags (comma-separated).
     --vault=vault: string@"nu completion vault"             # Only list items in this vault.
 ]
 
@@ -1301,7 +1301,7 @@ export extern "service-account create" [
     --expires-in=duration: string@"nu completion duration"   # Set how long the service account is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, or (w)eeks.
     --help(-h)                  # help for create
     --raw                   # Only return the service account token.
-    --vault=stringArray: stringArray@"nu completion vault"     # Give access to this vault with a set of permissions. Has syntax <vault-name>:<permission>[,<permission>]
+    --vault=stringArray: string@"nu completion vault"     # Give access to this vault with a set of permissions. Has syntax <vault-name>:<permission>[,<permission>]
 
     serviceAccountName: string
 ]
@@ -1677,7 +1677,7 @@ export extern "vault group grant" [
     --group=group: string@"nu completion group"               # The group to receive access.
     --help(-h)                      # help for grant
     --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permissions"   # The permissions to grant to the group.
+    --permissions=permissions: string@"nu completion permission"   # The permissions to grant to the group.
     --vault=vault: string@"nu completion vault"               # The vault to grant group permissions to.
 ]
 
@@ -1698,7 +1698,7 @@ export extern "vault group revoke" [
     --group=group: string@"nu completion group"               # The group to revoke access from.
     --help(-h)                      # help for revoke
     --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permissions"   # The permissions to revoke from the group.
+    --permissions=permissions: string@"nu completion permission"   # The permissions to revoke from the group.
     --vault=vault: string@"nu completion vault"               # The vault to revoke access to.
 ]
 
@@ -1761,7 +1761,7 @@ export extern "vault user grant" [
 
     --help(-h)                      # help for grant
     --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permissions"   # The permissions to grant to the user.
+    --permissions=permissions: string@"nu completion permission"   # The permissions to grant to the user.
     --user=user: string@"nu completion user"                 # The user to receive access.
     --vault=vault: string@"nu completion vault"               # The vault to grant access to.
 ]
@@ -1782,7 +1782,7 @@ export extern "vault user revoke" [
 
     --help                      # help for revoke
     --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permissions"   # The permissions to revoke from the user.
+    --permissions=permissions: string@"nu completion permission"   # The permissions to revoke from the user.
     --user=user: string@"nu completion user"                 # The user to revoke access from.
     --vault=vault: string@"nu completion vault"               # The vault to revoke access to.
 ]
@@ -1873,7 +1873,7 @@ export extern read [
     --force(-f)                # Do not prompt for confirmation.
     --help(-h)                 # help for read
     --no-newline(-n)           # Do not print a new line after the secret.
-    --out-file string(-o)      # Write the secret to a file instead of stdout.
+    --out-file(-o)=string: path      # Write the secret to a file instead of stdout.
 
     reference: string
 ]
@@ -1896,7 +1896,7 @@ export extern run [
     --help(-h)                   # help for run
     --no-masking             # Disable masking of secrets on stdout and stderr.
 
-    "--": string
+    # "--": string
     ...command: string
 ]
 
@@ -1997,4 +1997,90 @@ def "nu completion encoding" [] {
         SHIFT_JIS
         gbk
     ]
+}
+
+def "nu completion update_channel" [] {
+    [
+        stable
+        beta
+    ]
+}
+
+def "nu completion group" [] {
+    []
+}
+
+def "nu completion server" [] {
+    []
+}
+
+def "nu completion vault" [] {
+    []
+}
+
+def "nu completion vault_icon" [] {
+    []
+}
+
+def "nu completion duration" [] {
+    []
+}
+
+def "nu completion tag" [] {
+    []
+}
+
+def "nu completion feature" [] {
+    []
+}
+
+def "nu completion user" [] {
+    []
+}
+
+def "nu completion role" [] {
+    []
+}
+
+def "nu completion category" [] {
+    []
+}                                           # Set the item's category.
+def "nu completion generate-password" [] {
+    []
+}
+
+def "nu completion ssh-generate-key" [] {
+    []
+}
+
+def "nu completion item-template" [] {
+    []
+}
+
+def "nu completion favourite" [] {
+    []
+}
+
+def "nu completion plugin" [] {
+    []
+}
+
+def "nu completion permission" [] {
+    []
+}
+
+def "nu completion onoff" [] {
+    []
+}
+
+def "nu completion completion_shell" [] {
+    []
+}
+
+def "nu completion language" [] {
+    []
+}
+
+def "nu completion bool" [] {
+    [ true false ]
 }
