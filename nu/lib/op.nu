@@ -562,7 +562,7 @@ export extern "document create" [
     --title=title:  string      # Set the document item's title.
     --vault=vault: string@"nu completion vault"     # Save the document in this vault. Default: Private.
 
-    file: string  # [{ <file> | - }]
+    file?: path  # [{ <file> | - }]
 ]
 
 # Download a document
@@ -579,14 +579,15 @@ export extern "document get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-mode=filemode   # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
+    --file-mode=filemode: int   # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
     --force                # Forcibly print an unintelligible document to an interactive terminal. If --out-file is specified, save the document to a file without prompting for confirmation.
     --help                 # help for get
     --include-archive      # Include document items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
-    --out-file=path(-o): path        # Save the document to the file path instead of stdout.
+    --out-file(-o)=path: path        # Save the document to the file path instead of stdout.
     --vault=vault: string@"nu completion vault"          # Look for the document in this vault.
 
-    item # { <itemName> | <itemID> }
+    item: string@"nu completion document_item" # { <itemName> | <itemID> }
+
 ]
 
 # Edit a document item
@@ -605,11 +606,12 @@ export extern "document edit" [
 
     --file-name=name: string   # Set the file's name.
     --help(-h)             # help for edit
-    --tags=tags: string@"nu completion tag"        # Set the tags to the specified (comma-separated) values. An empty value removes all tags.
+    --tags=tags: string@"nu completion tags"        # Set the tags to the specified (comma-separated) values. An empty value removes all tags.
     --title=title: string      # Set the document item's title.
     --vault=vault: string@"nu completion vault"      # Look up document in this vault.
 
-    ...items # { <itemName> | <itemID> } [{ <file> | - }]
+    item: string@"nu completion document_item" # { <itemName> | <itemID> }
+    file?: path # [{ <file> | - }]
 ]
 
 # Delete or archive a document item
@@ -1020,7 +1022,7 @@ export extern "item edit" [
     --favorite: string@"nu completion bool"                      # Whether this item is a favorite item. Options: true, false
     --generate-password=recipe: string@"nu completion generate-password"   # Give the item a randomly generated password.
     --help(-h)                         # help for edit
-    --tags=tags: string@"nu completion tag"                    # Set the tags to the specified (comma-separated) values. An empty value will remove all tags.
+    --tags=tags: string@"nu completion tags"                    # Set the tags to the specified (comma-separated) values. An empty value will remove all tags.
     --template string              # Specify the filepath to read an item template from.
     --title=title: string                  # Set the item's title.
     --url=URL: string                      # Set the URL associated with the item
@@ -1169,7 +1171,7 @@ export extern "item template get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-mode=filemode       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
+    --file-mode=filemode: int       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
     --force(-f)                # Do not prompt for confirmation.
     --help(-h)                 # help for get
     --out-file(-o)=string: path      # Write the template to a file instead of stdout.
@@ -1987,7 +1989,7 @@ export extern inject [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-mode=filemode       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
+    --file-mode=filemode: int       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
     --force(-f)                # Do not prompt for confirmation.
     --help(-h)                 # help for inject
     --in-file(-i)=string: path       # The filename of a template file to inject.
@@ -2008,7 +2010,7 @@ export extern read [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-mode=filemode       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
+    --file-mode=filemode: int       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
     --force(-f)                # Do not prompt for confirmation.
     --help(-h)                 # help for read
     --no-newline(-n)           # Do not print a new line after the secret.
@@ -2200,6 +2202,16 @@ def "nu completion tag" [] {
     $tags
 }
 
+def "nu completion tags" [ctx: string] {
+    $ctx | nu completion parse-context | transpose option value | last | get value
+    if ($tags | is-not-empty) and ($tags | str ends-with ,) {
+        nu completion tag | each {|e| $e | upsert value $"($tags)($e.value)" }
+    }
+    else {
+        nu completion tag
+    }
+}
+
 def "nu completion feature" [] {
     []
 }
@@ -2264,6 +2276,11 @@ def "nu completion bool" [] {
 def "nu completion account" [] {
     let accounts = op account list --format json | from json | select account_uuid email | rename value description
     $accounts
+}
+
+def "nu completion document_item" [] {
+    let items = op item list --format json | from json | where category == "DOCUMENT" | select id title | rename value description
+    $items
 }
 
 # ##     ## ######## ##       ########  ########   ######
