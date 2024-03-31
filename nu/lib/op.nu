@@ -1001,7 +1001,7 @@ export extern "item get" [
     --share-link        # Get a shareable link for the item.
     --vault=string: string@"nu completion vault"        # Look for the item in this vault.
 
-    ...items # [{ <itemName> | <itemID> | <shareLink> | - }]
+    items?: string@"nu completion item" # [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
 
 # Edit an item's details
@@ -1028,7 +1028,7 @@ export extern "item edit" [
     --url=URL: string                      # Set the URL associated with the item
     --vault=vault: string@"nu completion vault"                  # Edit the item in this vault.
 
-    item    # { <itemName> | <itemID> | <shareLink> }
+    item: string@"nu completion item"    # { <itemName> | <itemID> | <shareLink> }
     ...assignments  # [ <assignment> ... ]
 ]
 
@@ -1050,7 +1050,7 @@ export extern "item delete" [
     --help           # help for delete
     --vault string   # Look for the item in this vault.
 
-    ...items    #  [{ <itemName> | <itemID> | <shareLink> | - }]
+    items?: string@"nu completion item"   #  [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
 
 export alias "item rm" = item delete
@@ -1099,7 +1099,7 @@ export extern "item move" [
     --destination-vault=string: string@"nu completion vault"   # The vault you want to move the item to.
     --help                       # help for move
 
-    ...items    # [{ <itemName> | <itemID> | <shareLink> | - }]
+    items?: string@"nu completion item"    # [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
 
 export alias "item mv" = item move
@@ -1123,6 +1123,8 @@ export extern "item share" [
     --help                  # help for share
     --vault=string: string@"nu completion vault"          # Look for the item in this vault.
     --view-once             # Expire link after a single view.
+
+    item: string@"nu completion item"  # { <itemName> | <itemID> }
 ]
 
 #   _ _                   __  __                                                   _      _____                                          _
@@ -1176,7 +1178,7 @@ export extern "item template get" [
     --help(-h)                 # help for get
     --out-file(-o)=string: path      # Write the template to a file instead of stdout.
 
-    ...category # [{ <category> | - }]
+    category?: string@"nu completion category" # [{ <category> | - }]
 ]
 
 # Get a list of templates
@@ -2148,23 +2150,21 @@ def "nu completion update_channel" [] {
 }
 
 def "nu completion group" [] {
-    let groups = op group list --format json
-        | from json
-        | upsert description {|row| $"($row.name) \(($row.state)): ($row.description)"}
-        | select id name description state
-        |  rename value description
-    $groups
+    op group list --format json
+    | from json
+    | upsert description {|row| $"($row.name?) \(($row.state?)): ($row.description?)"}
+    | select id name description state
+    | rename value description
+    | sort-by description --ignore-case --natural
 }
 
 def "nu completion server" [] {
     # untested 🤷🏿‍♂️
-    let servers = op server list --format json | from json | select id name | rename value description
-    $servers
+    op server list --format json | from json | select id name | rename value description | sort-by description --ignore-case --natural
 }
 
 def "nu completion vault" [] {
-    let vaults = op vault list --format json | from json | select id name | rename value description
-    $vaults
+    op vault list --format json | from json | select id name | rename value description | sort-by description --ignore-case --natural
 }
 
 def "nu completion vaults" [ctx: string] {
@@ -2198,8 +2198,7 @@ def "nu completion duration" [ctx: string] {
 }
 
 def "nu completion tag" [] {
-    let tags = op item list --format json | from json | get tags
-    $tags
+    op item list --format json | from json | get tags -i | uniq | sort --ignore-case --natural
 }
 
 def "nu completion tags" [ctx: string] {
@@ -2217,8 +2216,7 @@ def "nu completion feature" [] {
 }
 
 def "nu completion user" [] {
-    let users = op user list --format json | from json | upsert name {|row| $"($row.name) \(($row.type) - ($row.state)): ($row.email)"} | select id name | rename value description
-    $users
+    op user list --format json | from json | upsert name {|row| $"($row.name) \(($row.type) - ($row.state)): ($row.email)"} | select id name | rename value description | sort-by description --ignore-case --natural
 }
 
 def "nu completion role" [] {
@@ -2274,13 +2272,17 @@ def "nu completion bool" [] {
 }
 
 def "nu completion account" [] {
-    let accounts = op account list --format json | from json | select account_uuid email | rename value description
-    $accounts
+    op account list --format json | from json | get -i account_uuid email | rename value description | sort-by description --ignore-case --natural
 }
 
 def "nu completion document_item" [] {
-    let items = op item list --format json | from json | where category == "DOCUMENT" | select id title | rename value description
-    $items
+    op item list --format json | from json | where category == "DOCUMENT" | select -i id title | rename value description | sort-by description --ignore-case --natural
+}
+
+def "nu completion item" [] {
+    op item list --format json | from json | select -i id title additional_information | rename value description
+    | upsert description {|row| if ($row.additional_information | is-not-empty) and $row.additional_information != '' {$"($row.description) - ($row.additional_information)"} else {$row.description} }
+    | sort-by description --ignore-case --natural
 }
 
 # ##     ## ######## ##       ########  ########   ######
