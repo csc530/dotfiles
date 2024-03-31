@@ -1697,7 +1697,7 @@ export extern "vault get" [
 
     --help(-h)   # help for get
 
-    ...vaults: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
+    vaults?: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
 ]
 
 # Edit a vault's name, description, icon, or Travel Mode status
@@ -1720,7 +1720,7 @@ export extern "vault edit" [
     --name=name: string                        # Change the vault's name.
     --travel-mode: string@"nu completion onoff"      # Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled are accessible while a user has Travel Mode turned on. (default off)
 
-    ...vaults: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
+    vaults?: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
 ]
 
 # Remove a vault
@@ -1739,7 +1739,7 @@ export extern "vault delete" [
 
     --help(-h)   # help for delete
 
-    ...vaults: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
+    vaults?: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
 ]
 
 export alias "vault rm" = vault delete
@@ -1761,9 +1761,11 @@ export extern "vault list" [
 
     --group=string: string@"nu completion group"             # List vaults a group has access to.
     --help(-h)                 # help for list
-    --permission=permissions   # List only vaults that the specified user/group has this permission for.
+    --permission=permissions: string@"nu completion permissions"   # List only vaults that the specified user/group has this permission for.
     --user=string: string@"nu completion user"              # List vaults that a given user has access to.
 ]
+
+export alias "vault ls" = vault list
 
 
 #                    _ _     __  __                                                   _      _____                                          _
@@ -1816,7 +1818,7 @@ export extern "vault group grant" [
     --group=group: string@"nu completion group"               # The group to receive access.
     --help(-h)                      # help for grant
     --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permission"   # The permissions to grant to the group.
+    --permissions=permissions: string@"nu completion permissions"   # The permissions to grant to the group.
     --vault=vault: string@"nu completion vault"               # The vault to grant group permissions to.
 ]
 
@@ -1837,7 +1839,7 @@ export extern "vault group revoke" [
     --group=group: string@"nu completion group"               # The group to revoke access from.
     --help(-h)                      # help for revoke
     --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permission"   # The permissions to revoke from the group.
+    --permissions=permissions: string@"nu completion permissions"   # The permissions to revoke from the group.
     --vault=vault: string@"nu completion vault"               # The vault to revoke access to.
 ]
 
@@ -1857,7 +1859,7 @@ export extern "vault group list" [
 
     --help(-h)   # help for list
 
-    --vault=vault: string@"nu completion vault"
+    vault?: string@"nu completion vault"
 ]
 
 export alias "vault group ls" = vault group list
@@ -1902,7 +1904,7 @@ export extern "vault user grant" [
 
     --help(-h)                      # help for grant
     --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permission"   # The permissions to grant to the user.
+    --permissions=permissions: string@"nu completion permissions"   # The permissions to grant to the user.
     --user=user: string@"nu completion user"                 # The user to receive access.
     --vault=vault: string@"nu completion vault"               # The vault to grant access to.
 ]
@@ -1923,7 +1925,7 @@ export extern "vault user revoke" [
 
     --help                      # help for revoke
     --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permission"   # The permissions to revoke from the user.
+    --permissions=permissions: string@"nu completion permissions"   # The permissions to revoke from the user.
     --user=user: string@"nu completion user"                 # The user to revoke access from.
     --vault=vault: string@"nu completion vault"               # The vault to revoke access to.
 ]
@@ -2270,9 +2272,34 @@ def "nu completion plugin_executable" [] {
 }
 
 def "nu completion permission" [] {
-    []
+    [
+        allow_viewing, allow_editing, allow_managing,
+
+        {value: view_items, description: 'ALLOW_VIEWING: 1password for business only'}
+        {value: view_and_copy_passwords, description: 'ALLOW_VIEWING: 1password for business only'}
+        {value: view_item_history, description: 'ALLOW_VIEWING: 1password for business only'}
+
+        {value: create_items, description: 'ALLOW_EDITING: 1password for business only'}
+        {value: edit_items, description: 'ALLOW_EDITING: 1password for business only'}
+        {value: archive_items, description: 'ALLOW_EDITING: 1password for business only'}
+        {value: delete_items, description: 'ALLOW_EDITING: 1password for business only'}
+        {value: import_items, description: 'ALLOW_EDITING: 1password for business only'}
+        {value: export_items, description: 'ALLOW_EDITING: 1password for business only'}
+        {value: copy_and_share_items, description: 'ALLOW_EDITING: 1password for business only'}
+        {value: print_items, description: 'ALLOW_EDITING: 1password for business only'}
+
+        {value: manage_vault, description: 'ALLOW_MANAGING: 1password for business only'}
+    ]
 }
 
+def "nu completion permissions" [$ctx: string] {
+    let permissions = $ctx | nu completion parse-context | transpose option value | last | get value
+    if ($permissions | is-not-empty) and ($permissions | str ends-with ,) {
+        nu completion permission | each {|e| $e | if ($e | describe --detailed | get type) == record { upsert value $"($permissions)($e.value)" } else { upsert value $"($permissions)($e)" } }
+    } else {
+        nu completion permission
+    }
+}
 def "nu completion onoff" [] {
     [on off]
 }
@@ -2286,8 +2313,10 @@ def "nu completion language" [] {
 }
 
 def "nu completion bool" [] {
-    [ true false ]
+    [ '"true"' '"false"' ]
 }
+
+
 
 def "nu completion account" [] {
     op account list --format json | from json | select -i account_uuid email | rename value description | sort-by description --ignore-case --natural
