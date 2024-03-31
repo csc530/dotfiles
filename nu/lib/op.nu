@@ -1264,7 +1264,7 @@ export extern "plugin clear" [
     --force(-f)   # Apply immediately without asking for confirmation.
     --help(-h)    # help for clear
 
-    plugin_name: string
+    plugin_name: string@"nu completion plugin_name"
 ]
 
 export alias "plugin reset" = plugin clear
@@ -1285,7 +1285,7 @@ export extern "plugin init" [
 
     --help(-h)        # help for init
 
-    executable: string # [ <plugin-executable> ]
+    executable: string@"nu completion plugin_executable" # [ <plugin-executable> ]
 ]
 
 # Inspect your existing shell plugin configurations
@@ -1304,7 +1304,7 @@ export extern "plugin inspect" [
 
     --help(-h)        # help for inspect
 
-    plugin_name: string
+    plugin_name: string@"nu completion plugin_name"
 ]
 
 export alias "plugin info" = plugin inspect
@@ -2249,6 +2249,10 @@ def nu_plugins [] {
 
 def "nu completion plugin_name" [] {
     nu_plugins | get plugin_name | uniq
+}
+
+def "nu completion plugin_executable" [] {
+    nu_plugins | get executable | uniq
 }
 
 def "nu completion permission" [] {
