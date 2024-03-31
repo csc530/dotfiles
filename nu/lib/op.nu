@@ -32,7 +32,7 @@ export extern main [
 
 # Manage your locally configured 1Password accounts
 export extern account [
-        # GLOBAL FLAGS
+    # GLOBAL FLAGS
     --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
@@ -62,11 +62,11 @@ export extern "account add" [
     --version(-v)                                           # version for op
 
     --help(-h)  # help for add
-    --address=string: string     # The sign-in address for your account.
-    --email string               # The email address associated with your account.
-    --raw                        # Only return the session token.
-    --shorthand=string: string   # Set a custom account shorthand for your account.
-    --signin                     # Immediately sign in to the added account.
+    --address=string: string                                # The sign-in address for your account.
+    --email string                                          # The email address associated with your account.
+    --raw                                                   # Only return the session token.
+    --shorthand=string: string                              # Set a custom account shorthand for your account.
+    --signin                                                # Immediately sign in to the added account.
 ]
 
 # Get details about your account
@@ -83,7 +83,7 @@ export extern "account get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                  # help for get
+    --help(-h)                                              # help for get
 ]
 
 # List users and accounts set up on this device
@@ -100,7 +100,7 @@ export extern "account list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                  # help for list
+    --help(-h)                                              # help for list
 ]
 
 export alias "account ls" = account list
@@ -119,8 +119,8 @@ export extern "account forget" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                  # help for forget
-    --all                       # Forget all authenticated accounts.
+    --help(-h)                                              # help for forget
+    --all                                                   # Forget all authenticated accounts.
 
     account?: string: string@"nu completion account"       # The account to forget.
 ]
@@ -148,7 +148,7 @@ export extern connect [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                  # help for connect
+    --help(-h)                                              # help for connect
 ]
 
 #                                   _
@@ -174,7 +174,7 @@ export extern "connect group" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                  # help for group
+    --help(-h)                                              # help for group
 ]
 
 # Grant a group access to manage Secrets Automation
@@ -191,10 +191,10 @@ export extern "connect group grant" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                                                      # help for grant
-    --all-servers     # Grant access to all current and future servers in the authenticated account.
-    --group=group: string@"nu completion group"     # The group to receive access.
-    --server=server: string@"nu completion server"   # The server to grant access to.
+    --help(-h)                                              # help for grant
+    --all-servers                                           # Grant access to all current and future servers in the authenticated account.
+    --group=group: string@"nu completion group"             # The group to receive access.
+    --server=server: string@"nu completion server"          # The server to grant access to.
 ]
 
 # Revoke a group's access to manage Secrets Automation
@@ -211,10 +211,10 @@ export extern "connect group revoke" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                                                      # help for revoke
-    --all-servers                                                   # Revoke access to all current and future servers in the authenticated account.
-    --group=group: string@"nu completion group"                                                                  # The group to revoke access from.
-    --server=server: string@"nu completion server"                                                                # The server to revoke access to.
+    --help(-h)                                              # help for revoke
+    --all-servers                                           # Revoke access to all current and future servers in the authenticated account.
+    --group=group: string@"nu completion group"             # The group to revoke access from.
+    --server=server: string@"nu completion server"          # The server to revoke access to.
 ]
 
 
@@ -258,9 +258,9 @@ export extern "connect server create" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --force(-f)                             # Do not prompt for confirmation when overwriting credential files.
-    --help(-h)                              # help for create
-    --vaults=strings: string@"nu completion vaults"                        # Grant the Connect server access to these vaults.
+    --force(-f)                                             # Do not prompt for confirmation when overwriting credential files.
+    --help(-h)                                              # help for create
+    --vaults=strings: string@"nu completion vaults"         # Grant the Connect server access to these vaults.
 
     name: string
 ]
@@ -281,7 +281,7 @@ export extern "connect server get" [
 
     --help(-h)   # help for get
 
-    server: string@"nu completion server" #  [{ <serverName> | <serverID> | - }]
+    server?: string@"nu completion server" #  [{ <serverName> | <serverID> | - }]
 ]
 
 # Rename a Connect server
@@ -298,8 +298,8 @@ export extern "connect server edit" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help        # help for edit
-    --name=name: string   # Change the server's name.
+    --help                                                  # help for edit
+    --name=name: string                                     # Change the server's name.
 
     server: string@"nu completion server" #  [{ <serverName> | <serverID> }
 ]
@@ -319,9 +319,9 @@ export extern "connect server delete" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for delete
+    --help(-h)                                              # help for delete
 
-    server: string@"nu completion server" #  [{ <serverName> | <serverID> | - }]
+    server?: string@"nu completion server" #  [{ <serverName> | <serverID> | - }]
 ]
 
 export alias "connect server rm" = connect server delete
@@ -370,7 +370,7 @@ export extern "connect token" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                  # help for token
+    --help(-h)                                              # help for token
 ]
 
 # Issue a token for a 1Password Connect server
@@ -389,8 +389,8 @@ export extern "connect token create" [
 
     --expires-in=duration: string@"nu completion duration"  # Set how long the Connect token is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks.
     --help(-h)                 # help for create
-    --server=string: string@"nu completion server"                                 # Issue a token for this server.
-    --vault=stringArray: string@"nu completion vaults"                                  # Issue a token on these vaults.
+    --server=string: string@"nu completion server"          # Issue a token for this server.
+    --vault=stringArray: string@"nu completion vaults"      # Issue a token on these vaults.
 
     tokenName: string
 ]
@@ -409,9 +409,9 @@ export extern "connect token edit" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)            # help for edit
-    --name=string: string  #   Change the token's name.
-    --server=string: string@"nu completion server" #   Only look for tokens for this 1Password Connect server.
+    --help(-h)                                              # help for edit
+    --name=string: string                                   #   Change the token's name.
+    --server=string: string@"nu completion server"          # Only look for tokens for this 1Password Connect server.
 
     token: string
 ]
@@ -430,8 +430,8 @@ export extern "connect token delete" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)            # help for delete
-    --server string: string@"nu completion server"   # Only look for tokens for this 1Password Connect server.
+    --help(-h)                                              # help for delete
+    --server string: string@"nu completion server"          # Only look for tokens for this 1Password Connect server.
 
     token: string
 ]
@@ -453,8 +453,8 @@ export extern "connect token list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)            # help for list
-    --server=server: string@"nu completion server"                                       # Only list tokens for this Connect server.
+    --help(-h)                                              # help for list
+    --server=server: string@"nu completion server"          # Only list tokens for this Connect server.
 ]
 
 #                                   _                      _ _
@@ -478,7 +478,7 @@ export extern "connect vault" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)                  # help for vault
+    --help(-h)                                              # help for vault
 ]
 
 # Grant a Connect server access to a vault
@@ -495,10 +495,11 @@ export extern "connect vault grant" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help            # help for grant
-    --server=string: string@"nu completion server"   # The server to be granted access.
-    --vault=string: string@"nu completion vault"    # The vault to grant access to.
+    --help                                                  # help for grant
+    --server=string: string@"nu completion server"          # The server to be granted access.
+    --vault=string: string@"nu completion vault"            # The vault to grant access to.
 ]
+
 # Revoke a Connect server's access to a vault
 export extern "connect vault revoke" [
     # GLOBAL FLAGS
@@ -513,9 +514,9 @@ export extern "connect vault revoke" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help            # help for revoke
-    --server=server: string@"nu completion server"   # The server to revoke access from.
-    --vault=vault: string@"nu completion vault"     # The vault to revoke a server's access to.
+    --help                                                  # help for revoke
+    --server=server: string@"nu completion server"          # The server to revoke access from.
+    --vault=vault: string@"nu completion vault"             # The vault to revoke a server's access to.
 ]
 
 #       dP                                                           dP
@@ -539,7 +540,7 @@ export extern document [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)  # help for document
+    --help(-h)                                              # help for document
 ]
 
 # Create a document item
@@ -556,13 +557,13 @@ export extern "document create" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-name=name: string   # Set the file's name.
-    --help(-h)            # help for create
-    --tags=tags: string@"nu completion tag"       # Set the tags to the specified (comma-separated) values.
-    --title=title:  string      # Set the document item's title.
-    --vault=vault: string@"nu completion vault"     # Save the document in this vault. Default: Private.
+    --file-name=name: string                                # Set the file's name.
+    --help(-h)                                              # help for create
+    --tags=tags: string@"nu completion tag"                 # Set the tags to the specified (comma-separated) values.
+    --title=title:  string                                  # Set the document item's title.
+    --vault=vault: string@"nu completion vault"             # Save the document in this vault. Default: Private.
 
-    file?: path  # [{ <file> | - }]
+    file?: path                                             # [{ <file> | - }]
 ]
 
 # Download a document
@@ -579,14 +580,14 @@ export extern "document get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-mode=filemode: int   # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
-    --force                # Forcibly print an unintelligible document to an interactive terminal. If --out-file is specified, save the document to a file without prompting for confirmation.
-    --help                 # help for get
-    --include-archive      # Include document items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
-    --out-file(-o)=path: path        # Save the document to the file path instead of stdout.
-    --vault=vault: string@"nu completion vault"          # Look for the document in this vault.
+    --file-mode=filemode: int                               # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
+    --force                                                 # Forcibly print an unintelligible document to an interactive terminal. If --out-file is specified, save the document to a file without prompting for confirmation.
+    --help                                                  # help for get
+    --include-archive                                       # Include document items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
+    --out-file(-o)=path: path                               # Save the document to the file path instead of stdout.
+    --vault=vault: string@"nu completion vault"             # Look for the document in this vault.
 
-    item: string@"nu completion document_item" # { <itemName> | <itemID> }
+    item: string@"nu completion document_item"              # { <itemName> | <itemID> }
 
 ]
 
@@ -604,14 +605,14 @@ export extern "document edit" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-name=name: string   # Set the file's name.
-    --help(-h)             # help for edit
-    --tags=tags: string@"nu completion tags"        # Set the tags to the specified (comma-separated) values. An empty value removes all tags.
-    --title=title: string      # Set the document item's title.
-    --vault=vault: string@"nu completion vault"      # Look up document in this vault.
+    --file-name=name: string                                # Set the file's name.
+    --help(-h)                                              # help for edit
+    --tags=tags: string@"nu completion tags"                # Set the tags to the specified (comma-separated) values. An empty value removes all tags.
+    --title=title: string                                   # Set the document item's title.
+    --vault=vault: string@"nu completion vault"             # Look up document in this vault.
 
-    item: string@"nu completion document_item" # { <itemName> | <itemID> }
-    file?: path # [{ <file> | - }]
+    item: string@"nu completion document_item"              # { <itemName> | <itemID> }
+    file?: path                                             # [{ <file> | - }]
 ]
 
 # Delete or archive a document item
@@ -628,11 +629,11 @@ export extern "document delete" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --archive       # Move the document to the Archive.
-    --help(-h)          # help for delete
-    --vault=vault: string@"nu completion vault"   # Delete the document in this vault.
+    --archive                                               # Move the document to the Archive.
+    --help(-h)                                              # help for delete
+    --vault=vault: string@"nu completion vault"             # Delete the document in this vault.
 
-    item?: string@"nu completion document_item" # [{ <itemName> | <itemID> | - }]
+    item?: string@"nu completion document_item"             # [{ <itemName> | <itemID> | - }]
 ]
 
 export alias "document rm" = document delete
@@ -652,9 +653,9 @@ export extern "document list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help              # help for list
-    --include-archive   # Include document items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
-    --vault=vault: string@"nu completion vault"       # Only list documents in this vault.
+    --help                                                  # help for list
+    --include-archive                                       # Include document items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
+    --vault=vault: string@"nu completion vault"             # Only list documents in this vault.
 ]
 
 export alias "document ls" = document list
@@ -682,7 +683,7 @@ export extern events-api [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for events-api
+    --help(-h)                                              # help for events-api
 ]
 
 # Create an Events API integration token.
@@ -700,8 +701,8 @@ export extern "events-api create" [
     --version(-v)                                           # version for op
 
     --expires-in=duration: string@"nu completion duration"  # Set how the long the events-api token is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks.
-    --features=features: string@"nu completion feature"    # Set the comma-separated list of features the integration token can be used for. Options: 'signinattempts', 'itemusages', 'auditevents'.
-    --help(-h)             # help for create
+    --features=features: string@"nu completion feature"     # Set the comma-separated list of features the integration token can be used for. Options: 'signinattempts', 'itemusages', 'auditevents'.
+    --help(-h)                                              # help for create
 
     name: string
 ]
@@ -729,7 +730,7 @@ export extern group [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for group
+    --help(-h)                                              # help for group
 ]
 
 
@@ -747,8 +748,8 @@ export extern "group create" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --description=string: string   # Set the group's description.
-    --help                 # help for create
+    --description=string: string                            # Set the group's description.
+    --help                                                  # help for create
 
     name: string
 ]
@@ -767,9 +768,9 @@ export extern "group get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for get
+    --help(-h)                                              # help for get
 
-    group?: string@"nu completion group" # [{ <groupName> | <groupID> | - }]
+    group?: string@"nu completion group"                    # [{ <groupName> | <groupID> | - }]
 ]
 
 # Edit a group's name or description
@@ -786,11 +787,11 @@ export extern "group edit" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --description=description: string   # Change the group's description.
-    --help                      # help for edit
-    --name=name: string                 # Change the group's name.
+    --description=description: string                       # Change the group's description.
+    --help                                                  # help for edit
+    --name=name: string                                     # Change the group's name.
 
-    group?: string@"nu completion group" # [{ <groupName> | <groupID> | - }]
+    group?: string@"nu completion group"                    # [{ <groupName> | <groupID> | - }]
 ]
 
 # Remove a group
@@ -807,9 +808,9 @@ export extern "group delete" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for delete
+    --help(-h)                                              # help for delete
 
-    group?: string@"nu completion group" # [{ <groupName> | <groupID> | - }]
+    group?: string@"nu completion group"                    # [{ <groupName> | <groupID> | - }]
 ]
 
 export alias "group rm" = group delete
@@ -829,9 +830,9 @@ export extern "group list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)      # help for list
-    --user=user: string@"nu completion user"     # List groups that a user belongs to.
-    --vault=vault: string@"nu completion vault"   # List groups that have direct access to a vault.
+    --help(-h)                                              # help for list
+    --user=user: string@"nu completion user"                # List groups that a user belongs to.
+    --vault=vault: string@"nu completion vault"             # List groups that have direct access to a vault.
 ]
 
 
@@ -863,7 +864,7 @@ export extern "group user" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for user
+    --help(-h)                                              # help for user
 ]
 
 # Add a user to a group
@@ -880,10 +881,10 @@ export extern "group user grant" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --group=string: string@"nu completion group"   # Specify the group to add the user to.
-    --help(-h)           # help for grant
-    --role=string: string@"nu completion role"    # Specify the user's role as a member or manager. Default: member.
-    --user=string: string@"nu completion user"    # Specify the user to add to the group.
+    --group=string: string@"nu completion group"            # Specify the group to add the user to.
+    --help(-h)                                              # help for grant
+    --role=string: string@"nu completion role"              # Specify the user's role as a member or manager. Default: member.
+    --user=string: string@"nu completion user"              # Specify the user to add to the group.
 ]
 
 # Remove a user from a group
@@ -900,9 +901,9 @@ export extern "group user revoke" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --group=string: string@"nu completion group"   # Specify the group to remove the user from.
-    --help(-h)           # help for revoke
-    --user=string: string@"nu completion user"    # Specify the user to remove from the group.
+    --group=string: string@"nu completion group"            # Specify the group to remove the user from.
+    --help(-h)                                              # help for revoke
+    --user=string: string@"nu completion user"              # Specify the user to remove from the group.
 ]
 
 # Retrieve users that belong to a group
@@ -919,7 +920,7 @@ export extern "group user list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for list
+    --help(-h)                                              # help for list
 
     group: string@"nu completion group"
 ]
@@ -947,34 +948,34 @@ export extern item [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for item
+    --help(-h)                                              # help for item
 ]
 
 # Create an item
 export extern "item create" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                                               # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                                         # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                                        # Use this configuration directory.
+    --debug                                                                                         # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                                                # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                                                  # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                                                # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                                                      # Print output without color.
+    --session=token: string                                                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                                                   # version for op
 
-    --category=category: string@"nu completion category"                                           # Set the item's category.
-    --dry-run                                         # Test the command and output a preview of the resulting item.
-    --favorite                                        # Add item to favorites.
-    --generate-password=recipe: string@"nu completion generate-password"                      # Add a randomly-generated password to a Login or Password item.
-    --help(-h)                                        # help for create
-    --ssh-generate-key: string@"nu completion ssh-generate-key"                                # The type of SSH key to create: Ed25519 or RSA. For RSA, specify 2048, 3072, or 4096 (default) bits. Possible values: 'ed25519', 'rsa', 'rsa2048', 'rsa3072', 'rsa4096'. (default Ed25519)
-    --tags tags                                       # Set the tags to the specified (comma-separated) values.
-    --template=string: path                                 # Specify the file path to read an item template from.
-    --title=title: string                                     # Set the item's title.
-    --url=URL: string                                         # Set the URL associated with the item
-    --vault=vault: string@"nu completion vault"                                     # Save the item in this vault. Default: Private.
+    --category=category: string@"nu completion category"                                            # Set the item's category.
+    --dry-run                                                                                       # Test the command and output a preview of the resulting item.
+    --favorite                                                                                      # Add item to favorites.
+    --generate-password=recipe: string@"nu completion generate-password"                            # Add a randomly-generated password to a Login or Password item.
+    --help(-h)                                                                                      # help for create
+    --ssh-generate-key: string@"nu completion ssh-generate-key"                                     # The type of SSH key to create: Ed25519 or RSA. For RSA, specify 2048, 3072, or 4096 (default) bits. Possible values: 'ed25519', 'rsa', 'rsa2048', 'rsa3072', 'rsa4096'. (default Ed25519)
+    --tags tags                                                                                     # Set the tags to the specified (comma-separated) values.
+    --template=string: path                                                                         # Specify the file path to read an item template from.
+    --title=title: string                                                                           # Set the item's title.
+    --url=URL: string                                                                               # Set the URL associated with the item
+    --vault=vault: string@"nu completion vault"                                                     # Save the item in this vault. Default: Private.
 
     ...assignments
 ]
@@ -993,43 +994,43 @@ export extern "item get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --fields=strings: string    # Return data from specific fields. Use 'label=' to get the field by name or 'type=' to filter fields by type. Specify multiple in a comma-separated list.
-    --help(-h)              # help for get
-    --include-archive   # Include items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
-    --otp               # Output the primary one-time password for this item.
-    --reveal            # Don't conceal the private SSH key when using human-readable output.
-    --share-link        # Get a shareable link for the item.
-    --vault=string: string@"nu completion vault"        # Look for the item in this vault.
+    --fields=strings: string                                # Return data from specific fields. Use 'label=' to get the field by name or 'type=' to filter fields by type. Specify multiple in a comma-separated list.
+    --help(-h)                                              # help for get
+    --include-archive                                       # Include items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
+    --otp                                                   # Output the primary one-time password for this item.
+    --reveal                                                # Don't conceal the private SSH key when using human-readable output.
+    --share-link                                            # Get a shareable link for the item.
+    --vault=string: string@"nu completion vault"            # Look for the item in this vault.
 
-    items?: string@"nu completion item" # [{ <itemName> | <itemID> | <shareLink> | - }]
+    items?: string@"nu completion item"                     # [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
 
 # Edit an item's details
 export extern "item edit" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                                   # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                             # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                            # Use this configuration directory.
+    --debug                                                                             # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                                    # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                                      # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                                    # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                                          # Print output without color.
+    --session=token: string                                                             # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                                       # version for op
 
-    --dry-run                      # Perform a dry run of the command and output a preview of the resulting item.
-    --favorite: string@"nu completion bool"                      # Whether this item is a favorite item. Options: true, false
-    --generate-password=recipe: string@"nu completion generate-password"   # Give the item a randomly generated password.
-    --help(-h)                         # help for edit
-    --tags=tags: string@"nu completion tags"                    # Set the tags to the specified (comma-separated) values. An empty value will remove all tags.
-    --template: path              # Specify the filepath to read an item template from.
-    --title=title: string                  # Set the item's title.
-    --url=URL: string                      # Set the URL associated with the item
-    --vault=vault: string@"nu completion vault"                  # Edit the item in this vault.
+    --dry-run                                                                           # Perform a dry run of the command and output a preview of the resulting item.
+    --favorite: string@"nu completion bool"                                             # Whether this item is a favorite item. Options: true, false
+    --generate-password=recipe: string@"nu completion generate-password"                # Give the item a randomly generated password.
+    --help(-h)                                                                          # help for edit
+    --tags=tags: string@"nu completion tags"                                            # Set the tags to the specified (comma-separated) values. An empty value will remove all tags.
+    --template: path                                                                    # Specify the filepath to read an item template from.
+    --title=title: string                                                               # Set the item's title.
+    --url=URL: string                                                                   # Set the URL associated with the item
+    --vault=vault: string@"nu completion vault"                                         # Edit the item in this vault.
 
-    item: string@"nu completion item"    # { <itemName> | <itemID> | <shareLink> }
-    ...assignments  # [ <assignment> ... ]
+    item: string@"nu completion item"                                                   # { <itemName> | <itemID> | <shareLink> }
+    ...assignments                                                                      # [ <assignment> ... ]
 ]
 
 # Delete or archive an item
@@ -1046,11 +1047,11 @@ export extern "item delete" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --archive        # Move the item to the Archive.
-    --help           # help for delete
-    --vault string   # Look for the item in this vault.
+    --archive                                               # Move the item to the Archive.
+    --help                                                  # help for delete
+    --vault string                                          # Look for the item in this vault.
 
-    items?: string@"nu completion item"   #  [{ <itemName> | <itemID> | <shareLink> | - }]
+    items?: string@"nu completion item"                     #  [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
 
 export alias "item rm" = item delete
@@ -1059,24 +1060,24 @@ export alias "item remove" = item delete
 # List items
 export extern "item list" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                # Use this configuration directory.
+    --debug                                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                              # Print output without color.
+    --session=token: string                                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                           # version for op
 
-    --categories=categories: string@"nu completion category"   # Only list items in these categories (comma-separated).
-    --favorite                # Only list favorite items
-    --help(-h)                # help for list
-    --include-archive         # Include items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
-    --long                    # Output a more detailed item list.
-    --tags=tags: string@"nu completion tag"               # Only list items with these tags (comma-separated).
-    --vault=vault: string@"nu completion vault"             # Only list items in this vault.
+    --categories=categories: string@"nu completion category"                # Only list items in these categories (comma-separated).
+    --favorite                                                              # Only list favorite items
+    --help(-h)                                                              # help for list
+    --include-archive                                                       # Include items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.
+    --long                                                                  # Output a more detailed item list.
+    --tags=tags: string@"nu completion tag"                                 # Only list items with these tags (comma-separated).
+    --vault=vault: string@"nu completion vault"                             # Only list items in this vault.
 ]
 
 export alias "item ls" = item list
@@ -1084,22 +1085,22 @@ export alias "item ls" = item list
 # Move an item between vaults
 export extern "item move" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"           # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                     # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                    # Use this configuration directory.
+    --debug                                                     # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"            # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"              # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                            # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                  # Print output without color.
+    --session=token: string                                     # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                               # version for op
 
-    --current-vault=string: string@"nu completion vault"       # Vault where the item is currently saved.
-    --destination-vault=string: string@"nu completion vault"   # The vault you want to move the item to.
-    --help                       # help for move
+    --current-vault=string: string@"nu completion vault"        # Vault where the item is currently saved.
+    --destination-vault=string: string@"nu completion vault"    # The vault you want to move the item to.
+    --help                                                      # help for move
 
-    items?: string@"nu completion item"    # [{ <itemName> | <itemID> | <shareLink> | - }]
+    items?: string@"nu completion item"                         # [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
 
 export alias "item mv" = item move
@@ -1118,13 +1119,13 @@ export extern "item share" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --emails=strings: string        # Email addresses to share with.
-    --expires-in=duration: string@"nu completion duration"   # Expire link after the duration specified in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks. (default 7d)
-    --help                  # help for share
-    --vault=string: string@"nu completion vault"          # Look for the item in this vault.
-    --view-once             # Expire link after a single view.
+    --emails=strings: string                                # Email addresses to share with.
+    --expires-in=duration: string@"nu completion duration"  # Expire link after the duration specified in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks. (default 7d)
+    --help                                                  # help for share
+    --vault=string: string@"nu completion vault"            # Look for the item in this vault.
+    --view-once                                             # Expire link after a single view.
 
-    item: string@"nu completion item"  # { <itemName> | <itemID> }
+    item: string@"nu completion item"                       # { <itemName> | <itemID> }
 ]
 
 #   _ _                   __  __                                                   _      _____                                          _
@@ -1156,7 +1157,7 @@ export extern template [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for template
+    --help(-h)                                              # help for template
 ]
 
 # Get an item template
@@ -1173,12 +1174,12 @@ export extern "item template get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-mode=filemode: int       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
-    --force(-f)                # Do not prompt for confirmation.
-    --help(-h)                 # help for get
-    --out-file(-o)=string: path      # Write the template to a file instead of stdout.
+    --file-mode=filemode: int                               # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
+    --force(-f)                                             # Do not prompt for confirmation.
+    --help(-h)                                              # help for get
+    --out-file(-o)=string: path                             # Write the template to a file instead of stdout.
 
-    category?: string@"nu completion category" # [{ <category> | - }]
+    category?: string@"nu completion category"              # [{ <category> | - }]
 ]
 
 # Get a list of templates
@@ -1195,7 +1196,7 @@ export extern "item template list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for list
+    --help(-h)                                              # help for list
 ]
 
 export alias "item template ls" = item template list
@@ -1223,7 +1224,7 @@ export extern plugin [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for plugin
+    --help(-h)                                              # help for plugin
 ]
 
 
@@ -1241,7 +1242,7 @@ export extern "plugin list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for list
+    --help(-h)                                              # help for list
 ]
 
 export alias "plugin ls" = plugin list
@@ -1260,9 +1261,9 @@ export extern "plugin clear" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --all         # Clear all configurations for this plugin that apply to this directory and/or terminal session, including the global default.
-    --force(-f)   # Apply immediately without asking for confirmation.
-    --help(-h)    # help for clear
+    --all                                                   # Clear all configurations for this plugin that apply to this directory and/or terminal session, including the global default.
+    --force(-f)                                             # Apply immediately without asking for confirmation.
+    --help(-h)                                              # help for clear
 
     plugin_name: string@"nu completion plugin_name"
 ]
@@ -1283,9 +1284,9 @@ export extern "plugin init" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for init
+    --help(-h)                                              # help for init
 
-    executable: string@"nu completion plugin_executable" # [ <plugin-executable> ]
+    executable: string@"nu completion plugin_executable"    # [ <plugin-executable> ]
 ]
 
 # Inspect your existing shell plugin configurations
@@ -1302,7 +1303,7 @@ export extern "plugin inspect" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for inspect
+    --help(-h)                                              # help for inspect
 
     plugin_name: string@"nu completion plugin_name"
 ]
@@ -1323,7 +1324,7 @@ export extern "plugin run" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for run
+    --help(-h)                                              # help for run
 
     ...command
 ]
@@ -1351,7 +1352,7 @@ export extern "plugin credential" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for credential
+    --help(-h)                                              # help for credential
 ]
 
 # Import credentials for a shell plugin
@@ -1368,7 +1369,7 @@ export extern "plugin credential import" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)        # help for import
+    --help(-h)                                              # help for import
 
     plugin_name: string@"nu completion plugin_name"
 ]
@@ -1395,28 +1396,28 @@ export extern service-account [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for service-account
+    --help(-h)                                              # help for service-account
 ]
 
 # Create a service account
 export extern "service-account create" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                           # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                     # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                    # Use this configuration directory.
+    --debug                                                                     # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                            # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                              # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                            # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                                  # Print output without color.
+    --session=token: string                                                     # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                               # version for op
 
-    --can-create-vaults     # Allow the service account to create new vaults.
-    --expires-in=duration: string@"nu completion duration"   # Set how long the service account is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, or (w)eeks.
-    --help(-h)                  # help for create
-    --raw                   # Only return the service account token.
-    --vault=stringArray: string@"nu completion vault permissions"     # Give access to this vault with a set of permissions. Has syntax <vault-name>:<permission>[,<permission>]
+    --can-create-vaults                                                         # Allow the service account to create new vaults.
+    --expires-in=duration: string@"nu completion duration"                      # Set how long the service account is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, or (w)eeks.
+    --help(-h)                                                                  # help for create
+    --raw                                                                       # Only return the service account token.
+    --vault=stringArray: string@"nu completion vault permissions"               # Give access to this vault with a set of permissions. Has syntax <vault-name>:<permission>[,<permission>]
 
     serviceAccountName: string
 ]
@@ -1435,9 +1436,9 @@ export extern "service-account ratelimit" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for ratelimit
+    --help(-h)                                              # help for ratelimit
 
-    account: string    # [{ <serviceAccountName> | <serviceAccountID> }]
+    account: string                                         # [{ <serviceAccountName> | <serviceAccountID> }]
 ]
 
 export alias "service-account ratelimits" = service-account ratelimit
@@ -1465,7 +1466,7 @@ export extern user [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for user
+    --help(-h)                                              # help for user
 ]
 
 # Provision a user in the authenticated account
@@ -1482,10 +1483,10 @@ export extern "user provision" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --email=string: string      # Provide the user's email address.
-    --help(-h)              # help for provision
-    --language=string: string  # Provide the user's account language. (default "en")
-    --name=string: string       # Provide the user's name.
+    --email=string: string                                  # Provide the user's email address.
+    --help(-h)                                              # help for provision
+    --language=string: string                               # Provide the user's account language. (default "en")
+    --name=string: string                                   # Provide the user's name.
 ]
 
 # Confirm a user
@@ -1502,10 +1503,10 @@ export extern "user confirm" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --all        # Confirm all unconfirmed users.
-    --help(-h)   # help for confirm
+    --all                                                   # Confirm all unconfirmed users.
+    --help(-h)                                              # help for confirm
 
-    user?: string@"nu completion user" # [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                      # [{ <email> | <name> | <userID> | - }]
 ]
 
 # Get details about a user
@@ -1522,12 +1523,12 @@ export extern "user get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --fingerprint   # Get the user's public key fingerprint.
-    --help(-h)          # help for get
-    --me            # Get the authenticated user's details.
-    --public-key    # Get the user's public key.
+    --fingerprint                                           # Get the user's public key fingerprint.
+    --help(-h)                                              # help for get
+    --me                                                    # Get the authenticated user's details.
+    --public-key                                            # Get the user's public key.
 
-    user?: string@"nu completion user"         #  [{ <email> | <name> | <userID> | --me | - }]
+    user?: string@"nu completion user"                      #  [{ <email> | <name> | <userID> | --me | - }]
 ]
 
 # Edit a user's name or Travel Mode status
@@ -1544,31 +1545,31 @@ export extern "user edit" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help                 # help for edit
-    --name=string: string          # Set the user's name.
-    --travel-mode: string@"nu completion onoff"   # Turn Travel Mode on or off for the user. (default off)
+    --help                                                  # help for edit
+    --name=string: string                                   # Set the user's name.
+    --travel-mode: string@"nu completion onoff"             # Turn Travel Mode on or off for the user. (default off)
 
-    user?: string@"nu completion user"                #  [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                      #  [{ <email> | <name> | <userID> | - }]
 ]
 
 # Suspend a user
 export extern "user suspend" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                                           # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                                     # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                                    # Use this configuration directory.
+    --debug                                                                                     # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                                            # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                                              # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                                            # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                                                  # Print output without color.
+    --session=token: string                                                                     # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                                               # version for op
 
-    --deauthorize-devices-after=duration: string@"nu completion duration"  # Deauthorize the user's devices after a time (rounded down to seconds).
-    --help(-h)                                # help for suspend
+    --deauthorize-devices-after=duration: string@"nu completion duration"                       # Deauthorize the user's devices after a time (rounded down to seconds).
+    --help(-h)                                                                                  # help for suspend
 
-    user?: string@"nu completion user"                    # [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                                                          # [{ <email> | <name> | <userID> | - }]
 ]
 
 # Reactivate a suspended user
@@ -1585,9 +1586,9 @@ export extern "user reactivate" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for reactivate
+    --help(-h)                                              # help for reactivate
 
-    user?: string@"nu completion user"                    # [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                      # [{ <email> | <name> | <userID> | - }]
 ]
 
 # Remove a user and all their data from the account
@@ -1604,9 +1605,9 @@ export extern "user delete" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for delete
+    --help(-h)                                              # help for delete
 
-    user?: string@"nu completion user"                    # [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                      # [{ <email> | <name> | <userID> | - }]
 ]
 
 export alias "user rm" = user delete
@@ -1626,9 +1627,9 @@ export extern "user list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --group=group: string@"nu completion group"   # List users who belong to a group.
+    --group=group: string@"nu completion group"             # List users who belong to a group.
     --help(-h)          # help for list
-    --vault=vault: string@"nu completion vault"   # List users who have direct access to vault.
+    --vault=vault: string@"nu completion vault"             # List users who have direct access to vault.
 ]
 
 export alias "user ls" = user list
@@ -1655,7 +1656,7 @@ export extern vault [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for vault
+    --help(-h)                                              # help for vault
 ]
 
 
@@ -1674,9 +1675,9 @@ export extern "vault create" [
     --version(-v)                                           # version for op
 
     --allow-admins-to-manage: string@"nu completion bool"   # Set whether administrators can manage the vault. If not provided, the default policy for the account applies.
-    --description=description: string             # Set the group's description.
-    --help(-h)                            # help for create
-    --icon=string: string@"nu completion vault_icon"                         # Set the vault icon.
+    --description=description: string                       # Set the group's description.
+    --help(-h)                                              # help for create
+    --icon=string: string@"nu completion vault_icon"        # Set the vault icon.
 
     name: string
 ]
@@ -1695,9 +1696,9 @@ export extern "vault get" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for get
+    --help(-h)                                              # help for get
 
-    vaults?: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
+    vaults?: string@"nu completion vault"                   # [{ <vaultName> | <vaultID> | - }]
 ]
 
 # Edit a vault's name, description, icon, or Travel Mode status
@@ -1714,13 +1715,13 @@ export extern "vault edit" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --description description   # Change the vault's description.
-    --help(-h)                    # help for edit
-    --icon=icon: string@"nu completion vault_icon"               # Change the vault's icon.
-    --name=name: string                        # Change the vault's name.
-    --travel-mode: string@"nu completion onoff"      # Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled are accessible while a user has Travel Mode turned on. (default off)
+    --description description                               # Change the vault's description.
+    --help(-h)                                              # help for edit
+    --icon=icon: string@"nu completion vault_icon"          # Change the vault's icon.
+    --name=name: string                                     # Change the vault's name.
+    --travel-mode: string@"nu completion onoff"             # Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled are accessible while a user has Travel Mode turned on. (default off)
 
-    vaults?: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
+    vaults?: string@"nu completion vault"                   # [{ <vaultName> | <vaultID> | - }]
 ]
 
 # Remove a vault
@@ -1737,9 +1738,9 @@ export extern "vault delete" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for delete
+    --help(-h)                                              # help for delete
 
-    vaults?: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
+    vaults?: string@"nu completion vault"                   # [{ <vaultName> | <vaultID> | - }]
 ]
 
 export alias "vault rm" = vault delete
@@ -1748,21 +1749,21 @@ export alias "vault remove" = vault delete
 # List all vaults in the account
 export extern "vault list" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"               # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                         # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                        # Use this configuration directory.
+    --debug                                                         # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                  # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                      # Print output without color.
+    --session=token: string                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                   # version for op
 
-    --group=string: string@"nu completion group"             # List vaults a group has access to.
-    --help(-h)                 # help for list
-    --permission=permissions: string@"nu completion permissions"   # List only vaults that the specified user/group has this permission for.
-    --user=string: string@"nu completion user"              # List vaults that a given user has access to.
+    --group=string: string@"nu completion group"                    # List vaults a group has access to.
+    --help(-h)                                                      # help for list
+    --permission=permissions: string@"nu completion permissions"    # List only vaults that the specified user/group has this permission for.
+    --user=string: string@"nu completion user"                      # List vaults that a given user has access to.
 ]
 
 export alias "vault ls" = vault list
@@ -1798,49 +1799,49 @@ export extern "vault group" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for group
+    --help(-h)                                              # help for group
 ]
 
 # Grant a group permissions to a vault
 export extern "vault group grant" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                                   # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                             # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                            # Use this configuration directory.
+    --debug                                                                             # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                                    # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                                      # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                                    # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                                          # Print output without color.
+    --session=token: string                                                             # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                                       # version for op
 
-    --group=group: string@"nu completion group"               # The group to receive access.
-    --help(-h)                      # help for grant
-    --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permissions"   # The permissions to grant to the group.
-    --vault=vault: string@"nu completion vault"               # The vault to grant group permissions to.
+    --group=group: string@"nu completion group"                                         # The group to receive access.
+    --help(-h)                                                                          # help for grant
+    --no-input=input                                                                    # Do not prompt for input on interactive terminal.
+    --permissions=permissions: string@"nu completion permissions"                       # The permissions to grant to the group.
+    --vault=vault: string@"nu completion vault"                                         # The vault to grant group permissions to.
 ]
 
 # Revoke a portion or the entire access of a group to a vault
 export extern "vault group revoke" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                                   # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                             # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                            # Use this configuration directory.
+    --debug                                                                             # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                                    # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                                      # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                                    # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                                          # Print output without color.
+    --session=token: string                                                             # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                                       # version for op
 
-    --group=group: string@"nu completion group"               # The group to revoke access from.
-    --help(-h)                      # help for revoke
-    --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permissions"   # The permissions to revoke from the group.
-    --vault=vault: string@"nu completion vault"               # The vault to revoke access to.
+    --group=group: string@"nu completion group"                                         # The group to revoke access from.
+    --help(-h)                                                                          # help for revoke
+    --no-input=input                                                                    # Do not prompt for input on interactive terminal.
+    --permissions=permissions: string@"nu completion permissions"                       # The permissions to revoke from the group.
+    --vault=vault: string@"nu completion vault"                                         # The vault to revoke access to.
 ]
 
 # List all the groups that have access to the given vault
@@ -1857,7 +1858,7 @@ export extern "vault group list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for list
+    --help(-h)                                              # help for list
 
     vault?: string@"nu completion vault"
 ]
@@ -1885,49 +1886,49 @@ export extern "vault user" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for user
+    --help(-h)                                              # help for user
 ]
 
 # Grant a user access to a vault
 export extern "vault user grant" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                                   # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                             # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                            # Use this configuration directory.
+    --debug                                                                             # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                                    # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                                      # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                                    # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                                          # Print output without color.
+    --session=token: string                                                             # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                                       # version for op
 
-    --help(-h)                      # help for grant
-    --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permissions"   # The permissions to grant to the user.
-    --user=user: string@"nu completion user"                 # The user to receive access.
-    --vault=vault: string@"nu completion vault"               # The vault to grant access to.
+    --help(-h)                                                                          # help for grant
+    --no-input=input                                                                    # Do not prompt for input on interactive terminal.
+    --permissions=permissions: string@"nu completion permissions"                       # The permissions to grant to the user.
+    --user=user: string@"nu completion user"                                            # The user to receive access.
+    --vault=vault: string@"nu completion vault"                                         # The vault to grant access to.
 ]
 
 # Revoke a portion or the entire access of a user to a vault
 export extern "vault user revoke" [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                                                # Use this configuration directory.
+    --debug                                                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"                                        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"                                          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                                              # Print output without color.
+    --session=token: string                                                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                                                           # version for op
 
-    --help                      # help for revoke
-    --no-input=input            # Do not prompt for input on interactive terminal.
-    --permissions=permissions: string@"nu completion permissions"   # The permissions to revoke from the user.
-    --user=user: string@"nu completion user"                 # The user to revoke access from.
-    --vault=vault: string@"nu completion vault"               # The vault to revoke access to.
+    --help                                                                                  # help for revoke
+    --no-input=input                                                                        # Do not prompt for input on interactive terminal.
+    --permissions=permissions: string@"nu completion permissions"                           # The permissions to revoke from the user.
+    --user=user: string@"nu completion user"                                                # The user to revoke access from.
+    --vault=vault: string@"nu completion vault"                                             # The vault to revoke access to.
 ]
 
 # List all users with access to the vault and their permissions
@@ -1944,7 +1945,7 @@ export extern "vault user list" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for list
+    --help(-h)                                              # help for list
 
     vault: string@"nu completion vault"
 ]
@@ -1974,7 +1975,7 @@ export extern completion [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for completion
+    --help(-h)                                              # help for completion
 
     shell: string@"nu completion completion_shell"
 ]
@@ -1993,11 +1994,11 @@ export extern inject [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-mode=filemode: int       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
-    --force(-f)                # Do not prompt for confirmation.
-    --help(-h)                 # help for inject
-    --in-file(-i)=string: path       # The filename of a template file to inject.
-    --out-file(-o)=string: path      # Write the injected template to a file instead of stdout.
+    --file-mode=filemode: int                               # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
+    --force(-f)                                             # Do not prompt for confirmation.
+    --help(-h)                                              # help for inject
+    --in-file(-i)=string: path                              # The filename of a template file to inject.
+    --out-file(-o)=string: path                             # Write the injected template to a file instead of stdout.
 ]
 
 # Read a secret reference
@@ -2014,11 +2015,11 @@ export extern read [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --file-mode=filemode: int       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
-    --force(-f)                # Do not prompt for confirmation.
-    --help(-h)                 # help for read
-    --no-newline(-n)           # Do not print a new line after the secret.
-    --out-file(-o)=string: path      # Write the secret to a file instead of stdout.
+    --file-mode=filemode: int                               # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
+    --force(-f)                                             # Do not prompt for confirmation.
+    --help(-h)                                              # help for read
+    --no-newline(-n)                                        # Do not print a new line after the secret.
+    --out-file(-o)=string: path                             # Write the secret to a file instead of stdout.
 
     reference: string
 ]
@@ -2037,9 +2038,9 @@ export extern run [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --env-file=stringArray: path   # Enable Dotenv integration with specific Dotenv files to parse. For example: --env-file=.env.
-    --help(-h)                   # help for run
-    --no-masking             # Disable masking of secrets on stdout and stderr.
+    --env-file=stringArray: path                            # Enable Dotenv integration with specific Dotenv files to parse. For example: --env-file=.env.
+    --help(-h)                                              # help for run
+    --no-masking                                            # Disable masking of secrets on stdout and stderr.
 
     # "--": string
     ...command: string
@@ -2059,9 +2060,9 @@ export extern signin [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --force(-f)   # Ignore warnings and print raw output from this command.
-    --help(-h)    # help for signin
-    --raw         # Only return the session token.
+    --force(-f)                                             # Ignore warnings and print raw output from this command.
+    --help(-h)                                              # help for signin
+    --raw                                                   # Only return the session token.
 ]
 
 # Sign out of a 1Password account
@@ -2078,28 +2079,28 @@ export extern signout [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --all      # Sign out of all signed-in accounts.
-    --forget   # Remove the details for a 1Password account from this device.
-    --help(-h)     # help for signout
+    --all                                                   # Sign out of all signed-in accounts.
+    --forget                                                # Remove the details for a 1Password account from this device.
+    --help(-h)                                              # help for signout
 ]
 
 # Check for and download updates.
 export extern update [
     # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+    --account=account: string@"nu completion account"           # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                     # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                    # Use this configuration directory.
+    --debug                                                     # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"            # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"              # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                            # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                                  # Print output without color.
+    --session=token: string                                     # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                               # version for op
 
     --channel=string: string@"nu completion update_channel"     # Look for updates from a specific channel. allowed: stable, beta
-    --directory=string: path   # Download the update to this ''path''.
-    --help(-h)               # help for update
+    --directory=string: path                                    # Download the update to this ''path''.
+    --help(-h)                                                  # help for update
 ]
 
 # Get information about a signed-in account
@@ -2116,7 +2117,7 @@ export extern whoami [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h)   # help for whoami
+    --help(-h)                                              # help for whoami
 ]
 
 
