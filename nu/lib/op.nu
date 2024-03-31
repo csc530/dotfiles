@@ -1023,7 +1023,7 @@ export extern "item edit" [
     --generate-password=recipe: string@"nu completion generate-password"   # Give the item a randomly generated password.
     --help(-h)                         # help for edit
     --tags=tags: string@"nu completion tags"                    # Set the tags to the specified (comma-separated) values. An empty value will remove all tags.
-    --template string              # Specify the filepath to read an item template from.
+    --template: path              # Specify the filepath to read an item template from.
     --title=title: string                  # Set the item's title.
     --url=URL: string                      # Set the URL associated with the item
     --vault=vault: string@"nu completion vault"                  # Edit the item in this vault.
@@ -1484,7 +1484,7 @@ export extern "user provision" [
 
     --email=string: string      # Provide the user's email address.
     --help(-h)              # help for provision
-    --language=string: string@"nu completion language"   # Provide the user's account language. (default "en")
+    --language=string: string  # Provide the user's account language. (default "en")
     --name=string: string       # Provide the user's name.
 ]
 
@@ -2248,11 +2248,22 @@ def "nu completion category" [$ctx: string] {
         Password          "Reward Program"            "Secure Note"
         Server            "Social Security Number"    "Software License"
         SSH Key           "Wireless Router"
-    ] | nu completion output $ctx
+    ] | nu completion output $ctx --complete
 }
 
-def "nu completion generate-password" [] {
-    []
+def "nu completion generate-password" [ctx: string] {
+    let token = $ctx | nu completion parse-context | transpose option value | last | get value
+    if ($token | is-not-empty) and ($token | str ends-with ,) {
+        [letters,digits,symbols,] | append (seq 1 64) | each {|e|
+            if ($e | describe --detailed | get type) == int {
+                $"($token)($e)"
+            } else if not ($token | str contains $e) and ($e | describe --detailed | get type) == string {
+                    $"($token)($e)"
+            }
+        }
+    } else {
+        [letters,digits,symbols,] | append (seq 1 64) | each {|e| $e }
+    }
 }
 
 def "nu completion ssh-generate-key" [] {
@@ -2300,6 +2311,7 @@ def "nu completion permissions" [$ctx: string] {
         nu completion permission
     }
 }
+
 def "nu completion onoff" [] {
     [on off]
 }
@@ -2308,15 +2320,9 @@ def "nu completion completion_shell" [] {
     [zsh fish powershell bash]
 }
 
-def "nu completion language" [] {
-    [en de fr it pl ru es zh-cn zh-tw ja ko pt-br es-mx en-us]
-}
-
 def "nu completion bool" [] {
     [ '"true"' '"false"' ]
 }
-
-
 
 def "nu completion account" [] {
     op account list --format json | from json | select -i account_uuid email | rename value description | sort-by description --ignore-case --natural
@@ -2330,6 +2336,7 @@ def "nu completion item" [] {
     op item list --format json | from json | select -i id title additional_information | rename value description
     | upsert description {|row| if ($row.additional_information | is-not-empty) and $row.additional_information != '' {$"($row.description) - ($row.additional_information)"} else {$row.description} }
     | sort-by description --ignore-case --natural
+    | select value description
 }
 
 # ##     ## ######## ##       ########  ########   ######
