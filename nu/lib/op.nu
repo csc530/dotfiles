@@ -389,7 +389,7 @@ export extern "connect token create" [
 
     --expires-in=duration: string@"nu completion duration"  # Set how long the Connect token is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks.
     --help(-h)                 # help for create
-    --server=string: string                                 # Issue a token for this server.
+    --server=string: string@"nu completion server"                                 # Issue a token for this server.
     --vault=stringArray: string@"nu completion vaults"                                  # Issue a token on these vaults.
 
     tokenName: string
@@ -454,7 +454,7 @@ export extern "connect token list" [
     --version(-v)                                           # version for op
 
     --help(-h)            # help for list
-    --server=server   # Only list tokens for this Connect server.
+    --server=server: string@"nu completion server"                                       # Only list tokens for this Connect server.
 ]
 
 #                                   _                      _ _
@@ -2155,7 +2155,9 @@ def "nu completion group" [] {
 }
 
 def "nu completion server" [] {
-    []
+    # untested 🤷🏿‍♂️
+    let servers = op server list --format json | from json | select id name | rename value description
+    $servers
 }
 
 def "nu completion vault" [] {
