@@ -63,7 +63,7 @@ export extern "account add" [
 
     --help(-h)  # help for add
     --address=string: string                                # The sign-in address for your account.
-    --email string                                          # The email address associated with your account.
+    --email: string                                          # The email address associated with your account.
     --raw                                                   # Only return the session token.
     --shorthand=string: string                              # Set a custom account shorthand for your account.
     --signin                                                # Immediately sign in to the added account.
@@ -431,7 +431,7 @@ export extern "connect token delete" [
     --version(-v)                                           # version for op
 
     --help(-h)                                              # help for delete
-    --server string: string@"nu completion server"          # Only look for tokens for this 1Password Connect server.
+    --server=string: string@"nu completion server"          # Only look for tokens for this 1Password Connect server.
 
     token: string
 ]
@@ -1049,7 +1049,7 @@ export extern "item delete" [
 
     --archive                                               # Move the item to the Archive.
     --help                                                  # help for delete
-    --vault string                                          # Look for the item in this vault.
+    --vault: string@"nu completion vault"                   # Look for the item in this vault.
 
     items?: string@"nu completion item"                     #  [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
