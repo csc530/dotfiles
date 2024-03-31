@@ -1416,7 +1416,7 @@ export extern "service-account create" [
     --expires-in=duration: string@"nu completion duration"   # Set how long the service account is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, or (w)eeks.
     --help(-h)                  # help for create
     --raw                   # Only return the service account token.
-    --vault=stringArray: string@"nu completion vault"     # Give access to this vault with a set of permissions. Has syntax <vault-name>:<permission>[,<permission>]
+    --vault=stringArray: string@"nu completion vault permissions"     # Give access to this vault with a set of permissions. Has syntax <vault-name>:<permission>[,<permission>]
 
     serviceAccountName: string
 ]
@@ -1437,7 +1437,7 @@ export extern "service-account ratelimit" [
 
     --help(-h)   # help for ratelimit
 
-    ...accounts    # [{ <serviceAccountName> | <serviceAccountID> }]
+    account: string    # [{ <serviceAccountName> | <serviceAccountID> }]
 ]
 
 export alias "service-account ratelimits" = service-account ratelimit
@@ -2167,6 +2167,20 @@ def "nu completion vault" [] {
     op vault list --format json | from json | select id name | rename value description | sort-by description --ignore-case --natural
 }
 
+def "nu completion vault permissions" [ctx: string] {
+    let vault_permissions = [
+        {value: read_items, description: 'READ'}
+        {value: write_items, description: 'WRITE: requires read_items'}
+        {value: share_items, description: 'SHARE: requires read_items'}
+    ]
+    let token = $ctx | nu completion parse-context | transpose option value | last | get value
+    if ($token | is-not-empty) and (($token | str ends-with ,) or ($token | str ends-with :)) {
+        $vault_permissions | each {|e| $e | upsert value $"($token)($e.value)" }
+    } else {
+        nu completion vault | each {|e| $e | upsert value $"($e.value):" }
+    }
+}
+
 def "nu completion vaults" [ctx: string] {
     let vaults =  $ctx | nu completion parse-context | transpose option value | last | get value
     if ($vaults | is-not-empty) and ($vaults | str ends-with ,) {
@@ -2276,7 +2290,7 @@ def "nu completion bool" [] {
 }
 
 def "nu completion account" [] {
-    op account list --format json | from json | get -i account_uuid email | rename value description | sort-by description --ignore-case --natural
+    op account list --format json | from json | select -i account_uuid email | rename value description | sort-by description --ignore-case --natural
 }
 
 def "nu completion document_item" [] {
