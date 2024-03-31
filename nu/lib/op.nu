@@ -103,7 +103,7 @@ export extern "account list" [
     --help(-h)                  # help for list
 ]
 
-alias "account ls" = account list
+export alias "account ls" = account list
 
 # Remove a 1Password account from this device
 export extern "account forget" [
@@ -324,8 +324,8 @@ export extern "connect server delete" [
     server: string@"nu completion server" #  [{ <serverName> | <serverID> | - }]
 ]
 
-alias "connect server rm" = connect server delete
-alias "connect server remove" = connect server delete
+export alias "connect server rm" = connect server delete
+export alias "connect server remove" = connect server delete
 
 
 # List Connect servers
@@ -345,7 +345,7 @@ export extern "connect server list" [
     --help(-h)   # help for list
 ]
 
-alias "connect server ls" = connect server list
+export alias "connect server ls" = connect server list
 
 
 
@@ -436,8 +436,8 @@ export extern "connect token delete" [
     token: string
 ]
 
-alias "connect token rm" = connect token delete
-alias "connect token remove" = connect token delete
+export alias "connect token rm" = connect token delete
+export alias "connect token remove" = connect token delete
 
 # Get a list of tokens
 export extern "connect token list" [
@@ -632,11 +632,11 @@ export extern "document delete" [
     --help(-h)          # help for delete
     --vault=vault: string@"nu completion vault"   # Delete the document in this vault.
 
-    ...items # [{ <itemName> | <itemID> | - }]
+    item?: string@"nu completion document_item" # [{ <itemName> | <itemID> | - }]
 ]
 
-alias "document rm" = document delete
-alias "document remove" = document delete
+export alias "document rm" = document delete
+export alias "document remove" = document delete
 
 # Get a list of documents
 export extern "document list" [
@@ -657,7 +657,7 @@ export extern "document list" [
     --vault=vault: string@"nu completion vault"       # Only list documents in this vault.
 ]
 
-alias "document ls" = document list
+export alias "document ls" = document list
 
 #                                       dP                                       oo
 #                                       88
@@ -769,7 +769,7 @@ export extern "group get" [
 
     --help(-h)   # help for get
 
-    ...groups # [{ <groupName> | <groupID> | - }]
+    group?: string@"nu completion group" # [{ <groupName> | <groupID> | - }]
 ]
 
 # Edit a group's name or description
@@ -790,7 +790,7 @@ export extern "group edit" [
     --help                      # help for edit
     --name=name: string                 # Change the group's name.
 
-    ...groups # [{ <groupName> | <groupID> | - }]
+    group?: string@"nu completion group" # [{ <groupName> | <groupID> | - }]
 ]
 
 # Remove a group
@@ -809,11 +809,11 @@ export extern "group delete" [
 
     --help(-h)   # help for delete
 
-    ...groups # [{ <groupName> | <groupID> | - }]
+    group?: string@"nu completion group" # [{ <groupName> | <groupID> | - }]
 ]
 
-alias "group rm" = group delete
-alias "group remove" = group delete
+export alias "group rm" = group delete
+export alias "group remove" = group delete
 
 # List groups
 export extern "group list" [
@@ -924,7 +924,7 @@ export extern "group user list" [
     group: string@"nu completion group"
 ]
 
-alias "group user ls" = group user list
+export alias "group user ls" = group user list
 
 # oo   dP
 #      88
@@ -1053,8 +1053,8 @@ export extern "item delete" [
     ...items    #  [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
 
-alias "item rm" = item delete
-alias "item remove" = item delete
+export alias "item rm" = item delete
+export alias "item remove" = item delete
 
 # List items
 export extern "item list" [
@@ -1079,7 +1079,7 @@ export extern "item list" [
     --vault=vault: string@"nu completion vault"             # Only list items in this vault.
 ]
 
-alias "item ls" = item list
+export alias "item ls" = item list
 
 # Move an item between vaults
 export extern "item move" [
@@ -1102,7 +1102,7 @@ export extern "item move" [
     ...items    # [{ <itemName> | <itemID> | <shareLink> | - }]
 ]
 
-alias "item mv" = item move
+export alias "item mv" = item move
 
 # Share an item
 export extern "item share" [
@@ -1196,7 +1196,7 @@ export extern "item template list" [
     --help(-h)        # help for list
 ]
 
-alias "item template ls" = item template list
+export alias "item template ls" = item template list
 
 #          dP                   oo
 #          88
@@ -1242,7 +1242,7 @@ export extern "plugin list" [
     --help(-h)        # help for list
 ]
 
-alias "plugin ls" = plugin list
+export alias "plugin ls" = plugin list
 
 # Clear shell plugin configuration
 export extern "plugin clear" [
@@ -1265,7 +1265,7 @@ export extern "plugin clear" [
     plugin_name: string
 ]
 
-alias "plugin reset" = plugin clear
+export alias "plugin reset" = plugin clear
 
 # Configure a shell plugin
 export extern "plugin init" [
@@ -1305,7 +1305,7 @@ export extern "plugin inspect" [
     plugin_name: string
 ]
 
-alias "plugin info" = plugin inspect
+export alias "plugin info" = plugin inspect
 
 # Provision credentials from 1Password and run this command
 export extern "plugin run" [
@@ -1438,7 +1438,7 @@ export extern "service-account ratelimit" [
     ...accounts    # [{ <serviceAccountName> | <serviceAccountID> }]
 ]
 
-alias "service-account ratelimits" = service-account ratelimit
+export alias "service-account ratelimits" = service-account ratelimit
 
 
 
@@ -1607,8 +1607,8 @@ export extern "user delete" [
     ...user                    # [{ <email> | <name> | <userID> | - }]
 ]
 
-alias "user rm" = user delete
-alias "user remove" = user delete
+export alias "user rm" = user delete
+export alias "user remove" = user delete
 
 # List users
 export extern "user list" [
@@ -1629,7 +1629,7 @@ export extern "user list" [
     --vault=vault: string@"nu completion vault"   # List users who have direct access to vault.
 ]
 
-alias "user ls" = user list
+export alias "user ls" = user list
 
 
 #                            dP   dP
@@ -1740,8 +1740,8 @@ export extern "vault delete" [
     ...vaults: string@"nu completion vault" # [{ <vaultName> | <vaultID> | - }]
 ]
 
-alias "vault rm" = vault delete
-alias "vault remove" = vault delete
+export alias "vault rm" = vault delete
+export alias "vault remove" = vault delete
 
 # List all vaults in the account
 export extern "vault list" [
@@ -1858,7 +1858,7 @@ export extern "vault group list" [
     --vault=vault: string@"nu completion vault"
 ]
 
-alias "vault group ls" = vault group list
+export alias "vault group ls" = vault group list
 
 
 
@@ -1945,7 +1945,7 @@ export extern "vault user list" [
     vault: string@"nu completion vault"
 ]
 
-alias "vault user ls" = vault user list
+export alias "vault user ls" = vault user list
 
 
 #    ######   #######  ##     ## ##     ##    ###    ##    ## ########   ######
@@ -2203,7 +2203,7 @@ def "nu completion tag" [] {
 }
 
 def "nu completion tags" [ctx: string] {
-    $ctx | nu completion parse-context | transpose option value | last | get value
+    let tags = $ctx | nu completion parse-context | transpose option value | last | get value
     if ($tags | is-not-empty) and ($tags | str ends-with ,) {
         nu completion tag | each {|e| $e | upsert value $"($tags)($e.value)" }
     }
@@ -2225,7 +2225,7 @@ def "nu completion role" [] {
     []
 }
 
-def "nu completion category" [] {
+def "nu completion category" [$ctx: string] {
     [
         "API Credential"    "Bank Account"              "Credit Card"
         Database          Document                  "Driver License"
@@ -2234,7 +2234,7 @@ def "nu completion category" [] {
         Password          "Reward Program"            "Secure Note"
         Server            "Social Security Number"    "Software License"
         SSH Key           "Wireless Router"
-    ]
+    ] | nu completion output $ctx
 }
 
 def "nu completion generate-password" [] {
