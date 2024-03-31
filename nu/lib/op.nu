@@ -1,6 +1,6 @@
 # 1Password CLI brings 1Password to your terminal.
 export extern main [
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -33,7 +33,7 @@ export extern main [
 # Manage your locally configured 1Password accounts
 export extern account [
         # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -50,7 +50,7 @@ export extern account [
 # Add an account to sign in to for the first time
 export extern "account add" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -61,7 +61,7 @@ export extern "account add" [
     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
-    --help(-h) help for add
+    --help(-h)  # help for add
     --address=string: string     # The sign-in address for your account.
     --email string               # The email address associated with your account.
     --raw                        # Only return the session token.
@@ -72,7 +72,7 @@ export extern "account add" [
 # Get details about your account
 export extern "account get" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -89,7 +89,7 @@ export extern "account get" [
 # List users and accounts set up on this device
 export extern "account list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -106,7 +106,7 @@ export extern "account list" [
 # Remove a 1Password account from this device
 export extern "account forget" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -135,7 +135,7 @@ export extern "account forget" [
 # Manage Connect server instances and tokens in your 1Password account
 export extern connect [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -161,7 +161,7 @@ export extern connect [
 # Manage group access to Secrets Automation
 export extern "connect group" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -178,7 +178,7 @@ export extern "connect group" [
 # Grant a group access to manage Secrets Automation
 export extern "connect group grant" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -197,7 +197,7 @@ export extern "connect group grant" [
 # Revoke a group's access to manage Secrets Automation
 export extern "connect group revoke" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -227,7 +227,7 @@ export extern "connect group revoke" [
 # Manage Connect servers
 export extern "connect server" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -244,7 +244,7 @@ export extern "connect server" [
 # Set up a Connect server
 export extern "connect server create" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -265,7 +265,7 @@ export extern "connect server create" [
 # Get a Connect server
 export extern "connect server get" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -284,7 +284,7 @@ export extern "connect server get" [
 # Rename a Connect server
 export extern "connect server edit" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -305,7 +305,7 @@ export extern "connect server edit" [
 # Remove a Connect server
 export extern "connect server delete" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -328,7 +328,7 @@ alias "connect server remove" = connect server delete
 # List Connect servers
 export extern "connect server list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -356,7 +356,7 @@ alias "connect server ls" = connect server list
 # Manage Connect server tokens
 export extern "connect token" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -373,7 +373,7 @@ export extern "connect token" [
 # Issue a token for a 1Password Connect server
 export extern "connect token create" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -395,7 +395,7 @@ export extern "connect token create" [
 # Rename a Connect server token
 export extern "connect token edit" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -416,7 +416,7 @@ export extern "connect token edit" [
 # Revoke a token for a Connect server
 export extern "connect token delete" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -439,7 +439,7 @@ alias "connect token remove" = connect token delete
 # Get a list of tokens
 export extern "connect token list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -464,7 +464,7 @@ export extern "connect token list" [
 # Manage Connect server vault access
 export extern "connect vault" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -481,7 +481,7 @@ export extern "connect vault" [
 # Grant a Connect server access to a vault
 export extern "connect vault grant" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -499,7 +499,7 @@ export extern "connect vault grant" [
 # Revoke a Connect server's access to a vault
 export extern "connect vault revoke" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -525,7 +525,7 @@ export extern "connect vault revoke" [
 # Perform CRUD operations on Document items in your vaults
 export extern document [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -542,7 +542,7 @@ export extern document [
 # Create a document item
 export extern "document create" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -565,7 +565,7 @@ export extern "document create" [
 # Download a document
 export extern "document get" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -589,7 +589,7 @@ export extern "document get" [
 # Edit a document item
 export extern "document edit" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -612,7 +612,7 @@ export extern "document edit" [
 # Delete or archive a document item
 export extern "document delete" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -636,7 +636,7 @@ alias "document remove" = document delete
 # Get a list of documents
 export extern "document list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -666,7 +666,7 @@ alias "document ls" = document list
 # Manage Events API integrations in your 1Password connect
 export extern events-api [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -683,7 +683,7 @@ export extern events-api [
 # Create an Events API integration token.
 export extern "events-api create" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -713,7 +713,7 @@ export extern "events-api create" [
 # Manage the groups in your 1Password account
 export extern group [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -731,7 +731,7 @@ export extern group [
 # Create a group
 export extern "group create" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -751,7 +751,7 @@ export extern "group create" [
 # Get details about a group
 export extern "group get" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -770,7 +770,7 @@ export extern "group get" [
 # Edit a group's name or description
 export extern "group edit" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -791,7 +791,7 @@ export extern "group edit" [
 # Remove a group
 export extern "group delete" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -813,7 +813,7 @@ alias "group remove" = group delete
 # List groups
 export extern "group list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -847,7 +847,7 @@ export extern "group list" [
 # Manage group membership
 export extern "group user" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -864,7 +864,7 @@ export extern "group user" [
 # Add a user to a group
 export extern "group user grant" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -884,7 +884,7 @@ export extern "group user grant" [
 # Remove a user from a group
 export extern "group user revoke" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -903,7 +903,7 @@ export extern "group user revoke" [
 # Retrieve users that belong to a group
 export extern "group user list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -931,7 +931,7 @@ alias "group user ls" = group user list
 # Perform CRUD operations on the 1Password items in your vaults
 export extern item [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -948,7 +948,7 @@ export extern item [
 # Create an item
 export extern "item create" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -977,7 +977,7 @@ export extern "item create" [
 # Get an item's details
 export extern "item get" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1002,7 +1002,7 @@ export extern "item get" [
 # Edit an item's details
 export extern "item edit" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1030,7 +1030,7 @@ export extern "item edit" [
 # Delete or archive an item
 export extern "item delete" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1054,7 +1054,7 @@ alias "item remove" = item delete
 # List items
 export extern "item list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1079,7 +1079,7 @@ alias "item ls" = item list
 # Move an item between vaults
 export extern "item move" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1102,7 +1102,7 @@ alias "item mv" = item move
 # Share an item
 export extern "item share" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1138,7 +1138,7 @@ export extern "item share" [
 # Manage templates
 export extern template [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1155,7 +1155,7 @@ export extern template [
 # Get an item template
 export extern "item template get" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1177,7 +1177,7 @@ export extern "item template get" [
 # Get a list of templates
 export extern "item template list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1205,7 +1205,7 @@ alias "item template ls" = item template list
 # Manage the shell plugins you use to authenticate third-party CLIs
 export extern plugin [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1223,7 +1223,7 @@ export extern plugin [
 # List all available shell plugins
 export extern "plugin list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1242,7 +1242,7 @@ alias "plugin ls" = plugin list
 # Clear shell plugin configuration
 export extern "plugin clear" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1265,7 +1265,7 @@ alias "plugin reset" = plugin clear
 # Configure a shell plugin
 export extern "plugin init" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1284,7 +1284,7 @@ export extern "plugin init" [
 # Inspect your existing shell plugin configurations
 export extern "plugin inspect" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1305,7 +1305,7 @@ alias "plugin info" = plugin inspect
 # Provision credentials from 1Password and run this command
 export extern "plugin run" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1333,7 +1333,7 @@ export extern "plugin run" [
 # Manage credentials for shell plugins
 export extern "plugin credential" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1350,7 +1350,7 @@ export extern "plugin credential" [
 # Import credentials for a shell plugin
 export extern "plugin credential import" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1377,7 +1377,7 @@ export extern "plugin credential import" [
 # Manage service accounts
 export extern service-account [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1394,7 +1394,7 @@ export extern service-account [
 # Create a service account
 export extern "service-account create" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1417,7 +1417,7 @@ export extern "service-account create" [
 # Retrieve rate limit usage for a service account
 export extern "service-account ratelimit" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1447,7 +1447,7 @@ alias "service-account ratelimits" = service-account ratelimit
 # Manage users within this 1Password account
 export extern user [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1464,7 +1464,7 @@ export extern user [
 # Provision a user in the authenticated account
 export extern "user provision" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1484,7 +1484,7 @@ export extern "user provision" [
 # Confirm a user
 export extern "user confirm" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1504,7 +1504,7 @@ export extern "user confirm" [
 # Get details about a user
 export extern "user get" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1526,7 +1526,7 @@ export extern "user get" [
 # Edit a user's name or Travel Mode status
 export extern "user edit" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1547,7 +1547,7 @@ export extern "user edit" [
 # Suspend a user
 export extern "user suspend" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1567,7 +1567,7 @@ export extern "user suspend" [
 # Reactivate a suspended user
 export extern "user reactivate" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1586,7 +1586,7 @@ export extern "user reactivate" [
 # Remove a user and all their data from the account
 export extern "user delete" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1608,7 +1608,7 @@ alias "user remove" = user delete
 # List users
 export extern "user list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1637,7 +1637,7 @@ alias "user ls" = user list
 # Manage permissions and perform CRUD operations on your 1Password vaults
 export extern vault [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1655,7 +1655,7 @@ export extern vault [
 # Create a new vault
 export extern "vault create" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1677,7 +1677,7 @@ export extern "vault create" [
 # Get details about a vault
 export extern "vault get" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1696,7 +1696,7 @@ export extern "vault get" [
 # Edit a vault's name, description, icon, or Travel Mode status
 export extern "vault edit" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1719,7 +1719,7 @@ export extern "vault edit" [
 # Remove a vault
 export extern "vault delete" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1741,7 +1741,7 @@ alias "vault remove" = vault delete
 # List all vaults in the account
 export extern "vault list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1778,7 +1778,7 @@ export extern "vault list" [
 # Manage group vault access
 export extern "vault group" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1795,7 +1795,7 @@ export extern "vault group" [
 # Grant a group permissions to a vault
 export extern "vault group grant" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1816,7 +1816,7 @@ export extern "vault group grant" [
 # Revoke a portion or the entire access of a group to a vault
 export extern "vault group revoke" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1837,7 +1837,7 @@ export extern "vault group revoke" [
 # List all the groups that have access to the given vault
 export extern "vault group list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1865,7 +1865,7 @@ alias "vault group ls" = vault group list
 # Manage user vault access
 export extern "vault user" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1882,7 +1882,7 @@ export extern "vault user" [
 # Grant a user access to a vault
 export extern "vault user grant" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1903,7 +1903,7 @@ export extern "vault user grant" [
 # Revoke a portion or the entire access of a user to a vault
 export extern "vault user revoke" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1924,7 +1924,7 @@ export extern "vault user revoke" [
 # List all users with access to the vault and their permissions
 export extern "vault user list" [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1954,7 +1954,7 @@ alias "vault user ls" = vault user list
 # Generate shell completion information
 export extern completion [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1973,7 +1973,7 @@ export extern completion [
 # Inject secrets into a config file
 export extern inject [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -1994,7 +1994,7 @@ export extern inject [
 # Read a secret reference
 export extern read [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -2017,7 +2017,7 @@ export extern read [
 # Pass secrets as environment variables to a process
 export extern run [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -2039,7 +2039,7 @@ export extern run [
 # Sign in to a 1Password account
 export extern signin [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -2058,7 +2058,7 @@ export extern signin [
 # Sign out of a 1Password account
 export extern signout [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -2077,7 +2077,7 @@ export extern signout [
 # Check for and download updates.
 export extern update [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -2096,7 +2096,7 @@ export extern update [
 # Get information about a signed-in account
 export extern whoami [
     # GLOBAL FLAGS
-    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
     --config=directory: path                                # Use this configuration directory.
     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
@@ -2232,4 +2232,9 @@ def "nu completion language" [] {
 
 def "nu completion bool" [] {
     [ true false ]
+}
+
+def "nu completion account" [] {
+    let accounts = op account list --format json | from json | select account_uuid email | rename value description
+    $accounts
 }
