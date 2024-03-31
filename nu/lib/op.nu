@@ -2166,11 +2166,11 @@ def "nu completion vault" [] {
 }
 
 def "nu completion vaults" [ctx: string] {
-    let vaults =  $ctx | nu completion parse-context | get vaults
-    if ($vaults | is-empty) or not ($vaults | str ends-with ,) {
-        nu completion vault
+    let vaults =  $ctx | nu completion parse-context | transpose option value | last | get value
+    if ($vaults | is-not-empty) and ($vaults | str ends-with ,) {
+            nu completion vault | each {|e| $e | upsert value $"($vaults)($e.value)" }
     } else {
-        nu completion vault | each {|e| $"($vaults.value)($e)" }
+        nu completion vault
     }
 }
 
@@ -2178,8 +2178,21 @@ def "nu completion vault_icon" [] {
     [airplane, application, art-supplies, bankers-box, brown-briefcase, brown-gate, buildings, cabin, castle, circle-of-dots, coffee, color-wheel, curtained-window, document, doughnut, fence, galaxy, gears, globe, green-backpack, green-gem, handshake, heart-with-monitor, house, id-card, jet, large-ship, luggage, plant, porthole, puzzle, rainbow, record, round-door, sandals, scales, screwdriver, shop, tall-window, treasure-chest, vault-door, vehicle, wallet, wrench]
 }
 
-def "nu completion duration" [] {
-    []
+def "nu completion duration" [ctx: string] {
+    let duration = $ctx | nu completion parse-context | transpose option value | last | get value
+
+    if ($duration | parse --regex ".*?(\\d+)$" | is-not-empty) {
+        [s m h d w] | each {|e|
+            let label = match $e {
+                s => "seconds"
+                m => "minutes"
+                h => "hours"
+                d => "days"
+                w => "weeks"
+            }
+            {value: $"($duration)($e)", description: $"+($duration | parse --regex '.*?(?<value>\d+)$' | last | get value | into float) ($label)"}
+        }
+    }
 }
 
 def "nu completion tag" [] {
