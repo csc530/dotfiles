@@ -9,7 +9,7 @@ export extern main [
     --help(-h)                                              # Get help for op.
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 ]
 
@@ -32,6 +32,18 @@ export extern main [
 
 # Manage your locally configured 1Password accounts
 export extern account [
+        # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)   # help for account
 ]
 
@@ -46,7 +58,7 @@ export extern "account add" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h) help for add
@@ -68,7 +80,7 @@ export extern "account get" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                  # help for get
@@ -85,7 +97,7 @@ export extern "account list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                  # help for list
@@ -102,7 +114,7 @@ export extern "account forget" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                  # help for forget
@@ -122,6 +134,18 @@ export extern "account forget" [
 
 # Manage Connect server instances and tokens in your 1Password account
 export extern connect [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)                  # help for connect
 ]
 
@@ -145,7 +169,7 @@ export extern "connect group" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                  # help for group
@@ -162,7 +186,7 @@ export extern "connect group grant" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                                                      # help for grant
@@ -181,7 +205,7 @@ export extern "connect group revoke" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                                                      # help for revoke
@@ -211,7 +235,7 @@ export extern "connect server" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                  # help for server
@@ -228,7 +252,7 @@ export extern "connect server create" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --force(-f)                             # Do not prompt for confirmation when overwriting credential files.
@@ -249,7 +273,7 @@ export extern "connect server get" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for get
@@ -268,7 +292,7 @@ export extern "connect server edit" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help        # help for edit
@@ -289,7 +313,7 @@ export extern "connect server delete" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for delete
@@ -312,7 +336,7 @@ export extern "connect server list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for list
@@ -340,7 +364,7 @@ export extern "connect token" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                  # help for token
@@ -357,7 +381,7 @@ export extern "connect token create" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --expires-in=duration: string@"nu completion duration"  # Set how long the Connect token is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks.
@@ -379,7 +403,7 @@ export extern "connect token edit" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)            # help for edit
@@ -400,7 +424,7 @@ export extern "connect token delete" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)            # help for delete
@@ -423,7 +447,7 @@ export extern "connect token list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)            # help for list
@@ -448,7 +472,7 @@ export extern "connect vault" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                  # help for vault
@@ -465,7 +489,7 @@ export extern "connect vault grant" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help            # help for grant
@@ -483,7 +507,7 @@ export extern "connect vault revoke" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help            # help for revoke
@@ -500,6 +524,18 @@ export extern "connect vault revoke" [
 
 # Perform CRUD operations on Document items in your vaults
 export extern document [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)  # help for document
 ]
 
@@ -514,7 +550,7 @@ export extern "document create" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --file-name=name: string   # Set the file's name.
@@ -537,7 +573,7 @@ export extern "document get" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --file-mode=filemode   # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
@@ -561,7 +597,7 @@ export extern "document edit" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --file-name=name: string   # Set the file's name.
@@ -584,7 +620,7 @@ export extern "document delete" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --archive       # Move the document to the Archive.
@@ -608,7 +644,7 @@ export extern "document list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help              # help for list
@@ -629,6 +665,18 @@ alias "document ls" = document list
 
 # Manage Events API integrations in your 1Password connect
 export extern events-api [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)   # help for events-api
 ]
 
@@ -643,7 +691,7 @@ export extern "events-api create" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --expires-in=duration: string@"nu completion duration"  # Set how the long the events-api token is valid for in (s)econds, (m)inutes, (h)ours, (d)ays, and/or (w)eeks.
@@ -664,6 +712,18 @@ export extern "events-api create" [
 
 # Manage the groups in your 1Password account
 export extern group [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)   # help for group
 ]
 
@@ -679,7 +739,7 @@ export extern "group create" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --description=string: string   # Set the group's description.
@@ -699,7 +759,7 @@ export extern "group get" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for get
@@ -718,7 +778,7 @@ export extern "group edit" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --description=description: string   # Change the group's description.
@@ -739,7 +799,7 @@ export extern "group delete" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for delete
@@ -761,7 +821,7 @@ export extern "group list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)      # help for list
@@ -795,7 +855,7 @@ export extern "group user" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for user
@@ -812,7 +872,7 @@ export extern "group user grant" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --group=string: string@"nu completion group"   # Specify the group to add the user to.
@@ -832,7 +892,7 @@ export extern "group user revoke" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --group=string: string@"nu completion group"   # Specify the group to remove the user from.
@@ -851,7 +911,7 @@ export extern "group user list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for list
@@ -870,6 +930,18 @@ alias "group user ls" = group user list
 
 # Perform CRUD operations on the 1Password items in your vaults
 export extern item [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)   # help for item
 ]
 
@@ -884,7 +956,7 @@ export extern "item create" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --category=category: string@"nu completion category"                                           # Set the item's category.
@@ -913,7 +985,7 @@ export extern "item get" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --fields=strings: string    # Return data from specific fields. Use 'label=' to get the field by name or 'type=' to filter fields by type. Specify multiple in a comma-separated list.
@@ -938,7 +1010,7 @@ export extern "item edit" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --dry-run                      # Perform a dry run of the command and output a preview of the resulting item.
@@ -966,7 +1038,7 @@ export extern "item delete" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --archive        # Move the item to the Archive.
@@ -990,7 +1062,7 @@ export extern "item list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --categories=categories: string@"nu completion category"   # Only list items in these categories (comma-separated).
@@ -1015,7 +1087,7 @@ export extern "item move" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --current-vault=string: string@"nu completion vault"       # Vault where the item is currently saved.
@@ -1038,7 +1110,7 @@ export extern "item share" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --emails=strings: string        # Email addresses to share with.
@@ -1065,6 +1137,18 @@ export extern "item share" [
 
 # Manage templates
 export extern template [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)        # help for template
 ]
 
@@ -1079,7 +1163,7 @@ export extern "item template get" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --file-mode=filemode       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
@@ -1101,7 +1185,7 @@ export extern "item template list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)        # help for list
@@ -1120,6 +1204,18 @@ alias "item template ls" = item template list
 
 # Manage the shell plugins you use to authenticate third-party CLIs
 export extern plugin [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)        # help for plugin
 ]
 
@@ -1135,7 +1231,7 @@ export extern "plugin list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)        # help for list
@@ -1154,7 +1250,7 @@ export extern "plugin clear" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --all         # Clear all configurations for this plugin that apply to this directory and/or terminal session, including the global default.
@@ -1177,7 +1273,7 @@ export extern "plugin init" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)        # help for init
@@ -1196,7 +1292,7 @@ export extern "plugin inspect" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)        # help for inspect
@@ -1217,7 +1313,7 @@ export extern "plugin run" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)        # help for run
@@ -1245,7 +1341,7 @@ export extern "plugin credential" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)        # help for credential
@@ -1262,7 +1358,7 @@ export extern "plugin credential import" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)        # help for import
@@ -1280,6 +1376,18 @@ export extern "plugin credential import" [
 
 # Manage service accounts
 export extern service-account [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)   # help for service-account
 ]
 
@@ -1294,7 +1402,7 @@ export extern "service-account create" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --can-create-vaults     # Allow the service account to create new vaults.
@@ -1317,7 +1425,7 @@ export extern "service-account ratelimit" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for ratelimit
@@ -1338,6 +1446,18 @@ alias "service-account ratelimits" = service-account ratelimit
 
 # Manage users within this 1Password account
 export extern user [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)   # help for user
 ]
 
@@ -1352,7 +1472,7 @@ export extern "user provision" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --email=string: string      # Provide the user's email address.
@@ -1372,7 +1492,7 @@ export extern "user confirm" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --all        # Confirm all unconfirmed users.
@@ -1392,7 +1512,7 @@ export extern "user get" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --fingerprint   # Get the user's public key fingerprint.
@@ -1414,7 +1534,7 @@ export extern "user edit" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help                 # help for edit
@@ -1435,7 +1555,7 @@ export extern "user suspend" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --deauthorize-devices-after=duration: string@"nu completion duration"  # Deauthorize the user's devices after a time (rounded down to seconds).
@@ -1455,7 +1575,7 @@ export extern "user reactivate" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for reactivate
@@ -1474,7 +1594,7 @@ export extern "user delete" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for delete
@@ -1496,7 +1616,7 @@ export extern "user list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --group=group: string@"nu completion group"   # List users who belong to a group.
@@ -1516,6 +1636,18 @@ alias "user ls" = user list
 
 # Manage permissions and perform CRUD operations on your 1Password vaults
 export extern vault [
+    # GLOBAL FLAGS
+    --account=account                                       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+    --config=directory: path                                # Use this configuration directory.
+    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+    --no-color                                              # Print output without color.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --version(-v)                                           # version for op
+
     --help(-h)   # help for vault
 ]
 
@@ -1531,7 +1663,7 @@ export extern "vault create" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --allow-admins-to-manage: string@"nu completion bool"   # Set whether administrators can manage the vault. If not provided, the default policy for the account applies.
@@ -1553,7 +1685,7 @@ export extern "vault get" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for get
@@ -1572,11 +1704,11 @@ export extern "vault edit" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --description description   # Change the vault's description.
---help(-h)                    # help for edit
+    --help(-h)                    # help for edit
     --icon=icon: string@"nu completion vault_icon"               # Change the vault's icon.
     --name=name: string                        # Change the vault's name.
     --travel-mode: string@"nu completion onoff"      # Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled are accessible while a user has Travel Mode turned on. (default off)
@@ -1595,7 +1727,7 @@ export extern "vault delete" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for delete
@@ -1617,7 +1749,7 @@ export extern "vault list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --group=string: string@"nu completion group"             # List vaults a group has access to.
@@ -1654,7 +1786,7 @@ export extern "vault group" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for group
@@ -1671,7 +1803,7 @@ export extern "vault group grant" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --group=group: string@"nu completion group"               # The group to receive access.
@@ -1692,7 +1824,7 @@ export extern "vault group revoke" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --group=group: string@"nu completion group"               # The group to revoke access from.
@@ -1713,7 +1845,7 @@ export extern "vault group list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for list
@@ -1741,7 +1873,7 @@ export extern "vault user" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for user
@@ -1758,7 +1890,7 @@ export extern "vault user grant" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)                      # help for grant
@@ -1779,7 +1911,7 @@ export extern "vault user revoke" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help                      # help for revoke
@@ -1800,7 +1932,7 @@ export extern "vault user list" [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for list
@@ -1830,7 +1962,7 @@ export extern completion [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for completion
@@ -1849,7 +1981,7 @@ export extern inject [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --file-mode=filemode       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
@@ -1870,7 +2002,7 @@ export extern read [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --file-mode=filemode       # Set filemode for the output file. It is ignored without the --out-file flag. (default 0600)
@@ -1893,7 +2025,7 @@ export extern run [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --env-file=stringArray: path   # Enable Dotenv integration with specific Dotenv files to parse. For example: --env-file=.env.
@@ -1915,7 +2047,7 @@ export extern signin [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --force(-f)   # Ignore warnings and print raw output from this command.
@@ -1934,7 +2066,7 @@ export extern signout [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --all      # Sign out of all signed-in accounts.
@@ -1953,7 +2085,7 @@ export extern update [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --channel=string: string@"nu completion update_channel"     # Look for updates from a specific channel. allowed: stable, beta
@@ -1972,7 +2104,7 @@ export extern whoami [
     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
     --no-color                                              # Print output without color.
-    --session=token                                         # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
     --version(-v)                                           # version for op
 
     --help(-h)   # help for whoami
