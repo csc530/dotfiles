@@ -894,7 +894,7 @@ export extern "item create" [
     --help(-h)                                        # help for create
     --ssh-generate-key: string@"nu completion ssh-generate-key"                                # The type of SSH key to create: Ed25519 or RSA. For RSA, specify 2048, 3072, or 4096 (default) bits. Possible values: 'ed25519', 'rsa', 'rsa2048', 'rsa3072', 'rsa4096'. (default Ed25519)
     --tags tags                                       # Set the tags to the specified (comma-separated) values.
-    --template=string: string@"nu completion item-template"                                 # Specify the file path to read an item template from.
+    --template=string: path                                 # Specify the file path to read an item template from.
     --title=title: string                                     # Set the item's title.
     --url=URL: string                                         # Set the URL associated with the item
     --vault=vault: string@"nu completion vault"                                     # Save the item in this vault. Default: Private.
@@ -942,7 +942,7 @@ export extern "item edit" [
     --version(-v)                                           # version for op
 
     --dry-run                      # Perform a dry run of the command and output a preview of the resulting item.
-    --favorite: string@"nu completion favourite"                      # Whether this item is a favorite item. Options: true, false
+    --favorite: string@"nu completion bool"                      # Whether this item is a favorite item. Options: true, false
     --generate-password=recipe: string@"nu completion generate-password"   # Give the item a randomly generated password.
     --help(-h)                         # help for edit
     --tags=tags: string@"nu completion tag"                    # Set the tags to the specified (comma-separated) values. An empty value will remove all tags.
@@ -1267,7 +1267,7 @@ export extern "plugin credential import" [
 
     --help(-h)        # help for import
 
-    plugin_name: string@"nu completion plugin"
+    plugin_name: string@"nu completion plugin_name"
 ]
 
 
@@ -1717,6 +1717,8 @@ export extern "vault group list" [
     --version(-v)                                           # version for op
 
     --help(-h)   # help for list
+
+    --vault=vault: string@"nu completion vault"
 ]
 
 alias "vault group ls" = vault group list
@@ -1802,6 +1804,8 @@ export extern "vault user list" [
     --version(-v)                                           # version for op
 
     --help(-h)   # help for list
+
+    vault: string@"nu completion vault"
 ]
 
 alias "vault user ls" = vault user list
@@ -2007,7 +2011,12 @@ def "nu completion update_channel" [] {
 }
 
 def "nu completion group" [] {
-    []
+    let groups = op group list --format json
+        | from json
+        | upsert description {|row| $"($row.name) \(($row.state)): ($row.description)"}
+        | select id name description state
+        |  rename value description
+    $groups
 }
 
 def "nu completion server" [] {
@@ -2015,11 +2024,12 @@ def "nu completion server" [] {
 }
 
 def "nu completion vault" [] {
-    []
+    let vaults = op vault list --format json | from json | select id name | rename value description
+    $vaults
 }
 
 def "nu completion vault_icon" [] {
-    []
+    [airplane, application, art-supplies, bankers-box, brown-briefcase, brown-gate, buildings, cabin, castle, circle-of-dots, coffee, color-wheel, curtained-window, document, doughnut, fence, galaxy, gears, globe, green-backpack, green-gem, handshake, heart-with-monitor, house, id-card, jet, large-ship, luggage, plant, porthole, puzzle, rainbow, record, round-door, sandals, scales, screwdriver, shop, tall-window, treasure-chest, vault-door, vehicle, wallet, wrench]
 }
 
 def "nu completion duration" [] {
@@ -2027,7 +2037,8 @@ def "nu completion duration" [] {
 }
 
 def "nu completion tag" [] {
-    []
+    let tags = op item list --format json | from json | get tags
+    $tags
 }
 
 def "nu completion feature" [] {
@@ -2035,7 +2046,8 @@ def "nu completion feature" [] {
 }
 
 def "nu completion user" [] {
-    []
+    let users = op user list --format json | from json | upsert name {|row| $"($row.name) \(($row.type) - ($row.state)): ($row.email)"} | select id name | rename value description
+    $users
 }
 
 def "nu completion role" [] {
@@ -2043,26 +2055,31 @@ def "nu completion role" [] {
 }
 
 def "nu completion category" [] {
-    []
-}                                           # Set the item's category.
+    [
+        "API Credential"    "Bank Account"              "Credit Card"
+        Database          Document                  "Driver License"
+        "Email Account"     Identity                  Login
+        Membership        "Outdoor License"           Passport
+        Password          "Reward Program"            "Secure Note"
+        Server            "Social Security Number"    "Software License"
+        SSH Key           "Wireless Router"
+    ]
+}
+
 def "nu completion generate-password" [] {
     []
 }
 
 def "nu completion ssh-generate-key" [] {
-    []
+    ['ed25519', 'rsa', 'rsa2048', 'rsa3072', 'rsa4096']
 }
 
-def "nu completion item-template" [] {
-    []
+def nu_plugins [] {
+    op plugin list --format json | from json
 }
 
-def "nu completion favourite" [] {
-    []
-}
-
-def "nu completion plugin" [] {
-    []
+def "nu completion plugin_name" [] {
+    nu_plugins | get plugin_name | uniq
 }
 
 def "nu completion permission" [] {
@@ -2070,15 +2087,15 @@ def "nu completion permission" [] {
 }
 
 def "nu completion onoff" [] {
-    []
+    [on off]
 }
 
 def "nu completion completion_shell" [] {
-    []
+    [zsh fish powershell bash]
 }
 
 def "nu completion language" [] {
-    []
+    [en de fr it pl ru es zh-cn zh-tw ja ko pt-br es-mx en-us]
 }
 
 def "nu completion bool" [] {
