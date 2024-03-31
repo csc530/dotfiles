@@ -1505,7 +1505,7 @@ export extern "user confirm" [
     --all        # Confirm all unconfirmed users.
     --help(-h)   # help for confirm
 
-    ...user # [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user" # [{ <email> | <name> | <userID> | - }]
 ]
 
 # Get details about a user
@@ -1527,7 +1527,7 @@ export extern "user get" [
     --me            # Get the authenticated user's details.
     --public-key    # Get the user's public key.
 
-    ...user         #  [{ <email> | <name> | <userID> | --me | - }]
+    user?: string@"nu completion user"         #  [{ <email> | <name> | <userID> | --me | - }]
 ]
 
 # Edit a user's name or Travel Mode status
@@ -1548,7 +1548,7 @@ export extern "user edit" [
     --name=string: string          # Set the user's name.
     --travel-mode: string@"nu completion onoff"   # Turn Travel Mode on or off for the user. (default off)
 
-    user                #  [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                #  [{ <email> | <name> | <userID> | - }]
 ]
 
 # Suspend a user
@@ -1568,7 +1568,7 @@ export extern "user suspend" [
     --deauthorize-devices-after=duration: string@"nu completion duration"  # Deauthorize the user's devices after a time (rounded down to seconds).
     --help(-h)                                # help for suspend
 
-    user                    # [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                    # [{ <email> | <name> | <userID> | - }]
 ]
 
 # Reactivate a suspended user
@@ -1587,7 +1587,7 @@ export extern "user reactivate" [
 
     --help(-h)   # help for reactivate
 
-    ...user                    # [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                    # [{ <email> | <name> | <userID> | - }]
 ]
 
 # Remove a user and all their data from the account
@@ -1606,7 +1606,7 @@ export extern "user delete" [
 
     --help(-h)   # help for delete
 
-    ...user                    # [{ <email> | <name> | <userID> | - }]
+    user?: string@"nu completion user"                    # [{ <email> | <name> | <userID> | - }]
 ]
 
 export alias "user rm" = user delete
