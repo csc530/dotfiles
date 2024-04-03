@@ -2228,8 +2228,14 @@ def "nu completion tags" [ctx: string] {
     }
 }
 
-def "nu completion feature" [] {
-    []
+def "nu completion feature" [ctx:string] {
+    let features = ['signinattempts','itemusages', 'auditevents']
+    let token = $ctx | nu completion parse-context | transpose option value | last | get value
+    if ($token | is-not-empty) and ($token | str ends-with ,) {
+        $features | each {|e| $"($token)($e)" }
+    } else {
+        $features
+    }
 }
 
 def "nu completion user" [] {
@@ -2237,7 +2243,7 @@ def "nu completion user" [] {
 }
 
 def "nu completion role" [] {
-    []
+    [member manager]
 }
 
 def "nu completion category" [$ctx: string] {
