@@ -95,21 +95,21 @@ $env.NU_LIB_DIRS = ([
     ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
     # nupm tings
     ($env.NUPM_HOME | path join "modules")
-    ('~/.config/nu/nu_scripts/modules' | path expand)
-    (ls ~/.config/nu/nu_scripts/modules | where type == "dir" | filter {|e|
+    ('~/.config/nushell/nu_scripts/modules' | path expand)
+    (ls ~/.config/nushell/nu_scripts/modules | where type == "dir" | filter {|e|
             let items = ls $e.name
             let length = ($items | length)
             $length != 0 and  'mod.nu' not-in $items.name
         }
         | each {|e| $e.name})
-    (ls ~/.config/nu/nu_scripts/custom-completions | where type == "dir" | each {|e| $e.name})
-    (ls ~/.config/nu/lib | where type == "dir" | filter {|e|
+    (ls ~/.config/nushell/nu_scripts/custom-completions | where type == "dir" | each {|e| $e.name})
+    (ls ~/.config/nushell/lib | where type == "dir" | filter {|e|
         let items = ls $e.name
         let length = ($items | length)
         $length != 0 and  'mod.nu' not-in $items.name
         }
         | each {|e| $e.name})
-    ('~/.config/nu/lib' | path expand)
+    ('~/.config/nushell/lib' | path expand)
     ] | flatten)
 
 # Directories to search for plugin binaries when calling register
@@ -126,7 +126,7 @@ $env.Path = (
 )
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-source ~/.config/nu/env_parse.nu
+source ~/.config/nushell/env_parse.nu
 env source $"($env.OneDrive)/Documents/.env"
 
-source ~/.config/nu/terminal.nu
+source ~/.config/nushell/terminal.nu

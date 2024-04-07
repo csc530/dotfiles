@@ -1,11 +1,9 @@
+export def main [] {
+    help main
+}
+
 const parse_args_rg = "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+)"
 const parse_option_name_rg = "(?:--?)(?<option_name>[\\w-]+)"
-
-# Fast, friendly, robust plain text accounting software
-export extern main [
-    --help(-h) # Display the help message for this command
-    --version # show version information
-]
 
 # hledger User Manuals
 export extern help [
@@ -32,7 +30,7 @@ export extern add [
     --file(-f)=FILE                                                                # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE                                                             # CSV conversion rules file (default: FILE.rules)
     --alias=OLD=NEW                                                                # rename accounts named OLD to NEW
-    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
+    --pivot=TAGNAME: string@"nu completion pivot"                                  # use some other field/tag for account names
     --ignore-assertions(-I)                                                        # ignore any balance assertions
     --strict(-s)                                                                   # do extra error checking (check that all posted accounts are declared)
     --man                                                                          # show user manual with man
@@ -221,6 +219,80 @@ export extern rewrite [
     --diff                                                              # generate diff suitable as an input for patch tool
 ]
 
+# ##     ##    ###    ##    ##    ###     ######   #### ##    ##  ######      ########     ###    ########    ###
+# ###   ###   ## ##   ###   ##   ## ##   ##    ##   ##  ###   ## ##    ##     ##     ##   ## ##      ##      ## ##
+# #### ####  ##   ##  ####  ##  ##   ##  ##         ##  ####  ## ##           ##     ##  ##   ##     ##     ##   ##
+# ## ### ## ##     ## ## ## ## ##     ## ##   ####  ##  ## ## ## ##   ####    ##     ## ##     ##    ##    ##     ##
+# ##     ## ######### ##  #### ######### ##    ##   ##  ##  #### ##    ##     ##     ## #########    ##    #########
+# ##     ## ##     ## ##   ### ##     ## ##    ##   ##  ##   ### ##    ##     ##     ## ##     ##    ##    ##     ##
+# ##     ## ##     ## ##    ## ##     ##  ######   #### ##    ##  ######      ########  ##     ##    ##    ##     ##
+
+# error checking, version control..
+
+# check for various kinds of error in the data
+export extern check [
+    # General flags
+    --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
+    --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
+    --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
+    --ignore-assertions(-I)                                             # ignore any balance assertions
+    --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
+    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
+    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
+    --daily(-D)                                                         # multiperiod/multicolumn report by day
+    --weekly(-W)                                                        # multiperiod/multicolumn report by week
+    --monthly(-M)                                                       # multiperiod/multicolumn report by month
+    --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
+    --yearly(-Y)                                                        # multiperiod/multicolumn report by year
+    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval all at once
+    --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
+    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
+    --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
+    --pending(-P)                                                       # include only pending postings/txns
+    --cleared(-C)                                                       # include only cleared postings/txns
+    --real(-R)                                                          # include only non-virtual postings
+    --depth(- )=NUM: int                                                # hide accounts/postings deeper than NUM
+    --empty(-E)                                                         # show items with zero amount, normally hidden (and vice-versa in hledger-ui/hledger-web)
+    --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
+    --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
+    --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
+    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
+    --infer-equity                                                      # conversion equity postings from costs
+    --infer-costs                                                       # costs from conversion equity postings
+    --infer-market-prices                                               # costs as additional market prices, as if they were P directives
+    --forecast=[PERIOD]                                                 # Generate transactions from periodic rules, between the latest recorded txn and 6 months from today, or during the specified PERIOD (= is required). Auto posting rules will be applied to these transactions as well. Also, in hledger-ui make future-dated transactions visible.
+    --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
+    --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
+    --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
+    --colour=WHEN: string@"nu completion colour"                                   # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
+    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --help(-h)                                                          # show general help (or after CMD, command help)
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
+]
+
+# compare account transactions in two journal files
+export extern diff [
+    # General flags
+    --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
+    --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
+    --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
+    --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
+    --ignore-assertions(-I)                                             # ignore any balance assertions
+    --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
+
+    --help(-h)                                                          # show general help (or after CMD, command help)
+    --man                                                               # show user manual with man
+    --info                                                              # show info manual with info
+    --debug=[N]: int@"nu completion debug"                              # show debug output (levels 1-9, default: 1)
+    --version                                                           # show version information
+]
+
+
 
 # ######## #### ##    ##    ###    ##    ##  ######  ####    ###    ##          ########  ######## ########   #######  ########  ########  ######
 # ##        ##  ###   ##   ## ##   ###   ## ##    ##  ##    ## ##   ##          ##     ## ##       ##     ## ##     ## ##     ##    ##    ##    ##
@@ -232,7 +304,7 @@ export extern rewrite [
 
 # standard financial statements
 
-export extern aregister [
+export def aregister [
     # General flags
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -286,7 +358,9 @@ export extern aregister [
     --output-file(-o)=FILE: string@output_file                          # write output to FILE. A file extension matching one of the above formats selects that format.
 
     account_path: string@nu_accounts                                     # the account (path) to report on
-]
+] {
+    hledger areg neo -O csv --no-elide | from csv | reject txnidx | upsert otheraccounts {|e| $e.otheraccounts | split row , | str trim}
+}
 
 # show assets, liabilities and net worth
 export extern balancesheet [
@@ -579,7 +653,7 @@ export extern incomestatement [
 # more complex/versatile reporting commands
 
 # show a simple bar chart of posting counts per periodexp
-export extern activity [
+export def "spark chart" [
         # General flags
         --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
         --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -621,7 +695,9 @@ export extern activity [
         --info                                                              # show info manual with info
         --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
         --version                                                           # show version information
-]
+] {
+    hledger activity | lines | parse '{date} {stars}' | spark ($in.stars | str length)
+}
 
 # show balance changes, end balances, budgets, gains..
 export extern balance [
@@ -873,7 +949,7 @@ export extern roi [
 # lists and stats
 
 # show account names
-export extern accounts [
+export def accounts [
     # General flags
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -929,10 +1005,12 @@ export extern accounts [
     --flat(-l)                                                          # show accounts as a flat list (default)
     --tree(-t)                                                          # show accounts as a tree
     --drop=N: int                                                       # flat mode: omit N leading account name parts
-]
+] {
+    hledger accounts | lines | parse '{root}:{rest}' | reduce --fold {} {|it,acc| $acc | upsert $it.root ($acc | get -i $it.root | append $it.rest) }
+}
 
 # show transaction codes
-export extern codes [
+export def codes [
     # General flags
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -974,10 +1052,12 @@ export extern codes [
     --info                                                              # show info manual with info
     --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version                                                           # show version information
-]
+] {
+    hledger codes | lines
+}
 
 # show commodity/currency symbols
-export extern commodities [
+export def commodities [
         # General flags
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -1019,7 +1099,9 @@ export extern commodities [
     --info                                                              # show info manual with info
     --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version                                                           # show version information
-]
+] {
+    hledger commodities | lines
+}
 
 # show full transaction descriptions (payee and note)
 export extern descriptions [
@@ -1078,36 +1160,7 @@ export extern files [
     --alias=OLD=NEW                                                     # rename accounts named OLD to NEW
     --pivot=TAGNAME: string@"nu completion pivot"                       # use some other field/tag for account names
     --ignore-assertions(-I)                                             # ignore any balance assertions
-    --strict(-s)                                                        #  do extra error checking (check that all posted accounts are declared)
-    --begin(-b)=DATE: string@"nu completion date"                       # include postings/transactions on or after this date (will be adjusted to preceding subperiod start when using a report interval)
-    --end(-e)=DATE: string@"nu completion date"                         # include postings/transactions before this date (will be adjusted to following subperiod end when using a report interval)
-    --daily(-D)                                                         # multiperiod/multicolumn report by day
-    --weekly(-W)                                                        # multiperiod/multicolumn report by week
-    --monthly(-M)                                                       # multiperiod/multicolumn report by month
-    --quarterly(-Q)                                                     # multiperiod/multicolumn report by quarter
-    --yearly(-Y)                                                        # multiperiod/multicolumn report by year
-    --period(-p)=PERIODEXP: string@"nu completion periodexp"                # set start date, end date, and/or report interval    all at once
-    --date2                                                             # match the secondary date instead. See command help for other effects. (--effective, --aux-date also accepted)
-    --today=DATE: string@"nu completion date"                           # override today's date (affects relative smart dates, for tests/examples)
-    --unmarked(-U)                                                      # include only unmarked postings/txns (can combine with -P or -C)
-    --pending(-P)                                                       # include only pending postings/txns
-    --cleared(-C)                                                       # include only cleared postings/txns
-    --real(-R)                                                          # include only non-virtual postings
-    --depth(- )=NUM: int                                                # hide accounts/postings deeper than NUM
-    --empty(-E)                                                         # show items with zero amount, normally hidden (and vice-vers
-    --cost(-B)                                                          # show amounts converted to their cost/selling amount, using the transaction price.
-    --market(-V)                                                        # show amounts converted to period-end market value in their default valuation commodity. Equivalent to --value=end.
-    --exchange(-X)=COMM: string@nu_commodities                             # show amounts converted to current (single period reports) or period-end (multiperiod reports) market value in the specified commodity. Equivalent to --value=end,COMM.
-    --value=TYPE[,COMM]: string@"nu completion valuation"                             # show amounts converted with valuation TYPE, and optionally to specified commodity COMM
-    --infer-equity                                                      # conversion equity postings from costs
-    --infer-costs                                                       # costs from conversion equity postings
-    --infer-market-prices                                               # costs as additional market prices, as if they were P directives
-    --forecast=[PERIOD]                                                 # Generate transactions from periodic rules, between the latest recorded txn and 6 months from today, or during the specified PERIOD (= is required). Auto posting rules will be applied to these transactions as well. Also, in hledger-ui make future-dated transactions visible.
-    --auto                                                              # Generate extra postings by applying auto posting rules to all txns (not just forecast txns).
-    --verbose-tags                                                      # Add visible tags indicating transactions or postings which have been generated/modified.
-    --commodity-style(-c)=COMM                                          # Override the commodity style in the output for the specified commodity. For example 'EUR1.000,00'.
-    --color=WHEN: string@"nu completion colour"                                    # Should color-supporting commands use ANSI color codes in text output. (default=auto); A NO_COLOR environment variable overrides this.
-    --pretty=[WHEN]: string@"nu completion yesno"                                      # Show prettier output, e.g. using unicode box-drawing characters. 'yes' is the default. If you provide an argument you must use '=', e.g. '--pretty=yes'.
+    --strict(-s)
     --help(-h)                                                          # show general help (or after CMD, command
     --man                                                               # show user manual with man
     --info                                                              # show info manual with info
@@ -1161,7 +1214,7 @@ export extern notes [
 ]
 
 # show payee names
-export extern payees [
+export def payees [
     # General flags
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -1208,10 +1261,12 @@ export extern payees [
 
     --declared                                                          # show payees declared with payee directives
     --used                                                              # show payees referenced by transactions
-]
+]  {
+    hledger payees | lines
+}
 
 # show historical market prices
-export extern prices [
+export def prices [
     # General flags
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -1257,10 +1312,12 @@ export extern prices [
     # --------
 
     --show-reverse          also show the prices inferred by reversing known prices
-]
+]  {
+    hledger prices | lines | parse 'P {date} {commodity} {price}'
+}
 
 # show journal statistics
-export extern stats [
+export def stats [
     # General flags
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -1306,10 +1363,22 @@ export extern stats [
     # --------
 
     --output-file(-o)=FILE: path                                        # write output to FILE.
-]
+] {
+    hledger stats | lines | reduce --fold {} {|it,acc|
+        let parse = $it | parse --regex "(?<key>.*) : (?<value>.*)"
+        if ($parse.key | is-empty) {
+            let last_key = $acc | columns | last
+            $acc | upsert $last_key ($acc | get $last_key | append ($it | str trim) )
+        } else {
+            $acc | upsert ($parse.key | last | str trim) ($parse.value | last)
+        }
+    }
+    | upsert 'Market prices' {|e| $e.'Market prices' | str join "\n" | parse '\(?(?<prices>.+?)[ ,\n)]' --regex | skip | str trim | get prices }
+    | upsert Commodities {|e| $e.Commodities | str join "\n" | parse '\(?(?<cur>.+?)[ ,\n]' --regex| skip | str trim | get cur | each {|e| if $e == , { '' } else { $e }} }
+}
 
 # show tag names
-export extern tags [
+export def tags [
     # General flags
     --file(-f)=FILE: path                                               # use a different input file. For stdin, use - (default: $LEDGER_FILE or $HOME/.hledger.journal)
     --rules-file=RFILE: path                                            # CSV conversion rules file (default: FILE.rules)
@@ -1358,7 +1427,9 @@ export extern tags [
     --parsed                                                            # show tags/values in the order they were parsed, including duplicates
 
     ...query: string@nu_tags
-]
+]  {
+    hledger tags | lines
+}
 
 
 #        _           _
@@ -1426,38 +1497,46 @@ def "nu completion width" [ctx?: string] {
 def "nu completion periodexp" [ctx:string] {
     # example: [interval] start [end]
     let args = $ctx | nu completion parse-context
-    let parts = $args | get ($args | columns | last) | split row ' '
-    let length = ($parts | length)
-    if $parts.0 == 'every' {
-        if ($parts | length) < 3 {
-            let other = MONTHS | append (seq 1 12 | each {|i| $'($i)/'}) | each {|e| $'every ($e)'}
-            seq 1 31 | each {|e|
-                match $e {
-                    1 | 21 | 31 => 'st'
-                    2 | 22 => 'nd'
-                    3 | 23 => 'rd'
-                    _ => 'th'
-                } | prepend $'every ($e)' | str join
-            } | prepend $other
-        } else if ($parts.1 | str ends-with '/') {
-            let month = $parts.1 | str substring 0..-1 | into int
-            match $month {
-                2 => (seq 1 29)
-                4 | 6 | 9 | 11  => (seq 1 30)
-                _ => (seq 1 31)
-            } | each {|e| $'every ($month)/($e)'}
-        } else if ($parts.1 | parse --regex '(\d+\w*)' | is-not-empty) {
-            [day] | append (WEEKDAYS) | each {|e| $'every ($parts.1) ($e)'}
-        }
-    } else if $parts.0 == 'from' {
-        if $length < 2 {
-            nu completion date ''
-        } else {
-            nu completion date $parts.1
-        } | append (MONTHS) | append (smart_dates) | append (if $length < 2 { 'to' } else { $parts.2 })
-    } else {
+    let parts = $args | get ($args | columns | last)
+    if ($parts | is-empty) or ($parts | split row ' ' | first) != 'every' {
         ['from ' 'to '] | append (report_intervals) | append (nu completion date year) | append (nu completion date quarter)
-    } | prepend ($parts | append $length | str join) | nu completion output $ctx
+    } else {
+        let parts = $parts | split row ' '
+        let length = ($parts | length)
+        if $parts.0 == 'every' {
+            if ($parts | length) == 1 {
+
+                let other = MONTHS | append (seq 1 12 | each {|i| $'($i)/'}) | each {|e| $'every ($e)'}
+                seq 1 31 | each {|e|
+                    match $e {
+                        1 | 21 | 31 => 'st'
+                        2 | 22 => 'nd'
+                        3 | 23 => 'rd'
+                        _ => 'th'
+                    } | prepend $'every ($e)' | str join
+                } | prepend $other
+            } else if ($parts.1 | str ends-with '/') {
+                let month = $parts.1 | str substring 0..-1 | into int
+                match $month {
+                    2 => (seq 1 29)
+                    4 | 6 | 9 | 11  => (seq 1 30)
+                    _ => (seq 1 31)
+                } | each {|e| $'every ($month)/($e)'}
+            } else if ($parts.1 | parse --regex '(\d+\w*)' | is-not-empty) {
+                [day] | append (WEEKDAYS) | each {|e| $'every ($e)'}
+            }
+        }
+    }
+    # } else if $parts.0 == 'from' {
+    #     if $length < 2 {
+    #         nu completion date ''
+    #     } else {
+    #         nu completion date $parts.1
+    #     } | append (MONTHS) | append (smart_dates) | append (if $length < 2 { 'to' } else { $parts.2 })
+    # } else {
+    #     ['from ' 'to '] | append (report_intervals) | append (nu completion date year) | append (nu completion date quarter)
+    # }
+    | nu completion output $ctx
 
 }
 

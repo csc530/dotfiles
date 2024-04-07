@@ -293,7 +293,7 @@ $env.config = {
             PWD: [{|before, after| null }] # run if the PWD environment is different since the last repl input
         }
         display_output: "if (term size).columns >= 100 { table -e } else { table }" # run to display the output of a pipeline
-        command_not_found: (source ~/.config/nu/nu_scripts/nu-hooks/nu-hooks/command_not_found/did_you_mean.nu) # return an error message when a command is not found
+        command_not_found: (source ~/.config/nushell/nu_scripts/nu-hooks/nu-hooks/command_not_found/did_you_mean.nu) # return an error message when a command is not found
     }
 
     menus: [
@@ -886,31 +886,31 @@ $env.config = {
 }
 
 # carpace
-source ~/.config/nu/.cache/carapace.nu
-source  ~/.config/nu/.cache/omp.nu
-source ~/.config/nu/.cache/zoxide.nu
+source ~/.config/nushell/.cache/carapace.nu
+source  ~/.config/nushell/.cache/omp.nu
+source ~/.config/nushell/.cache/zoxide.nu
 
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
 
 
-use ~/.config/nu/nu_scripts/themes/nu-themes/catppuccin-mocha.nu
+use ~/.config/nushell/nu_scripts/themes/nu-themes/catppuccin-mocha.nu
 
 $env.config.color_config = (catppuccin-mocha)
 
 use system
 use nupm
-use random-list.nu
-use ~/.config/nu/ledger.nu
+use random.nu
+use ~/.config/nushell/ledger.nu
 
 # my extern completers
 use hledger.nu
 use op.nu
 
-source ~\.config\nu\nu_scripts\custom-completions\btm\btm-completions.nu
-source ~\.config\nu\nu_scripts\custom-completions\winget\winget-completions.nu
-source ~\.config\nu\nu_scripts\custom-completions\typst\typst-completions.nu
-source ~\.config\nu\nu_scripts\custom-completions\scoop\scoop-completions.nu
+source ~\.config\nushell\nu_scripts\custom-completions\btm\btm-completions.nu
+source ~\.config\nushell\nu_scripts\custom-completions\winget\winget-completions.nu
+source ~\.config\nushell\nu_scripts\custom-completions\typst\typst-completions.nu
+source ~\.config\nushell\nu_scripts\custom-completions\scoop\scoop-completions.nu
 
-source ~\.config\nu\nu_scripts\sourced\fun\spark.nu
+source ~\.config\nushell\nu_scripts\sourced\fun\spark.nu
 
-source ~/.config/nu/aliases.nu
+source ~/.config/nushell/aliases.nu

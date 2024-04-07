@@ -1,6 +1,6 @@
 const url = "https://financialmodelingprep.com/api/v3/"
 def  apiKey  [] {
-    op item get duu6tzwif47tgodkylarheqtpi --vault dev-opps  --fields credential
+    op item get duu6tzwif47tgodkylarheqtpi --vault dev-opps --fields credential
 }
 
 def getCommodities [ledgerFile?: path] {

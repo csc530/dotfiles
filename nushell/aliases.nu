@@ -1,5 +1,3 @@
-alias hl = hledger
-alias hlui = hledger-ui
 alias scoop-msearch = scoop-search-multisource
 alias omp = oh-my-posh
 alias pipes = pipes-rs
