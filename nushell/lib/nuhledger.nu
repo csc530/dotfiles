@@ -1166,7 +1166,9 @@ export extern files [
     --info                                                              # show info manual with info
     --debug=[N]: int@"nu completion debug"                                      # show debug output (levels 1-9, default: 1)
     --version                                                           # show version information
-]
+] {
+    hledger files | lines | each {|e| ls $e} | flatten
+}
 
 # show note part of transaction descriptions
 export extern notes [
