@@ -906,6 +906,7 @@ use ~/.config/nushell/ledger.nu
 # my extern completers
 use hledger.nu
 use op.nu
+use fakedata.nu
 
 source ~\.config\nushell\nu_scripts\custom-completions\btm\btm-completions.nu
 source ~\.config\nushell\nu_scripts\custom-completions\winget\winget-completions.nu
