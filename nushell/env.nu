@@ -124,6 +124,7 @@ $env.Path = (
         | prepend ($env.NUPM_HOME | path join "scripts")
         | uniq
 )
+
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 source ~/.config/nushell/env_parse.nu

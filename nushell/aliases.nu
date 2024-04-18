@@ -4,3 +4,6 @@ alias pipes = pipes-rs
 alias dsf = diff-so-fancy
 alias csrepl = csharprepl
 alias 'cd' = z
+alias 'to yml' = to yaml
+alias cols = columns
+alias dto = dotnet-tools-outdated

@@ -1,10 +1,10 @@
-def "random terminal scheme" [] {
-    let terminal  = getTerminal
-    let isPreview = which $terminal.command | get path | path dirname | str contains -i preview
-    let path = $'($env.LOCALAPPDATA)\Packages\Microsoft.WindowsTerminal(if $isPreview {'Preview'} else {'_'})*\LocalState\settings.json'
-
-    open $path | update profiles.defaults.colorScheme {|json| $json.schemes | shuffle | first | get name} | save (ls $path -f | first | get name) -f
-    print "Terminal scheme updated: " (open $path | get profiles.defaults.colorScheme)
+def "random windows-terminal scheme" [
+    --preview(-p) # windows terminal preview
+] {
+    let path = if $preview { windows terminal-settings --path --preview } else { windows terminal-settings --path }
+    let json = if $preview { windows terminal-settings --preview } else { windows terminal-settings } | update profiles.defaults.colorScheme {|json| $json.schemes | shuffle | first | get name}
+    $json | save $path --force
+    "Terminal scheme updated: " + (open $path | get profiles.defaults.colorScheme)
 }
 
 def getTerminal [pid: int=$nu.pid] {
@@ -16,4 +16,12 @@ def getTerminal [pid: int=$nu.pid] {
     } else {
         $ps
     }
+}
+
+def "windows terminal-settings" [
+        --preview(-p) # windows terminal preview
+        --path # path to settings file
+    ] {
+        cd $env.LOCALAPPDATA
+        glob $'/Users/legor/AppData/Local/Packages/Microsoft.WindowsTerminal(if $preview {'Preview'})_*/LocalState/settings.json' | first | if $path { $in } else { open }
 }

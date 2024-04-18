@@ -902,6 +902,7 @@ use nupm
 use random.nu
 use ~/.config/nushell/ledger.nu
 
+
 # my extern completers
 use hledger.nu
 use op.nu
@@ -912,5 +913,8 @@ source ~\.config\nushell\nu_scripts\custom-completions\typst\typst-completions.n
 source ~\.config\nushell\nu_scripts\custom-completions\scoop\scoop-completions.nu
 
 source ~\.config\nushell\nu_scripts\sourced\fun\spark.nu
+source ~/.config/nushell/nu_scripts/modules/formats/from-env.nu
+source ~/.config/nushell/nu_scripts/modules/formats/to-ini.nu
+source ~/.config/nushell/nu_scripts/modules/formats/to-number-format.nu
 
 source ~/.config/nushell/aliases.nu
