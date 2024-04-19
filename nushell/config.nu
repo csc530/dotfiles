@@ -907,6 +907,7 @@ use ~/.config/nushell/ledger.nu
 use hledger.nu
 use op.nu
 use fakedata.nu
+use legendary.nu
 
 source ~\.config\nushell\nu_scripts\custom-completions\btm\btm-completions.nu
 source ~\.config\nushell\nu_scripts\custom-completions\winget\winget-completions.nu

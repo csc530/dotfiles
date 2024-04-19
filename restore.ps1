@@ -17,6 +17,27 @@ function restore () {
 
     Add-Scoop $hasGum
 
+    if ($hasGum) {
+        gum log --message.underline --message.bold --message.foreground 10 scoop installed🍨
+        gum log "alright let's install all the things"
+        gum log "1. adding win.files (with git😘)"
+    }
+    else {
+        Write-Host scoop installed🍨
+        Write-Host ok time to install ALL the thingss😃
+        Write-Host "1. adding win.files (with git😘)"
+    }
+
+    git clone https://github.com/csc530/.files ~/.config/
+
+    Write-Host "2. adding the rest of the things"
+
+    scoop import ~/.config/packages/scoop.json
+
+    Write-Host "3. adding my set-psenv"
+
+
+
     # remove favourites cuz what the heck do it even do
     # remove links dir cuz again what dat do doh
 

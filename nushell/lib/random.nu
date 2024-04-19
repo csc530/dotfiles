@@ -1,7 +1,14 @@
+# generate an endless stream of random values
 def list [generator: closure] {
     generate [] { {out: (do $generator), next: true } }
 }
 
+# generate a list of random booleans
+export def "list bool" [] {
+    list { random bool }
+}
+
+# generate a list of random integers
 export def "list int" [range?: range] {
     if ($range | is-empty) {
         list { random int }
@@ -10,6 +17,7 @@ export def "list int" [range?: range] {
     }
 }
 
+# generate a list of random floats
 export def "list float" [range?: range] {
     if ($range | is-empty) {
         list { random float }
@@ -18,7 +26,8 @@ export def "list float" [range?: range] {
     }
 }
 
-export def "list char" [--length: int] {
+# generate a list of random characters
+export def "list chars" [--length: int] {
     if ($length | is-empty) {
         list { random chars }
     } else {
@@ -26,6 +35,12 @@ export def "list char" [--length: int] {
     }
 }
 
-export def "item" [] list -> any {
-    $in | shuffle | first
+# generate a list of single random characters
+export def "list char" [] {
+        list { random chars --length 1 }
+}
+
+# select a random item from a list
+export def "item" [...items] list -> any {
+    $in | append $items | shuffle | first
 }

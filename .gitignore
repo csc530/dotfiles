@@ -30,3 +30,6 @@ github-copilot/
 lazysql/
 litecli/
 nvim/lazy-lock.json
+
+legendary/*
+!legendary/*.ini
