@@ -909,6 +909,9 @@ use op.nu
 use fakedata.nu
 use legendary.nu
 use komorebic.nu
+use pipes-rs.nu
+
+# use jobapp.nu
 
 source ~\.config\nushell\nu_scripts\custom-completions\btm\btm-completions.nu
 source ~\.config\nushell\nu_scripts\custom-completions\winget\winget-completions.nu

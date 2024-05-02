@@ -65,7 +65,7 @@ function screenprint {
         $blink = '-blink'
     }
     if ($Host.UI.RawUI.WindowSize.Width -gt 50) {
-        $imgDir = "${env:USERPROFILE}\Pictures\", "${env:USERPROFILE}\.config\assets\"
+        $imgDir = "${env:OneDrive}\Pictures\"
         $imgPath = Get-ChildItem -Recurse -Include *.jpg, *.png, *.jpeg, -Path $imgDir -Exclude "$imgDir\Screenshots" | Get-Random
 
         if ($Host.UI.RawUI.WindowSize.Width -gt 75) {

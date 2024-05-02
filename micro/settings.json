@@ -3,5 +3,6 @@
     "eofnewline": false,
     "mkparents": true,
     "parsecursor": true,
+    "softwrap": true,
     "wordwrap": true
 }

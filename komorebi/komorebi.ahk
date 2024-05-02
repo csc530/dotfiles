@@ -14,8 +14,8 @@
 #down::Focus("down")
 #up::Focus("up")
 #right::Focus("right")
-#[::CycleFocus("previous")
-#]::CycleFocus("next")
+#+[::CycleFocus("previous")
+#+]::CycleFocus("next")
 
 ; Move windows
 ; #+h::Move("left")
@@ -23,10 +23,10 @@
 ; #+k::Move("up")
 ; #+l::Move("right")
 !+Enter::Promote()
-#!left::Move("left")
-#!down::Move("down")
-#!up::Move("up")
-#!right::Move("right")
+#^left::Move("left")
+#^down::Move("down")
+#^up::Move("up")
+#^right::Move("right")
 
 ; Stack windows
 #+Left::Stack("left")
@@ -34,22 +34,23 @@
 #+Up::Stack("up")
 #+Down::Stack("down")
 #;::Unstack()
-#+[::CycleStack("previous")
-#+]::CycleStack("next")
+#[::CycleStack("previous")
+#]::CycleStack("next")
 
 ; Resize - alt + shift
-#^!left::ResizeAxis("horizontal", "increase")
-#^!right::ResizeAxis("horizontal", "decrease")
-#^!up::ResizeAxis("vertical", "increase")
-#^!down::ResizeAxis("vertical", "decrease")
+#!left::ResizeAxis("horizontal", "increase")
+#!right::ResizeAxis("horizontal", "decrease")
+#!up::ResizeAxis("vertical", "increase")
+#!down::ResizeAxis("vertical", "decrease")
 
 ; Manipulate windows
 #+F::ToggleFloat()
 #f::ToggleMonocle()
 
 ; Window manager options
-!+r::Retile()
+!r::Retile()
 !p::TogglePause()
+!m::Manage()
 
 ; Layouts
 !x::FlipLayout("horizontal")
