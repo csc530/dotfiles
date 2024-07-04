@@ -33,3 +33,17 @@ nvim/lazy-lock.json
 
 legendary/*
 !legendary/*.ini
+1Password/
+
+Code - Insiders/
+Code/
+discord
+Jetbrains
+yarn/global
+Portmaster/
+unity3d/
+libreoffice/
+Tabnine/
+MongoDB Compass/
+launcher-main/
+bstudio/
