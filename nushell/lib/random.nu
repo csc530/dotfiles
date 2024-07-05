@@ -1,3 +1,12 @@
+const abc = "abcdefghijklmnopqrstuvwxyz";
+const ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const num = "0123456789";
+
+def "special chars" [] {
+    char --list
+}
+
+
 # generate an endless stream of random values
 def list [generator: closure] {
     generate [] { {out: (do $generator), next: true } }

@@ -2,6 +2,8 @@
 #
 # version = "0.90.1"
 
+let $NU_SCRIPTS = '~/.config/nushell/lib/nu_scripts' | path expand
+
 def create_left_prompt [] {
     let home =  $nu.home-path
 
@@ -95,14 +97,14 @@ $env.NU_LIB_DIRS = ([
     ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
     # nupm tings
     ($env.NUPM_HOME | path join "modules")
-    ('~/.config/nushell/nu_scripts/modules' | path expand)
-    (ls ~/.config/nushell/nu_scripts/modules | where type == "dir" | filter {|e|
+    ($'($NU_SCRIPTS)/modules' | path expand)
+    (ls $'($NU_SCRIPTS)/modules' | where type == "dir" | filter {|e|
             let items = ls $e.name
             let length = ($items | length)
             $length != 0 and  'mod.nu' not-in $items.name
         }
         | each {|e| $e.name})
-    (ls ~/.config/nushell/nu_scripts/custom-completions | where type == "dir" | each {|e| $e.name})
+    (ls $'($NU_SCRIPTS)/custom-completions' | where type == "dir" | each {|e| $e.name})
     (ls ~/.config/nushell/lib | where type == "dir" | filter {|e|
         let items = ls $e.name
         let length = ($items | length)

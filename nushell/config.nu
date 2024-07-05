@@ -6,6 +6,9 @@
 # https://www.nushell.sh/book/coloring_and_theming.html
 # And here is the theme collection
 # https://github.com/nushell/nu_scripts/tree/main/themes
+const NU_SCRIPTS = ~/.config/nushell/lib/nu_scripts
+
+
 let dark_theme = {
     # color for nushell primitives
     separator: white
@@ -293,7 +296,7 @@ $env.config = {
             PWD: [{|before, after| null }] # run if the PWD environment is different since the last repl input
         }
         display_output: "if (term size).columns >= 100 { table -e } else { table }" # run to display the output of a pipeline
-        command_not_found: (source ~/.config/nushell/nu_scripts/nu-hooks/nu-hooks/command_not_found/did_you_mean.nu) # return an error message when a command is not found
+        command_not_found: (source $'($NU_SCRIPTS)/nu-hooks/nu-hooks/command_not_found/did_you_mean.nu') # return an error message when a command is not found
     }
 
     menus: [
@@ -893,15 +896,14 @@ source ~/.config/nushell/.cache/zoxide.nu
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
 
 
-use ~/.config/nushell/nu_scripts/themes/nu-themes/catppuccin-mocha.nu
+use $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-mocha.nu'
 
 $env.config.color_config = (catppuccin-mocha)
 
 use system
-use nupm
+use C:\Users\legor\AppData\Roaming\nushell\nupm\modules\nupm\
 use random.nu
 use ~/.config/nushell/ledger.nu
-
 
 # my extern completers
 use hledger.nu
@@ -913,14 +915,14 @@ use pipes-rs.nu
 
 # use jobapp.nu
 
-source ~\.config\nushell\nu_scripts\custom-completions\btm\btm-completions.nu
-source ~\.config\nushell\nu_scripts\custom-completions\winget\winget-completions.nu
-source ~\.config\nushell\nu_scripts\custom-completions\typst\typst-completions.nu
-source ~\.config\nushell\nu_scripts\custom-completions\scoop\scoop-completions.nu
+source $'($NU_SCRIPTS)\custom-completions\btm\btm-completions.nu'
+source $'($NU_SCRIPTS)\custom-completions\winget\winget-completions.nu'
+source $'($NU_SCRIPTS)\custom-completions\typst\typst-completions.nu'
+source $'($NU_SCRIPTS)\custom-completions\scoop\scoop-completions.nu'
 
-source ~\.config\nushell\nu_scripts\sourced\fun\spark.nu
-source ~/.config/nushell/nu_scripts/modules/formats/from-env.nu
-source ~/.config/nushell/nu_scripts/modules/formats/to-ini.nu
-source ~/.config/nushell/nu_scripts/modules/formats/to-number-format.nu
+source $'($NU_SCRIPTS)\sourced\fun\spark.nu'
+source $'($NU_SCRIPTS)/modules/formats/from-env.nu'
+source $'($NU_SCRIPTS)/modules/formats/to-ini.nu'
+source $'($NU_SCRIPTS)/modules/formats/to-number-format.nu'
 
 source ~/.config/nushell/aliases.nu

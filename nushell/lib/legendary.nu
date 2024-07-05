@@ -321,11 +321,11 @@ export extern sync-saves [
 
 # Uninstall (delete) a game
 export extern uninstall [
-    --help(-h)          show this help message and exit
-    --keep-files        Keep files but remove game from Legendary database
-    --skip-uninstaller  Skip running the uninstaller
+    --help(-h)          # show this help message and exit
+    --keep-files        # Keep files but remove game from Legendary database
+    --skip-uninstaller  # Skip running the uninstaller
 
-    game: string@"nu completion game"
+    game: string@"nu completion installed game"
 ]
 
 # Verify a game's local files
