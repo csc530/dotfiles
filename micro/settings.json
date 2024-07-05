@@ -1,4 +1,5 @@
 {
+    "clipboard": "internal",
     "colorscheme": "mocha",
     "eofnewline": false,
     "mkparents": true,

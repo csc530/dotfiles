@@ -87,9 +87,13 @@ $env.ENV_CONVERSIONS = {
     }
 }
 
-
-$env.NUPM_HOME = C:\Users\legor\AppData\Roaming\nushell\nupm
-$env.NUPM_TEMP = C:\Users\legor\AppData\Local\Temp\nupm
+if (sys host| get name) == 'Windows' {
+    $env.NUPM_HOME = C:\Users\legor\AppData\Roaming\nushell\nupm
+    $env.NUPM_TEMP = C:\Users\legor\AppData\Local\Temp\nupm
+    } else {
+        $env.NUPM_TEMP = ('/tmp' | path join "nupm")
+        $env.NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
+    }
 
 # Directories to search for scripts when calling source or use
 # The default for this is $nu.default-config-dir/scripts
@@ -120,8 +124,8 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-$env.Path = (
-    $env.Path
+$env.PATH = (
+    $env.PATH
         | split row (char esep)
         | prepend ($env.NUPM_HOME | path join "scripts")
         | uniq
@@ -130,6 +134,8 @@ $env.Path = (
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 source ~/.config/nushell/env_parse.nu
-env source $"($env.OneDrive)/Documents/.env"
+if ($env.OneDrive? | is-not-empty) {
+    env source $"($env.OneDrive)/Documents/.env"
+}
 
 source ~/.config/nushell/terminal.nu
