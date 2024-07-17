@@ -57,3 +57,7 @@ pulse/
 firebase/
 flutter/
 filezilla/
+ibus/
+gtk-*/
+google/
+gnome-*/

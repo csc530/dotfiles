@@ -928,7 +928,7 @@ use $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-mocha.nu'
 $env.config.color_config = (catppuccin-mocha)
 
 use system
-use C:\Users\legor\AppData\Roaming\nushell\nupm\modules\nupm\
+use nupm
 use random.nu
 use ~/.config/nushell/ledger.nu
 
@@ -942,19 +942,17 @@ use pipes-rs.nu
 
 # use jobapp.nu
 
-source $'($NU_SCRIPTS)\custom-completions\btm\btm-completions.nu'
-source $'($NU_SCRIPTS)\custom-completions\typst\typst-completions.nu'
-source $'($NU_SCRIPTS)\custom-completions\scoop\scoop-completions.nu'
+source $'($NU_SCRIPTS)/custom-completions/btm/btm-completions.nu'
+source $'($NU_SCRIPTS)/custom-completions/typst/typst-completions.nu'
+source $'($NU_SCRIPTS)/custom-completions/scoop/scoop-completions.nu'
 
-source $'($NU_SCRIPTS)\sourced\fun\spark.nu'
+source $'($NU_SCRIPTS)/sourced/fun/spark.nu'
 source $'($NU_SCRIPTS)/modules/formats/from-env.nu'
 source $'($NU_SCRIPTS)/modules/formats/to-ini.nu'
 source $'($NU_SCRIPTS)/modules/formats/to-number-format.nu'
-source ~/.config/nushell/nu_scripts/custom-completions/btm/btm-completions.nu
 if ((sys host| get name) == 'Windows') {
-	source $'($NU_SCRIPTS)\custom-completions\winget\winget-completions.nu'
+	source $'($NU_SCRIPTS)/custom-completions/winget/winget-completions.nu'
 }
 
 source ~/.config/nushell/aliases.nu
-$env.ASDF_DIR = ($env.HOME | path join '.asdf')
 source /home/christofer/.asdf/asdf.nu
