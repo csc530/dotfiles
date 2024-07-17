@@ -138,4 +138,6 @@ if ($env.OneDrive? | is-not-empty) {
     env source $"($env.OneDrive)/Documents/.env"
 }
 
+$env.ASDF_DIR = ($env.HOME | path join '.asdf')
+
 source ~/.config/nushell/terminal.nu

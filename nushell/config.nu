@@ -956,3 +956,5 @@ if ((sys host| get name) == 'Windows') {
 }
 
 source ~/.config/nushell/aliases.nu
+$env.ASDF_DIR = ($env.HOME | path join '.asdf')
+source /home/christofer/.asdf/asdf.nu

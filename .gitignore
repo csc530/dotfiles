@@ -12,6 +12,7 @@ jgit/
 # too specific state config persitences
 lazygit/state.yml
 configstore/
+nushell/history.txt
 
 # nodemon
 simple-update-notifier/
@@ -50,3 +51,9 @@ launcher-main/
 bstudio/
 evince/
 cef_user_data/
+enchant/
+evolution/
+pulse/
+firebase/
+flutter/
+filezilla/
