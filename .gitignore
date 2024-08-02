@@ -59,5 +59,14 @@ flutter/
 filezilla/
 ibus/
 gtk-*/
-google/
+Google/
 gnome-*/
+spotify/
+eog/
+Rygel/
+nemo/
+nautilus/
+libvirt/
+kdeconnect/
+autostart/
+composer/
