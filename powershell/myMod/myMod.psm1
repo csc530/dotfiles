@@ -150,11 +150,91 @@ function Update-Packages {
         scoop update '*'
         npm update --global --force
         gsudo winget update --all --accept-source-agreements --accept-source-agreements
-        kill discord
+        Stop-Process discord
         winget update --id Discord.Discord
     }
     end {}
 }
+
+
+function Mount-CarapaceCompleters {
+    [CmdletBinding()]
+    param ()
+
+    Import-Module myMod
+    Write-Debug 'imported myMod'
+    # custom completers
+    # ! carapace doesn't have an oh-my-posh completer
+    # lazycomplete.exe omp "carapace oh-my-posh powershell" | Out-String | Invoke-Expression
+
+    # https://rsteube.github.io/carapace-bin/setup.html#powershell
+    Set-PSReadLineOption -Colors @{ 'Selection' = "`e[7m" }
+    Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+
+    $startTime = Get-Date
+    Write-Information -Message 'compiling system apps'
+    $apps = Get-Command -CommandType Application, Script, ExternalScript, Alias | ForEach-Object { remove-extension $_.Name }
+    $endTime = Get-Date
+    Write-Information "apps count: $($apps.Count)"
+    $elapsedTime = $endTime - $startTime
+    Write-Debug -Message "elapsed time: $($elapsedTime.ToString('d\d\ hh\:mm\:ss\.fffffff'))"
+    # $apps += Get-Command -All -CommandType Function, Cmdlet | Select-Object -Property Name | ForEach-Object { $_.Name }
+    # $apps += Get-Alias | Select-Object Name | ForEach-Object { $_.Name }
+
+
+    $startTime = Get-Date
+    Write-Information -Message 'getting available apps for carapace completer'
+    [System.Collections.Generic.List[string]]$carapace = carapace.exe --list | ForEach-Object -Parallel { $_.Split()[0] } # | Get-Random -Shuffle
+    $endTime = Get-Date
+    $elapsedTime = $endTime - $startTime
+    Write-Information "carapace completers count: $($carapace.Count)"
+    Write-Debug -Message "elapsed time: $($elapsedTime.ToString('d\d\ hh\:mm\:ss\.fffffff'))"
+
+
+
+
+    $output = @{
+        i               = 0
+        skipped         = 0
+        percentComplete = 0
+    }
+    Write-Information -Message 'setting up carapace completers'
+    $startTime = Get-Date
+    $carapace | ForEach-Object -Parallel   {
+        $cmd = $_
+        # Write-Host $using:output
+        ($using:output).i++
+        if ($using:apps -inotcontains $cmd) {
+            ($using:output).skipped++
+            return
+        }
+        # https://github.com/rsteube/lazycomplete ~ for lazycomplete
+        lazycomplete $cmd "carapace $cmd" | Out-String | Invoke-Expression
+        "carapace $cmd powershell;" | Out-String | Invoke-Expression | Out-Null
+        ($using:output).percentComplete = (($using:output).i / ($using:carapace).Count) * 100
+        Write-Information "Setting up $cmd completer... "
+        Write-Progress -Id 1 -Activity "Setting up $cmd completer" -Status "$(($using:output).percentComplete.ToString('0.00'))% complete" -PercentComplete (($using:output).percentComplete )
+    }
+    $endTime = Get-Date
+    $elapsedTime = $endTime - $startTime
+    # for ($i = 0; $i -lt $carapace.Count; $i++) {
+    #     $cmd = $carapace[$i].Split()[0]
+    #     if ($apps -inotcontains $cmd) {
+    #         $skipped++
+    #         continue
+    #     }
+    #     # https://github.com/rsteube/lazycomplete ~ for lazycomplete
+    #     lazycomplete $cmd "carapace $cmd" | Out-String | Invoke-Expression
+    #     # "carapace $cmd powershell;" | Out-String | Invoke-Expression | Out-Null
+    #     $percentComplete = ($i / $carapace.Count) * 100
+    #     Write-Progress -Activity "Setting up $cmd completer" -Status "$($percentComplete.ToString('0.00'))% complete" -PercentComplete $percentComplete
+    # }
+    Write-Progress -Id 1 -Activity "Setting up $cmd completer" -Status "100% complete" -Completed
+    Write-Host "$($carapace.Count - $output.skipped) Carapace completions loaded" -ForegroundColor Green
+    Write-Debug -Message "elapsed time: $($elapsedTime.ToString('d\d\ hh\:mm\:ss\.fffffff'))"
+}
+
+
 
 $functions = Get-Item $PSScriptRoot\*.ps1
 foreach ($function in $functions) {
@@ -162,7 +242,8 @@ foreach ($function in $functions) {
 }
 
 
-Export-ModuleMember -Function @('compile',
+Export-ModuleMember -Function @(
+    'compile',
     'Update-Packages',
     'Export-NpmPackages',
     'Remove-Extension',
@@ -177,5 +258,6 @@ Export-ModuleMember -Function @('compile',
     'Restore-System',
     'restore',
     'Set-WindowsTerminalScheme',
-    'Get-WindowsTerminalScheme'
+    'Get-WindowsTerminalScheme',
+    'Mount-CarapaceCompleters'
 )

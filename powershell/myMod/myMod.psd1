@@ -9,7 +9,8 @@
 @{
 
     # Script module or binary module file associated with this manifest.
-    RootModule        = 'module.psm1'
+    RootModule        = 'myMod.psm1'
+
 
     # Version number of this module.
     ModuleVersion     = '0.0'
@@ -85,7 +86,8 @@
         'restore',
         'Backup-System',
         'Set-WindowsTerminalScheme',
-        'Get-WindowsTerminalScheme'
+        'Get-WindowsTerminalScheme',
+        'Mount-CarapaceCompleters'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
