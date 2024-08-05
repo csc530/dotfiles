@@ -1,0 +1,10 @@
+Enabled: true
+Component:
+  Scripts:
+  - Name: catpuccinify de
+    Command: pwsh
+    WorkingDirectory: C:\Users\legor\.config\AutoDarkMode
+    ArgsLight: [-noprofile, themeSwitch.ps1, light]
+    ArgsDark: [-noprofile, themeSwitch.ps1, dark]
+    AllowedSources: [Any]
+

@@ -7,5 +7,6 @@
         "customize",
         "komorebi",
         "nushell"
-    ]
+    ],
+    "BracketHighlighter.enableExtension": true
 }

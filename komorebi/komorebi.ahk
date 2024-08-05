@@ -53,7 +53,7 @@
 !m::Manage()
 
 ; Layouts
-!x::FlipLayout("horizontal")
+!x::CycleLayout("next")
 !y::FlipLayout("vertical")
 
 ; Workspaces
