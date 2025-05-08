@@ -1715,7 +1715,7 @@ def nu_tags []: nothing -> list<string> {
     ^hledger tags | lines
 }
 
-def report_intervals [] nothing -> list<string> {
+def report_intervals []: nothing -> list<string> {
     [
         daily
         weekly
@@ -1775,7 +1775,7 @@ def smart_dates [] {
 # helper functions
 
 # parse command context
-export def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
+export def "nu completion parse-context" []: string -> record<cmd: string, args: list<string>> {
     # context strings starts at cursor position
     let ctx = $in + ' ' # add space to end to ensure last part is parsed🙄
     mut parse = $ctx | parse --regex $parse_args_rg
@@ -1830,7 +1830,7 @@ export def "nu completion parse-context" [] string -> {cmd: string, args: list<s
 def "nu completion output" [
         ctx: string,    # entered command [sub command, args, + options]
         --complete (-c) # if the copletion should have a closing quote and terminating space
-    ] list<string> -> list<string>, string -> list<string> {
+    ]: list<string> -> list<string>, string -> list<string> {
     let output = $in
     let parse = $ctx + ` `
     | parse --regex $parse_args_rg
@@ -1867,5 +1867,5 @@ def "nu completion output" [
 }
 
 def today [] {
-    date now | date to-record
+    date now | into record
 }

@@ -9,7 +9,7 @@ def "special chars" [] {
 
 # generate an endless stream of random values
 def list [generator: closure] {
-    generate [] { {out: (do $generator), next: true } }
+    generate { {out: (do $generator), next: true } } []
 }
 
 # generate a list of random booleans
@@ -50,6 +50,6 @@ export def "list char" [] {
 }
 
 # select a random item from a list
-export def "item" [...items] list -> any {
+export def "item" [...items]: list -> any {
     $in | append $items | shuffle | first
 }

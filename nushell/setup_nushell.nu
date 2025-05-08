@@ -1,0 +1,1 @@
+git clone https://github.com/nushell/nu_scripts.git ~/.config/nushell/lib/nu_scripts

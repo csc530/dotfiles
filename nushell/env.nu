@@ -88,8 +88,11 @@ $env.ENV_CONVERSIONS = {
 }
 
 if (sys host| get name) == 'Windows' {
-    $env.NUPM_HOME = C:\Users\legor\AppData\Roaming\nushell\nupm
-    $env.NUPM_TEMP = C:\Users\legor\AppData\Local\Temp\nupm
+    $env.NUPM_HOME = 'C:\Users\legor\AppData\Roaming\nushell\nupm'
+    $env.NUPM_TEMP = 'C:\Users\legor\AppData\Local\Temp\nupm'
+    } else if (sys host| get name) == 'Darwin' {
+        $env.NUPM_HOME = ($env.HOME | path join "Library/Application Support/nushell/nupm")
+        $env.NUPM_TEMP = ($env.TMPDIR | path join "nupm")
     } else {
         $env.NUPM_TEMP = ('/tmp' | path join "nupm")
         $env.NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")

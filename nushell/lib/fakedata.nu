@@ -13,7 +13,7 @@ export extern main [
     --template(-T)=string: string               # Use template as input
     --version(-v)                       # shows version information
 
-    ...generator: string: string@"nu completion generators"
+    ...generator: string@"nu completion generators"
 ]
 
 def "nu completion shells" [] {

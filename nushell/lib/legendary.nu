@@ -222,9 +222,9 @@ export extern install [
     game: string@"nu completion game name"
 ]
 
-export alias download = install
-export alias repair = install
-export alias update = install
+export alias 'download' = install
+export alias 'repair' = install
+export alias 'update' = install
 
 # Launch a game
 export extern launch [

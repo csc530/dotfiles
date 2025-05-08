@@ -122,7 +122,7 @@ export extern "account forget" [
     --help(-h)                                              # help for forget
     --all                                                   # Forget all authenticated accounts.
 
-    account?: string: string@"nu completion account"       # The account to forget.
+    account?: string@"nu completion account"       # The account to forget.
 ]
 
 #                                                         dP
@@ -2357,7 +2357,7 @@ def "nu completion item" [] {
 const parse_args_rg = "(?<opening_quote>['\"`]?)(?<content>.*?)(?<closing_quote>\\k<opening_quote>)(?<separator>\\s+)"
 const parse_option_name_rg = "(?:--?)(?<option_name>[\\w-]+)"
 
-export def "nu completion parse-context" [] string -> {cmd: string, args: list<string>} {
+export def "nu completion parse-context" []: string -> record<cmd: string, args: list<string>> {
     # context strings starts at cursor position
     let ctx = $in + ' ' # add space to end to ensure last part is parsed🙄
     mut parse = $ctx | parse --regex $parse_args_rg
@@ -2412,7 +2412,7 @@ export def "nu completion parse-context" [] string -> {cmd: string, args: list<s
 def "nu completion output" [
         ctx: string,    # entered command [sub command, args, + options]
         --complete (-c) # if the copletion should have a closing quote and terminating space
-    ] list<string> -> list<string>, string -> list<string> {
+    ]: list<string> -> list<string>, string -> list<string> {
     let output = $in
     let parse = $ctx + ` `
     | parse --regex $parse_args_rg
