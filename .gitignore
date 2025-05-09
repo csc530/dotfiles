@@ -9,7 +9,7 @@ op/
 # ihn~~f~~i
 jgit/
 
-# too specific state config persitences
+# too specific state config persistences
 lazygit/state.yml
 configstore/
 nushell/history.txt
@@ -71,3 +71,6 @@ kdeconnect/
 autostart/
 composer/
 gatsby/
+
+.*
+git/.gitconfig
