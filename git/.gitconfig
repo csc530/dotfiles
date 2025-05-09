@@ -1,9 +1,10 @@
 [user]
 	email = 77406318+csc530@users.noreply.github.com
 	name = csc530
-	signingKey = A04F26E2296CDBC9617F12EA497AA2DB8AD9DD15
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA925MzvEfCh7HbuBCrPXQtLIPRzD63948A7QC+O3aXp
 [alias]
 	s = status
+
 [credential]
 	helper = manager
 
@@ -11,6 +12,7 @@
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	autocrlf = true
+[credential]
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [color]
@@ -32,11 +34,17 @@
 
 [credential "https://github.com"]
 	helper =
-	helper = !'~\\scoop\\apps\\gh\\current\\bin\\gh.exe' auth git-credential
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper =
-	helper = !'~\\scoop\\apps\\gh\\current\\bin\\gh.exe' auth git-credential
-[gpg]
-	program = ~\\scoop\\apps\\gpg\\current\\bin\\gpg.exe
+	helper = !/opt/homebrew/bin/gh auth git-credential
+# [gpg]
+	# program = ~\\scoop\\apps\\gpg\\current\\bin\\gpg.exe
 [pull]
 	rebase = false
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true

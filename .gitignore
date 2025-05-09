@@ -72,5 +72,16 @@ autostart/
 composer/
 gatsby/
 
+go/
+
+lapce-stable/
+!lapce-stable/keymaps.toml
+!lapce-stable/settings.toml
+
+Code - OSS/
+Electron/
+gh/hosts.yml
+
+
 .*
 git/.gitconfig

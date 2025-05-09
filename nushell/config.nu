@@ -911,15 +911,14 @@ $env.config = {
 
 # carpace
 source ~/.config/nushell/.cache/carapace.nu
-source  ~/.config/nushell/.cache/omp.nu
+source  ~/.config/nushell/.cache/oh-my-posh.nu
 source ~/.config/nushell/.cache/zoxide.nu
 
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
 
 
-use $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-mocha.nu'
+source $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-macchiato.nu'
 
-$env.config.color_config = (catppuccin-mocha)
 
 use system
 use nupm

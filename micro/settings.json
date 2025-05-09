@@ -1,6 +1,5 @@
 {
-    "clipboard": "internal",
-    "colorscheme": "mocha",
+    "colorscheme": "catppuccin-macchiato",
     "eofnewline": false,
     "mkparents": true,
     "parsecursor": true,
