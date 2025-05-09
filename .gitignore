@@ -85,3 +85,4 @@ gh/hosts.yml
 
 .*
 git/.gitconfig
+gh/hosts.yml
