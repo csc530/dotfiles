@@ -28,15 +28,3 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-
-
-[credential "https://github.com"]
-	helper =
-	helper = !'~\\scoop\\apps\\gh\\current\\bin\\gh.exe' auth git-credential
-[credential "https://gist.github.com"]
-	helper =
-	helper = !'~\\scoop\\apps\\gh\\current\\bin\\gh.exe' auth git-credential
-[gpg]
-	program = ~\\scoop\\apps\\gpg\\current\\bin\\gpg.exe
-[pull]
-	rebase = false

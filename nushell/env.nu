@@ -94,8 +94,11 @@ if (sys host| get name) == 'Windows' {
         $env.NUPM_HOME = ($env.HOME | path join "Library/Application Support/nushell/nupm")
         $env.NUPM_TEMP = ($env.TMPDIR | path join "nupm")
     } else {
+        if ($env.XDG_DATA_DIR? | is-empty) {
+            $env.XDG_DATA_HOME = ($env.HOME | path join ".local/share")
+        }
         $env.NUPM_TEMP = ('/tmp' | path join "nupm")
-        $env.NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
+        $env.NUPM_HOME = ($env.XDG_DATA_HOME?    | path join "nupm")
     }
 
 # Directories to search for scripts when calling source or use
@@ -141,6 +144,16 @@ if ($env.OneDrive? | is-not-empty) {
     env source $"($env.OneDrive)/Documents/.env"
 }
 
-$env.ASDF_DIR = ($env.HOME | path join '.asdf')
+# update caches
+mkdir ~/.config/nushell/.cache
+if (which zoxide | is-not-empty) {
+    zoxide init nushell | save -f ~/.config/nushell/.cache/zoxide.nu
+}
 
-source ~/.config/nushell/terminal.nu
+if (which carapace | is-not-empty) {
+   carapace _carapace nushell | save -f ~/.config/nushell/.cache/carapace.nu
+}
+
+if (which oh-my-posh | is-not-empty) {
+    oh-my-posh init nu --config ~/.config/oh-my-posh/themes/negligible.omp.json --print | save -f ~/.config/nushell/.cache/oh-my-posh.nu
+}
