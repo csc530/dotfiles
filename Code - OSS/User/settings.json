@@ -1,1011 +1,506 @@
 {
-
     "terminal.integrated.fontFamily": "ProFont IIx Nerd Font Mono, ProFont IIx Nerd Font Propo, SpaceMono Nerd Font Mono, Maple Mono NF,Ubuntu Mono, monospace",
-
     "css.enabledLanguages": [
-
         "php",
-
         "vue",
-
         "hbs",
-
         "handlebars",
-
         "html"
-
     ],
-
     "html-css-class-completion.CSSLanguages": [
-
         "css",
-
         "sass",
-
         "scss"
-
     ],
-
     "html-css-class-completion.HTMLLanguages": [
-
         "html",
-
         "vue",
-
         "razor",
-
         "blade",
-
         "handlebars",
-
         "twig",
-
         "django-html",
-
         "php",
-
         "markdown",
-
         "erb",
-
         "ejs",
-
         "svelte"
-
     ],
-
     "editor.renderWhitespace": "all",
-
     "files.trimTrailingWhitespace": true,
-
     "glassit-linux.opacity": 95,
-
     "glassit.alpha": 245,
-
     "tabnine.experimentalAutoImports": true,
-
     "enableTelemetry": true,
-
     "workbench.commandPalette.experimental.suggestCommands": true,
-
     "workbench.list.smoothScrolling": true,
-
     "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
-
-    "workbench.preferredLightColorTheme": "Catppuccin Noctis Latte",
-
     "window.dialogStyle": "custom",
-
     "accessibility.dimUnfocused.enabled": true,
-
     "workbench.editorAssociations": {
-
         "*.copilotmd": "vscode.markdown.preview.editor",
-
         "{hexdiff}:/**/*.*": "hexEditor.hexedit",
-
         "*.webp": "imagePreview.previewEditor",
-
         "*.jpg": "imagePreview.previewEditor",
-
         "*.gif": "imagePreview.previewEditor",
-
         "*.PDF": "pdf.view",
-
         "*.png": "imagePreview.previewEditor",
-
         "*.ico": "imagePreview.previewEditor",
-
         "*.md": "default",
-
         "*.csv": "default",
-
         "*.pdf": "pdf.preview"
-
     },
-
     "1password.debug.enabled": true,
-
     "powershell.codeFormatting.autoCorrectAliases": true,
-
     "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
-
     "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
-
     "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
-
     "powershell.codeFormatting.useConstantStrings": true,
-
     "powershell.codeFormatting.useCorrectCasing": true,
-
     "powershell.codeFormatting.whitespaceBetweenParameters": true,
-
     "powershell.startAutomatically": true,
-
     "powershell.scriptAnalysis.enable": true,
-
     "git.autofetch": true,
-
     "html.format.indentHandlebars": true,
-
     "html.format.indentInnerHtml": true,
-
     "html.format.templating": true,
-
     "catppuccin.accentColor": "pink",
-
     "catppuccin.extraBordersEnabled": true,
-
     "workbench.iconTheme": "catppuccin-latte",
-
     "redhat.telemetry.enabled": true,
-
     "powershell.powerShellAdditionalExePaths": {
-
         "pwsh": "C:\\users\\legor\\scoop\\apps\\pwsh\\current\\pwsh.exe",
-
         "powershell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-
     },
-
     "powershell.powerShellDefaultVersion": "pwsh",
-
     "terminal.integrated.lineHeight": 1.2,
-
     "[markdown]": {
-
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-
     },
-
     "settingsSync.ignoredExtensions": [],
-
     "cSpell.userWords": [
-
         "birthdate",
-
         "bulma",
-
         "Catppuccin",
-
         "Christofer",
-
         "Codieum",
-
         "colour",
-
         "emojicon",
-
         "endregion",
-
         "Lakehead",
-
         "legor",
-
         "Métis",
-
         "Nushell",
-
         "Nuxt",
-
         "OSAP",
-
         "squircle",
-
         "themself",
-
         "typst"
-
     ],
-
     "standard.autoFixOnSave": true,
-
     "p42.feature.cloudAI.enabled": true,
-
     "p42.feature.dependencyVisualization.enabled": true,
-
     "eslint.lintTask.enable": true,
-
     "eslint.ignoreUntitled": true,
-
     "[javascript]": {
-
         "editor.defaultFormatter": "vscode.typescript-language-features"
-
     },
-
     "markdown.occurrencesHighlight.enabled": true,
-
     "markdown.preview.breaks": true,
-
     "markdown.updateLinksOnFileMove.enabled": "prompt",
-
     "markdown.validate.enabled": true,
-
     "markdownlint.focusMode": false,
-
     "markdownlint.config": {
-
         "MD012": {
-
             "maximum": 2
-
         },
-
         "link-image-reference-definitions": {
-
             "ignored_definitions": [
-
                 "//",
-
                 "^*," //except it doesn't allow regex
-
             ]
-
         },
-
         "MD029": {
-
             "style": "ordered"
-
         }
-
     },
-
     "banner-comments.h2": "Nancyj-Fancy",
-
     "banner-comments.h3": "Big",
-
     "workbench.startupEditor": "welcomePage",
-
     "htmlhint.documentSelector": [
-
         "handlebars",
-
         "hbs",
-
         "ejs",
-
         "html",
-
         "htm"
-
     ],
-
     "grunt.autoDetect": "on",
-
     "gulp.autoDetect": "on",
-
     "powershell.integratedConsole.showOnStartup": false,
-
     "[powershell]": {
-
         "files.encoding": "utf8bom",
-
         "files.autoGuessEncoding": true,
-
         "editor.semanticHighlighting.enabled": true,
-
         "editor.defaultFormatter": "ms-vscode.powershell",
-
     },
-
     "clock.format": "HH:MM:ss",
-
     "clock.alignment": "Right",
-
     "editor.largeFileOptimizations": false,
-
     "terminal.integrated.cursorBlinking": true,
-
     "terminal.integrated.enableImages": true,
-
     "terminal.integrated.fontSize": 13,
-
     "terminal.integrated.shellIntegration.suggestEnabled": true,
-
     "terminal.integrated.smoothScrolling": true,
-
     "git.terminalGitEditor": true,
-
     "powershell.buttons.showPanelMovementButtons": true,
-
     "workbench.colorTheme": "NarutoDark",
-
     "diffEditor.ignoreTrimWhitespace": false,
-
     "todo-tree.tree.showCountsInTree": true,
-
     "todo-tree.regex.regexCaseSensitive": false,
-
     "todo-tree.ripgrep.ripgrep": "C:\\Users\\legor\\scoop\\shims\\rg.exe",
-
     "editor.linkedEditing": true,
-
     "BracketHighlighter.highlightScopeFromText": true,
-
     "discord.idleTimeout": 1800,
-
     "discord.largeImage": "playing with {LANG}",
-
     "discord.largeImageIdling": "😴💤💤",
-
     "discord.detailsEditing": "{file_name} - {file_size}",
-
     "discord.lowerDetailsNoWorkspaceFound": "{No workspace}",
-
     "discord.detailsDebugging": "🪲 {file_name} 🐛",
-
     "sonarlint.output.showVerboseLogs": true,
-
     "vue.updateImportsOnFileMove.enabled": true,
-
     "codeium.enableConfig": {
-
         "*": true,
-
         "markdown": true,
-
         "nushell": true,
-
         "snippets": true,
-
         "typst": true,
-
         "apacheconf": true,
-
         "ignore": true,
-
         "just": true
-
     },
-
     "banner-comments.favorites": [
-
         "3D Diagonal",
-
         "3D-ASCII",
-
         "Alpha",
-
         "3x5",
-
         "Patorjk-HeX",
-
         "Big",
-
         "Ivrit",
-
         "Nancyj-Fancy",
-
         "Nancyj",
-
         "Rounded",
-
         "Banner3",
-
         "Banner",
-
         "Small"
-
     ],
-
     "banner-comments.h1": "Banner3",
-
     "C_Cpp.codeAnalysis.clangTidy.enabled": true,
-
     "accessibility.signals.clear": {
-
         "sound": "auto"
-
     },
-
     "accessibility.signals.terminalBell": {
-
         "sound": "on"
-
     },
-
     "terminal.integrated.enableVisualBell": true,
-
     "files.exclude": {
-
         "**/.trunk/*actions/": true,
-
         "**/.trunk/*logs/": true,
-
         "**/.trunk/*notifications/": true,
-
         "**/.trunk/*out/": true,
-
         "**/.trunk/*plugins/": true
-
     },
-
     "files.watcherExclude": {
-
         "**/.trunk/*actions/": true,
-
         "**/.trunk/*logs/": true,
-
         "**/.trunk/*notifications/": true,
-
         "**/.trunk/*out/": true,
-
         "**/.trunk/*plugins/": true
-
     },
-
     "cSpell.enabled": true,
-
     "[typescriptreact]": {
-
         "editor.defaultFormatter": "vscode.typescript-language-features"
-
     },
-
     "liveshare.accessibility.voice": "en-SG-Luna",
-
     "[typescript]": {
-
         "editor.defaultFormatter": "vscode.typescript-language-features"
-
     },
-
     "[jsonc]": {
-
         "editor.defaultFormatter": "vscode.json-language-features"
-
     },
-
     "[snippets]": {
-
         "editor.defaultFormatter": "vscode.json-language-features"
-
     },
-
     "diffEditor.experimental.showMoves": true,
-
     "livePreview.debugOnExternalPreview": true,
-
     "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
-
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-
     "javascript.format.semicolons": "insert",
-
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
-
     "[html]": {
-
         "editor.defaultFormatter": "vscode.html-language-features"
-
     },
-
     "attrsSorter.order": [
-
         "id",
-
         "name",
-
         "async",
-
         "defer",
-
         "src",
-
         "required",
-
         "type",
-
         "data-.+",
-
         "aria-.+",
-
         "auto.+",
-
         ".*",
-
         "class",
-
     ],
-
     "nightwatch.quickSettings.parallels": 12,
-
     "npm.keybindingsChangedWarningShown": true,
-
     "php.completion.showParameters": true,
-
     "php.inlayHints.parameters.byReference": true,
-
     "php.inlayHints.parameters.suppressNameMatchingValue": true,
-
     "php.inlayHints.parameters.enabled": true,
-
     "php.inlayHints.types.lambdaParameter": true,
-
     "php.inlayHints.types.variable": true,
-
     "sonarlint.pathToNodeExecutable": "node",
-
     "errorLens.codeLensEnabled": true,
-
     "errorLens.gutterIconsEnabled": true,
-
     "errorLens.messageEnabled": false,
-
     "path-intellisense.showHiddenFiles": true,
-
     "path-intellisense.extensionOnImport": true,
-
     "path-intellisense.autoTriggerNextSuggestion": true,
-
     "path-intellisense.autoSlashAfterDirectory": true,
-
     "gutterpreview.enableReferenceLookup": true,
-
     "workbench.editor.customLabels.enabled": true,
-
     "workbench.editor.customLabels.patterns": {
-
         "*.entra": "${filename}",
-
         "**/*.entra": "${filename}"
-
     },
-
     "workbench.sideBar.location": "right",
-
     "[vue]": {
-
         "editor.defaultFormatter": "Vue.volar"
-
     },
-
     "vue.format.style.initialIndent": true,
-
     "vue.inlayHints.missingProps": true,
-
     "vue.inlayHints.optionsWrapper": true,
-
     "vue.inlayHints.vBindShorthand": true,
-
     "colorInfo.languages": [
-
         {
-
             "selector": "css",
-
             "colors": "css"
-
         },
-
         {
-
             "selector": "sass",
-
             "colors": "css"
-
         },
-
         {
-
             "selector": "scss",
-
             "colors": "css"
-
         },
-
         {
-
             "selector": "less",
-
             "colors": "css"
-
         }
-
     ],
-
     "color-highlight.matchWords": true,
-
     "[scss]": {
-
         "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
-
     },
-
     "debug.terminal.clearBeforeReusing": true,
-
     "debug.javascript.terminalOptions": {},
-
     "terminal.integrated.suggest.enabled": true,
-
     "terminal.integrated.enablePersistentSessions": false,
-
     "terminal.integrated.stickyScroll.enabled": true,
-
     "debug.javascript.breakOnConditionalError": true,
-
     "typst-lsp.experimentalFormatterMode": "on",
-
     "enabledCodeActions": true,
-
     "exclude": "{**/node_modules/**,**/bower_components/**,**/dist/**,**/build/**,**/.vscode/**,**/_output/**,**/vendor/**,**/*.min.*,**/*.map,**/*.cache/**, **/.netlify/}",
-
     "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
-
     "todo-tree.tree.groupedByTag": true,
-
     "todo-tree.tree.hideTreeWhenEmpty": true,
-
     "todo-tree.tree.hideIconsWhenGroupedByTag": true,
-
     "cSpell.language": "en-CA,fr-CA,en,fr,en-GB",
-
     "github.copilot.preferredAccount": "csc530",
-
     "diffEditor.renderSideBySide": false,
-
     "frosted-glass-theme.fakeMica.url": "C:\\Users\\legor\\OneDrive\\Pictures\\toony\\B&Puppycat\\cgnhgd1ds2551.jpg",
-
     "workbench.colorCustomizations": {
-
         "[Default Light Modern]": {
-
             "activityBar.background": "#ffffffdd",
-
             "breadcrumb.background": "#00000000",
-
             "dropdown.background": "#ffffffdd",
-
             "dropdown.border": "#cecece4d",
-
             "editor.background": "#ffffffdd",
-
             "editor.lineHighlightBorder": "#eeeeee4d",
-
             "editorGroupHeader.tabsBackground": "#f8f8f8dd",
-
             "editorGutter.background": "#00000000",
-
             "editorPane.background": "#00000000",
-
             "editorStickyScroll.background": "#ffffff66",
-
             "input.background": "#ffffff4d",
-
             "menu.background": "#ffffff99",
-
             "menu.selectionBackground": "#000000",
-
             "menu.selectionForeground": "#000000",
-
             "notebook.cellEditorBackground": "#00000000",
-
             "panel.background": "#ffffffdd",
-
             "sideBar.background": "#f8f8f8dd",
-
             "sideBarSectionHeader.background": "#f8f8f84d",
-
             "sideBarTitle.background": "#00000000",
-
             "statusBar.background": "#f8f8f8dd",
-
             "statusBar.noFolderBackground": "#f8f8f8dd",
-
             "tab.activeBackground": "#ffffff99",
-
             "tab.inactiveBackground": "#00000000",
-
             "terminal.background": "#00000000",
-
             "welcomePage.tileBackground": "#f3f3f34d",
-
             "welcomePage.tileHoverBackground": "#dfdfdf99"
-
         },
-
         "[One Dark Pro]": {
-
             "activityBar.background": "#282c34cc",
-
             "breadcrumb.background": "#00000000",
-
             "button.background": "#40475499",
-
             "dropdown.background": "#21252b4d",
-
             "dropdown.border": "#21252b4d",
-
             "editor.background": "#282c3499",
-
             "editor.lineHighlightBackground": "#2c313c4d",
-
             "editorGroupHeader.tabsBackground": "#282c34cc",
-
             "editorGutter.background": "#00000000",
-
             "editorPane.background": "#00000000",
-
             "input.background": "#1d1f234d",
-
             "list.activeSelectionBackground": "#2c313a99",
-
             "list.hoverBackground": "#2c313a99",
-
             "list.inactiveSelectionBackground": "#32384299",
-
             "menu.background": "#21252b99",
-
             "menu.selectionBackground": "#ffffff",
-
             "multiDiffEditor.headerBackground": "#00000000",
-
             "notebook.cellEditorBackground": "#00000000",
-
             "panel.background": "#282c34cc",
-
             "settings.focusedRowBackground": "#00000000",
-
             "sideBar.background": "#21252bcc",
-
             "sideBarSectionHeader.background": "#282c344d",
-
             "sideBarStickyScroll.background": "#21252b66",
-
             "sideBarTitle.background": "#00000000",
-
             "statusBar.background": "#21252bcc",
-
             "statusBar.noFolderBackground": "#21252bcc",
-
             "tab.activeBackground": "#282c3499",
-
             "tab.activeBorder": "#b4b4b499",
-
             "tab.border": "#00000000",
-
             "tab.inactiveBackground": "#00000000",
-
             "terminal.background": "#00000000",
-
             "welcomePage.tileBackground": "#21252b4d",
-
             "welcomePage.tileHoverBackground": "#282c3499"
-
         }
-
     },
-
     "bun.runtime": "C:\\Users\\legor\\scoop\\shims\\bun.exe",
-
     "settingsSync.ignoredSettings": [
-
         "bun.runtime",
-
         "-python.createEnvironment.trigger",
-
         "-python.createEnvironment.contentButton"
-
     ],
-
     "frosted-glass-theme.revealEffect.disableForDisabledItem": true,
-
     "frosted-glass-theme.miscellaneous.progressBarBehindSectionHeader": true,
-
     "scss.lint.float": "warning",
-
     "scss.lint.important": "warning",
-
     "scss.format.braceStyle": "expand",
-
     "scss.format.spaceAroundSelectorSeparator": true,
-
     "bashIde.shfmt.caseIndent": true,
-
     "bashIde.shfmt.simplifyCode": true,
-
     "typst-lsp.trace.server": "messages",
-
     "markdown.preview.typographer": true,
-
     "terminal.integrated.profiles.windows": {
-
         "PowerShell": {
-
             "source": "PowerShell",
-
             "icon": "terminal-powershell"
-
         },
-
         "Command Prompt": {
-
             "path": [
-
                 "${env:windir}\\Sysnative\\cmd.exe",
-
                 "${env:windir}\\System32\\cmd.exe"
-
             ],
-
             "args": [],
-
             "icon": "terminal-cmd"
-
         },
-
         "Git Bash": {
-
             "source": "Git Bash"
-
         }
-
     },
-
     "pgsql.connections": [
-
         {
-
             "host": "localhost",
-
             "dbname": "bet",
-
             "user": "legor",
-
             "password": "",
-
             "emptyPasswordInput": true,
-
             "port": "5432"
-
         }
-
     ],
-
     "sqltools.connectionExplorer.groupConnected": true,
-
     "sqltools.format": {
-
         "reservedWordCase": "upper",
-
     },
-
     "[css]": {
-
         "editor.defaultFormatter": "vscode.css-language-features"
-
     },
-
     "javascript.inlayHints.variableTypes.enabled": true,
-
     "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-
     "javascript.inlayHints.parameterTypes.enabled": true,
-
     "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-
     "typescript.inlayHints.variableTypes.enabled": true,
-
     "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-
     "editor.inlayHints.enabled": "offUnlessPressed",
-
     "vscode-office.editorTheme": "Auto",
-
     "window.autoDetectColorScheme": true,
-
     "prettier.endOfLine": "auto",
-
     "prettier.vueIndentScriptAndStyle": true,
-
     "vue.format.script.initialIndent": true,
-
     "typescript.format.semicolons": "insert",
-
     "eslint.format.enable": true,
-
     "python.diagnostics.sourceMapsEnabled": true,
-
     "vue.inlayHints.inlineHandlerLeading": true,
-
     "javascript.preferences.quoteStyle": "double",
-
     "kotlin.codegen.enabled": true,
-
     "jdk.jdkhome": "C:\\Users\\legor\\scoop\\apps\\openjdk22\\current",
-
     "eslint.useFlatConfig": true,
-
     "symbols.hidesExplorerArrows": false,
-
     "php.executablePath": "C:/Users/legor/scoop/apps/php/current/php/php.exe",
-
     "php.executables": {
-
         "laragon": "C:\\Users\\legor\\scoop\\apps\\laragon\\current\\bin\\php\\php-8.1.10-Win32-vs16-x64\\php.exe"
-
     },
-
     "python.analysis.autoFormatStrings": true,
-
     "python.analysis.autoImportCompletions": true,
-
     "[json]": {
-
         "editor.defaultFormatter": "vscode.json-language-features"
-
     },
-
     "editor.pasteAs.preferences": [
-
         "text.updateImports.jsts"
-
     ],
-
     "indentRainbow.errorColor": "rgba(128,32,32,0.1)",
-
     "[github-actions-workflow]": {
-
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-
     },
-
     "css.format.spaceAroundSelectorSeparator": true,
-
     "git.openRepositoryInParentFolders": "never",
-
     "php.debug.executablePath": "",
-
     "terminal.integrated.fontLigatures.enabled": true,
-
     "pop-icon-theme.activeIconPack": "vue",
-
     "editor.defaultFormatter": "trunk.io",
-
     "frosted-glass-theme.fakeMica.enabled": true,
-
     "animations.Install-Method": "Apc Customize UI++",
-
     "apc.imports": [
-
         "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
-
     ],
-
-    "workbench.preferredDarkColorTheme": "Catppuccin Noctis Mocha",
-
+    "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
     "[python]": {
-
         "editor.defaultFormatter": "charliermarsh.ruff"
-
     },
-
     "[java]": {
-
         "editor.defaultFormatter": "redhat.java"
-
     },
-
     "gitlens.ai.model": "gitkraken",
-
     "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash",
-
     "vue.server.hybridMode": "typeScriptPluginOnly",
-
     "typescript.preferences.quoteStyle": "double",
-
     "[go]": {
-
         "editor.defaultFormatter": "golang.go"
-
     },
-
     "[php]": {
-
         "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
-
     },
-
+    "workbench.preferredLightColorTheme": "Catppuccin Latte",
 }

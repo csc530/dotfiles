@@ -78,11 +78,25 @@ lapce-stable/
 !lapce-stable/keymaps.toml
 !lapce-stable/settings.toml
 
-Code - OSS/
+!Code - OSS/
+Code - OSS/*
+
+!Code - OSS/User/
+Code - OSS/User/*
+
+!Code - OSS/User/settings.json
+!Code - OSS/User/snippets/
+
+
 Electron/
+
 gh/hosts.yml
+
+budgie-control-center/
 
 
 .*
 git/.gitconfig
 gh/hosts.yml
+git/.gitconfig
+com.tari.universe/

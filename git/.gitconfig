@@ -11,7 +11,6 @@
 # diff so fancy
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	autocrlf = true
 [credential]
 [interactive]
 	diffFilter = diff-so-fancy --patch
@@ -31,13 +30,10 @@
 	new = green bold
 	whitespace = red reverse
 
-	
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+
+
 
 [commit]
 	gpgsign = true
+[gpg]
+	format = ssh

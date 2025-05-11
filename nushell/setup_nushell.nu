@@ -3,7 +3,7 @@
 echo 'adding nu scripts'
 git clone --quiet https://github.com/nushell/nu_scripts.git ~/.config/nushell/lib/nu_scripts | ignore
 
-echo genrating caches 
+echo generating caches
 mkdir ~/.config/nushell/.cache |ignore
 if (which zoxide | is-not-empty) {
     zoxide init nushell | save -f ~/.config/nushell/.cache/zoxide.nu
