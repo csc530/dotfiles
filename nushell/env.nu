@@ -98,7 +98,7 @@ if (sys host| get name) == 'Windows' {
             $env.XDG_DATA_HOME = ($env.HOME | path join ".local/share")
         }
         $env.NUPM_TEMP = ('/tmp' | path join "nupm")
-        $env.NUPM_HOME = ($env.XDG_DATA_HOME?    | path join "nupm")
+        $env.NUPM_HOME = ($env.XDG_DATA_HOME? | path join "nupm")
 }
 
 # Directories to search for scripts when calling source or use

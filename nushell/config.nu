@@ -920,8 +920,7 @@ source ~/.config/nushell/.cache/zoxide.nu
 source $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-macchiato.nu'
 
 use system
-# directory is searched before $env.NU_LIB_DIRS; because nupm is still in nushell's starting dir
-use nupm/modules/nupm
+use nupm
 use random.nu
 use ~/.config/nushell/ledger.nu
 
