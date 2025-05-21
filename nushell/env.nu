@@ -141,7 +141,11 @@ $env.PATH = (
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 source ~/.config/nushell/env_parse.nu
 if ($env.OneDrive? | is-not-empty) {
-    env source $"($env.OneDrive)/Documents/.env"
+	if (sys host | get name) == 'Darwin' {
+        env source $"($env.OneDrive)/.mac.env"
+	} else {
+        env source $"($env.OneDrive)/Documents/.env"
+   }
 }
 
 # update caches

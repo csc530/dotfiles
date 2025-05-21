@@ -42,11 +42,28 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 theme = dark:catppuccin-mocha,light:catppuccin-latte
+
+command = nu --login --interactive
+
 quit-after-last-window-closed-delay = 4s
 app-notifications  = true
+
 macos-titlebar-style = transparent
 macos-icon = xray
 macos-icon-frame = chrome
+
+cursor-invert-fg-bg = true
+cursor-opacity = 0.8766
+cursor-style = block
+cursor-click-to-move = true
+
+mouse-shift-capture = true
+
+background-opacity = 0.88
+background-blur = 50
+
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
 
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 quick-terminal-screen=main
