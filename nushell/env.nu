@@ -99,7 +99,7 @@ if (sys host| get name) == 'Windows' {
         }
         $env.NUPM_TEMP = ('/tmp' | path join "nupm")
         $env.NUPM_HOME = ($env.XDG_DATA_HOME?    | path join "nupm")
-    }
+}
 
 # Directories to search for scripts when calling source or use
 # The default for this is $nu.default-config-dir/scripts
@@ -107,6 +107,7 @@ $env.NU_LIB_DIRS = ([
     ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
     # nupm tings
     ($env.NUPM_HOME | path join "modules")
+
     ($'($NU_SCRIPTS)/modules' | path expand)
     (ls $'($NU_SCRIPTS)/modules' | where type == "dir" | filter {|e|
             let items = ls $e.name
@@ -139,6 +140,26 @@ $env.PATH = (
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+if (sys host | get name) == 'Darwin' and (which /opt/homebrew/bin/brew | is-not-empty) {
+    # translated from brew shellenv
+    $env.HOMEBREW_PREFIX = '/opt/homebrew'
+    $env.HOMEBREW_CELLAR = '/opt/homebrew/Cellar'
+    $env.HOMEBREW_REPOSITORY = '/opt/homebrew'
+    $env.PATH = $env.PATH | prepend [
+        "/opt/homebrew/bin"
+        "/opt/homebrew/sbin"
+        "/Users/chrissc/.config/carapace/bin"
+        "/Users/chrissc/Library/Application Support/nushell/nupm/scripts"
+        "/usr/bin"
+        "/usr/bin"
+        "/usr/sbin"
+        "/sbin"
+        "/Applications/Ghostty.app/Contents/MacOS"
+    ]
+    $env.INFOPATH = $env.INFOPATH? | prepend "/opt/homebrew/share/info"
+}
+
+
 source ~/.config/nushell/env_parse.nu
 if ($env.OneDrive? | is-not-empty) {
 	if (sys host | get name) == 'Darwin' {
