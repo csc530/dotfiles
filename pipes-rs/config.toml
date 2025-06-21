@@ -1,10 +1,11 @@
-bold = true
+Ebold = true
 color_mode = "rgb" # ansi, rgb or none
 palette = "matrix" # default, darker, pastel or matrix
 rainbow = 2 # 0-255
-delay_ms = 20
+# delay_ms = 20
+fps = 75
 inherit_style = false
-kinds = ["heavy"] # heavy, light, curved, knobby, emoji, outline, dots, blocks, sus
+kinds = ["heavy", "light"] # heavy, light, curved, knobby, emoji, outline, dots, blocks, sus
 num_pipes = 1
 reset_threshold = 0.5 # 0.0–1.0
 turn_chance = 0.15 # 0.0–1.0

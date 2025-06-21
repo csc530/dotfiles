@@ -245,7 +245,7 @@ $env.config = {
     }
 
     history: {
-        max_size: 100_000 # Session has to be reloaded for this to take effect
+        max_size: 1_000_000 # Session has to be reloaded for this to take effect
         sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
         file_format: "plaintext" # "sqlite" or "plaintext"
         isolation: false # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
@@ -255,7 +255,7 @@ $env.config = {
         case_sensitive: false # set to true to enable case-sensitive completions
         quick: true    # set this to false to prevent auto-selecting completions when only one remains
         partial: true    # set this to false to prevent partial filling of the prompt
-        algorithm: "prefix"    # prefix or fuzzy
+        algorithm: "fuzzy"    # prefix or fuzzy
         external: {
             enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up may be very slow
             max_results: 50 # setting it lower can improve completion performance at the cost of omitting some options
@@ -269,7 +269,7 @@ $env.config = {
         vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
-    color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
+    # color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     footer_mode: auto # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
     buffer_editor: "" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
@@ -917,7 +917,7 @@ source ~/.config/nushell/.cache/zoxide.nu
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
 
 
-source $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-macchiato.nu'
+# source $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-macchiato.nu'
 
 use system
 use nupm

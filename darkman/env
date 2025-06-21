@@ -1,0 +1,2 @@
+# SOURCE ME FIRST / EnvironmentFile=me in unit file
+catppuccin=deno run --allow-env --allow-read --allow-sys npm:@catppuccin/inkcat

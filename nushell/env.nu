@@ -109,14 +109,14 @@ $env.NU_LIB_DIRS = ([
     ($env.NUPM_HOME | path join "modules")
 
     ($'($NU_SCRIPTS)/modules' | path expand)
-    (ls $'($NU_SCRIPTS)/modules' | where type == "dir" | filter {|e|
+    (ls $'($NU_SCRIPTS)/modules' | where type == "dir" | where {|e|
             let items = ls $e.name
             let length = ($items | length)
             $length != 0 and  'mod.nu' not-in $items.name
         }
         | each {|e| $e.name})
     (ls $'($NU_SCRIPTS)/custom-completions' | where type == "dir" | each {|e| $e.name})
-    (ls ~/.config/nushell/lib | where type == "dir" | filter {|e|
+    (ls ~/.config/nushell/lib | where type == "dir" | where {|e|
         let items = ls $e.name
         let length = ($items | length)
         $length != 0 and  'mod.nu' not-in $items.name
@@ -158,7 +158,7 @@ if (sys host | get name) == 'Darwin' and (which /opt/homebrew/bin/brew | is-not-
     ]
     $env.INFOPATH = $env.INFOPATH? | prepend "/opt/homebrew/share/info"
 }
-
+$env.PATH = $env.PATH | append $"($env.HOME)/.local/bin"
 
 source ~/.config/nushell/env_parse.nu
 if ($env.OneDrive? | is-not-empty) {

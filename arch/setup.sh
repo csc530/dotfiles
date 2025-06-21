@@ -10,6 +10,8 @@ sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+cd ../
+rm -rf yay
 
 # prettying tui
 sudo pacman -S gum git nushell github-cli
@@ -18,18 +20,20 @@ sudo pacman -S gum git nushell github-cli
 ALIGN=center
 WIDTH=$(tput cols)
 TERM_HEIGHT=$(tput lines)
-gum style "pulling .FILES" --bold --border thick --height $(( $TERM_HEIGHT / 4 ))
+gum style "pulling .FILES" --bold --border thick 
+# --height $(( $TERM_HEIGHT / 4 ))
 # redundant
 # gum spin --title "pulling git dotfiles" git clone https://github.com/csc530/.files.git
 # mkdir --parents .config
 # mv --backup .files .config
 # mv .files/.git .config/
 
-gum spin --spinnner line "yay -S zoxide oh-my-posh carapace-bin"
+gum spin --title "installing terminal decals..." --spinner line -- yay -S zoxide oh-my-posh carapace-bin --noconfirm
 nu "$HOME/.config/nushell/setup_nushell.nu"
 
 sudo cp "$HOME/.config/arch/font.conf" /etc/fonts/local.conf
-gum spin --spinner moon  --title Downloading Fonts  -- sudo pacman -S maplemono-nf-cn 	noto-fonts-emoji noto-fonts ttf-profont-nerd ttf-noto-nerd ttf-ubuntu-nerd
+gum spin --spinner moon  --title "Downloading Fonts"  -- yay -S maplemono-nf-cn noto-fonts-emoji noto-fonts ttf-profont-nerd ttf-noto-nerd ttf-ubuntu-nerd --noconfirm
+
 fc-cache
 
 
