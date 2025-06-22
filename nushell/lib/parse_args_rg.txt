@@ -1,1 +1,0 @@
-(?<opening_quote>['"`]?)(?<content>.*?)(?<closing_quote>\k<opening_quote>)(?<separator>\s+?|=(?=['"`]))
