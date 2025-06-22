@@ -1,0 +1,26 @@
+# chezoi
+# ~/.bashrc
+#
+
+source <(carapace _carapace bash)
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
+# oh-my-posh
+source '/home/chrisc/.cache/oh-my-posh/init.26.0.4.12249bbc523990aa..sh'
+
+source <(zoxide init bash)
+# macchina
+# countryfetch
+pfetch
+fortune
+
+alias inkcat="deno run --allow-env --allow-read --allow-sys npm:@catppuccin/inkcat"
+
+export EDITOR=micro
+export VISUAL=micro
