@@ -1,4 +1,4 @@
-# chezoi
+#
 # ~/.bashrc
 #
 
@@ -12,7 +12,7 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
 # oh-my-posh
-source '/home/chrisc/.cache/oh-my-posh/init.26.0.4.12249bbc523990aa..sh'
+eval $(oh-my-posh init bash --print --config ~/.config/oh-my-posh/themes/theme.omp.json)
 
 source <(zoxide init bash)
 # macchina
@@ -23,4 +23,4 @@ fortune
 alias inkcat="deno run --allow-env --allow-read --allow-sys npm:@catppuccin/inkcat"
 
 export EDITOR=micro
-export VISUAL=micro
+export VISUAL="zededitor --wait --foreground"
