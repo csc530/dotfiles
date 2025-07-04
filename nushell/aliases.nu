@@ -8,3 +8,4 @@ alias 'to yml' = to yaml
 alias cols = columns
 alias dto = dotnet-tools-outdated
 alias inkcat =  deno run --allow-env --allow-read --allow-sys npm:@catppuccin/inkcat
+alias cls = clear
