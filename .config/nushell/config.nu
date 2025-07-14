@@ -915,7 +915,17 @@ source  ~/.config/nushell/.cache/oh-my-posh.nu
 source ~/.config/nushell/.cache/zoxide.nu
 
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
+#
 
+
+# const asdf_data_dir = (
+#   if ( $env | get --ignore-errors ASDF_DATA_DIR | is-empty ) {
+#     $env.HOME | path join '.asdf'
+#   } else {
+#     $env.ASDF_DATA_DIR
+#   }
+# )
+source $"~/.asdf/completions/nushell.nu"
 
 # source $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-macchiato.nu'
 
@@ -947,4 +957,4 @@ if ((sys host| get name) == 'Windows') {
 }
 
 source ~/.config/nushell/aliases.nu
-oh-my-posh init nu
+oh-my-posh init nu --config $env.POSH_THEME

@@ -2,7 +2,8 @@
 #
 # version = "0.90.1"
 
-let $NU_SCRIPTS = '~/.config/nushell/lib/nu_scripts' | path expand
+const $NU_SCRIPTS = '~/.config/nushell/lib/nu_scripts' # | path expand
+let $NU_SCRIPTS  = $NU_SCRIPTS | path expand
 
 def create_left_prompt [] {
     let home =  $nu.home-path
@@ -107,7 +108,7 @@ $env.NU_LIB_DIRS = ([
     ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
     # nupm tings
     ($env.NUPM_HOME | path join "modules")
-
+    ('~/.config/scripts')
     ($'($NU_SCRIPTS)/modules' | path expand)
     (ls $'($NU_SCRIPTS)/modules' | where type == "dir" | where {|e|
             let items = ls $e.name
@@ -160,14 +161,28 @@ if (sys host | get name) == 'Darwin' and (which /opt/homebrew/bin/brew | is-not-
 }
 $env.PATH = $env.PATH | append $"($env.HOME)/.local/bin"
 
-source ~/.config/nushell/env_parse.nu
+# ASDF
+let shims_dir = (
+  if ( $env | get --ignore-errors ASDF_DATA_DIR | is-empty ) {
+    $env.HOME | path join '.asdf'
+  } else {
+    $env.ASDF_DATA_DIR
+  } | path join 'shims'
+)
+$env.PATH = ( $env.PATH | split row (char esep) | where { |p| $p != $shims_dir } | prepend $shims_dir )
+
+
+use `~/.config/scripts/env-load.nu`
+env-load ~/.shell.env
+# env-load ~/.config/user-dirs.dirs # should make xdg_* vars available
 if ($env.OneDrive? | is-not-empty) {
 	if (sys host | get name) == 'Darwin' {
-        env source $"($env.OneDrive)/.mac.env"
+        env-load $"($env.OneDrive)/.mac.env"
 	} else {
-        env source $"($env.OneDrive)/Documents/.env"
+        env-load $"($env.OneDrive)/Documents/.env"
    }
 }
+
 
 # update caches
 mkdir ~/.config/nushell/.cache
@@ -177,4 +192,11 @@ if (which zoxide | is-not-empty) {
 
 if (which carapace | is-not-empty) {
    carapace _carapace nushell | save -f ~/.config/nushell/.cache/carapace.nu
+}
+
+if (which asdf | is-not-empty) {
+    # $env.ASDF_DATA_DIR = $env.ASDF_DATA_DIR | path join 'completions'
+    # If you've not customized the asdf data directory:
+    mkdir $"($env.HOME)/.asdf/completions"
+    asdf completion nushell | save --force $"($env.HOME)/.asdf/completions/nushell.nu"
 }
