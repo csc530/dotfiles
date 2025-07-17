@@ -48,11 +48,9 @@ export def --env main [
                 {key: $key, value: $value}
             }
 
-        if $dry {
-            print $pairs
-        } else {
-            $pairs
-            | par-each {|it|
+           if not $dry {
+            # must be a loop as par/each bloacks are scoped(?)
+            for it in $pairs {
                 if $safe and ($env | get --ignore-errors $it.key | is-not-empty) {
                     continue
                 } else {
@@ -60,6 +58,7 @@ export def --env main [
                 }
             }
         }
+    return $pairs
 }
 
 # from carapce

@@ -1,3 +1,4 @@
+alias chafa = chafa --align mid --work 9 --animate on --margin-right 1 --label on
 alias scoop-msearch = scoop-search-multisource
 alias omp = oh-my-posh
 alias pipes = pipes-rs
