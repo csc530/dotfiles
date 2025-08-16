@@ -157,7 +157,7 @@ let external_completer = {|spans|
     }
 
     # if the current command is an alias, get it's expansion
-    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
+    let expanded_alias = (scope aliases | where name == $spans.0 | get --optional 0 | get --optional expansion)
     # remove exe extension if present
     let bare_cmd = (
         let index = ($spans.0 | str index-of .exe);
@@ -919,7 +919,7 @@ source ~/.config/nushell/.cache/zoxide.nu
 
 
 # const asdf_data_dir = (
-#   if ( $env | get --ignore-errors ASDF_DATA_DIR | is-empty ) {
+#   if ( $env | get ---optionalgnore-errors ASDF_DATA_DIR | is-empty ) {
 #     $env.HOME | path join '.asdf'
 #   } else {
 #     $env.ASDF_DATA_DIR
@@ -941,6 +941,10 @@ use fakedata.nu
 use legendary.nu
 use komorebic.nu
 use pipes-rs.nu
+use swww.nu
+
+# scripts/
+use yazi.nu *
 
 # use jobapp.nu
 

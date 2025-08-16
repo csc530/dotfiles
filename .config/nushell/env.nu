@@ -118,9 +118,9 @@ $env.NU_LIB_DIRS = ([
         | each {|e| $e.name})
     (ls $'($NU_SCRIPTS)/custom-completions' | where type == "dir" | each {|e| $e.name})
     (ls ~/.config/nushell/lib | where type == "dir" | where {|e|
-        let items = ls $e.name
-        let length = ($items | length)
-        $length != 0 and  'mod.nu' not-in $items.name
+            let items = ls $e.name
+            let length = ($items | length)
+            $length != 0 and 'mod.nu' not-in $items.name
         }
         | each {|e| $e.name})
     ('~/.config/nushell/lib' | path expand)
@@ -163,7 +163,7 @@ $env.PATH = $env.PATH | append $"($env.HOME)/.local/bin"
 
 # ASDF
 let shims_dir = (
-  if ( $env | get --ignore-errors ASDF_DATA_DIR | is-empty ) {
+  if ( $env | get --optional ASDF_DATA_DIR | is-empty ) {
     $env.HOME | path join '.asdf'
   } else {
     $env.ASDF_DATA_DIR

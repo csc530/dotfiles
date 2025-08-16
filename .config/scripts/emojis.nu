@@ -86,7 +86,7 @@ export def main [
     }
 
     let icon = $icons |
-   	fuzzel --dmenu  --no-exit-on-keyboard-focus-loss  --keyboard-focus on-demand |
+   	fuzzel --dmenu --lines 13 --font *:size=20 --no-exit-on-keyboard-focus-loss  --keyboard-focus on-demand |
    	split chars |
    	get 0? |
    	to text
@@ -99,5 +99,5 @@ export def main [
 }
 
 def asciimojis [] {
-http get https://raw.githubusercontent.com/jigglycrumb/ASCIImoji/refs/heads/master/dist/text-file/asciimoji.txt | parse '{names} {emoticon}' | par-each {|e| $"($e.emoticon) - ($e.names)"} | to text | fuzzel -d
+http get https://raw.githubusercontent.com/jigglycrumb/ASCIImoji/refs/heads/master/dist/text-file/asciimoji.txt | parse '{names} {emoticon}' | par-each {|e| $"($e.emoticon) - ($e.names)"} | to text | fuzzel  --lines 13
 }
