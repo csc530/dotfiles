@@ -1,0 +1,68 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+      "enterprise_uri": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "debugger": {
+    "dock": "right",
+    "stepping_granularity": "statement"
+  },
+  "inlay_hints": {
+    "enabled": false,
+    "show_background": true,
+    "toggle_on_modifiers_press": {
+      "alt": true,
+      "shift": true
+    }
+  },
+  "terminal": {
+    // "font_size": 12
+  },
+  "minimap": {
+    "show": "auto",
+    "current_line_highlight": "all",
+    "display_in": "all_editors",
+    "thumb": "always",
+    "thumb_border": "full"
+  },
+  "git_panel": {
+    "sort_by_path": false,
+    "collapse_untracked_diff": true
+  },
+  "format_on_save": "language_server",
+  "ui_font_size": 20,
+  "buffer_font_size": 18,
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Frappé (Blur) [Heavy]",
+    "dark": "Tokyo Night"
+  },
+  "icon_theme": "Catppuccin Frappé",
+  "show_whitespaces": "boundary",
+  "languages": {
+    "HTML": {
+      "language_servers": [
+        "vscode-html-language-server",
+        "superhtml"
+      ],
+      "formatter": {
+        "language_server": {
+          "name": "superhtml"
+        }
+      }
+    }
+  }
+}
