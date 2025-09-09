@@ -12,7 +12,7 @@ gsettings set org.gnome.desktop.interface gtk-theme Pop-dark
 ln -sf ./mocha/style.css  ~/.config/wofi/style.css
 
 cursorTheme="Catppuccin Mocha $colour"
-hyprctl setcursor "$cursortheme" 24
+hyprctl setcursor "$cursorTheme" 24
 gsettings set org.gnome.desktop.interface cursor-theme "$cursorTheme"
 export HYPRCURSOR_THEME="$cursorTheme"
 export HYPRCURSOR_SIZE=24
@@ -21,8 +21,11 @@ export HYPRCURSOR_SIZE=24
 
 colour=$(echo $colour | sed -r 's/\<./\L&/g') # lowercase colour variant
 # mako notifications
-ln -sf "catppuccin-mocha/catppuccin-mocha-$colour" ~/.config/mako/colours
+ln -sf "catppuccin/themes/catppuccin-mocha/catppuccin-mocha-$colour" ~/.config/mako/colours
 makoctl reload
+
+# fuzzel
+ln -sf "catppuccin/themes/catppuccin-mocha/catppuccin-mocha-$colour" ~/.config/fuzzel/colours
 
 # waybar
 pidof waybar && kill -s USR2 $(pidof waybar)

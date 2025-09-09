@@ -13,7 +13,7 @@ gsettings set org.gnome.desktop.interface gtk-theme Pop
 ln -sf ./latte/style.css  ~/.config/wofi/style.css
 
 cursorTheme="Catppuccin Latte $colour"
-hyprctl setcursor "$cursortheme" 24
+hyprctl setcursor "$cursorTheme" 24
 gsettings set org.gnome.desktop.interface cursor-theme "$cursorTheme"
 export HYPRCURSOR_THEME="$cursorTheme"
 export HYPRCURSOR_SIZE=24
@@ -22,8 +22,10 @@ export HYPRCURSOR_SIZE=24
 
 colour=$(echo $colour | sed -r 's/\<./\L&/g') # lowercase colour variant
 # mako notifications
-ln -sf "catppuccin-latte/catppuccin-latte-$colour" ~/.config/mako/colours
+ln -sf "catppuccin/themes/catppuccin-latte/catppuccin-latte-$colour" ~/.config/mako/colours
 makoctl reload
+# fuzzel
+ln -sf "catppuccin/themes/catppuccin-latte/catppuccin-latte-$colour" ~/.config/fuzzel/colours
 
 # waybar
 pidof waybar && kill -s USR2 $(pidof waybar)

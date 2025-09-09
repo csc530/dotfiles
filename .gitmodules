@@ -1,0 +1,6 @@
+[submodule ".config/mako/catppuccin"]
+	path = .config/mako/catppuccin
+	url = https://github.com/catppuccin/mako
+[submodule ".config/fuzzel/catppuccin"]
+	path = .config/fuzzel/catppuccin
+	url = https://github.com/catppuccin/fuzzel
