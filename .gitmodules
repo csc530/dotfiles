@@ -1,6 +1,24 @@
-[submodule ".config/mako/catppuccin"]
+[submodule "mako-catppuccin"]
 	path = .config/mako/catppuccin
 	url = https://github.com/catppuccin/mako
-[submodule ".config/fuzzel/catppuccin"]
-	path = .config/fuzzel/catppuccin
+[submodule "fuzzle-catppuccin"]
+	path = .config/fuzzle/catppuccin
 	url = https://github.com/catppuccin/fuzzel
+[submodule "heroic-catppuccin"]
+	path = .config/themes/heroic-catppuccin
+	url = https://github.com/catppuccin/heroic.git
+[submodule "nu_scripts"]
+	path = .config/nushell/lib/nu_scripts
+	url = https://github.com/nushell/nu_scripts.git
+[submodule "nupm"]
+	path = .config/nushell/lib/nupm
+	url = https://github.com/nushell/nupm.git
+[submodule "wlogout-catppuccin"]
+	path = .config/wleave/catppuccin
+	url = https://github.com/catppuccin/wlogout
+[submodule "qtct-catppuccin"]
+	path = .config/themes/qtct-catppuccin
+	url = https://github.com/catppuccin/qt5ct
+[submodule "hyprland-catppuccin"]
+	path = .config/hypr/catppuccin
+	url = https://github.com/catppuccin/hyprland
