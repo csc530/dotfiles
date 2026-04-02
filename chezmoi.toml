@@ -1,0 +1,7 @@
+
+interactive = true
+progress = true
+
+[diff]
+    pager = "delta"
+    # pager = "diff-so-fancy"
