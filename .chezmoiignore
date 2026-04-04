@@ -4,3 +4,8 @@
         C:\Users\legor\AppData\Roaming\nushell
 	uniget_package_backup.ubundle
 {{ end }}
+
+
+{{ if eq .chezmoi.os "windows" }}
+	.bash*
+{{ end }}
