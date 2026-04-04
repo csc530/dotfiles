@@ -106,7 +106,7 @@
         "defaults": 
         {
             "adjustIndistinguishableColors": "never",
-            "backgroundImage": "C:\\Users\\legor\\.config\\assets\\toast-toast-toast-toast-netflix-v0-e20seabj0wsa1.jpg",
+            "backgroundImage": "C:\\Users\\legor\\AppData\\Local\\Terminal\\background.jpg",
             "backgroundImageOpacity": 0.05,
             "backgroundImageStretchMode": "uniformToFill",
             "bellStyle": 
@@ -134,7 +134,7 @@
             "unfocusedAppearance": 
             {
                 "adjustIndistinguishableColors": "always",
-                "backgroundImage": "C:\\Users\\legor\\.config\\assets\\cgnhgd1ds2551.jpg",
+                "backgroundImage": "C:\\Users\\legor\\AppData\\Local\\Terminal\\unfocused.jpg",
                 "backgroundImageOpacity": 0.5,
                 "cursorShape": "emptyBox",
                 "experimental.retroTerminalEffect": false,
