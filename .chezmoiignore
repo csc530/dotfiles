@@ -1,8 +1,6 @@
 {{ if ne .chezmoi.os "windows" }}
 	AppData/
-{{ end }}
-
-# nushell
-{{ if ne .chezmoi.os "windows" }}
+	# nushell
         C:\Users\legor\AppData\Roaming\nushell
+	uniget_package_backup.ubundle
 {{ end }}
