@@ -1,11 +1,12 @@
 {{ if ne .chezmoi.os "windows" }}
 	AppData/
-	# nushell
-        C:\Users\legor\AppData\Roaming\nushell
+	scoop/
+
 	uniget_package_backup.ubundle
 {{ end }}
 
 
 {{ if eq .chezmoi.os "windows" }}
 	.bash*
+	.config/
 {{ end }}
