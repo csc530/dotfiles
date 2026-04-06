@@ -84,7 +84,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "26.045.0308.0001",
+      "Version": "26.045.0308.0003",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -204,6 +204,13 @@
       "Id": "fastfetch",
       "Name": "Fastfetch",
       "Version": "2.61.0",
+      "Source": "main",
+      "ManagerName": "Scoop"
+    },
+    {
+      "Id": "file",
+      "Name": "File",
+      "Version": "5.45",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -367,13 +374,13 @@
     {
       "Id": "ARP\\Machine\\X64\\O365HomePremRetail - en-us",
       "Name": "Microsoft 365 - en-us",
-      "Version": "16.0.19822.20114",
+      "Version": "16.0.19822.20142",
       "Source": "Local PC"
     },
     {
       "Id": "ARP\\Machine\\X64\\OneNoteFreeRetail - en-us",
       "Name": "Microsoft OneNote - en-us",
-      "Version": "16.0.19822.20114",
+      "Version": "16.0.19822.20142",
       "Source": "Local PC"
     },
     {
@@ -407,9 +414,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\5319275A.WhatsAppDesktop_2.2607.106.0_x64__cv1g1gvanyjgm",
+      "Id": "MSIX\\5319275A.WhatsAppDesktop_2.2611.102.0_x64__cv1g1gvanyjgm",
       "Name": "WhatsApp",
-      "Version": "2.2607.106.0",
+      "Version": "2.2611.102.0",
       "Source": "Microsoft Store"
     },
     {
@@ -449,9 +456,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\DRAWBOARD.DRAWBOARDPDF_6.82.0.0_x64__gqbn7fs4pywxm",
+      "Id": "MSIX\\DRAWBOARD.DRAWBOARDPDF_6.82.10.0_x64__gqbn7fs4pywxm",
       "Name": "Drawboard PDF",
-      "Version": "6.82.0.0",
+      "Version": "6.82.10.0",
       "Source": "Microsoft Store"
     },
     {
@@ -617,9 +624,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Office.ActionsServer_16.0.19822.20114_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Office.ActionsServer_16.0.19822.20142_neutral__8wekyb3d8bbwe",
       "Name": "Microsoft.Office.ActionsServer",
-      "Version": "16.0.19822.20114",
+      "Version": "16.0.19822.20142",
       "Source": "Microsoft Store"
     },
     {
@@ -629,15 +636,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.19822.20114_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.19822.20142_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.19822.20114",
+      "Version": "16.0.19822.20142",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_26045.308.1.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_26045.308.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "26045.308.1.0",
+      "Version": "26045.308.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -941,9 +948,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.404.2251.27_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.405.2009.26_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.404.2251.27",
+      "Version": "2026.405.2009.26",
       "Source": "Microsoft Store"
     },
     {
