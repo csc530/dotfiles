@@ -10,7 +10,7 @@ progress = true
 
 [data.git]
     ghPath = {{ if eq .chezmoi.os "linux" -}}
-        "/usr/local/bin/gh"
+        "/usr/bin/gh"
         {{ else if eq .chezmoi.os "windows" }}
             "{{ .chezmoi.homeDir | osClean | replace "\\" "\\\\" }}\\scoop\\apps\\gh\\current\\bin\\gh.exe"
         {{ end }}
