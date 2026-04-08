@@ -1,8 +1,47 @@
-{{- if eq .chezmoi.os "windows" -}}
+[user]
+	email = 77406318+csc530@users.noreply.github.com
+	name = csc530
+	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA925MzvEfCh7HbuBCrPXQtLIPRzD63948A7QC+O3aXp
+
+
+# diff so fancy
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RF
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = {{ .git.opPath }}
+[status]
+	submoduleSummary = 1
+[submodule]
+	recurse = true
+[push]
+	recurseSubmodules = check
+
+
 [credential "https://github.com"]
 	helper =
-	helper = !'{{ .chezmoi.homeDir | osClean | replace "\\" "\\\\" }}\\scoop\\apps\\gh\\current\\bin\\gh.exe' auth git-credential
+	helper = !{{- .git.ghPath }} auth git-credential
 [credential "https://gist.github.com"]
 	helper =
-	helper = !'{{ .chezmoi.homeDir | osClean | replace "\\" "\\\\" }}\\scoop\\apps\\gh\\current\\bin\\gh.exe' auth git-credential
-{{ end }}
+	helper = !{{- .git.ghPath }} auth git-credential
