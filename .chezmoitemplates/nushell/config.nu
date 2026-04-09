@@ -183,8 +183,6 @@ source ~/.config/nushell/.cache/zoxide.nu
 # source $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-macchiato.nu'
 
 use system
-# because nupm git is here too🙄
-use nupm/nupm
 use random.nu
 use ~/.config/nushell/ledger.nu
 
