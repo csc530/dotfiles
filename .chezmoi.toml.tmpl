@@ -9,13 +9,13 @@ progress = true
 [data]
 
 [data.git]
-    ghPath = {{ if eq .chezmoi.os "linux" -}}
+    ghPath = {{ if eq .chezmoi.os "linux" }}
         "/usr/bin/gh"
-        {{ else if eq .chezmoi.os "windows" }}
+        {{ else if eq .chezmoi.os "windows" -}}
             "{{ .chezmoi.homeDir | osClean | replace "\\" "\\\\" }}\\scoop\\apps\\gh\\current\\bin\\gh.exe"
-        {{ end }}
+        {{- end }}
     opPath = {{ if eq .chezmoi.os "linux" -}}
-        "/opt/1Password/op-ssh-sign"
-        {{ else if eq .chezmoi.os "windows" }}
+            "/opt/1Password/op-ssh-sign"
+        {{ else if eq .chezmoi.os "windows" -}}
             "{{ .chezmoi.homeDir | osClean | replace "\\" "\\\\" }}\\scoop\\apps\\op\\current\\bin\\op.exe"
         {{ end }}

@@ -1,0 +1,306 @@
+{
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "~\\scoop\\buckets\\main",
+            "Updated": "2026-04-10T08:45:02.1457056-04:00",
+            "Manifests": 1493
+        },
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2026-04-10T08:37:39-04:00",
+            "Manifests": 2290
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2026-03-29T01:18:13-04:00",
+            "Manifests": 367
+        },
+        {
+            "Name": "charm",
+            "Source": "https://github.com/charmbracelet/scoop-bucket.git",
+            "Updated": "2026-04-09T16:31:59-04:00",
+            "Manifests": 0
+        }
+    ],
+    "config": {
+        
+    },
+    "apps": [
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "2.33.1",
+            "Name": "1password-cli",
+            "Updated": "2026-04-10T08:46:29.4835499-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "26.00",
+            "Name": "7zip",
+            "Updated": "2026-04-10T08:46:34.5994282-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.26.1",
+            "Name": "bat",
+            "Updated": "2026-04-10T08:46:36.574473-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "2.70.1",
+            "Name": "chezmoi",
+            "Updated": "2026-04-10T08:46:38.0045567-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "1.07",
+            "Name": "cpufetch",
+            "Updated": "2026-04-10T08:46:38.5925005-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "3.14.1",
+            "Name": "dark",
+            "Updated": "2026-04-10T08:46:39.9572103-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.19.2",
+            "Name": "delta",
+            "Updated": "2026-04-10T08:46:40.8720858-04:00"
+        },
+        {
+            "Source": "nerd-fonts",
+            "Info": "",
+            "Version": "2404.23",
+            "Name": "delugia-mono-nerd-font-complete",
+            "Updated": "2026-04-10T08:49:48.0840887-04:00"
+        },
+        {
+            "Source": "nerd-fonts",
+            "Info": "",
+            "Version": "2404.23",
+            "Name": "delugia-nerd-font",
+            "Updated": "2026-04-10T08:49:49.2325359-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "1.0.9219-24",
+            "Name": "discord",
+            "Updated": "2026-04-10T08:50:04.5181352-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.1.0",
+            "Name": "dog",
+            "Updated": "2026-04-10T08:46:41.9486519-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "1.2.1",
+            "Name": "edit",
+            "Updated": "2026-04-10T08:46:42.684774-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "2.61.0",
+            "Name": "fastfetch",
+            "Updated": "2026-04-10T08:46:43.7342399-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "8.1",
+            "Name": "ffmpeg",
+            "Updated": "2026-04-10T09:04:45.108669-04:00"
+        },
+        {
+            "Source": "charm",
+            "Info": "",
+            "Version": "0.2.2",
+            "Name": "freeze",
+            "Updated": "2026-04-10T09:06:16.8099105-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "2.89.0",
+            "Name": "gh",
+            "Updated": "2026-04-10T08:46:45.9142105-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "2.53.0.2",
+            "Name": "git",
+            "Updated": "2026-04-10T08:47:28.770928-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "0.61.0",
+            "Name": "lazygit",
+            "Updated": "2026-04-10T08:50:05.80195-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "1.17.0",
+            "Name": "localsend",
+            "Updated": "2026-04-10T08:50:08.9262925-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "2.0.15",
+            "Name": "micro",
+            "Updated": "2026-04-10T08:47:31.0417528-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.12.1",
+            "Name": "neovim",
+            "Updated": "2026-04-10T08:47:48.3930009-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "7.10.0",
+            "Name": "notion",
+            "Updated": "2026-04-10T08:50:27.5497197-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.111.0",
+            "Name": "nu",
+            "Updated": "2026-04-10T08:47:53.5736531-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "0.98.1",
+            "Name": "powertoys",
+            "Updated": "2026-04-10T08:51:49.0857222-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "7.6.0",
+            "Name": "pwsh",
+            "Updated": "2026-04-10T08:48:05.9693825-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "4.4.0",
+            "Name": "quicklook",
+            "Updated": "2026-04-10T08:52:01.8935934-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "1.2.8",
+            "Name": "quickviewer",
+            "Updated": "2026-04-10T08:52:08.989971-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "2.1.0",
+            "Name": "scoop-search",
+            "Updated": "2026-04-10T08:48:06.9173473-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "2026.1",
+            "Name": "translucenttb",
+            "Updated": "2026-04-10T08:52:09.9253228-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "1.7.7",
+            "Name": "ttyd",
+            "Updated": "2026-04-10T09:04:21.3146893-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "2026.1.4",
+            "Name": "unigetui",
+            "Updated": "2026-04-10T08:52:18.8259366-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "1.1.11",
+            "Name": "ventoy",
+            "Updated": "2026-04-10T08:52:21.12308-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.11.0",
+            "Name": "vhs",
+            "Updated": "2026-04-10T09:04:47.1059629-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.11.1",
+            "Name": "vivid",
+            "Updated": "2026-04-10T08:48:08.3739513-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "3.13",
+            "Name": "wizfile",
+            "Updated": "2026-04-10T08:53:16.1850781-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "4.31",
+            "Name": "wiztree",
+            "Updated": "2026-04-10T08:53:26.268969-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "26.1.22",
+            "Name": "yazi",
+            "Updated": "2026-04-10T08:48:11.3436964-04:00"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Version": "6.6.11.23272",
+            "Name": "zoom",
+            "Updated": "2026-04-10T08:54:25.7655515-04:00"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.9.9",
+            "Name": "zoxide",
+            "Updated": "2026-04-10T08:48:12.3191555-04:00"
+        }
+    ]
+}

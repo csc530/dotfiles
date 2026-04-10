@@ -2,23 +2,9 @@
   "export_version": 3,
   "packages": [
     {
-      "Id": "1password-cli",
-      "Name": "1password Cli",
-      "Version": "2.33.1",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "7zip",
-      "Name": "7zip",
-      "Version": "26.00",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
       "Id": "AgileBits.1Password",
       "Name": "1Password",
-      "Version": "8.12.8.26",
+      "Version": "8.12.10.36",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -33,6 +19,13 @@
       "Id": "Balena.Etcher",
       "Name": "balenaEtcher",
       "Version": "2.1.4",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "EpicGames.EpicGamesLauncher",
+      "Name": "Epic Games Launcher",
+      "Version": "1.3.176.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -61,8 +54,8 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Microsoft.DotNet.DesktopRuntime.8",
-      "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
+      "Id": "Microsoft.DotNet.DesktopRuntime.8.x64",
+      "Name": "Microsoft Windows Desktop Runtime - 8.0.25 (x64)",
       "Version": "8.0.25",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -70,7 +63,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "146.0.3856.97",
+      "Version": "146.0.3856.109",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -84,7 +77,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "26.045.0308.0003",
+      "Version": "26.051.0316.0004",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -98,7 +91,14 @@
     {
       "Id": "Microsoft.UI.Xaml.2.8",
       "Name": "Microsoft.UI.Xaml",
-      "Version": "8.2501.31001.0",
+      "Version": "8.2511.26001.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Microsoft.VCLibs.14",
+      "Name": "Microsoft Visual C\u002B\u002B 2015 UWP Runtime Package",
+      "Version": "14.0.33519.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -124,249 +124,39 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Microsoft.WindowsTerminal",
-      "Name": "Windows Terminal",
-      "Version": "1.24.10621.0",
+      "Id": "Microsoft.WindowsAppRuntime.1.1",
+      "Name": "Windows App SDK",
+      "Version": "1.1.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
-      "Id": "bat",
-      "Name": "Bat",
-      "Version": "0.26.1",
-      "Source": "main",
-      "ManagerName": "Scoop"
+      "Id": "Microsoft.WindowsAppRuntime.1.6",
+      "Name": "Windows App Runtime 1.6",
+      "Version": "1.6.9",
+      "Source": "winget",
+      "ManagerName": "Winget"
     },
     {
-      "Id": "chezmoi",
-      "Name": "Chezmoi",
-      "Version": "2.70.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
+      "Id": "Microsoft.WindowsAppRuntime.1.7",
+      "Name": "Windows App Runtime 1.7",
+      "Version": "1.7.9",
+      "Source": "winget",
+      "ManagerName": "Winget"
     },
     {
-      "Id": "cpufetch",
-      "Name": "Cpufetch",
-      "Version": "1.07",
-      "Source": "main",
-      "ManagerName": "Scoop"
+      "Id": "Microsoft.WindowsAppRuntime.1.8",
+      "Name": "Windows App Runtime 1.8",
+      "Version": "1.8.6",
+      "Source": "winget",
+      "ManagerName": "Winget"
     },
     {
-      "Id": "dark",
-      "Name": "Dark",
-      "Version": "3.14.1",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "delta",
-      "Name": "Delta",
-      "Version": "0.19.2",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "delugia-mono-nerd-font-complete",
-      "Name": "Delugia Mono Nerd Font Complete",
-      "Version": "2404.23",
-      "Source": "nerd-fonts",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "delugia-nerd-font",
-      "Name": "Delugia Nerd Font",
-      "Version": "2404.23",
-      "Source": "nerd-fonts",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "discord",
-      "Name": "Discord",
-      "Version": "1.0.9219-24",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "dog",
-      "Name": "Dog",
-      "Version": "0.1.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "edit",
-      "Name": "Edit",
-      "Version": "1.2.1",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "fastfetch",
-      "Name": "Fastfetch",
-      "Version": "2.61.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "file",
-      "Name": "File",
-      "Version": "5.45",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "gh",
-      "Name": "Gh",
-      "Version": "2.89.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "git",
-      "Name": "Git",
-      "Version": "2.53.0.2",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "lazygit",
-      "Name": "Lazygit",
-      "Version": "0.60.0",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "localsend",
-      "Name": "Localsend",
-      "Version": "1.17.0",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "micro",
-      "Name": "Micro",
-      "Version": "2.0.15",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "neovim",
-      "Name": "Neovim",
-      "Version": "0.12.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "notion",
-      "Name": "Notion",
-      "Version": "7.9.1",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "nu",
-      "Name": "Nu",
-      "Version": "0.111.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "powertoys",
-      "Name": "Powertoys",
-      "Version": "0.98.1",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "pwsh",
-      "Name": "Pwsh",
-      "Version": "7.6.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "quicklook",
-      "Name": "Quicklook",
-      "Version": "4.4.0",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "quickviewer",
-      "Name": "Quickviewer",
-      "Version": "1.2.8",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "scoop-search",
-      "Name": "Scoop Search",
-      "Version": "2.1.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "translucenttb",
-      "Name": "Translucenttb",
-      "Version": "2026.1",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "unigetui",
-      "Name": "Unigetui",
-      "Version": "2026.1.3",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "ventoy",
-      "Name": "Ventoy",
-      "Version": "1.1.10",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "vivid",
-      "Name": "Vivid",
-      "Version": "0.10.1",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "wizfile",
-      "Name": "Wizfile",
-      "Version": "3.13",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "wiztree",
-      "Name": "Wiztree",
-      "Version": "4.31",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "yazi",
-      "Name": "Yazi",
-      "Version": "26.1.22",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "zoom",
-      "Name": "Zoom",
-      "Version": "6.6.11.23272",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "zoxide",
-      "Name": "Zoxide",
-      "Version": "0.9.9",
-      "Source": "main",
-      "ManagerName": "Scoop"
+      "Id": "Microsoft.WindowsTerminal",
+      "Name": "Windows Terminal",
+      "Version": "1.24.10921.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
     }
   ],
   "incompatible_packages_info": "Incompatible packages cannot be installed from UniGetUI, either because they came from a local source (for example Local PC) or because the package manager was unavailable. Nevertheless, they have been listed here for logging purposes.",
@@ -396,9 +186,15 @@
       "Source": "Local PC"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{6300A8E0-851B-4638-ADBB-1385DCF1248D}",
+      "Name": "Epic Online Services",
+      "Version": "4.3.1",
+      "Source": "Local PC"
+    },
+    {
       "Id": "ARP\\User\\X64\\{889610CC-4337-4BDB-AC3B-4F21806C0BDE}_is1",
       "Name": "UniGetUI",
-      "Version": "2026.1.3",
+      "Version": "2026.1.4",
       "Source": "Local PC"
     },
     {
@@ -414,9 +210,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\5319275A.WhatsAppDesktop_2.2611.102.0_x64__cv1g1gvanyjgm",
+      "Id": "MSIX\\5319275A.WhatsAppDesktop_2.2613.101.0_x64__cv1g1gvanyjgm",
       "Name": "WhatsApp",
-      "Version": "2.2611.102.0",
+      "Version": "2.2613.101.0",
       "Source": "Microsoft Store"
     },
     {
@@ -456,9 +252,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\DRAWBOARD.DRAWBOARDPDF_6.82.10.0_x64__gqbn7fs4pywxm",
+      "Id": "MSIX\\DRAWBOARD.DRAWBOARDPDF_6.82.12.0_x64__gqbn7fs4pywxm",
       "Name": "Drawboard PDF",
-      "Version": "6.82.10.0",
+      "Version": "6.82.12.0",
       "Source": "Microsoft Store"
     },
     {
@@ -588,9 +384,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.MicrosoftSolitaireCollection_4.25.3102.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.MicrosoftSolitaireCollection_4.25.4020.0_x64__8wekyb3d8bbwe",
       "Name": "Solitaire \u0026 Casual Games",
-      "Version": "4.25.3102.0",
+      "Version": "4.25.4020.0",
       "Source": "Microsoft Store"
     },
     {
@@ -642,9 +438,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_26045.308.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_26051.316.4.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "26045.308.3.0",
+      "Version": "26051.316.4.0",
       "Source": "Microsoft Store"
     },
     {
@@ -696,9 +492,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.SecHealthUI_1000.29510.1001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.SecHealthUI_1000.29554.1001.0_x64__8wekyb3d8bbwe",
       "Name": "Windows Security",
-      "Version": "1000.29510.1001.0",
+      "Version": "1000.29554.1001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -768,18 +564,6 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.VCLibs.140.00_14.0.33519.0_x64__8wekyb3d8bbwe",
-      "Name": "Microsoft Visual C\u002B\u002B 2015 UWP Runtime Package",
-      "Version": "14.0.33519.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.VCLibs.140.00_14.0.33519.0_x86__8wekyb3d8bbwe",
-      "Name": "Microsoft Visual C\u002B\u002B 2015 UWP Runtime Package",
-      "Version": "14.0.33519.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\Microsoft.VP9VideoExtensions_1.2.12.0_x64__8wekyb3d8bbwe",
       "Name": "VP9 Video Extensions",
       "Version": "1.2.12.0",
@@ -822,9 +606,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Windows.DevHome_0.2101.858.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Windows.DevHome_0.2100.858.0_x64__8wekyb3d8bbwe",
       "Name": "Windows Advanced Settings",
-      "Version": "0.2101.858.0",
+      "Version": "0.2100.858.0",
       "Source": "Microsoft Store"
     },
     {
@@ -837,72 +621,6 @@
       "Id": "MSIX\\Microsoft.WindowsAlarms_11.2512.0.0_x64__8wekyb3d8bbwe",
       "Name": "Windows Clock",
       "Version": "11.2512.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.1_1005.616.1651.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.1",
-      "Version": "1005.616.1651.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.1_1005.616.1651.0_x86__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.1",
-      "Version": "1005.616.1651.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.5_5001.373.1736.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.5",
-      "Version": "5001.373.1736.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.5_5001.373.1736.0_x86__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.5",
-      "Version": "5001.373.1736.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.519.329.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.6",
-      "Version": "6000.519.329.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.519.329.0_x86__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.6",
-      "Version": "6000.519.329.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.785.2325.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.7",
-      "Version": "7000.785.2325.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.785.2325.0_x86__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.7",
-      "Version": "7000.785.2325.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.770.947.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.8",
-      "Version": "8000.770.947.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.806.2252.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.8",
-      "Version": "8000.806.2252.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.806.2252.0_x86__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.8",
-      "Version": "8000.806.2252.0",
       "Source": "Microsoft Store"
     },
     {
@@ -936,9 +654,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22602.1401.4.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22602.1401.6.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22602.1401.4.0",
+      "Version": "22602.1401.6.0",
       "Source": "Microsoft Store"
     },
     {
@@ -948,9 +666,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.405.2009.26_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.410.1406.56_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.405.2009.26",
+      "Version": "2026.410.1406.56",
       "Source": "Microsoft Store"
     },
     {
@@ -978,9 +696,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.26012.101.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.26022.64.0_x64__8wekyb3d8bbwe",
       "Name": "Phone Link",
-      "Version": "1.26012.101.0",
+      "Version": "1.26022.64.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1020,9 +738,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.26012.79.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.26022.46.0_x64__cw5n1h2txyewy",
       "Name": "Cross Device Experience Host",
-      "Version": "1.26012.79.0",
+      "Version": "1.26022.46.0",
       "Source": "Microsoft Store"
     },
     {
