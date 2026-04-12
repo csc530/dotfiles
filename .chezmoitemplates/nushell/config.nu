@@ -3,7 +3,7 @@
 # version = "0.90.1"
 
 
-const NU_SCRIPTS = '~/.config/nushell/lib/nu_scripts'
+const NU_SCRIPTS: path = "./lib/nu_scripts"
 
 
 let external_completer = {|spans|
@@ -171,7 +171,7 @@ $env.config = {
 
     keybindings: []
 }
-source ~/.config/nushell/lib/sys/mod.nu
+source ./sys/mod.nu
 # carpace
 source ~/.config/nushell/.cache/carapace.nu
 source ~/.config/nushell/.cache/oh-my-posh.nu
@@ -205,7 +205,7 @@ use $'($NU_SCRIPTS)/sourced/misc/password_generator/nupass.nu'
 # use jobapp.nu
 
 # completions
-source ~/.config/nushell/lib/completers/main.nu
+source ./lib/completers/main.nu
 source $'($NU_SCRIPTS)/custom-completions/btm/btm-completions.nu'
 source $'($NU_SCRIPTS)/custom-completions/typst/typst-completions.nu'
 source $'($NU_SCRIPTS)/custom-completions/scoop/scoop-completions.nu'

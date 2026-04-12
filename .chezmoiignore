@@ -5,10 +5,15 @@
 	uniget_package_backup.ubundle
 {{ end }}
 
+{{ if ne .chezmoi.os "darwin" }}
+  Library/
+{{ end }}
+
 
 {{ if eq .chezmoi.os "windows" }}
 	.bash*
 	.config/
 {{ end }}
 
+.ignore/
 packages/
