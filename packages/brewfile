@@ -52,10 +52,6 @@ brew "lazygit"
 brew "lynx"
 # System information fetcher, with an emphasis on performance and minimalism
 brew "macchina"
-# Development kit for the Java programming language
-brew "openjdk"
-# Java-based project management
-brew "maven"
 # Modern and intuitive terminal-based text editor
 brew "micro"
 # Media player based on MPlayer and mplayer2

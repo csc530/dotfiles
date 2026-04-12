@@ -1,0 +1,35 @@
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/negligible.omp.json)"
+fi
+
+set -o allexport
+source ~/.shell.env
+set +o allexport
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(zoxide init zsh)"
+
+# carapace completer
+# because compdef do not be defined on mac idk🤷‍♂️
+# https://unix.stackexchange.com/questions/339954/zsh-command-not-found-compinstall-compinit-compdef
+autoload -Uz compinit
+compinit
+
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+   ###    ##       ####    ###     ######  ########  ######
+  ## ##   ##        ##    ## ##   ##    ## ##       ##    ##
+ ##   ##  ##        ##   ##   ##  ##       ##       ##
+##     ## ##        ##  ##     ##  ######  ######    ######
+######### ##        ##  #########       ## ##             ##
+##     ## ##        ##  ##     ## ##    ## ##       ##    ##
+##     ## ######## #### ##     ##  ######  ########  ######
+
+alias omp=oh-my-posh
+alias cls=clear
+
+fetchhys=(screenfetch neofetch fastfetch cpufetch pfetch pfetch-rs macchina)
+${fetchhys[$RANDOM % $#fetchhys + 1]}
+# ÷${fetcchys[$(($RANDOM % $#fetchhys + 1))]}
