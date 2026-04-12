@@ -4,96 +4,155 @@ tap "lhvy/tap"
 tap "nik-rev/tap"
 tap "peterldowns/tap"
 tap "shivammathur/php"
+# Run your GitHub Actions locally
 brew "act"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Yet another cross-platform graphical process/system monitor
 brew "bottom"
+# Console version of 2048
 brew "c2048"
+# Multi-shell multi-command argument completer
 brew "carapace"
+# Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
+# Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Human-friendly and fast alternative to cut and (sometimes) awk
 brew "choose-rust"
-brew "cocoapods"
-brew "php"
-brew "composer"
+# CPU architecture fetching tool
 brew "cpufetch"
+# Secure runtime for JavaScript and TypeScript
 brew "deno"
+# Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-brew "dnsmasq", restart_service: :changed, link: false
+# Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
+# More intuitive version of du in rust
 brew "dust"
+# Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# List, fetch and generate .gitignore templates
 brew "git-ignore"
+# GNU implementation of the famous stream editor
 brew "gnu-sed"
-brew "go"
-brew "httpd", restart_service: :changed
+# Check the internet as fast as possible
 brew "is-fast"
+# Handy way to save and run project-specific commands
 brew "just"
+# Simple terminal UI for git commands
 brew "lazygit"
+# Text-based web browser
 brew "lynx"
+# System information fetcher, with an emphasis on performance and minimalism
 brew "macchina"
+# Development kit for the Java programming language
 brew "openjdk"
+# Java-based project management
 brew "maven"
+# Modern and intuitive terminal-based text editor
 brew "micro"
+# Media player based on MPlayer and mplayer2
 brew "mpv"
-brew "mysql", restart_service: :changed
+# Fast, highly customisable system info script
 brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# POSIX *nix fetch script using Nerdfonts
 brew "nerdfetch"
+# K8s tool to scan clusters for network policies and unprotected workloads
 brew "netfetch"
-brew "node"
+# Modern shell for the GitHub era
 brew "nushell"
+# Command-line Git information tool
 brew "onefetch"
+# Pretty system information tool written in POSIX sh
 brew "pfetch"
+# Pretty system information tool written in Rust
 brew "pfetch-rs", link: false
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Generate ASCII art with terminal, shell, and OS info
 brew "screenfetch"
-brew "sitefetch"
+# Prints a steam locomotive if you type sl instead of ls
 brew "sl"
+# Markup-based typesetting system
 brew "typst"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Generator for LS_COLORS with support for multiple color themes
 brew "vivid"
+# Internet file retriever
 brew "wget"
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Prompt theme engine for any shell
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
+# An over-engineered rewrite of pipes.sh in Rust
 brew "lhvy/tap/pipes-rs"
+# A Command-line tool similar to Neofetch for obtaining information about your country
 brew "nik-rev/tap/countryfetch"
+# Localias is a tool for developers to securely manage local aliases for development servers.
 brew "peterldowns/tap/localias"
-brew "shivammathur/php/php@7.4"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line interface for 1Password
 cask "1password-cli"
-cask "android-platform-tools"
-cask "android-studio"
+# Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
+# Cross platform SQL editor and database management app
 cask "beekeeper-studio"
+# Utility to create and modify archives
 cask "betterzip"
+# Voice and text chat software
 cask "discord"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
+# Client for the Dropbox cloud storage service
 cask "dropbox"
-cask "epic-games"
-cask "flutter"
 cask "font-maple-mono-normal"
 cask "font-maple-mono-normal-nf"
 cask "font-profont-nerd-font"
 cask "font-space-mono-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-cask "google-chrome"
+# Client for the Google Drive storage service
 cask "google-drive"
+# Grammarly for desktop
 cask "grammarly-desktop"
+# Clipboard manager
 cask "maccy"
+# App to write, plan, collaborate, and get organised
 cask "notion"
+# Cloud storage client
 cask "onedrive"
+# WebKit based web browser
+cask "orion"
+# All-in-one bookmark manager
 cask "raindropio"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Emoji picker optimised for blind people
 cask "rocket"
+# Open source virtual/remote desktop application
 cask "rustdesk"
+# Music streaming service
 cask "spotify"
+# Open-source code editor
 cask "visual-studio-code"
+# Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
+# Multiplayer code editor
 cask "zed"
+# Video communication and virtual meeting platform
 cask "zoom"
 vscode "1password.op-vscode"
 vscode "aaron-bond.better-comments"
@@ -208,8 +267,5 @@ vscode "wayou.vscode-todo-highlight"
 vscode "xdebug.php-debug"
 vscode "yzane.markdown-pdf"
 vscode "yzhang.markdown-all-in-one"
-go "github.com/go-delve/delve/cmd/dlv"
-go "golang.org/x/tools/gopls"
-go "honnef.co/go/tools/cmd/staticcheck"
 uv "bagels"
 uv "fastanime[standard]"
