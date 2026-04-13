@@ -1,4 +1,4 @@
-# My Dotfiles
+# .📁🗂 ![chezmoi logo](https://raw.githubusercontent.com/twpayne/chezmoi/refs/heads/master/assets/images/logotype_blue.svg)
 
 made [chezmoi](https://github.com/twpayne/chezmoi), donc si tu ne comprend pas le noms de quel qu'une de ces fichiers, tu peux aller voir [les doc](https://www.chezmoi.io) pour comprenez et comment appliquer vous meme.
 
