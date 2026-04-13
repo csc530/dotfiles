@@ -18,5 +18,5 @@
 
 readme.md
 .data/
-.ignore/
+.chezmoiignored/
 packages/

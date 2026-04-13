@@ -1,9 +1,42 @@
-# Nushell Config File
+# config.nu
 #
-# version = "0.90.1"
+# Installed by:
+# version = "0.112.1"
+#
+# This file is used to override default Nushell settings, define
+# (or import) custom commands, or run any other startup tasks.
+# See https://www.nushell.sh/book/configuration.html
+#
+# Nushell sets "sensible defaults" for most configuration settings,
+# so your `config.nu` only needs to override these defaults if desired.
+#
+# You can open this file in your default editor using:
+#     config nu
+#
+# You can also pretty-print and page through the documentation for configuration
+# options using:
+#     config nu --doc | nu-highlight | less -R
 
 
-const NU_SCRIPTS: path = "./lib/nu_scripts"
+const NU_LIB_PATH: path = ($nu.default-config-dir)/lib
+const NU_SCRIPTS_PATH: path = ($nu.default-config-dir)/nu_scripts
+
+# Directories to search for scripts when calling source or use
+# The default for this is $nu.default-config-dir/scripts
+const $NU_LIB_DIRS = [
+    $NU_LIB_PATH
+    # (ls $NU_LIB_PATH | where type == "dir" | par-each {|e| $e.name})
+
+    ($NU_SCRIPTS_PATH)/modules
+    ($NU_SCRIPTS_PATH)/themes
+    # (ls ($NU_SCRIPTS_PATH)/modules | where type == "dir" | par-each {|e| $e.name})
+    # (ls ($NU_SCRIPTS_PATH)/themes/nu-themes | where type == "dir" | par-each {|e| $e.name})
+]
+    # | flatten
+
+use `./lib/env-load.nu`
+# env-load ~/.shell.env
+env-load ~/.config/user-dirs.dirs # should make xdg_* vars available
 
 
 let external_completer = {|spans|
@@ -164,61 +197,24 @@ $env.config = {
             PWD: [{|before, after| null }] # run if the PWD environment is different since the last repl input
         }
         display_output: "if (term size).columns >= 100 { table -e } else { table }" # run to display the output of a pipeline
-        command_not_found: (source $'($NU_SCRIPTS)/nu-hooks/nu-hooks/command_not_found/did_you_mean.nu') # return an error message when a command is not found
+        command_not_found: (source ($NU_SCRIPTS_PATH)/nu-hooks/nu-hooks/command_not_found/did_you_mean.nu) # return an error message when a command is not found
     }
 
     menus: []
 
     keybindings: []
 }
-source ./sys/mod.nu
-# carpace
-source ~/.config/nushell/.cache/carapace.nu
-source ~/.config/nushell/.cache/oh-my-posh.nu
-source ~/.config/nushell/.cache/zoxide.nu
-
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
-#
 
-# source $'($NU_SCRIPTS)/themes/nu-themes/catppuccin-macchiato.nu'
-
-use system
-use random.nu
-use ~/.config/nushell/ledger.nu
-
-# my extern completers
-use hledger.nu
-use op.nu
-use fakedata.nu
-use legendary.nu
-use komorebic.nu
-use pipes-rs.nu
-use swww.nu
-
-# my modules
-use sys
-
-# scripts/
-use yazi.nu *
-
-use $'($NU_SCRIPTS)/sourced/misc/password_generator/nupass.nu'
-# use jobapp.nu
-
-# completions
-source ./lib/completers/main.nu
-source $'($NU_SCRIPTS)/custom-completions/btm/btm-completions.nu'
-source $'($NU_SCRIPTS)/custom-completions/typst/typst-completions.nu'
-source $'($NU_SCRIPTS)/custom-completions/scoop/scoop-completions.nu'
-if ((sys host| get name) == 'Windows') {
-	source $'($NU_SCRIPTS)/custom-completions/winget/winget-completions.nu'
-} else if ((sys host| get name) == 'Linux') {
-	# source $'hypr-completions.nu'
+# create prompt and QoL caches
+if $nu.is-interactive {
+    use sys *
+    mkdir $nu.cache-dir
+    zoxide init nushell | cache zoxide.nu
+    # oh-my-posh init nu --config $env.POSH_THEME | save -f .cache/oh-my-posh.nu
+    oh-my-posh init nu --config $env.POSH_THEME
+    carapace init nushell | cache carapace.nu
+    | ignore
 }
 
-source $'($NU_SCRIPTS)/sourced/fun/spark.nu'
-source $'($NU_SCRIPTS)/modules/formats/from-env.nu'
-source $'($NU_SCRIPTS)/modules/formats/to-ini.nu'
-source $'($NU_SCRIPTS)/modules/formats/to-number-format.nu'
-
-source ~/.config/nushell/aliases.nu
-oh-my-posh init nu --config $env.POSH_THEME
+source ./lib/modules.nu
