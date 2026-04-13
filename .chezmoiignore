@@ -16,5 +16,6 @@
 {{ end }}
 
 readme.md
+.chezmoidata/
 .ignore/
 packages/
