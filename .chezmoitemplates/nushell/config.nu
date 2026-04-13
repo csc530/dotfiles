@@ -18,7 +18,7 @@ let external_completer = {|spans|
     let expanded_alias = (scope aliases | where name == $spans.0 | get --optional 0 | get --optional expansion)
     # remove exe extension if present
     let bare_cmd = (
-        let index = ($spans.0 | str index-of .exe);
+        let index = ($spans.0 | str index-of --end .exe);
         if $index == -1 { $spans.0 } else { $spans.0 | str substring 0..$index }
     )
     # overwrite

@@ -15,5 +15,6 @@
 	.config/
 {{ end }}
 
+readme.md
 .ignore/
 packages/
