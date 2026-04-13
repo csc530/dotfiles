@@ -2,6 +2,9 @@
 
 made [chezmoi](https://github.com/twpayne/chezmoi), donc si tu ne comprend pas le noms de quel qu'une de ces fichiers, tu peux aller voir [les doc](https://www.chezmoi.io) pour comprenez et comment appliquer vous meme.
 
+J'ai avais choisr chezmoi parce que c'etait l'un de "dotfile managers" qui m'assurez de ne commettre pas mes nom d'utilisatuer ou specifique mots d'un account ou appareil.
+Ensuite, lorsque je veux en utiliser maintenant c'est necessaire pour les petits changement tout partout a cause des valuers fixe, comme ceci.
+
 ## why
 
 Am I just flexing that I use multiple OSes?
