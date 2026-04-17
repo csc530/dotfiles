@@ -3,7 +3,7 @@
 #  add an enum of available (kill) signals
 
 export-env {
-    let SIGNALS = ^kill -L
+    let SIGNALS = ^kill -L # does not work for mac kill
         | parse --regex '(?<number>\d+) (?<name>\w+)'
         | reduce --fold {} {|it|
             merge {$it.name: ($it.number | into int)}

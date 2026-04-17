@@ -6,7 +6,7 @@ use nu-themes/catppuccin-macchiato.nu
 use nu-themes/catppuccin-mocha.nu
 
 def --env main [theme?:string@[light dark]] {
-    let theme = $theme | default (darkman get e>| ignore | default "dark")
+    let theme = $theme | default (try { darkman get e>| ignore } catch { "dark" })
     match $theme {
         "light" => {
             catppuccin-latte set color_config

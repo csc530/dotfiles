@@ -35,8 +35,8 @@ const $NU_LIB_DIRS = [
     # | flatten
 
 use `./lib/env-load.nu`
-# env-load ~/.shell.env
-env-load ~/.config/user-dirs.dirs # should make xdg_* vars available
+env-load ~/.shell.env
+# env-load ~/.config/user-dirs.dirs # should make xdg_* vars available
 
 
 let external_completer = {|spans|
