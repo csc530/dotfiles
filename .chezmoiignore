@@ -11,9 +11,10 @@
 {{ end }}
 
 
-{{ if eq .chezmoi.os "windows" }}
+{{ if ne .chezmoi.os "linux" }}
 	.bash*
 	.config/
+	.local/
 {{ end }}
 
 readme.md
