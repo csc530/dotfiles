@@ -1,0 +1,11 @@
+{
+    "colorcolumn": 100,
+    "colorscheme": "catppuccin-latte-transparent",
+    "hlsearch": true,
+    "hltrailingws": true,
+    "mkparents": true,
+
+    "ft:markdown": {
+	    "tabsize": 4
+    }
+}

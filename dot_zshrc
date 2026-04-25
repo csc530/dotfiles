@@ -15,8 +15,8 @@ eval "$(zoxide init zsh)"
 autoload -Uz compinit
 compinit
 
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
    ###    ##       ####    ###     ######  ########  ######
@@ -30,6 +30,30 @@ source <(carapace _carapace)
 alias omp=oh-my-posh
 alias cls=clear
 
-fetchhys=(screenfetch neofetch fastfetch cpufetch pfetch pfetch-rs macchina)
+fetchhys=(screenfetch neofetch fastfetch cpufetch pfetch macchina)
 ${fetchhys[$RANDOM % $#fetchhys + 1]}
 # ÷${fetcchys[$(($RANDOM % $#fetchhys + 1))]}
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _match
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' match-original both
+zstyle ':completion:*' max-errors 7 not-numeric
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' prompt '%e errors!'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/Users/chrissc/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=5000
+SAVEHIST=10000
+setopt beep
+bindkey -e
+# End of lines configured by zsh-newuser-install
