@@ -18,7 +18,7 @@ And I like exploring technology learning their differences, hating them, loving 
 
 - Mac: ~~net-~~zero pollution of user space, even hidden or dotfiles cuz ew mess -- less is best ![Bee & Puppycat with Tempbot](https://media.giphy.com/media/znhKtWU6JX9ni/giphy.gif)
   - everything in my $HOME folder should make sense and be descriptive; NOT A MESS of app configs hidden behind a dot (`.`) -- **LINUX**
-- Windows: ...? uummm, well.. (moving on 😬))
+- Windows: everything in fact is not a file, and really they shouldn't be.
 - Linux: ... .....  ̄\_(ツ)_/ ̄
 
 ok so it looks like right now I know nothing of Windows and Linux ditros and my whole beginning yap was a lie, and really I'm an apple-eater.
