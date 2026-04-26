@@ -1,11 +1,12 @@
 {
     "colorcolumn": 100,
     "colorscheme": "catppuccin-latte-transparent",
+    "ft:markdown": {
+        "tabsize": 4
+    },
     "hlsearch": true,
     "hltrailingws": true,
     "mkparents": true,
-
-    "ft:markdown": {
-	    "tabsize": 4
-    }
+    "savecursor": true,
+    "saveundo": true
 }
