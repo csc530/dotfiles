@@ -33,7 +33,7 @@
 [gpg]
 	format = ssh
 [gpg "ssh"]
-	program = {{ .git.opPath | replace "\\" "\\\\" }}
+	program = "{{ .git.opPath | replace "\\" "\\\\" }}"
 [status]
 	submoduleSummary = 1
 [submodule]
