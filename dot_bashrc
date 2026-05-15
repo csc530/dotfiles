@@ -1,19 +1,15 @@
-#
-# ~/.bashrc
-#
-source ~/.bash_aliases
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 PS1='[\u@\h \W]\$ '
 
-# oh-my-posh
-eval "$(oh-my-posh init bash --print --config ~/.config/oh-my-posh/themes/theme.omp.json)"
-# carapace
-source <(carapace _carapace bash)
-# zoxide
-source <(zoxide init bash)
+source ~/.bash_aliases
+shellname=$(basename $SHELL)
+eval "$(oh-my-posh init $shellname --print --config ~/.config/oh-my-posh/themes/theme.omp.json)"
+source <(carapace _carapace $shellname)
+source <(zoxide init $shellname)
+eval "$(direnv hook $shellname)"
 
 pokemon=$(pokeget random --hide-name)
 
@@ -21,7 +17,7 @@ set -a # automatically export all variables
 source $HOME/.shell.env
 set +a
 
-cookie=("fortune" "misfortune --all")
+cookie=("fortune" "misfortune --all" "kotofetch --source=true")
 fetch=(pfetch macchina fastfetch countryfetch cpufetch steamfetch)
 
 ${fetch[$(( RANDOM % ${#fetch[@]} ))]}
