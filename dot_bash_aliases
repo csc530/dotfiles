@@ -1,0 +1,62 @@
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias inkcat="deno run --allow-run --allow-env --allow-read --allow-sys npm:@catppuccin/inkcat"
+alias man="man --wildcard"
+alias cls=clear
+
+# https://github.com/sharkdp/bat#highlighting---help-message
+alias bathelp='bat --pager="ov --exit-write --quit-if-one-screen" --plain --language=help'
+help() {
+    help_builtins=$(command help -d "" | cut -d- -f1 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
+    # Parse help flags (d, m, s) and separate from command name
+    help_flags=""
+    cmd_name=""
+    cmd_args=""
+
+    # Parse arguments
+    for arg in "$@"; do
+        case "$arg" in
+            -d|-m|-s)
+                help_flags="$help_flags $arg"
+                ;;
+            *)
+                # First non-flag argument is the command name
+                if [ -z "$cmd_name" ]; then
+                    cmd_name="$arg"
+                else
+                    cmd_args="$cmd_args $arg"
+                fi
+                ;;
+        esac
+    done
+
+	escaped_cmd_name=$(printf '%q' "$cmd_name")
+
+	# Debug: show what we're matching against
+	# echo "cmd_name: '$cmd_name'"
+	# echo "escaped_cmd_name: '$escaped_cmd_name'"
+	# echo "help_builtins: $help_builtins"
+	# echo "\"$cmd_name\" --help $cmd_args"
+
+    # If no command name provided, show all builtins
+    if [ -z "$cmd_name" ]; then
+        command -p help $help_flags
+    # Check if it's a builtin first
+    elif echo "$help_builtins" | grep -q "^${escaped_cmd_name}$"; then
+        command -p help $help_flags "$cmd_name" | bathelp
+    # Check if command exists and try --help
+    elif command -v "$cmd_name" > /dev/null 2>&1; then
+        "$cmd_name" --help $cmd_args 2>&1 | bathelp
+    else
+        "$cmd_name" --help $cmd_args 2>&1 | bathelp
+
+    # else
+    #     echo "help: no help topics match '$cmd_name'" >&2
+    #     return 1
+    fi
+
+
+
+    return $?
+}
