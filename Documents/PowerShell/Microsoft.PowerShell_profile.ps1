@@ -8,6 +8,7 @@ Import-Module chrisc
 Set-PsEnv ~\.shell.env | Out-Null
 
 Import-Module Terminal-Icons
+# Import-Module PSCompletions
 
 $ENV:LS_COLORS = (vivid generate jellybeans)
 
@@ -21,4 +22,4 @@ oh-my-posh init pwsh --config $env:POSH_THEME | Invoke-Expression
 . $PSScriptRoot/aliases.ps1
 . $PSScriptRoot/completers.ps1
 
-winfetch
+@("winfetch", "fastfetch", "cpufetch", "macchina") | Get-Random | Invoke-Expression
