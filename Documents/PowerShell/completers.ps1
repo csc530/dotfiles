@@ -1,12 +1,14 @@
 # COMPLETERS
+## https://carapace-sh.github.io/carapace-bin/setup.html#powershell
+$env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+carapace _carapace | Out-String | Invoke-Expression
 # my beatful markdown viewer
-carapace _carapace powershell | Out-String | Invoke-Expression
 glow completion powershell | Out-String | Invoke-Expression
-pop completion powershell | Out-String | Invoke-Expression
+# pop completion powershell | Out-String | Invoke-Expression
 # gum completion powershell | Out-String | Invoke-Expression ## no powershell option yet
 vhs completion powershell | Out-String | Invoke-Expression
-# terminal prompt theme
-oh-my-posh completion powershell | Out-String | Invoke-Expression
 # 1password
 op completion powershell | Out-String | Invoke-Expression
 

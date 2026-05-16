@@ -3,6 +3,9 @@
 # APPDATA, LOCALAPPDATA, all for what, huh, **siigh**
 # O🪟🪟
 
+Import-Module chrisc
+
+Set-PsEnv ~\.shell.env | Out-Null
 
 Import-Module Terminal-Icons
 
@@ -13,9 +16,9 @@ Invoke-Expression (scoop-search --hook)
 # zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # oh-my-posh
-oh-my-posh init pwsh --config $env:POSH_THEME
+oh-my-posh init pwsh --config $env:POSH_THEME | Invoke-Expression
 
-./aliases.ps1
-./completers.ps1
+. $PSScriptRoot/aliases.ps1
+. $PSScriptRoot/completers.ps1
 
 winfetch
