@@ -338,8 +338,9 @@ KeyBind:
         - "alt+left"
     width_right:
         - "alt+right"
-    word_wrap_mode:
-        - "alt+w"
+    # needs version 0.52
+    # word_wrap_mode:
+    #     - "alt+w"
     wrap_mode:
         - "w"
         - "W"
