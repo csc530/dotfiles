@@ -18,7 +18,7 @@ source $HOME/.shell.env
 set +a
 
 cookie=("fortune" "misfortune --all" "kotofetch --source=true")
-fetch=(screenfetch pfetch macchina fastfetch countryfetch cpufetch steamfetch)
+fetch=(pfetch macchina fastfetch countryfetch cpufetch)
 
 ${fetch[$(( RANDOM % ${#fetch[@]} ))]}
 ${cookie[$(( $RANDOM % ${#cookie[@]} ))]}
