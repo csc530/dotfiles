@@ -9,6 +9,9 @@ set +o allexport
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init zsh)"
 
+eval "$(direnv hook zsh)"
+
+
 # carapace completer
 # because compdef do not be defined on mac idk🤷‍♂️
 # https://unix.stackexchange.com/questions/339954/zsh-command-not-found-compinstall-compinit-compdef
@@ -29,6 +32,14 @@ source <(carapace _carapace)
 
 alias omp=oh-my-posh
 alias cls=clear
+
+function y() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        command yazi "$@" --cwd-file="$tmp"
+        IFS= read -r -d '' cwd < "$tmp"
+        [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+        command rm -f -- "$tmp"
+}
 
 fetchhys=(screenfetch neofetch fastfetch cpufetch pfetch macchina)
 ${fetchhys[$RANDOM % $#fetchhys + 1]}
