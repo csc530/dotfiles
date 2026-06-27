@@ -1,0 +1,69 @@
+{
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": true
+  },
+  "tabs": {
+    "file_icons": false,
+    "git_status": true
+  },
+  "title_bar": {
+    "button_layout": "platform_default",
+    "show_menus": false
+  },
+  "status_bar": {
+    "line_endings_button": true,
+    "show_active_file": false
+  },
+  "which_key": {
+    "enabled": true
+  },
+  "unnecessary_code_fade": 0.4,
+  "auto_update": false,
+  "buffer_font_family": "Maple Mono NF CN",
+  "edit_predictions": {
+    "provider": "copilot"
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Frappé",
+    "dark": "Catppuccin Mocha"
+  },
+  "cli_default_open_behavior": "new_window",
+  "minimap": {
+    "show": "auto"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15.0,
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Catppuccin Frappé"
+  },
+  "languages": {
+    "JavaScript": {
+      "language_servers": ["vtsls", "eslint", "!typescript-language-server"]
+    },
+    "TypeScript": {
+      "language_servers": ["vtsls", "eslint", "!typescript-language-server"]
+    },
+    "TSX": {
+      "language_servers": ["vtsls", "eslint", "!typescript-language-server"]
+    }
+  },
+  "lsp": {
+    "powershell-es": {
+      "binary": {
+        "path": "pwsh.exe",
+        "arguments": [
+          "-NoLogo",
+          "-NoProfile",
+          "-Command",
+          " C:\\Users\\legor\\scoop\\apps\\powershelleditorservices\\current\\PowerShellEditorServices\\Start-EditorServices.ps1",
+          "-Stdio",
+          "-SessionDetailsPath",
+          "C:\\Users\\legor\\scoop\\apps\\powershelleditorservices\\current\\PowerShellEditorServices\\powershell-es.session.json"
+        ]
+      }
+    }
+  }
+}

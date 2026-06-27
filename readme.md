@@ -19,7 +19,7 @@ And I like exploring technology learning their differences, hating them, loving 
 - Mac: ~~net-~~zero pollution of user space, even hidden or dotfiles cuz ew mess -- less is best ![Bee & Puppycat with Tempbot](https://media.giphy.com/media/znhKtWU6JX9ni/giphy.gif)
   - everything in my $HOME folder should make sense and be descriptive; NOT A MESS of app configs hidden behind a dot (`.`) -- **LINUX**
 - Windows: everything in fact is not a file, and really they shouldn't be.
-- Linux: ... .....  ̄\_(ツ)_/ ̄
+- Linux: Kachow🏎️ !!
 
 ok so it looks like right now I know nothing of Windows and Linux ditros and my whole beginning yap was a lie, and really I'm an apple-eater.
 I'll keep using them and see if any philosophies or design choices resonate with me that I can extend into my workflow OS agonistically.
@@ -27,9 +27,10 @@ I'll keep using them and see if any philosophies or design choices resonate with
 ## Tool-Belt
 
 - Terminal: Ghostty, Kitty, or Windows Terminal
-- Shell: Zsh, Bash, Powershell, but I'd love to main Nushell across OSes
+- Shell: Zsh, Bash, ~~Powershell~~, but I'd love to main *Nushell* across OSes
 - Editor: NeoVim, Microsoft Edit, or Micro (if am really editing cuz I'm not good with Vim yet (ᵟຶ︵ ᵟຶ))
-- Visual: Visual Studio Code or Zed
+- Visual: [Zed](https://zed.dev/docs/configuring-zed)
+    - to see all of Zed's default settings without changing your custom settings, run `zed: open default settings` from the command palette (cmd-shift-p / ctrl-shift-p)
 - Browser: Orion, Floorp, or Vivaldi
 
 yea, so that list is a lot but mostly becuz of availability and quality of service (QoS) I get from each app on each OS.
