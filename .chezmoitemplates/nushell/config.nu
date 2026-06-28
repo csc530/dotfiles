@@ -200,6 +200,5 @@ $env.config = {
 }
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
 
-if $nu.is-interactive {
-    source ./lib/modules.nu
-}
+const file = if $nu.is-interactive { "./lib/modules.nu" } else {null}
+source $file
