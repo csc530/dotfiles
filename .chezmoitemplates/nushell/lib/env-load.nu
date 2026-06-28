@@ -10,7 +10,7 @@ export def --env main [
     --dry(-d)   # do not update environment and print variables instead
     --safe(-s)  # do not overwrite existing env variables with the same name
     ] {
-        let pairs = if ($path | is-empty) { $in } else { open --raw $path }
+      let variables = if ($path | is-empty) { $in } else { open --raw $path }
             | str trim
             | lines --skip-empty
             | split column "#" assignment comment --number 2 # remove comments
@@ -21,8 +21,11 @@ export def --env main [
                 if ($record.value? | is-not-empty) { $record }
             }
             | flatten
+
+
+        let resultEnv = $variables
             # substitute the environment variables in the file
-            | par-each --keep-order {|item|
+            | reduce --fold $env {|item, acc|
                 let key = $item.key
                 let value = $item.value
                     | str trim                    # Trim whitespace between value and inline comments
@@ -35,46 +38,48 @@ export def --env main [
 
                 let referencedEnvVariables = $value | parse -r $rgEnvAssignment
                 let bareEnvValue = $referencedEnvVariables | get var | reduce --fold $value {|it,acc| $acc | str replace $it ""}
-                let value = $referencedEnvVariables | reduce --fold $value {|it acc|
+                let value = $referencedEnvVariables | reduce --fold $value {|it envString|
                     let name = if ($it.complex | is-not-empty) { $it.complex } else { $it.simple }
-                    let envVarValue = $env | get $name --optional  | default "" | into string
+                    let envVarValue = $acc | get $name --optional --ignore-case | default "" | into string
                     let isAListValue = ($bareEnvValue | str contains (char env_sep)) or ($envVarValue | describe) =~ 'list<.*>'
-
                     if $isAListValue and ($it.index | is-not-empty) {
                         let value = $envVarValue | get $it.index
-                        $acc | str replace $it.var $value
+                        $envString | str replace $it.var $value
                     } else if $isAListValue {
                         let value = $envVarValue | into string | str join (char env_sep)
-                        $acc | str replace $it.var $value
+                        $envString | str replace $it.var $value
                     } else {
-                        $acc | str replace $it.var ($envVarValue | into string)
+                        $envString | str replace $it.var ($envVarValue | into string)
                     }
                 }
 
-                {key:$key, value:$value}
-            }
+                let envVar = if $key like "(?i)path" or ($value | str contains (char env_sep)) {
+                    #TODO: add support for env_sep that's not escaped to be made into lists
+                    {$key: ($acc.$key? | append ($value | split row (char env_sep) | uniq)) }
+                } else {
+                    {$key:$value}
+                }
 
-        let variables = $pairs | reduce --fold {} {|it acc|
-            if $safe and ($env | get --optional $it.key | is-not-empty) {
-                # do not overwrite existing env variables with the same name
-                $acc
-            } else if $it.key in [Path PATH] {
-                #TODO: add support for env_sep that's not escaped to be made into lists
-                $acc | merge deep --strategy append { $it.key: ($it.value | split row (char env_sep)) }
-            } else {
-                $acc | merge deep --strategy overwrite { $it.key: $it.value }
+                if ($safe and ($acc | get --ignore-case --optional $key | is-not-empty)) {
+                    print $"skipping ($key): not empty"
+                    $acc
+                } else {
+                    $acc | merge deep $envVar
+                }
+
             }
-        } | update cells --columns [PATH Path] {uniq}
+            # remove unmodified env variables
+            | select ...($variables.key)
 
         if not $dry {
-           # i think [par-]each are run in a sandboxed scope
+           # i think [par-]each/reduce/... are run in a sandboxed scope
            # so load-env aren't bubbled back up
-           for $envvar in $variables {
-               load-env $envvar
+           for $var in $resultEnv {
+                load-env $var
            }
         }
 
-    $variables
+    $resultEnv
 }
 
 # from carapce

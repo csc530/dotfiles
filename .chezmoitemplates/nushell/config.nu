@@ -34,11 +34,6 @@ const $NU_LIB_DIRS = [
 ]
     # | flatten
 
-use `./lib/env-load.nu`
-env-load ~/.shell.env
-# env-load ~/.config/user-dirs.dirs # should make xdg_* vars available
-
-
 let external_completer = {|spans|
     let carapace_completer = {|spans: list<string>|
         carapace $spans.0 nushell ...$spans
@@ -68,7 +63,6 @@ let external_completer = {|spans|
 
     do $carapace_completer $spans
 }
-
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -185,7 +179,7 @@ $env.config = {
         reset_application_mode: true
     }
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
-    use_kitty_protocol: ($env.TERM == "xterm-kitty") # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
+    use_kitty_protocol: ($env.TERM? == "xterm-kitty") # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
     highlight_resolved_externals: true # true enables highlighting of external commands in the repl resolved by which.
 
     plugins: {} # Per-plugin configuration. See https://www.nushell.sh/contributor-book/plugins.html#configuration.
@@ -206,15 +200,6 @@ $env.config = {
 }
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
 
-# create prompt and QoL caches
 if $nu.is-interactive {
-    use sys *
-    mkdir $nu.cache-dir
-    zoxide init nushell | cache zoxide.nu
-    # oh-my-posh init nu --config $env.POSH_THEME | save -f .cache/oh-my-posh.nu
-    oh-my-posh init nu --config $env.POSH_THEME
-    carapace init nushell | cache carapace.nu
-    | ignore
+    source ./lib/modules.nu
 }
-
-source ./lib/modules.nu

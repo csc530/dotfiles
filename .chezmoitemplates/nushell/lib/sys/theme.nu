@@ -1,9 +1,11 @@
 #!/usr/bin/env nu --login
 
-use nu-themes/catppuccin-latte.nu
-# use nu-themes/catppuccin-frappe.nu
-use nu-themes/catppuccin-macchiato.nu
-use nu-themes/catppuccin-mocha.nu
+const NU_SCRIPTS = $"($nu.default-config-dir)/nu_scripts/themes"
+
+use ($NU_SCRIPTS)/nu-themes/catppuccin-latte.nu
+# use ($NU_SCRIPTS)/nu-themes/catppuccin-frappe.nu
+use ($NU_SCRIPTS)/nu-themes/catppuccin-macchiato.nu
+use ($NU_SCRIPTS)/nu-themes/catppuccin-mocha.nu
 
 def --env main [theme?:string@[light dark]] {
     let theme = $theme | default (try { darkman get e>| ignore } catch { "dark" })
