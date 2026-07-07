@@ -38,7 +38,8 @@ match (sys host| get name) {
 	'Darwin' => ()
 }
 
-source $'($NU_SCRIPTS_PATH)/sourced/fun/spark.nu'
+# contains errors
+# source $'($NU_SCRIPTS_PATH)/sourced/fun/spark.nu'
 source $'($NU_SCRIPTS_PATH)/modules/formats/from-env.nu'
 source $'($NU_SCRIPTS_PATH)/modules/formats/to-ini.nu'
 source $'($NU_SCRIPTS_PATH)/modules/formats/to-number-format.nu'
