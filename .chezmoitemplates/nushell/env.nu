@@ -27,8 +27,9 @@ if not ($nu.cache-dir | path exists) {
 # this is done in env.nu because it initializes all the source paths so config.nu does not error-out
 if $nu.is-interactive {
     use ./lib/sys *
-    zoxide init nushell | cache zoxide.nu | ignore
+    if (which zoxide) { zoxide init nushell | cache zoxide.nu | ignore }
     # oh-my-posh init nu --config $env.POSH_THEME | save -f .cache/oh-my-posh.nu
-    oh-my-posh init nu --config $env.POSH_THEME
-    carapace init nushell | cache carapace.nu | ignore
+    if (which oh-my-posh) { oh-my-posh init nu --config $env.POSH_THEME }
+    if (which carapace) { carapace init nushell | cache carapace.nu | ignore }
+    if (which mise) { mise init nushell | cache mise.nu | ignore }
 }

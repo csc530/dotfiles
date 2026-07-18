@@ -10,6 +10,7 @@ eval "$(oh-my-posh init $shellname --print --config ~/.config/oh-my-posh/themes/
 source <(carapace _carapace $shellname)
 source <(zoxide init $shellname)
 eval "$(direnv hook $shellname)"
+eval "$(mise activate $shellname)"
 
 pokemon=$(pokeget random --hide-name)
 
