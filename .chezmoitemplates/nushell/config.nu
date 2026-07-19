@@ -200,5 +200,6 @@ $env.config = {
 }
 # $env.LS_COLORS = (vivid generate catppuccin-mocha)
 
-const file = if $nu.is-interactive { "./lib/modules.nu" } else {null}
-source $file
+# config files are only sourced in interactive mode
+# unless manually specified via flag
+source "./lib/modules.nu"

@@ -25,7 +25,7 @@ use sys
 ## cmd helpers & wrappers
 use yazi.nu *
 
-use ($nu.default-config-dir)/nu_scripts/sourced/misc/password_generator/nupass.nu
+# use ($nu.default-config-dir)/nu_scripts/sourced/misc/password_generator/nupass.nu
 # use jobapp.nu
 
 # completions
@@ -40,7 +40,7 @@ if ((sys host| get name) == 'Windows') {
 	# source $'hypr-completions.nu'
 }
 
-source ($nu.default-config-dir)/nu_scripts/sourced/fun/spark.nu
+# source ($nu.default-config-dir)/nu_scripts/sourced/fun/spark.nu
 source ($nu.default-config-dir)/nu_scripts/modules/formats/from-env.nu
 source ($nu.default-config-dir)/nu_scripts/modules/formats/to-ini.nu
 source ($nu.default-config-dir)/nu_scripts/modules/formats/to-number-format.nu
