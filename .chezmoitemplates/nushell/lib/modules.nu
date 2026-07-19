@@ -5,7 +5,6 @@ source ($nu.cache-dir)/carapace.nu
 source ($nu.cache-dir)/zoxide.nu
 source ($nu.cache-dir)/mise.nu
 
-
 source ($nu.default-config-dir)/nu_scripts/themes/nu-themes/catppuccin-macchiato.nu
 
 use system
