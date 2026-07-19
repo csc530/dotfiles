@@ -8,7 +8,9 @@ use ($NU_SCRIPTS)/nu-themes/catppuccin-macchiato.nu
 use ($NU_SCRIPTS)/nu-themes/catppuccin-mocha.nu
 
 def --env main [theme?:string@[light dark]] {
-    let theme = $theme | default (try { darkman get e>| ignore } catch { "dark" })
+    let theme = $theme
+	    | default (darkman get e>| ignore)
+	    | default (gsettings get org.gnome.desktop.interface color-scheme | parse "prefer-{mode}" | get mode)
     match $theme {
         "light" => {
             catppuccin-latte set color_config

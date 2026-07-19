@@ -31,5 +31,5 @@ if $nu.is-interactive {
     # oh-my-posh init nu --config $env.POSH_THEME | save -f .cache/oh-my-posh.nu
     if (which oh-my-posh | is-not-empty) { oh-my-posh init nu --config $env.POSH_THEME }
     if (which carapace | is-not-empty) { carapace init nushell | cache carapace.nu | ignore }
-    if (which mise | is-not-empty) { mise init nushell | cache mise.nu | ignore }
+    if (which mise | is-not-empty) { mise activate nu | cache mise.nu | ignore }
 }
