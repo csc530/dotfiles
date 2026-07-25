@@ -20,4 +20,28 @@ export def "to record" [] { transpose | transpose --as-record --header-row }
 export alias "to rec" = to record
 export alias to-rec = to record
 
+export def repeat [
+	...cmd: closure
+	--interval(-i): duration
+	--count(-c): int
+] {
+	if ($cmd | is-empty) { error make "command must be specified" }
+
+	if ($count | is-not-empty) {
+		0..$count | each {
+			let out = if ($cmd | describe) == "list<closure>" { $cmd | par-each {|it| do $it } |flatten } else { run-external $cmd }
+			if ($interval | is-not-empty) { sleep $interval }
+			$out
+		}
+	} else if ($interval | is-not-empty) {
+		generate {
+			let out = if ($cmd | describe) == "list<closure>" { $cmd | par-each {|it| do $it } |flatten } else { run-external $cmd }
+			sleep $interval
+			{out: $out, next: true}
+		} true
+	} else {
+		error make "command or interval must be specified"
+	}
+}
+
 export alias desc = describe

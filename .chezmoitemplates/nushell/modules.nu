@@ -1,5 +1,4 @@
 # source $'($NU_SCRIPTS_PATH)/themes/nu-themes/catppuccin-macchiato.nu'
-
 use system
 # because nupm git is here too🙄
 # use nupm/nupm
