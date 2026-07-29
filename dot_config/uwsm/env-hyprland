@@ -1,0 +1,6 @@
+# VERY IMPORTANT
+# (since I wasted such donket time configuring .desktop files and uwsm cmds :grimace:)
+export HYPRLAND_CONFIG=$HOME/.config/hypr-uwsm/hyprland.conf
+
+export QT_QPA_PLATFORMTHEME=hyprqt6engine
+export QT_QUICK_CONTROLS_STYLE=org.hyprland.style

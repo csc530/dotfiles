@@ -1,0 +1,31 @@
+# https://deepwiki.com/hyprwm/hyprland-wiki/3.7-environment-variables#force-apps-to-use-wayland
+export GDK_BACKEND=wayland,x11,*
+
+# https://wiki.archlinux.org/title/Hardware_video_acceleration#Translation_layers
+export NVD_BACKEND=direct
+# https://github.com/elFarto/nvidia-vaapi-driver/issues/74
+export CUDA_DISABLE_PERF_BOOST=1
+
+export QT_QPA_PLATFORM=wayland;xcb
+export QT_QPA_PLATFORMTHEME=...?
+export QT_QUICK_CONTROLS_STYLE=???
+
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
+
+# nvidia -- https://wiki.hypr.land/Nvidia/#environment-variables
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export LIBVA_DRIVER_NAME=nvidia
+export __GL_VRR_ALLOWED=0
+
+# chromiom ozone platform
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+
+# https://wiki.archlinux.org/title/Hardware_video_acceleration#Translation_layers
+export CUDA_DISABLE_PERF_BOOST=1
+
+# APPS env_configs
+export HYPRSHOT_DIR=$HOME/Pictures/Screenshots/hyprshot
