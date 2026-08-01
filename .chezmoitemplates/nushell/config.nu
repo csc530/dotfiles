@@ -203,4 +203,5 @@ $env.config = {
 
 # config files are only sourced in interactive mode
 # unless manually specified via flag
+# https://www.nushell.sh/book/configuration.html#detailed-configuration-startup-process
 source "./lib/modules.nu"
