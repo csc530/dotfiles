@@ -2025,26 +2025,26 @@ export extern read [
 ]
 
 # Pass secrets as environment variables to a process
-export extern run [
-    # GLOBAL FLAGS
-    --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
-    --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
-    --config=directory: path                                # Use this configuration directory.
-    --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
-    --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
-    --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
-    --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
-    --no-color                                              # Print output without color.
-    --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
-    --version(-v)                                           # version for op
+# export extern run [
+#     # GLOBAL FLAGS
+#     --account=account: string@"nu completion account"       # Select the account to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run 'op account list'. Can be set as the OP_ACCOUNT environment variable.
+#     --cache                                                 # Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable. (default true)
+#     --config=directory: path                                # Use this configuration directory.
+#     --debug                                                 # Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.
+#     --encoding=type: string@"nu completion encoding"        # Use this character encoding type. Default: UTF-8. Supported: SHIFT_JIS, gbk.
+#     --format=string: string@"nu completion format"          # Use this output format. Can be 'human-readable' or 'json'. Can be set as the OP_FORMAT environment variable. (default "human-readable")
+#     --iso-timestamps                                        # Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.
+#     --no-color                                              # Print output without color.
+#     --session=token: string                                 # Authenticate with this session token. 1Password CLI outputs session tokens for successful 'op signin' commands when 1Password app integration is not enabled.
+#     --version(-v)                                           # version for op
 
-    --env-file=stringArray: path                            # Enable Dotenv integration with specific Dotenv files to parse. For example: --env-file=.env.
-    --help(-h)                                              # help for run
-    --no-masking                                            # Disable masking of secrets on stdout and stderr.
+#     --env-file=stringArray: path                            # Enable Dotenv integration with specific Dotenv files to parse. For example: --env-file=.env.
+#     --help(-h)                                              # help for run
+#     --no-masking                                            # Disable masking of secrets on stdout and stderr.
 
-    # "--": string
-    ...command: string
-]
+#     # "--": string
+#     ...command: string
+# ]
 
 # Sign in to a 1Password account
 export extern signin [

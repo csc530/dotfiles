@@ -11,8 +11,8 @@ export def --env main [
     --safe(-s)  # do not overwrite existing env variables with the same name
     ] {
       let variables = if ($path | is-empty) { $in } else { open --raw $path }
+            | lines --skip-empty --strict
             | str trim
-            | lines --skip-empty
             | split column "#" assignment comment --number 2 # remove comments
             | get assignment
             | where {is-not-empty}
@@ -21,7 +21,6 @@ export def --env main [
                 if ($record.value? | is-not-empty) { $record }
             }
             | flatten
-
 
         let resultEnv = $variables
             # substitute the environment variables in the file

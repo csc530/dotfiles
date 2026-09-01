@@ -1,3 +1,5 @@
+export alias cls = clear
+
 export alias chafa = chafa --align mid --work 9 --animate on --margin-right 1 --label on
 export alias scoop-msearch = scoop-search-multisource
 export alias omp = oh-my-posh
